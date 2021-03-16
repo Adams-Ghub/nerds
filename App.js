@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import RegisterScreenC from "../nerds/src/screens/RegisterScreenC";
+import UserSelectionScreen from "../nerds/src/screens/UserSelectionScreen";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <RegisterScreenC />
+      <UserSelectionScreen />
     </View>
   );
 }

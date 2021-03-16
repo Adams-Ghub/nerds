@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import RegisterShopScreen from "../nerds/src/screens/RegisterShopScreen";
+import RegisterScreenC from "../nerds/src/screens/RegisterScreenC";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <RegisterShopScreen />
+      <RegisterScreenC />
     </View>
   );
 }

@@ -83,6 +83,7 @@ const style = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#0080FF",
     marginVertical: 15,
+    marginHorizontal: 0,
   },
   shopNameInput: {
     fontSize: 20,
@@ -90,16 +91,6 @@ const style = StyleSheet.create({
     marginLeft: 5,
   },
 
-  signupCautionText: {
-    fontSize: 18,
-    color: "#000000",
-    marginTop: 30,
-  },
-  termsAndPolicyText: {
-    fontSize: 17,
-    marginRight: 3,
-    color: "#0080FF",
-  },
   createShopButtonContainer: {
     marginVertical: 70,
   },

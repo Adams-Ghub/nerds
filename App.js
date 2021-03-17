@@ -1,21 +1,49 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import DashboardScreen from "./src/screens/shopOwner/DashboardScreen";
+import DrawerItem from "./src/components/DrawerItem";
+import { AntDesign } from "@expo/vector-icons";
 
+const Drawer = createDrawerNavigator();
+const defaultHeaderStyle = {
+  headerTitle: "",
+  headerShown: true,
+  headerStyle: {
+    backgroundColor: "#000A14",
+  },
+};
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Drawer.Navigator
+        drawerContentOptions={{
+          activeTintColor: "transparent",
+          itemStyle: { marginVertical: 5 },
+        }}
+        drawerStyle={{
+          backgroundColor: "#000A14",
+          width: 200,
+        }}
+      >
+        <Drawer.Screen
+          name="Home"
+          options={{
+            drawerLabel: () => {
+              return (
+                <DrawerItem
+                  title="Dashboard"
+                  // icon={<AntDesign name="user" size={24} color="#0080FF" />}
+                />
+              );
+            },
+            ...defaultHeaderStyle,
+          }}
+          component={DashboardScreen}
+        />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import UserSelectionScreen from "../nerds/src/screens/UserSelectionScreen";
+import LoginScreen from "../nerds/src/screens/LoginScreen";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <UserSelectionScreen />
+      <LoginScreen />
     </View>
   );
 }

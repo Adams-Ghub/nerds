@@ -17,6 +17,7 @@ const defaultHeaderStyle = {
 };
 export default function App() {
   return (
+
     <NavigationContainer>
       <Drawer.Navigator
         drawerContentOptions={{
@@ -47,3 +48,16 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginVertical: 50,
+    marginHorizontal: 10,
+    backgroundColor: "#fff",
+  },
+  productsContainer: {
+    flexWrap: "wrap",
+    flexDirection: "row",
+  },
+});

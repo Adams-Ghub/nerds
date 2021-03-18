@@ -8,6 +8,9 @@ import {
 } from "react-native";
 
 class UserSelectionScreen extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <View style={style.container}>
@@ -23,7 +26,12 @@ class UserSelectionScreen extends Component {
             <Text style={style.createShopButtonText}>Customer</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={style.createShopButton}>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate("Login");
+            }}
+            style={style.createShopButton}
+          >
             <Text style={style.createShopButtonText}>Shop Owner</Text>
           </TouchableOpacity>
         </View>

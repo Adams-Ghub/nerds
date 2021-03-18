@@ -8,6 +8,9 @@ import {
 } from "react-native";
 
 class RegisterScreenS extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <View style={style.container}>
@@ -64,7 +67,12 @@ class RegisterScreenS extends Component {
         </View>
         <View style={style.haveAccountContainer}>
           <Text style={style.haveAccountText}>Already have an account ?</Text>
-          <TouchableOpacity style={style.loginButton}>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate("Login");
+            }}
+            style={style.loginButton}
+          >
             <Text style={style.loginText}>Login</Text>
           </TouchableOpacity>
         </View>

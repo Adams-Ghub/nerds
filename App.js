@@ -1,13 +1,14 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import DashboardScreen from "./src/screens/shopOwner/DashboardScreen";
-import DrawerItem from "./src/components/DrawerItem";
-import { AntDesign } from "@expo/vector-icons";
+import DrawerNavigatorDashboardS from "./src/navigation/DrawerNavigatorDashboardS";
+import LoginScreen from "./src/screens/LoginScreen";
+import UserSelectionScreen from "./src/screens/UserSelectionScreen";
+import RegisterScreenS from "./src/screens/RegisterScreenS";
+import { Header } from "react-native/Libraries/NewAppScreen";
 
-const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 const defaultHeaderStyle = {
   headerTitle: "",
   headerShown: true,
@@ -17,34 +18,24 @@ const defaultHeaderStyle = {
 };
 export default function App() {
   return (
-
     <NavigationContainer>
-      <Drawer.Navigator
-        drawerContentOptions={{
-          activeTintColor: "transparent",
-          itemStyle: { marginVertical: 5 },
-        }}
-        drawerStyle={{
-          backgroundColor: "#000A14",
-          width: 200,
-        }}
-      >
-        <Drawer.Screen
-          name="Home"
-          options={{
-            drawerLabel: () => {
-              return (
-                <DrawerItem
-                  title="Dashboard"
-                  // icon={<AntDesign name="user" size={24} color="#0080FF" />}
-                />
-              );
-            },
-            ...defaultHeaderStyle,
-          }}
-          component={DashboardScreen}
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={UserSelectionScreen} />
+        <Stack.Screen
+          name="ShopOwnerDashboard"
+          component={DrawerNavigatorDashboardS}
         />
-      </Drawer.Navigator>
+        <Stack.Screen
+          options={{ header: () => {} }}
+          name="Login"
+          component={LoginScreen}
+        />
+        <Stack.Screen
+          options={{ header: () => {} }}
+          name="RegisterS"
+          component={RegisterScreenS}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

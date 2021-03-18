@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import DashboardScreen from "./src/screens/shopOwner/DashboardScreen";
 import DrawerItem from "./src/components/DrawerItem";
-import { AntDesign } from "@expo/vector-icons";
+import CustomProgress from "./src/components/CustomProgress";
 
 const Drawer = createDrawerNavigator();
 const defaultHeaderStyle = {
@@ -32,12 +32,7 @@ export default function App() {
           name="Home"
           options={{
             drawerLabel: () => {
-              return (
-                <DrawerItem
-                  title="Dashboard"
-                  // icon={<AntDesign name="user" size={24} color="#0080FF" />}
-                />
-              );
+              return <DrawerItem title="Dashboard" />;
             },
             ...defaultHeaderStyle,
           }}
@@ -47,3 +42,5 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+

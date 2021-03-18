@@ -55,6 +55,8 @@ const DashboardScreen = () => {
         />
       </View>
 
+      <Text style={styles.topic}>Top Selling Products</Text>
+
       <View style={styles.progressContainer}>
         <CustomProgress
           leftText="Samsung A70"
@@ -93,5 +95,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     padding: 10,
   },
-  firstProgress: {},
+  topic: {
+    fontWeight: "bold",
+    marginLeft: 18,
+  },
 });

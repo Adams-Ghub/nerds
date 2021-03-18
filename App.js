@@ -1,11 +1,15 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import LoginScreen from "../nerds/src/screens/LoginScreen";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
+
+import Product from "./src/components/ProductComponent";
+import UserSelectionScreen from "./src/screens/UserSelectionScreen";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <LoginScreen />
+      <ScrollView style={styles.productsContainer}>
+        <Product />
+      </ScrollView>
     </View>
   );
 }
@@ -13,8 +17,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginVertical: 50,
+    marginHorizontal: 10,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+  },
+  productsContainer: {
+    flexWrap: "wrap",
+    flexDirection: "row",
   },
 });

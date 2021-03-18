@@ -8,7 +8,8 @@ import {
 } from "react-native";
 import ProgressBar from "react-native-progress/Bar";
 import { LineChart } from "react-native-chart-kit";
-LineChart;
+import CustomProgress from "../../components/CustomProgress";
+
 const DashboardScreen = () => {
   return (
     <View>
@@ -53,11 +54,33 @@ const DashboardScreen = () => {
           }}
         />
       </View>
-      <ProgressBar
-        progress={0.7}
-        width={Dimensions.get("window").width * 0.8}
-        color="#32ee23"
-      />
+
+      <View style={styles.progressContainer}>
+        <CustomProgress
+          leftText="Samsung A70"
+          rightText="28.7% sales"
+          progress="0.8"
+          color="#F4D532"
+        />
+        <CustomProgress
+          leftText="Hp omen Laptop"
+          rightText="22.32% sales"
+          progress="0.6"
+          color="#E12F2F"
+        />
+        <CustomProgress
+          leftText="Bluetooth 5.0 wireless Ear..."
+          rightText="16.92% sales"
+          progress="0.7"
+          color="#3EDED4"
+        />
+        <CustomProgress
+          leftText="Tecno Spark 5 pro"
+          rightText="11.2% sales"
+          progress="0.5"
+          color="#A85EBB"
+        />
+      </View>
     </View>
   );
 };
@@ -70,4 +93,5 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     padding: 10,
   },
+  firstProgress: {},
 });

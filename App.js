@@ -6,6 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import DashboardScreen from "./src/screens/shopOwner/DashboardScreen";
 import DrawerItem from "./src/components/DrawerItem";
 import CustomProgress from "./src/components/CustomProgress";
+import ShopOwnerProfileScreen from "./src/screens/shopOwner/ShopOwnerProfileScreen";
 
 const Drawer = createDrawerNavigator();
 const defaultHeaderStyle = {
@@ -38,9 +39,17 @@ export default function App() {
           }}
           component={DashboardScreen}
         />
+        <Drawer.Screen
+          name="Profile"
+          options={{
+            drawerLabel: () => {
+              return <DrawerItem title="Profile" />;
+            },
+            ...defaultHeaderStyle,
+          }}
+          component={ShopOwnerProfileScreen}
+        />
       </Drawer.Navigator>
     </NavigationContainer>
   );
 }
-
-

@@ -1,7 +1,15 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerItem from "../components/DrawerItem";
 import { AntDesign } from "@expo/vector-icons";
+import { Header } from "react-native/Libraries/NewAppScreen";
 
+const defaultHeaderStyle = {
+  headerTitle: "",
+  headerShown: true,
+  headerStyle: {
+    backgroundColor: "#000A14",
+  },
+};
 const Drawer = createDrawerNavigator();
 function DrawerNavigatorDashboardS() {
   return (

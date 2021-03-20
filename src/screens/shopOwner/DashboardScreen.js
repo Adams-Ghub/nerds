@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   StyleSheet,
   Text,
@@ -6,9 +7,12 @@ import {
   Dimensions,
   ProgressBarAndroid,
 } from "react-native";
-import ProgressBar from "react-native-progress/Bar";
+
 import { LineChart } from "react-native-chart-kit";
 import CustomProgress from "../../components/CustomProgress";
+
+
+import DrawerItem from "../../components/DrawerItem";
 
 const DashboardScreen = () => {
   return (
@@ -83,6 +87,8 @@ const DashboardScreen = () => {
           color="#A85EBB"
         />
       </View>
+
+      <DrawerItem />
     </View>
   );
 };

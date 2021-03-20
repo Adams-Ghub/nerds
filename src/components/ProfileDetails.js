@@ -7,8 +7,15 @@ const ProfileDetails = () => {
   return (
     <View style={styles.container}>
       <View style={styles.profileCredential}>
-        <Text style={styles.profileName}>Abraham Lincoln</Text>
-        <Text style={styles.profileEmail}>abrahamlincoln@gmail.com</Text>
+        <View style={styles.profileContainer}>
+          <View style={styles.editIcon}>
+            <MaterialIcons name="edit" size={24} color="black" />
+          </View>
+          <Text style={styles.profileName}>Abraham Lincoln</Text>
+          <Text style={styles.profileEmail}>abrahamlincoln@gmail.com</Text>
+          <View style={styles.line} />
+        </View>
+
         <ProfileItem
           text="Business Profile"
           icon={<MaterialIcons name="card-travel" size={20} color="black" />}
@@ -49,5 +56,25 @@ const styles = StyleSheet.create({
   },
   businessProfille: {
     fontSize: 20,
+  },
+  profileName: {
+    fontSize: 20,
+    textAlign: "center",
+  },
+  profileEmail: {
+    fontSize: 15,
+    textAlign: "center",
+    marginBottom: 30,
+  },
+  line: {
+    width: 306,
+    height: 1,
+    backgroundColor: "#B0B0B0",
+    alignSelf: "center",
+    marginBottom: 25,
+  },
+  editIcon: {
+    flexDirection: "row-reverse",
+    marginLeft: 20,
   },
 });

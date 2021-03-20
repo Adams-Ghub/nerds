@@ -1,7 +1,9 @@
+import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerItem from "../components/DrawerItem";
 import { AntDesign } from "@expo/vector-icons";
 import { Header } from "react-native/Libraries/NewAppScreen";
+import DashboardScreen from "../screens/shopOwner/DashboardScreen";
 
 const defaultHeaderStyle = {
   headerTitle: "",
@@ -43,3 +45,27 @@ function DrawerNavigatorDashboardS() {
   );
 }
 export default DrawerNavigatorDashboardS;
+
+{
+  /* <Drawer.Navigator
+  drawerContentOptions={{
+    activeTintColor: "transparent",
+    itemStyle: { marginVertical: 5 },
+  }}
+  drawerStyle={{
+    backgroundColor: "#000A14",
+    width: 200,
+  }}
+>
+  <Drawer.Screen
+    name="Home"
+    options={{
+      drawerLabel: () => {
+        return <DrawerItem title="Dashboard" />;
+      },
+      ...defaultHeaderStyle,
+    }}
+    component={DashboardScreen}
+  />
+</Drawer.Navigator> */
+}

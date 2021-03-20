@@ -6,11 +6,38 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import { connect } from "react-redux";
+import { createAccountShopOwner } from "../redux/actions/authAction";
 
 class RegisterScreenS extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      username: "",
+      password: "",
+      confirm: "",
+      email: "",
+    };
+    this.handleSignUp = this.handleSignUp.bind(this);
+    this.handleUpdateState = this.handleUpdateState.bind(this);
   }
+  handleSignUp = () => {
+    // const email = this.state.email,
+    //   password = this.state.password,
+    //   username = this.state.username;
+    this.props.createAccountShopOwner(
+      this.state.email,
+      this.state.password,
+      this.state.username
+    );
+  };
+
+  handleUpdateState = (name, value) => {
+    this.setState({
+      [name]: value,
+    });
+  };
+
   render() {
     return (
       <View style={style.container}>
@@ -23,26 +50,34 @@ class RegisterScreenS extends Component {
             <TextInput
               style={style.usernameInput}
               placeholder="Username"
+              value={this.state.username}
+              onChangeText={(text) => this.handleUpdateState("username", text)}
             ></TextInput>
           </View>
           <View style={style.usernameInputContainer}>
             <TextInput
               style={style.usernameInput}
               placeholder="Email"
+              value={this.state.email}
+              onChangeText={(text) => this.handleUpdateState("email", text)}
             ></TextInput>
           </View>
           <View style={style.usernameInputContainer}>
             <TextInput
               style={style.usernameInput}
               placeholder="Password"
+              value={this.state.password}
               secureTextEntry={true}
+              onChangeText={(text) => this.handleUpdateState("password", text)}
             ></TextInput>
           </View>
           <View style={style.usernameInputContainer}>
             <TextInput
               style={style.usernameInput}
               placeholder="Confirm Password"
+              value={this.state.confirm}
               secureTextEntry={true}
+              onChangeText={(text) => this.handleUpdateState("confirm", text)}
             ></TextInput>
           </View>
         </View>
@@ -61,7 +96,10 @@ class RegisterScreenS extends Component {
           </Text>
         </View>
         <View style={style.signupButtonContainer}>
-          <TouchableOpacity style={style.signupButton}>
+          <TouchableOpacity
+            onPress={this.handleSignUp}
+            style={style.signupButton}
+          >
             <Text style={style.signupButtonText}>Sign up</Text>
           </TouchableOpacity>
         </View>
@@ -80,6 +118,13 @@ class RegisterScreenS extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return { auth: state };
+};
+const mapDispatchToProps = () => {
+  return { createAccountShopOwner };
+};
+export default connect(mapStateToProps, mapDispatchToProps())(RegisterScreenS);
 
 const style = StyleSheet.create({
   container: {
@@ -155,5 +200,3 @@ const style = StyleSheet.create({
     color: "#0080ff",
   },
 });
-
-export default RegisterScreenS;

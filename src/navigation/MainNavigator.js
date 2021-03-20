@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 export default function MainNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           name="Home"
           options={{ header: () => {} }}
@@ -19,6 +19,7 @@ export default function MainNavigator() {
         />
         <Stack.Screen
           name="ShopOwnerDashboard"
+          options={{ header: () => {} }}
           component={DrawerNavigatorDashboardS}
         />
         <Stack.Screen

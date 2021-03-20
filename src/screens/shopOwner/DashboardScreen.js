@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   StyleSheet,
   Text,
@@ -9,10 +10,15 @@ import {
 import ProgressBar from "react-native-progress/Bar";
 import { LineChart } from "react-native-chart-kit";
 import CustomProgress from "../../components/CustomProgress";
+=======
+import { StyleSheet, Text, View } from "react-native";
+import DrawerItem from "../../components/DrawerItem";
+
 
 const DashboardScreen = () => {
   return (
     <View>
+
       <View>
         <LineChart
           data={{
@@ -83,11 +89,15 @@ const DashboardScreen = () => {
           color="#A85EBB"
         />
       </View>
+=======
+      <DrawerItem />
+
     </View>
   );
 };
 
 export default DashboardScreen;
+
 
 const styles = StyleSheet.create({
   container: {
@@ -100,3 +110,6 @@ const styles = StyleSheet.create({
     marginLeft: 18,
   },
 });
+=======
+const styles = StyleSheet.create({});
+

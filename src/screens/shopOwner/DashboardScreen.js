@@ -7,7 +7,7 @@ import {
   Dimensions,
   ProgressBarAndroid,
 } from "react-native";
-// import ProgressBar from "react-native-progress/Bar";
+
 import { LineChart } from "react-native-chart-kit";
 import CustomProgress from "../../components/CustomProgress";
 

@@ -1,11 +1,15 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import ProfileItem from "./ProfileItem";
 import { MaterialIcons } from "@expo/vector-icons";
 
 const ProfileDetails = () => {
   return (
     <View style={styles.container}>
+      <Image
+        source={require("../../assets/profile.jpg")}
+        style={styles.image}
+      />
       <View style={styles.profileCredential}>
         <View style={styles.profileContainer}>
           <View style={styles.editIcon}>
@@ -41,6 +45,7 @@ const ProfileDetails = () => {
 export default ProfileDetails;
 
 const styles = StyleSheet.create({
+  container: {},
   profileActions: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -67,7 +72,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   line: {
-    width: 306,
+    width: "100%",
     height: 1,
     backgroundColor: "#B0B0B0",
     alignSelf: "center",
@@ -76,5 +81,22 @@ const styles = StyleSheet.create({
   editIcon: {
     flexDirection: "row-reverse",
     marginLeft: 20,
+  },
+  profileCredential: {
+    paddingTop: 40,
+    backgroundColor: "#ffffff",
+    // zIndex: 400,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: "#dddddd",
+    paddingBottom: 30,
+  },
+  image: {
+    width: 100,
+    height: 100,
+    marginBottom: -40,
+    alignSelf: "center",
+    borderRadius: 75,
+    zIndex: 100,
   },
 });

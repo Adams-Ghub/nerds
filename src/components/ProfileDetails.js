@@ -85,11 +85,16 @@ const styles = StyleSheet.create({
   profileCredential: {
     paddingTop: 40,
     backgroundColor: "#ffffff",
-    // zIndex: 400,
     borderRadius: 20,
-    borderWidth: 1,
-    borderColor: "#dddddd",
     paddingBottom: 30,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.0,
+    elevation: 1,
   },
   image: {
     width: 100,

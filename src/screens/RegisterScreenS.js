@@ -4,8 +4,14 @@ import {
   View,
   Text,
   TextInput,
+  ScrollView,
   TouchableOpacity,
 } from "react-native";
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from "react-native-responsive-screen";
+
 import { connect } from "react-redux";
 import { createAccountShopOwner } from "../redux/actions/authAction";
 
@@ -17,19 +23,24 @@ class RegisterScreenS extends Component {
       password: "",
       confirm: "",
       email: "",
+      errorMsg: "",
     };
     this.handleSignUp = this.handleSignUp.bind(this);
     this.handleUpdateState = this.handleUpdateState.bind(this);
   }
   handleSignUp = () => {
-    // const email = this.state.email,
-    //   password = this.state.password,
-    //   username = this.state.username;
     this.props.createAccountShopOwner(
       this.state.email,
       this.state.password,
       this.state.username
     );
+    passConfirmationCheck = () => {
+      if (this.state.username === "") {
+        this.setState({ errorMsg: "Username is required" });
+      }
+      if (this.state.password !== this.state.confirm) {
+      }
+    };
   };
 
   handleUpdateState = (name, value) => {
@@ -45,75 +56,84 @@ class RegisterScreenS extends Component {
           <Text style={style.welcomeMessage}>Welcome To Nerds</Text>
           <Text style={style.createMessage}>Create Account</Text>
         </View>
-        <View style={style.registrationFormContainer}>
-          <View style={style.usernameInputContainer}>
-            <TextInput
-              style={style.usernameInput}
-              placeholder="Username"
-              value={this.state.username}
-              onChangeText={(text) => this.handleUpdateState("username", text)}
-            ></TextInput>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={style.registrationFormContainer}>
+            <View style={style.usernameInputContainer}>
+              <TextInput
+                style={style.usernameInput}
+                placeholder="Username"
+                value={this.state.username}
+                onChangeText={(text) =>
+                  this.handleUpdateState("username", text)
+                }
+              ></TextInput>
+            </View>
+            <View style={style.usernameInputContainer}>
+              <TextInput
+                style={style.usernameInput}
+                placeholder="Email"
+                value={this.state.email}
+                onChangeText={(text) => this.handleUpdateState("email", text)}
+              ></TextInput>
+            </View>
+            <View style={style.usernameInputContainer}>
+              <TextInput
+                style={style.usernameInput}
+                placeholder="Password"
+                value={this.state.password}
+                secureTextEntry={true}
+                onChangeText={(text) =>
+                  this.handleUpdateState("password", text)
+                }
+              ></TextInput>
+            </View>
+            <View style={style.usernameInputContainer}>
+              <TextInput
+                style={style.usernameInput}
+                placeholder="Confirm Password"
+                value={this.state.confirm}
+                secureTextEntry={true}
+                onChangeText={(text) => this.handleUpdateState("confirm", text)}
+              ></TextInput>
+            </View>
+            <View style={style.errorMsgContainer}>
+              <Text></Text>
+            </View>
           </View>
-          <View style={style.usernameInputContainer}>
-            <TextInput
-              style={style.usernameInput}
-              placeholder="Email"
-              value={this.state.email}
-              onChangeText={(text) => this.handleUpdateState("email", text)}
-            ></TextInput>
+          <View style={style.termsAndPolicyContainer}>
+            <Text style={style.signupCautionText}>
+              By signing up you accept the
+              <TouchableOpacity style={style.termsAndPolicyTextContainer}>
+                <Text style={style.termsAndPolicyText}>
+                  Terms of Service{" "}
+                  <Text style={style.signupCautionText}>and</Text>
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={style.termsAndPolicyTextContainer}>
+                <Text style={style.termsAndPolicyText}>Privacy Policy</Text>
+              </TouchableOpacity>
+            </Text>
           </View>
-          <View style={style.usernameInputContainer}>
-            <TextInput
-              style={style.usernameInput}
-              placeholder="Password"
-              value={this.state.password}
-              secureTextEntry={true}
-              onChangeText={(text) => this.handleUpdateState("password", text)}
-            ></TextInput>
-          </View>
-          <View style={style.usernameInputContainer}>
-            <TextInput
-              style={style.usernameInput}
-              placeholder="Confirm Password"
-              value={this.state.confirm}
-              secureTextEntry={true}
-              onChangeText={(text) => this.handleUpdateState("confirm", text)}
-            ></TextInput>
-          </View>
-        </View>
-        <View style={style.termsAndPolicyContainer}>
-          <Text style={style.signupCautionText}>
-            By signing up you accept the
-            <TouchableOpacity style={style.termsAndPolicyTextContainer}>
-              <Text style={style.termsAndPolicyText}>
-                Terms of Service{" "}
-                <Text style={style.signupCautionText}>and</Text>
-              </Text>
+          <View style={style.signupButtonContainer}>
+            <TouchableOpacity
+              onPress={this.handleSignUp}
+              style={style.signupButton}
+            >
+              <Text style={style.signupButtonText}>Sign up</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={style.termsAndPolicyTextContainer}>
-              <Text style={style.termsAndPolicyText}>Privacy Policy</Text>
+          </View>
+          <View style={style.haveAccountContainer}>
+            <Text style={style.haveAccountText}>Already have an account ?</Text>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate("Login");
+              }}
+              style={style.loginButton}
+            >
+              <Text style={style.loginText}>Login</Text>
             </TouchableOpacity>
-          </Text>
-        </View>
-        <View style={style.signupButtonContainer}>
-          <TouchableOpacity
-            onPress={this.handleSignUp}
-            style={style.signupButton}
-          >
-            <Text style={style.signupButtonText}>Sign up</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={style.haveAccountContainer}>
-          <Text style={style.haveAccountText}>Already have an account ?</Text>
-          <TouchableOpacity
-            onPress={() => {
-              this.props.navigation.navigate("Login");
-            }}
-            style={style.loginButton}
-          >
-            <Text style={style.loginText}>Login</Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </ScrollView>
       </View>
     );
   }
@@ -130,8 +150,8 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    marginVertical: 40,
-    marginHorizontal: 40,
+    marginVertical: hp("7%"),
+    marginHorizontal: wp("10%"),
   },
   welcomeSectionContainer: {
     alignItems: "center",
@@ -140,7 +160,7 @@ const style = StyleSheet.create({
   welcomeMessage: {
     fontSize: 36,
     fontWeight: "200",
-    marginBottom: 70,
+    marginBottom: hp("6%"),
   },
   createMessage: {
     fontSize: 22,
@@ -148,24 +168,23 @@ const style = StyleSheet.create({
     marginBottom: 0,
   },
   registrationFormContainer: {
-    marginVertical: 40,
+    marginVertical: hp("7%"),
   },
   usernameInputContainer: {
     borderStyle: "solid",
     borderBottomWidth: 1,
     borderBottomColor: "#0080FF",
-    marginVertical: 15,
+    marginVertical: hp("1.5%"),
   },
   usernameInput: {
     fontSize: 20,
-    marginVertical: 5,
-    marginLeft: 5,
+    marginVertical: hp("1%"),
+    marginLeft: wp("1%"),
   },
   termsAndPolicyTextContainer: {},
   signupCautionText: {
     fontSize: 18,
     color: "#000000",
-    marginTop: 30,
   },
   termsAndPolicyText: {
     fontSize: 17,
@@ -173,7 +192,7 @@ const style = StyleSheet.create({
     color: "#0080FF",
   },
   signupButtonContainer: {
-    marginVertical: 30,
+    marginVertical: hp("5%"),
   },
   signupButton: {
     backgroundColor: "#0080FF",
@@ -183,17 +202,18 @@ const style = StyleSheet.create({
   signupButtonText: {
     color: "#ffffff",
     fontSize: 20,
-    marginVertical: 10,
+    marginVertical: hp("1%"),
   },
   haveAccountContainer: {
     flexDirection: "row",
+    justifyContent: "center",
   },
   haveAccountText: {
     fontSize: 17,
-    marginRight: 10,
+    marginRight: wp("4%"),
   },
   loginButton: {
-    marginHorizontal: 10,
+    marginHorizontal: wp("3%"),
   },
   loginText: {
     fontSize: 17,

@@ -6,11 +6,23 @@ export function createAccountShopOwner(email, password, username) {
       const user = await firebase
         .auth()
         .createUserWithEmailAndPassword(email, password);
+      console.log(user);
 
-      db.collection("Users").doc(user.uid).set({
-        username,
-        role: "Shop Owner",
-      });
+      let f_user = db
+        .collection("users")
+        .doc(user.user.uid)
+        .set({
+          username,
+          role: "Shop Owner",
+        })
+        .then((res) => {
+          alert("user created successfully", res);
+          console.log(f_user);
+        })
+        .catch((error) => {
+          alert(error.message);
+          console.log(error);
+        });
       console.log(user);
       dispatch(Loggedin(user));
     } catch (error) {

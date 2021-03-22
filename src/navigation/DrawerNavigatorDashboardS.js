@@ -4,6 +4,7 @@ import DrawerItem from "../components/DrawerItem";
 import { AntDesign } from "@expo/vector-icons";
 import { Header } from "react-native/Libraries/NewAppScreen";
 import DashboardScreen from "../screens/shopOwner/DashboardScreen";
+import ShopOwnerProfileScreen from "../screens/shopOwner/ShopOwnerProfileScreen";
 
 const defaultHeaderStyle = {
   headerTitle: "",
@@ -41,13 +42,24 @@ function DrawerNavigatorDashboardS() {
         }}
         component={DashboardScreen}
       />
+      <Drawer.Screen
+        name="Profile"
+        options={{
+          drawerLabel: () => {
+            return <DrawerItem title="Profile" />;
+          },
+          ...defaultHeaderStyle,
+        }}
+        component={ShopOwnerProfileScreen}
+      />
     </Drawer.Navigator>
   );
 }
 export default DrawerNavigatorDashboardS;
 
 {
-  /* <Drawer.Navigator
+  /* <NavigationContainer>
+<Drawer.Navigator
   drawerContentOptions={{
     activeTintColor: "transparent",
     itemStyle: { marginVertical: 5 },
@@ -67,5 +79,9 @@ export default DrawerNavigatorDashboardS;
     }}
     component={DashboardScreen}
   />
-</Drawer.Navigator> */
+  
+</Drawer.Navigator>
+</NavigationContainer>
+);
+} */
 }

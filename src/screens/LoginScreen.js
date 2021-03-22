@@ -6,6 +6,10 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from "react-native-responsive-screen";
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -63,18 +67,18 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    marginVertical: 40,
-    marginHorizontal: 40,
+    marginVertical: hp("7%"),
+    marginHorizontal: wp("10"),
   },
   welcomeSectionContainer: {
     alignItems: "center",
-    marginBottom: 40,
+    marginBottom: hp("5%"),
   },
 
   welcomeMessage: {
     fontSize: 36,
     fontWeight: "200",
-    marginBottom: 70,
+    marginBottom: hp("7%"),
   },
   loginMessage: {
     fontSize: 22,
@@ -82,22 +86,22 @@ const style = StyleSheet.create({
     marginBottom: 0,
   },
   registrationFormContainer: {
-    marginVertical: 50,
+    marginVertical: hp("5%"),
   },
   usernameInputContainer: {
     borderStyle: "solid",
     borderBottomWidth: 1,
     borderBottomColor: "#0080FF",
-    marginVertical: 15,
+    marginVertical: hp("2%"),
   },
   usernameInput: {
     fontSize: 20,
-    marginVertical: 5,
-    marginLeft: 5,
+    marginVertical: hp("0.5%"),
+    marginLeft: wp("1%"),
   },
   forgotpassContainer: {
     alignItems: "flex-end",
-    marginVertical: 15,
+    marginVertical: hp("1%"),
   },
 
   forgotpassText: {
@@ -106,7 +110,7 @@ const style = StyleSheet.create({
     color: "#0080FF",
   },
   loginButtonContainer: {
-    marginVertical: 30,
+    marginVertical: hp("4%"),
   },
   loginButton: {
     backgroundColor: "#0080FF",
@@ -116,19 +120,19 @@ const style = StyleSheet.create({
   loginButtonText: {
     color: "#ffffff",
     fontSize: 20,
-    marginVertical: 10,
+    marginVertical: hp("1%"),
   },
   haveAccountContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    marginVertical: 25,
+    marginVertical: hp("5%"),
   },
   haveAccountText: {
     fontSize: 17,
-    marginRight: 10,
+    marginRight: wp("2%"),
   },
   signupButton: {
-    marginHorizontal: 10,
+    marginHorizontal: wp("5%"),
   },
   signupText: {
     fontSize: 17,

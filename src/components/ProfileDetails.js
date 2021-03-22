@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import ProfileItem from "./ProfileItem";
 import { MaterialIcons } from "@expo/vector-icons";
 
-const ProfileDetails = () => {
+function ProfileDetails() {
   return (
     <View style={styles.container}>
       <View style={styles.profileCredential}>
@@ -29,7 +29,7 @@ const ProfileDetails = () => {
       </View>
     </View>
   );
-};
+}
 
 export default ProfileDetails;
 

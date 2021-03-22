@@ -58,7 +58,8 @@ function DrawerNavigatorDashboardS() {
 export default DrawerNavigatorDashboardS;
 
 {
-  /* <Drawer.Navigator
+  /* <NavigationContainer>
+<Drawer.Navigator
   drawerContentOptions={{
     activeTintColor: "transparent",
     itemStyle: { marginVertical: 5 },
@@ -78,5 +79,9 @@ export default DrawerNavigatorDashboardS;
     }}
     component={DashboardScreen}
   />
-</Drawer.Navigator> */
+  
+</Drawer.Navigator>
+</NavigationContainer>
+);
+} */
 }

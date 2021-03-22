@@ -6,6 +6,10 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from "react-native-responsive-screen";
 
 class UserSelectionScreen extends Component {
   constructor(props) {
@@ -22,7 +26,12 @@ class UserSelectionScreen extends Component {
         </View>
 
         <View style={style.createShopButtonContainer}>
-          <TouchableOpacity style={style.createShopButton}>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.navigate("Welcome");
+            }}
+            style={style.createShopButton}
+          >
             <Text style={style.createShopButtonText}>Customer</Text>
           </TouchableOpacity>
 
@@ -44,8 +53,8 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    marginVertical: 40,
-    marginHorizontal: 40,
+    marginVertical: hp("8%"),
+    marginHorizontal: wp("10%"),
   },
   welcomeSectionContainer: {
     alignItems: "center",
@@ -54,28 +63,28 @@ const style = StyleSheet.create({
   welcomeMessage: {
     fontSize: 36,
     fontWeight: "200",
-    marginBottom: 130,
+    marginBottom: hp("14%"),
   },
   IamTextContainer: {},
   IamText: {
     fontSize: 22,
     fontWeight: "normal",
-    marginTop: 30,
+    marginTop: hp("4%"),
   },
 
   createShopButtonContainer: {
-    marginVertical: 60,
+    marginVertical: hp("8%"),
   },
   createShopButton: {
     backgroundColor: "#0080FF",
     borderRadius: 8,
     alignItems: "center",
-    marginVertical: 45,
+    marginVertical: hp("5%"),
   },
   createShopButtonText: {
     color: "#ffffff",
     fontSize: 20,
-    marginVertical: 10,
+    marginVertical: hp("1%"),
   },
 });
 

@@ -14,7 +14,11 @@ const Stack = createStackNavigator();
 export default function MainNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ShopOwnerDashboard">
+
+
+      <Stack.Navigator initialRouteName="Welcome">
+
+
         <Stack.Screen
           name="Home"
           options={{ header: () => {} }}

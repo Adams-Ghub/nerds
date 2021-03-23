@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons, AntDesign } from "@expo/vector-icons";
 
 function ProfileItem({ icon, text }) {
   return (
@@ -23,8 +23,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginHorizontal: 8,
+    marginHorizontal: 40,
+    alignItems: "center",
     marginVertical: 3,
+    marginTop: 20,
   },
   businessIcon: {
     flexDirection: "row",

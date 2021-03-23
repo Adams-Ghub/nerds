@@ -64,25 +64,25 @@ const DashboardScreen = () => {
         <CustomProgress
           leftText="Samsung A70"
           rightText="28.7% sales"
-          progress="0.8"
+          progress={0.8}
           color="#F4D532"
         />
         <CustomProgress
           leftText="Hp omen Laptop"
           rightText="22.32% sales"
-          progress="0.6"
+          progress={0.6}
           color="#E12F2F"
         />
         <CustomProgress
           leftText="Bluetooth 5.0 wireless Ear..."
           rightText="16.92% sales"
-          progress="0.7"
+          progress={0.7}
           color="#3EDED4"
         />
         <CustomProgress
           leftText="Tecno Spark 5 pro"
           rightText="11.2% sales"
-          progress="0.5"
+          progress={0.5}
           color="#A85EBB"
         />
       </View>

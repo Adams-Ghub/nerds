@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
 
-const ProfileItem = ({ icon, text }) => {
+function ProfileItem({ icon, text }) {
   return (
     <View style={styles.profileActions}>
       <View style={styles.businessIcon}>
@@ -14,7 +14,7 @@ const ProfileItem = ({ icon, text }) => {
       </View>
     </View>
   );
-};
+}
 
 export default ProfileItem;
 

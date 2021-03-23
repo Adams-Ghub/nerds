@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Text, Image } from "react-native";
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from "react-native-responsive-screen";
 
 class Product extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <View style={style.container}>
@@ -12,7 +19,7 @@ class Product extends Component {
               source={require("../../assets/productImg.png")}
             />
           </View>
-          <Text style={style.productName}>Hp Omen Laptop</Text>
+          <Text style={style.productName}>{this.props.name}</Text>
           <Text style={style.productPrice}>GHS 1800</Text>
         </View>
       </View>
@@ -23,23 +30,31 @@ class Product extends Component {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    marginVertical: 20,
-    marginHorizontal: 20,
+    marginHorizontal: wp("0.5%"),
+    marginVertical: wp("0.5%"),
+    backgroundColor: "#FFFFFF",
     flexDirection: "column",
+    justifyContent: "center",
+    maxHeight: hp("24%"),
+    maxWidth: wp("47%"),
   },
   productContainer: {
-    height: 120,
-    width: 150,
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    marginVertical: 10,
+    height: hp("20%"),
+    width: wp("40%"),
+    backgroundColor: "#FFFFFF",
+    marginHorizontal: wp("5%"),
+    marginVertical: hp("5%"),
   },
   productImage: {
     width: 150,
     height: 120,
   },
-  productImageContainer: {},
-  productName: { fontSize: 17 },
+
+  productName: {
+    fontSize: 17,
+    paddingVertical: hp("0.5%"),
+    paddingHorizontal: wp("0.5%"),
+  },
   productPrice: {
     fontSize: 15,
     fontWeight: "700",

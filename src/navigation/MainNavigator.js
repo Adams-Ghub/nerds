@@ -15,7 +15,9 @@ export default function MainNavigator() {
   return (
     <NavigationContainer>
 
+
       <Stack.Navigator initialRouteName="Welcome">
+
 
         <Stack.Screen
           name="Home"

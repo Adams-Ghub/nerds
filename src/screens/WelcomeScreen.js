@@ -31,9 +31,20 @@ class WelcomeScreen extends Component {
         "hp omen laptop",
         "hp omen laptop",
         "hp omen laptop",
+        "hp omen laptop",
       ],
+
+      shopColor: "black",
+      productColor: "#0080FF",
     };
   }
+  shopactivation = () => {
+    this.setState({ productColor: "black", shopColor: "#0080FF" });
+  };
+
+  productactivation = () => {
+    this.setState({ productColor: "#0080FF", shopColor: "black" });
+  };
 
   render() {
     return (
@@ -45,16 +56,36 @@ class WelcomeScreen extends Component {
               style={style.searchBox}
             ></TextInput>
             <TouchableOpacity>
-              <Entypo name="magnifying-glass" size={24} color="black" />
+              <Entypo name="magnifying-glass" size={24} color={"#888888"} />
             </TouchableOpacity>
           </View>
           <View style={style.filterContainer}>
-            <TouchableOpacity style={style.filterContainer}>
-              <Fontisto name="shopping-store" size={24} color="black" />
-            </TouchableOpacity>
-            <TouchableOpacity style={style.filterContainer}>
-              <FontAwesome5 name="luggage-cart" size={24} color="black" />
-            </TouchableOpacity>
+            <View style={style.filterIcons}>
+              <TouchableOpacity
+                onPress={() => {
+                  this.shopactivation();
+                }}
+              >
+                <Fontisto
+                  name="shopping-store"
+                  size={24}
+                  color={this.state.shopColor}
+                />
+              </TouchableOpacity>
+            </View>
+            <View style={style.filterIcons}>
+              <TouchableOpacity
+                onPress={() => {
+                  this.productactivation();
+                }}
+              >
+                <FontAwesome5
+                  name="luggage-cart"
+                  size={24}
+                  color={this.state.productColor}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
         <View>
@@ -75,6 +106,7 @@ class WelcomeScreen extends Component {
             showsVerticalScrollIndicator={false}
           />
         </View>
+        <View style={style.lowerSection}></View>
       </View>
     );
   }
@@ -87,28 +119,38 @@ const style = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     backgroundColor: "#F8F8F8",
-    marginVertical: hp("10%"),
+    marginVertical: hp("15%"),
     marginHorizontal: wp("2%"),
   },
-  topSection: {
-    marginHorizontal: wp("10%"),
-    marginVertical: hp("2%"),
-  },
+
   searchSection: {
-    marginHorizontal: wp("4%"),
+    flexDirection: "row",
+    paddingVertical: hp("2%"),
+    justifyContent: "center",
+    backgroundColor: "#ffffff",
   },
-  productInFlatlist: {
-    marginVertical: hp("0.5%"),
+  searchBox: {
+    borderStyle: "solid",
+    borderWidth: wp("0.3%"),
+    paddingHorizontal: wp("5%"),
+    borderColor: "#cccccc",
+    borderRadius: wp("10%"),
+    marginHorizontal: hp("1%"),
+    fontSize: 17,
   },
-  flatlistContainer: {
-    backgroundColor: "#F8F8F8",
+  topSection: {
+    marginBottom: hp("1%"),
   },
-  product: {
-    marginVertical: hp("0.5%"),
-  },
+
   filterContainer: {
     flexDirection: "row",
-    justifyContent: "space-evenly",
-    marginVertical: hp("1%"),
+    justifyContent: "flex-start",
+    marginTop: hp("1%"),
+    backgroundColor: "#ffffff",
+    paddingLeft: wp("25%"),
+  },
+  filterIcons: {
+    marginVertical: hp("2%"),
+    marginHorizontal: wp("8%"),
   },
 });

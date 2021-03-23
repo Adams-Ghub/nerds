@@ -5,6 +5,8 @@ import { AntDesign } from "@expo/vector-icons";
 import { Header } from "react-native/Libraries/NewAppScreen";
 import DashboardScreen from "../screens/shopOwner/DashboardScreen";
 import ShopOwnerProfileScreen from "../screens/shopOwner/ShopOwnerProfileScreen";
+import OrdersScreen from "../screens/shopOwner/OrdersScreen";
+
 
 const defaultHeaderStyle = {
   headerTitle: "",
@@ -52,36 +54,20 @@ function DrawerNavigatorDashboardS() {
         }}
         component={ShopOwnerProfileScreen}
       />
+
+      <Drawer.Screen
+        name="Orders"
+        options={{
+          drawerLabel: () => {
+            return <DrawerItem title="Orders" />;
+          },
+          ...defaultHeaderStyle,
+        }}
+        component={OrdersScreen}
+      />
+
     </Drawer.Navigator>
   );
 }
 export default DrawerNavigatorDashboardS;
 
-{
-  /* <NavigationContainer>
-<Drawer.Navigator
-  drawerContentOptions={{
-    activeTintColor: "transparent",
-    itemStyle: { marginVertical: 5 },
-  }}
-  drawerStyle={{
-    backgroundColor: "#000A14",
-    width: 200,
-  }}
->
-  <Drawer.Screen
-    name="Home"
-    options={{
-      drawerLabel: () => {
-        return <DrawerItem title="Dashboard" />;
-      },
-      ...defaultHeaderStyle,
-    }}
-    component={DashboardScreen}
-  />
-  
-</Drawer.Navigator>
-</NavigationContainer>
-);
-} */
-}

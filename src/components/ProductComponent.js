@@ -30,25 +30,31 @@ class Product extends Component {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    marginVertical: 20,
-    marginHorizontal: 20,
-    backgroundColor: "#F8F8F8",
-
+    marginHorizontal: wp("0.5%"),
+    marginVertical: wp("0.5%"),
+    backgroundColor: "#FFFFFF",
     flexDirection: "column",
+    justifyContent: "center",
+    maxHeight: hp("24%"),
+    maxWidth: wp("47%"),
   },
   productContainer: {
-    height: 120,
-    width: 150,
-
-    marginHorizontal: wp("1%"),
-    marginVertical: hp("1%"),
+    height: hp("20%"),
+    width: wp("40%"),
+    backgroundColor: "#FFFFFF",
+    marginHorizontal: wp("5%"),
+    marginVertical: hp("5%"),
   },
   productImage: {
     width: 150,
     height: 120,
   },
-  productImageContainer: {},
-  productName: { fontSize: 17 },
+
+  productName: {
+    fontSize: 17,
+    paddingVertical: hp("0.5%"),
+    paddingHorizontal: wp("0.5%"),
+  },
   productPrice: {
     fontSize: 15,
     fontWeight: "700",

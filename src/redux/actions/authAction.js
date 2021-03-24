@@ -1,6 +1,14 @@
 import firebase, { db } from "../../firebase/firebase";
 
-export function createAccountShopOwner(email, password, username) {
+export function createAccountShopOwner(
+  email,
+  password,
+  username,
+  shopName,
+  contact,
+  ghpostGps,
+  idNumber
+) {
   return async (dispatch) => {
     try {
       const user = await firebase
@@ -23,6 +31,21 @@ export function createAccountShopOwner(email, password, username) {
           alert(error.message);
           console.log(error);
         });
+
+      db.collection("shop")
+        .doc(user.user.uid)
+        .set({
+          shopName,
+          GH_Post_GPS: ghpostGps,
+          contact,
+          GhanaCardID: idNumber,
+        })
+        .then((res) => {
+          alert("Shop created successfully", res);
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
       console.log(user);
       dispatch(Loggedin(user));
     } catch (error) {
@@ -32,7 +55,7 @@ export function createAccountShopOwner(email, password, username) {
   };
 }
 
-export function loginEmailAccount(email, password) {
+export function LoginShopOwner(email, password) {
   return async (dispatch) => {
     try {
       const user = await firebase
@@ -42,6 +65,7 @@ export function loginEmailAccount(email, password) {
       dispatch(Loggedin(user));
     } catch (error) {
       dispatch(loginError(error.message));
+      console.log(error.message);
     }
   };
 }

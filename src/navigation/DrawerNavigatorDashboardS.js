@@ -6,7 +6,10 @@ import { Header } from "react-native/Libraries/NewAppScreen";
 import DashboardScreen from "../screens/shopOwner/DashboardScreen";
 import ShopOwnerProfileScreen from "../screens/shopOwner/ShopOwnerProfileScreen";
 import OrdersScreen from "../screens/shopOwner/OrdersScreen";
-
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from "react-native-responsive-screen";
 
 const defaultHeaderStyle = {
   headerTitle: "",
@@ -21,12 +24,12 @@ function DrawerNavigatorDashboardS() {
     <Drawer.Navigator
       drawerContentOptions={{
         activeTintColor: "transparent",
-        itemStyle: { marginVertical: 5 },
+        itemStyle: { marginVertical: hp("0.01%") },
       }}
       drawerStyle={{
         backgroundColor: "#000A14",
-        width: 170,
-        marginTop: 89,
+        width: wp("45%"),
+        marginTop: hp("10.95%"),
       }}
     >
       <Drawer.Screen
@@ -36,7 +39,7 @@ function DrawerNavigatorDashboardS() {
             return (
               <DrawerItem
                 title="Dashboard"
-                icon={<AntDesign name="user" size={24} color="#0080FF" />}
+                // icon={<AntDesign name="user" size={24} color="#0080FF" />}
               />
             );
           },
@@ -65,9 +68,7 @@ function DrawerNavigatorDashboardS() {
         }}
         component={OrdersScreen}
       />
-
     </Drawer.Navigator>
   );
 }
 export default DrawerNavigatorDashboardS;
-

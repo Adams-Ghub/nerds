@@ -10,11 +10,29 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
+import { connect } from "react-redux";
+import { LoginShopOwner } from "../redux/actions/authAction.js";
 
 class LoginScreen extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      email: "",
+      password: "",
+    };
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleUpdateState = this.handleUpdateState.bind(this);
   }
+
+  handleLogin = () => {
+    this.props.LoginShopOwner(this.state.email, this.state.password);
+  };
+  handleUpdateState = (name, value) => {
+    this.setState({
+      [name]: value,
+    });
+  };
+
   render() {
     return (
       <View style={style.container}>
@@ -26,13 +44,17 @@ class LoginScreen extends Component {
           <View style={style.usernameInputContainer}>
             <TextInput
               style={style.usernameInput}
+              value={this.state.email}
+              onChangeText={(text) => this.handleUpdateState("email", text)}
               placeholder="Email"
             ></TextInput>
           </View>
           <View style={style.usernameInputContainer}>
             <TextInput
               style={style.usernameInput}
+              value={this.state.password}
               placeholder="Password"
+              onChangeText={(text) => this.handleUpdateState("password", text)}
               secureTextEntry={true}
             ></TextInput>
           </View>
@@ -43,7 +65,10 @@ class LoginScreen extends Component {
         </View>
 
         <View style={style.loginButtonContainer}>
-          <TouchableOpacity style={style.loginButton}>
+          <TouchableOpacity
+            onPress={this.handleLogin}
+            style={style.loginButton}
+          >
             <Text style={style.loginButtonText}>Login</Text>
           </TouchableOpacity>
         </View>
@@ -62,6 +87,17 @@ class LoginScreen extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    auth: state,
+  };
+};
+const mapDispatchToProps = () => {
+  return {
+    LoginShopOwner,
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps())(LoginScreen);
 
 const style = StyleSheet.create({
   container: {
@@ -139,5 +175,3 @@ const style = StyleSheet.create({
     color: "#0080ff",
   },
 });
-
-export default LoginScreen;

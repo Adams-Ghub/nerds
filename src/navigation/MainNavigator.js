@@ -8,6 +8,8 @@ import RegisterScreenS from "../screens/RegisterScreenS";
 import RegisterScreenC from "../screens/RegisterScreenC";
 import RegisterShopScreen from "../screens/RegisterShopScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
+import PLReportListElement from "../components/PLReportListElement";
+import PLReport from "../components/PLReport";
 import { connect } from "react-redux";
 
 const Stack = createStackNavigator();
@@ -24,11 +26,21 @@ function MainNavigator({ auth }) {
           />
         </Stack.Navigator>
       ) : (
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator initialRouteName="PLReport">
           <Stack.Screen
             name="Home"
             options={{ header: () => {} }}
             component={UserSelectionScreen}
+          />
+          <Stack.Screen
+            options={{ header: () => {} }}
+            name="PLReport"
+            component={PLReport}
+          />
+          <Stack.Screen
+            options={{ header: () => {} }}
+            name="PLReportListElement"
+            component={PLReportListElement}
           />
 
           <Stack.Screen

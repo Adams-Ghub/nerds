@@ -6,7 +6,7 @@ import { Header } from "react-native/Libraries/NewAppScreen";
 import DashboardScreen from "../screens/shopOwner/DashboardScreen";
 import ShopOwnerProfileScreen from "../screens/shopOwner/ShopOwnerProfileScreen";
 import OrdersScreen from "../screens/shopOwner/OrdersScreen";
-
+import ShopOwnerOrderDetailsScreen from "../screens/shopOwner/ShopOwnerOrderDetailsScreen";
 
 const defaultHeaderStyle = {
   headerTitle: "",
@@ -59,6 +59,7 @@ function DrawerNavigatorDashboardS() {
         name="Orders"
         options={{
           drawerLabel: () => {
+        
             return <DrawerItem title="Orders" />;
           },
           ...defaultHeaderStyle,
@@ -66,8 +67,8 @@ function DrawerNavigatorDashboardS() {
         component={OrdersScreen}
       />
 
+     
     </Drawer.Navigator>
   );
 }
 export default DrawerNavigatorDashboardS;
-

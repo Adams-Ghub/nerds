@@ -23,8 +23,8 @@ export function createAccountShopOwner(
           username,
           role: "Shop Owner",
         })
-        .then((res) => {
-          alert("user created successfully", res);
+        .then(() => {
+          alert("user created successfully");
           console.log(f_user);
         })
         .catch((error) => {
@@ -40,14 +40,14 @@ export function createAccountShopOwner(
           contact,
           GhanaCardID: idNumber,
         })
-        .then((res) => {
-          alert("Shop created successfully", res);
+        .then(() => {
+          alert("Shop created successfully");
         })
         .catch((error) => {
           alert(error.message);
         });
       console.log(user);
-      dispatch(Loggedin(user));
+      // dispatch(Loggedin(user));
     } catch (error) {
       alert(error.message);
       dispatch(registerError(error.message));

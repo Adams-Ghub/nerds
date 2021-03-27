@@ -14,6 +14,7 @@ import {
 
 import { connect } from "react-redux";
 import { createAccountShopOwner } from "../redux/actions/authAction";
+import RegisterShopScreen from "../screens/RegisterShopScreen";
 
 class RegisterScreenS extends Component {
   constructor(props) {
@@ -23,16 +24,120 @@ class RegisterScreenS extends Component {
       password: "",
       confirm: "",
       email: "",
+      shopName: "",
+      ghpostGps: "",
+      contact: "",
+      idNumber: "",
       errorMsg: "",
+      //current form indicator(shop owner form,1= shop form)
+      currentFormIndicator: "0",
+      msg: "Create Account",
+      backColor: "#cccccc",
+      nextColor: "#0080FF",
     };
+
     this.handleSignUp = this.handleSignUp.bind(this);
     this.handleUpdateState = this.handleUpdateState.bind(this);
+    this.switchForm = this.switchForm.bind(this);
   }
+
+  switchForm = () => {
+    if (this.state.currentFormIndicator === "0") {
+      return (
+        <View>
+          <View style={style.usernameInputContainer}>
+            <TextInput
+              style={style.usernameInput}
+              placeholder="Username"
+              value={this.state.username}
+              onChangeText={(text) => this.handleUpdateState("username", text)}
+            ></TextInput>
+          </View>
+          <View style={style.usernameInputContainer}>
+            <TextInput
+              style={style.usernameInput}
+              placeholder="Email"
+              value={this.state.email}
+              onChangeText={(text) => this.handleUpdateState("email", text)}
+            ></TextInput>
+          </View>
+          <View style={style.usernameInputContainer}>
+            <TextInput
+              style={style.usernameInput}
+              placeholder="Password"
+              value={this.state.password}
+              secureTextEntry={true}
+              onChangeText={(text) => this.handleUpdateState("password", text)}
+            ></TextInput>
+          </View>
+          <View style={style.usernameInputContainer}>
+            <TextInput
+              style={style.usernameInput}
+              placeholder="Confirm Password"
+              value={this.state.confirm}
+              secureTextEntry={true}
+              onChangeText={(text) => this.handleUpdateState("confirm", text)}
+            ></TextInput>
+          </View>
+          <View style={style.errorMsgContainer}>
+            <Text></Text>
+          </View>
+        </View>
+      );
+    } else {
+      return (
+        <View>
+          <View style={style.usernameInputContainer}>
+            <TextInput
+              style={style.usernameInput}
+              value={this.state.shopName}
+              placeholder="Name of Shop"
+              onChangeText={(text) => this.handleUpdateState("shopName", text)}
+            ></TextInput>
+          </View>
+          <View style={style.usernameInputContainer}>
+            <TextInput
+              style={style.usernameInput}
+              placeholder="Contact"
+              onChangeText={(text) => this.handleUpdateState("contact", text)}
+              value={this.state.contact}
+              keyboardType="phone-pad"
+            ></TextInput>
+          </View>
+
+          <View style={style.usernameInputContainer}>
+            <TextInput
+              style={style.usernameInput}
+              value={this.state.ghpostGps}
+              placeholder="GH-Post GPS"
+              onChangeText={(text) => this.handleUpdateState("ghpostGps", text)}
+            ></TextInput>
+          </View>
+          <View style={style.usernameInputContainer}>
+            <TextInput
+              style={style.usernameInput}
+              value={this.state.idNumber}
+              placeholder="ID Number (Ghana Card)"
+              onChangeText={(text) => this.handleUpdateState("idNumber", text)}
+            ></TextInput>
+          </View>
+          <View style={style.errorMsgContainer}>
+            <Text></Text>
+          </View>
+        </View>
+      );
+    }
+  };
+
   handleSignUp = () => {
     this.props.createAccountShopOwner(
       this.state.email,
       this.state.password,
-      this.state.username
+      this.state.username,
+      this.state.shopName,
+      this.state.contact,
+      this.state.ghpostGps,
+      this.state.idNumber
     );
     passConfirmationCheck = () => {
       if (this.state.username === "") {
@@ -54,51 +159,37 @@ class RegisterScreenS extends Component {
       <View style={style.container}>
         <View style={style.welcomeSectionContainer}>
           <Text style={style.welcomeMessage}>Welcome To Nerds</Text>
-          <Text style={style.createMessage}>Create Account</Text>
+          <Text style={style.createMessage}>{this.state.msg}</Text>
         </View>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={style.registrationFormContainer}>
-            <View style={style.usernameInputContainer}>
-              <TextInput
-                style={style.usernameInput}
-                placeholder="Username"
-                value={this.state.username}
-                onChangeText={(text) =>
-                  this.handleUpdateState("username", text)
-                }
-              ></TextInput>
-            </View>
-            <View style={style.usernameInputContainer}>
-              <TextInput
-                style={style.usernameInput}
-                placeholder="Email"
-                value={this.state.email}
-                onChangeText={(text) => this.handleUpdateState("email", text)}
-              ></TextInput>
-            </View>
-            <View style={style.usernameInputContainer}>
-              <TextInput
-                style={style.usernameInput}
-                placeholder="Password"
-                value={this.state.password}
-                secureTextEntry={true}
-                onChangeText={(text) =>
-                  this.handleUpdateState("password", text)
-                }
-              ></TextInput>
-            </View>
-            <View style={style.usernameInputContainer}>
-              <TextInput
-                style={style.usernameInput}
-                placeholder="Confirm Password"
-                value={this.state.confirm}
-                secureTextEntry={true}
-                onChangeText={(text) => this.handleUpdateState("confirm", text)}
-              ></TextInput>
-            </View>
-            <View style={style.errorMsgContainer}>
-              <Text></Text>
-            </View>
+            {this.switchForm()}
+          </View>
+          <View style={style.registrationFormSwitchButtons}>
+            <TouchableOpacity
+              onPress={() => {
+                this.setState({
+                  currentFormIndicator: "0",
+                  msg: "Create Account",
+                  backColor: "#cccccc",
+                  nextColor: "#0080FF",
+                });
+              }}
+            >
+              <Text style={{ color: this.state.backColor }}> Back </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                this.setState({
+                  currentFormIndicator: "1",
+                  msg: "Last Step",
+                  backColor: "#0080FF",
+                  nextColor: "#cccccc",
+                });
+              }}
+            >
+              <Text style={{ color: this.state.nextColor }}> Next </Text>
+            </TouchableOpacity>
           </View>
           <View style={style.termsAndPolicyContainer}>
             <Text style={style.signupCautionText}>
@@ -168,7 +259,7 @@ const style = StyleSheet.create({
     marginBottom: 0,
   },
   registrationFormContainer: {
-    marginVertical: hp("7%"),
+    marginTop: hp("7%"),
   },
   usernameInputContainer: {
     borderStyle: "solid",
@@ -192,7 +283,7 @@ const style = StyleSheet.create({
     color: "#0080FF",
   },
   signupButtonContainer: {
-    marginVertical: hp("5%"),
+    marginVertical: hp("3%"),
   },
   signupButton: {
     backgroundColor: "#0080FF",
@@ -218,5 +309,10 @@ const style = StyleSheet.create({
   loginText: {
     fontSize: 17,
     color: "#0080ff",
+  },
+  registrationFormSwitchButtons: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginVertical: hp("3%"),
   },
 });

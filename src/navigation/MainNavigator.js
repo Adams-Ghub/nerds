@@ -8,55 +8,85 @@ import RegisterScreenS from "../screens/RegisterScreenS";
 import RegisterScreenC from "../screens/RegisterScreenC";
 import RegisterShopScreen from "../screens/RegisterShopScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
+
 import ShopOwnerOrderDetailsScreen from "../screens/shopOwner/ShopOwnerOrderDetailsScreen";
+
+import PLReportListElement from "../components/PLReportListElement";
+import PLReport from "../components/PLReport";
+import { connect } from "react-redux";
+
 
 const Stack = createStackNavigator();
 
-export default function MainNavigator() {
+function MainNavigator({ auth }) {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ShopOwnerDashboard">
-        <Stack.Screen
-          name="OrderDetails"
-          // options={{ header: () => {} }}
-          component={ShopOwnerOrderDetailsScreen}
-        />
-        <Stack.Screen
-          name="Home"
-          options={{ header: () => {} }}
-          component={UserSelectionScreen}
-        />
-        <Stack.Screen
-          name="ShopOwnerDashboard"
-          options={{ header: () => {} }}
-          component={DrawerNavigatorDashboardS}
-        />
-        <Stack.Screen
-          options={{ header: () => {} }}
-          name="Login"
-          component={LoginScreen}
-        />
-        <Stack.Screen
-          options={{ header: () => {} }}
-          name="RegisterS"
-          component={RegisterScreenS}
-        />
-        <Stack.Screen
-          options={{ header: () => {} }}
-          name="RegisterShop"
-          component={RegisterShopScreen}
-        />
-        <Stack.Screen
-          options={{ header: () => {} }}
-          name="RegisterC"
-          component={RegisterScreenC}
-        />
-        <Stack.Screen
-          options={{ header: () => {} }}
-          name="Welcome"
-          component={WelcomeScreen}
-        />
-      </Stack.Navigator>
+
+      {auth.Login ? (
+        <Stack.Navigator>
+          <Stack.Screen
+            name="ShopOwnerDashboard"
+            options={{ header: () => {} }}
+            component={DrawerNavigatorDashboardS}
+          />
+        </Stack.Navigator>
+      ) : (
+        <Stack.Navigator initialRouteName="PLReport">
+          <Stack.Screen
+            name="Home"
+            options={{ header: () => {} }}
+            component={UserSelectionScreen}
+          />
+          <Stack.Screen
+            options={{ header: () => {} }}
+            name="PLReport"
+            component={PLReport}
+          />
+          <Stack.Screen
+            options={{ header: () => {} }}
+            name="PLReportListElement"
+            component={PLReportListElement}
+          />
+
+          <Stack.Screen
+            options={{ header: () => {} }}
+            name="Login"
+            component={LoginScreen}
+          />
+          <Stack.Screen
+            options={{ header: () => {} }}
+            name="RegisterS"
+            component={RegisterScreenS}
+          />
+          <Stack.Screen
+            options={{ header: () => {} }}
+            name="RegisterShop"
+            component={RegisterShopScreen}
+          />
+          <Stack.Screen
+            options={{ header: () => {} }}
+            name="RegisterC"
+            component={RegisterScreenC}
+          />
+          <Stack.Screen
+            options={{ header: () => {} }}
+            name="Welcome"
+            component={WelcomeScreen}
+          />
+        </Stack.Navigator>
+      )}
+
     </NavigationContainer>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    auth: state,
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainNavigator);

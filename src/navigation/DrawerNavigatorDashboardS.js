@@ -6,6 +6,11 @@ import { Header } from "react-native/Libraries/NewAppScreen";
 import DashboardScreen from "../screens/shopOwner/DashboardScreen";
 import ShopOwnerProfileScreen from "../screens/shopOwner/ShopOwnerProfileScreen";
 import OrdersScreen from "../screens/shopOwner/OrdersScreen";
+
+import ShopOwnerOrderDetailsScreen from "../screens/shopOwner/ShopOwnerOrderDetailsScreen";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import Loader from "../components/Loader";
+
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -68,6 +73,19 @@ function DrawerNavigatorDashboardS() {
         }}
         component={OrdersScreen}
       />
+
+
+      <Drawer.Screen
+        name="Log out"
+        options={{
+          drawerLabel: () => {
+            return <DrawerItem title="Log out" />;
+          },
+          ...defaultHeaderStyle,
+        }}
+        component={Loader}
+      />
+
     </Drawer.Navigator>
   );
 }

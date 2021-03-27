@@ -8,15 +8,20 @@ import RegisterScreenS from "../screens/RegisterScreenS";
 import RegisterScreenC from "../screens/RegisterScreenC";
 import RegisterShopScreen from "../screens/RegisterShopScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
+
+import ShopOwnerOrderDetailsScreen from "../screens/shopOwner/ShopOwnerOrderDetailsScreen";
+
 import PLReportListElement from "../components/PLReportListElement";
 import PLReport from "../components/PLReport";
 import { connect } from "react-redux";
+
 
 const Stack = createStackNavigator();
 
 function MainNavigator({ auth }) {
   return (
     <NavigationContainer>
+
       {auth.Login ? (
         <Stack.Navigator>
           <Stack.Screen
@@ -70,6 +75,7 @@ function MainNavigator({ auth }) {
           />
         </Stack.Navigator>
       )}
+
     </NavigationContainer>
   );
 }

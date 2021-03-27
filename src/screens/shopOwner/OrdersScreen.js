@@ -7,10 +7,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import OrderSearch from "../../components/OrderSearch";
-import OrderDetails from "../../components/OrderDetails";
 import OrderItem from "../../components/OrderItem";
+import ShopOwnerOrderDetailsScreen from "./ShopOwnerOrderDetailsScreen";
 
-const OrdersScreen = () => {
+const OrdersScreen = ({ navigation }) => {
   const orders = [
     {
       image: require("../../../assets/productImg.png"),
@@ -64,7 +64,11 @@ const OrdersScreen = () => {
         data={orders}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("OrderDetails");
+              }}
+            >
               <OrderItem
                 image={item.image}
                 topText={item.topText}

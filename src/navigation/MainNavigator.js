@@ -9,17 +9,23 @@ import RegisterScreenC from "../screens/RegisterScreenC";
 import RegisterShopScreen from "../screens/RegisterShopScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import ShopOwnerOrderDetailsScreen from "../screens/shopOwner/ShopOwnerOrderDetailsScreen";
+import CartScreen from "../screens/customer/CartScreen";
 
 const Stack = createStackNavigator();
 
 export default function MainNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ShopOwnerDashboard">
+      <Stack.Navigator initialRouteName="ShopOwnerOrderDetails">
         <Stack.Screen
-          name="OrderDetails"
+          name="Order  Details"
           // options={{ header: () => {} }}
           component={ShopOwnerOrderDetailsScreen}
+        />
+        <Stack.Screen
+          name="Cart"
+          // options={{ header: () => {} }}
+          component={CartScreen}
         />
         <Stack.Screen
           name="Home"

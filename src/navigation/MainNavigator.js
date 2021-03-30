@@ -10,18 +10,64 @@ import RegisterShopScreen from "../screens/RegisterShopScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import ShopOwnerOrderDetailsScreen from "../screens/shopOwner/ShopOwnerOrderDetailsScreen";
 import CartScreen from "../screens/customer/CartScreen";
-
+import CheckoutDeliveryScreen from "../screens/customer/CheckoutDeliveryScreen";
+import CheckoutSummaryScreen from "../screens/customer/CheckoutSummaryScreen";
+import CheckoutPaymentScreen from "../screens/customer/CheckoutPaymentScreen";
 const Stack = createStackNavigator();
 
 export default function MainNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ShopOwnerOrderDetails">
+      <Stack.Navigator initialRouteName="CheckoutPayment">
         <Stack.Screen
           name="Order  Details"
           // options={{ header: () => {} }}
           component={ShopOwnerOrderDetailsScreen}
         />
+        <Stack.Screen
+          name="CheckoutDelivery"
+          options={{
+            title: "Checkout",
+
+            headerTintColor: "#fff",
+            headerTitleAlign: "left",
+            headerStyle: {
+              backgroundColor: "#000000",
+              shadowColor: "transparent",
+            },
+          }}
+          component={CheckoutDeliveryScreen}
+        />
+        <Stack.Screen
+          name="CheckoutSummary"
+          options={{
+            title: "Checkout",
+
+            headerTintColor: "#fff",
+            headerTitleAlign: "left",
+            headerStyle: {
+              backgroundColor: "#000000",
+              shadowColor: "transparent",
+            },
+          }}
+          component={CheckoutSummaryScreen}
+        />
+
+        <Stack.Screen
+          name="CheckoutPayment"
+          options={{
+            title: "Checkout",
+
+            headerTintColor: "#fff",
+            headerTitleAlign: "left",
+            headerStyle: {
+              backgroundColor: "#000000",
+              shadowColor: "transparent",
+            },
+          }}
+          component={CheckoutPaymentScreen}
+        />
+
         <Stack.Screen
           name="Cart"
           // options={{ header: () => {} }}

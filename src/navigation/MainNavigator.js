@@ -10,6 +10,7 @@ import RegisterShopScreen from "../screens/RegisterShopScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
 
 import ShopOwnerOrderDetailsScreen from "../screens/shopOwner/ShopOwnerOrderDetailsScreen";
+import CartScreen from "../screens/customer/CartScreen";
 
 import PLReportListElement from "../components/PLReportListElement";
 import PLReport from "../components/PLReport";
@@ -37,6 +38,11 @@ function MainNavigator({ auth }) {
             options={{ header: () => {} }}
             component={UserSelectionScreen}
           />
+              <Stack.Screen
+          name="Cart"
+          // options={{ header: () => {} }}
+          component={CartScreen}
+        />
           <Stack.Screen
             options={{ header: () => {} }}
             name="PLReport"
@@ -75,6 +81,7 @@ function MainNavigator({ auth }) {
           />
         </Stack.Navigator>
       )}
+
 
     </NavigationContainer>
   );

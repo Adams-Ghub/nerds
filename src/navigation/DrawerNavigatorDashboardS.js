@@ -9,6 +9,7 @@ import OrdersScreen from "../screens/shopOwner/OrdersScreen";
 import ShopOwnerOrderDetailsScreen from "../screens/shopOwner/ShopOwnerOrderDetailsScreen";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Loader from "../components/Loader";
+import Product from "../components/ProductComponent";
 
 const defaultHeaderStyle = {
   headerTitle: "",
@@ -28,19 +29,14 @@ function DrawerNavigatorDashboardS() {
       drawerStyle={{
         backgroundColor: "#000A14",
         width: 170,
-        marginTop: 89,
+        marginTop: 64,
       }}
     >
       <Drawer.Screen
         name="Home"
         options={{
           drawerLabel: () => {
-            return (
-              <DrawerItem
-                title="Dashboard"
-                icon={<AntDesign name="user" size={24} color="#0080FF" />}
-              />
-            );
+            return <DrawerItem title="Dashboard" />;
           },
           ...defaultHeaderStyle,
         }}
@@ -50,18 +46,45 @@ function DrawerNavigatorDashboardS() {
         name="Profile"
         options={{
           drawerLabel: () => {
-            return <DrawerItem title="Profile" />;
+            return (
+              <DrawerItem
+                title="Profile"
+                icon={<AntDesign name="user" size={24} color="#0080FF" />}
+              />
+            );
           },
           ...defaultHeaderStyle,
         }}
         component={ShopOwnerProfileScreen}
       />
+      {/* <Drawer.Screen
+        name="Products"
+        options={{
+          drawerLabel: () => {
+            return (
+              <DrawerItem
+                title="Profile"
+                icon={<AntDesign name="gift" size={24} color="#0080FF" />}
+              />
+            );
+          },
+          ...defaultHeaderStyle,
+        }}
+        component={ShopOwnerProfileScreen}
+      /> */}
 
       <Drawer.Screen
         name="Orders"
         options={{
           drawerLabel: () => {
-            return <DrawerItem title="Orders" />;
+            return (
+              <DrawerItem
+                title="Orders"
+                icon={
+                  <AntDesign name="shoppingcart" size={24} color="#0080FF" />
+                }
+              />
+            );
           },
           ...defaultHeaderStyle,
         }}
@@ -72,7 +95,12 @@ function DrawerNavigatorDashboardS() {
         name="Log out"
         options={{
           drawerLabel: () => {
-            return <DrawerItem title="Log out" />;
+            return (
+              <DrawerItem
+                title="Log out"
+                icon={<AntDesign name="logout" size={24} color="#0080FF" />}
+              />
+            );
           },
           ...defaultHeaderStyle,
         }}

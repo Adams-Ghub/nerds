@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import ProfileDetails from "../../components/ProfileDetails";
 import ProfileTitle from "../../components/ProfileTitle";
-
+import DrawerItem from "../../components/DrawerItem";
 
 const ShopOwnerProfileScreen = () => {
   return (

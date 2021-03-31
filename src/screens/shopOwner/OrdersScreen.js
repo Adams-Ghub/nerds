@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import OrderSearch from "../../components/OrderSearch";
 import OrderItem from "../../components/OrderItem";
+import DrawerItem from "../../components/DrawerItem";
 import ShopOwnerOrderDetailsScreen from "./ShopOwnerOrderDetailsScreen";
 
 const OrdersScreen = ({ navigation }) => {

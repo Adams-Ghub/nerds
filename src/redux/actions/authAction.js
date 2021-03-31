@@ -1,4 +1,4 @@
-import firebase, { db } from "../../firebase/firebase";
+import firebase from "../../firebase/firebase";
 
 export function createAccountShopOwner(
   email,
@@ -9,6 +9,7 @@ export function createAccountShopOwner(
   ghpostGps,
   idNumber
 ) {
+  const db = firebase.firestore();
   return async (dispatch) => {
     try {
       const user = await firebase

@@ -8,7 +8,7 @@ import {
   Text,
   FlatList,
 } from "react-native";
-import { Fontisto, Entypo, FontAwesome5 } from "@expo/vector-icons";
+import { Fontisto, Entypo, FontAwesome5, Ionicons } from "@expo/vector-icons";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -33,6 +33,7 @@ class WelcomeScreen extends Component {
         "hp omen laptop",
         "hp omen laptop",
       ],
+      searchText: "",
 
       shopColor: "black",
       productColor: "#0080FF",
@@ -53,6 +54,10 @@ class WelcomeScreen extends Component {
           <View style={style.searchSection}>
             <TextInput
               placeholder="search by product or shop name"
+              onChangeText={(text) => {
+                this.setState({ searchText: text });
+              }}
+              value={this.state.searchText}
               style={style.searchBox}
             ></TextInput>
             <TouchableOpacity>
@@ -106,7 +111,25 @@ class WelcomeScreen extends Component {
             showsVerticalScrollIndicator={false}
           />
         </View>
-        <View style={style.lowerSection}></View>
+        <View style={style.lowerSection}>
+          <TouchableOpacity style={style.homeButton}>
+            <View style={style.homeIconContainer}>
+              <Ionicons name="home" size={24} color="black" />
+            </View>
+            <View style={style.homeTextContainer}>
+              <Text style={style.homeText}>Home</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={style.accountButton}>
+            <View style={style.accountIconContainer}>
+              <FontAwesome5 name="user-alt" size={24} color="black" />
+            </View>
+            <View style={style.accountTextContainer}>
+              <Text style={style.accountText}>Account</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -119,7 +142,7 @@ const style = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     backgroundColor: "#F8F8F8",
-    marginVertical: hp("15%"),
+    marginVertical: hp("17%"),
     marginHorizontal: wp("2%"),
   },
 
@@ -153,4 +176,30 @@ const style = StyleSheet.create({
     marginVertical: hp("2%"),
     marginHorizontal: wp("8%"),
   },
+  lowerSection: {
+    flexDirection: "row",
+    justifyContent: "center",
+
+    marginHorizontal: wp("30%"),
+    marginTop: hp("2%"),
+  },
+  accountButton: {
+    flexDirection: "column",
+    justifyContent: "center",
+    marginLeft: wp("15%"),
+  },
+  accountIconContainer: {
+    marginHorizontal: wp("1.7%"),
+  },
+  accountText: {
+    fontSize: 10,
+    // textAlign: "center",
+  },
+
+  homeText: {
+    fontSize: 10,
+  },
+  // homeTextContainer: {
+  //   alignItems: "center",
+  // },
 });

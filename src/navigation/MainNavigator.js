@@ -15,14 +15,13 @@ import CartScreen from "../screens/customer/CartScreen";
 import PLReportListElement from "../components/PLReportListElement";
 import PLReport from "../components/PLReport";
 import { connect } from "react-redux";
-
+import EditProfile from "../components/EditProfile";
 
 const Stack = createStackNavigator();
 
 function MainNavigator({ auth }) {
   return (
     <NavigationContainer>
-
       {auth.Login ? (
         <Stack.Navigator>
           <Stack.Screen
@@ -32,17 +31,22 @@ function MainNavigator({ auth }) {
           />
         </Stack.Navigator>
       ) : (
-        <Stack.Navigator initialRouteName="PLReport">
+        <Stack.Navigator initialRouteName="EditProfile">
           <Stack.Screen
             name="Home"
             options={{ header: () => {} }}
             component={UserSelectionScreen}
           />
-              <Stack.Screen
-          name="Cart"
-          // options={{ header: () => {} }}
-          component={CartScreen}
-        />
+          <Stack.Screen
+            name="EditProfile"
+            options={{ header: () => {} }}
+            component={EditProfile}
+          />
+          <Stack.Screen
+            name="Cart"
+            // options={{ header: () => {} }}
+            component={CartScreen}
+          />
           <Stack.Screen
             options={{ header: () => {} }}
             name="PLReport"
@@ -81,8 +85,6 @@ function MainNavigator({ auth }) {
           />
         </Stack.Navigator>
       )}
-
-
     </NavigationContainer>
   );
 }

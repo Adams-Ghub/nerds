@@ -18,7 +18,7 @@ const Stack = createStackNavigator();
 export default function MainNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="CheckoutPayment">
+      <Stack.Navigator initialRouteName="ShopOwnerDashboard">
         <Stack.Screen
           name="Order  Details"
           // options={{ header: () => {} }}

@@ -26,9 +26,6 @@ const Stack = createStackNavigator();
 function MainNavigator({ auth }) {
   return (
     <NavigationContainer>
-
-      
-      
       {auth.Login ? (
         <Stack.Navigator>
           <Stack.Screen
@@ -38,61 +35,60 @@ function MainNavigator({ auth }) {
           />
         </Stack.Navigator>
       ) : (
-        <Stack.Navigator initialRouteName="ProductDetails">
+        <Stack.Navigator initialRouteName="Home">
           <Stack.Screen
             name="Home"
             options={{ header: () => {} }}
             component={UserSelectionScreen}
           />
-              <Stack.Screen
+          <Stack.Screen
+            name="Order  Details"
+            // options={{ header: () => {} }}
+            component={ShopOwnerOrderDetailsScreen}
+          />
+          <Stack.Screen
+            name="CheckoutDelivery"
+            options={{
+              title: "Checkout",
 
-          name="Order  Details"
-          // options={{ header: () => {} }}
-          component={ShopOwnerOrderDetailsScreen}
-        />
-        <Stack.Screen
-          name="CheckoutDelivery"
-          options={{
-            title: "Checkout",
+              headerTintColor: "#fff",
+              headerTitleAlign: "left",
+              headerStyle: {
+                backgroundColor: "#000000",
+                shadowColor: "transparent",
+              },
+            }}
+            component={CheckoutDeliveryScreen}
+          />
+          <Stack.Screen
+            name="CheckoutSummary"
+            options={{
+              title: "Checkout",
 
-            headerTintColor: "#fff",
-            headerTitleAlign: "left",
-            headerStyle: {
-              backgroundColor: "#000000",
-              shadowColor: "transparent",
-            },
-          }}
-          component={CheckoutDeliveryScreen}
-        />
-        <Stack.Screen
-          name="CheckoutSummary"
-          options={{
-            title: "Checkout",
+              headerTintColor: "#fff",
+              headerTitleAlign: "left",
+              headerStyle: {
+                backgroundColor: "#000000",
+                shadowColor: "transparent",
+              },
+            }}
+            component={CheckoutSummaryScreen}
+          />
 
-            headerTintColor: "#fff",
-            headerTitleAlign: "left",
-            headerStyle: {
-              backgroundColor: "#000000",
-              shadowColor: "transparent",
-            },
-          }}
-          component={CheckoutSummaryScreen}
-        />
+          <Stack.Screen
+            name="CheckoutPayment"
+            options={{
+              title: "Checkout",
 
-        <Stack.Screen
-          name="CheckoutPayment"
-          options={{
-            title: "Checkout",
-
-            headerTintColor: "#fff",
-            headerTitleAlign: "left",
-            headerStyle: {
-              backgroundColor: "#000000",
-              shadowColor: "transparent",
-            },
-          }}
-          component={CheckoutPaymentScreen}
-        />
+              headerTintColor: "#fff",
+              headerTitleAlign: "left",
+              headerStyle: {
+                backgroundColor: "#000000",
+                shadowColor: "transparent",
+              },
+            }}
+            component={CheckoutPaymentScreen}
+          />
 
           <Stack.Screen
             name="ProductDetails"
@@ -142,7 +138,6 @@ function MainNavigator({ auth }) {
           />
         </Stack.Navigator>
       )}
-      
     </NavigationContainer>
   );
 }

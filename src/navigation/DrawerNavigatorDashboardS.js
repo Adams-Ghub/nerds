@@ -75,12 +75,11 @@ function DrawerNavigatorDashboardS() {
       drawerStyle={{
         backgroundColor: "#000A14",
 
-//         width: 170,
-//         marginTop: 64,
+        //         width: 170,
+        //         marginTop: 64,
 
         width: wp("45%"),
         marginTop: hp("10.95%"),
-
       }}
     >
       <Drawer.Screen
@@ -99,11 +98,13 @@ function DrawerNavigatorDashboardS() {
           drawerLabel: () => {
             return (
               <DrawerItem
-
-                title="Profile"
-                icon={<AntDesign name="user" size={24} color="#0080FF" />
                 title="Dashboard"
-                // icon={<AntDesign name="user" size={24} color="#0080FF" />}
+                title="Profile"
+                icon={
+                  <AntDesign name="user" size={24} color="#0080FF" />
+
+                  // icon={<AntDesign name="user" size={24} color="#0080FF" />
+                }
               />
             );
           },

@@ -8,17 +8,14 @@ import RegisterScreenS from "../screens/RegisterScreenS";
 import RegisterScreenC from "../screens/RegisterScreenC";
 import RegisterShopScreen from "../screens/RegisterShopScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
-
 import ShopOwnerOrderDetailsScreen from "../screens/shopOwner/ShopOwnerOrderDetailsScreen";
 import CartScreen from "../screens/customer/CartScreen";
-
 import CheckoutDeliveryScreen from "../screens/customer/CheckoutDeliveryScreen";
 import CheckoutSummaryScreen from "../screens/customer/CheckoutSummaryScreen";
 import CheckoutPaymentScreen from "../screens/customer/CheckoutPaymentScreen";
 import PLReportListElement from "../components/PLReportListElement";
 import PLReport from "../components/PLReport";
 import { connect } from "react-redux";
-import EditProfile from "../components/EditProfile";
 import ProductDetails from "../components/ProductDetails";
 
 const Stack = createStackNavigator();
@@ -35,7 +32,7 @@ function MainNavigator({ auth }) {
           />
         </Stack.Navigator>
       ) : (
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator initialRouteName="Welcome">
           <Stack.Screen
             name="Home"
             options={{ header: () => {} }}

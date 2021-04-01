@@ -8,7 +8,13 @@ import {
   Text,
   FlatList,
 } from "react-native";
-import { Fontisto, Entypo, FontAwesome5, Ionicons } from "@expo/vector-icons";
+import {
+  Fontisto,
+  AntDesign,
+  Entypo,
+  FontAwesome5,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -38,6 +44,7 @@ class WelcomeScreen extends Component {
       shopColor: "black",
       productColor: "#0080FF",
     };
+    this.handleUpdateState = this.handleUpdateState.bind(this);
   }
   shopactivation = () => {
     this.setState({ productColor: "black", shopColor: "#0080FF" });
@@ -46,6 +53,11 @@ class WelcomeScreen extends Component {
   productactivation = () => {
     this.setState({ productColor: "#0080FF", shopColor: "black" });
   };
+  handleUpdateState = (name, value) => {
+    this.setState({
+      [name]: value,
+    });
+  };
 
   render() {
     return (
@@ -53,10 +65,10 @@ class WelcomeScreen extends Component {
         <View style={style.topSection}>
           <View style={style.searchSection}>
             <TextInput
+              onChangeText={(text) =>
+                this.handleUpdateState("searchText", text)
+              }
               placeholder="search by product or shop name"
-              onChangeText={(text) => {
-                this.setState({ searchText: text });
-              }}
               value={this.state.searchText}
               style={style.searchBox}
             ></TextInput>
@@ -93,9 +105,8 @@ class WelcomeScreen extends Component {
             </View>
           </View>
         </View>
-        <View>
+        <View style={style.flatlistContainer}>
           <FlatList
-            style={style.flatlistContainer}
             data={this.state.name}
             renderItem={({ item }) => {
               return (
@@ -112,22 +123,27 @@ class WelcomeScreen extends Component {
           />
         </View>
         <View style={style.lowerSection}>
-          <TouchableOpacity style={style.homeButton}>
-            <View style={style.homeIconContainer}>
-              <Ionicons name="home" size={24} color="black" />
-            </View>
-            <View style={style.homeTextContainer}>
-              <Text style={style.homeText}>Home</Text>
+          <TouchableOpacity style={style.accountButton}>
+            <View style={style.accountIconContainer}>
+              <MaterialCommunityIcons name="cart" size={24} color="black" />
+              <Text style={style.accountText}>my cart</Text>
             </View>
           </TouchableOpacity>
 
           <TouchableOpacity style={style.accountButton}>
             <View style={style.accountIconContainer}>
-              <FontAwesome5 name="user-alt" size={24} color="black" />
+              <AntDesign name="profile" size={24} color="black" />
+              <Text style={style.accountText}>category</Text>
             </View>
-            <View style={style.accountTextContainer}>
-              <Text style={style.accountText}>Account</Text>
+            {/* <View style={style.accountTextContainer}></View> */}
+          </TouchableOpacity>
+
+          <TouchableOpacity style={style.accountButton}>
+            <View style={style.accountIconContainer}>
+              <FontAwesome5 name="user" size={20} color="black" />
+              <Text style={style.accountText}>register</Text>
             </View>
+            {/* <View style={style.accountTextContainer}></View> */}
           </TouchableOpacity>
         </View>
       </View>
@@ -142,53 +158,59 @@ const style = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     backgroundColor: "#F8F8F8",
-    marginVertical: hp("17%"),
+    marginTop: hp("19%"),
     marginHorizontal: wp("2%"),
+    marginBottom: hp("12%"),
   },
 
   searchSection: {
     flexDirection: "row",
-    paddingVertical: hp("2%"),
+    paddingVertical: hp("0.2%"),
     justifyContent: "center",
-    backgroundColor: "#ffffff",
-  },
-  searchBox: {
     borderStyle: "solid",
     borderWidth: wp("0.3%"),
-    paddingHorizontal: wp("5%"),
+    paddingHorizontal: wp("1%"),
     borderColor: "#cccccc",
     borderRadius: wp("10%"),
     marginHorizontal: hp("1%"),
-    fontSize: 17,
+  },
+  searchBox: {
+    fontSize: 18,
+    marginRight: wp("4%"),
   },
   topSection: {
-    marginBottom: hp("1%"),
+    // paddingBottom: hp("1%"),
   },
 
   filterContainer: {
     flexDirection: "row",
     justifyContent: "flex-start",
     marginTop: hp("1%"),
-    backgroundColor: "#ffffff",
     paddingLeft: wp("25%"),
+    paddingBottom: hp("5%"),
   },
   filterIcons: {
     marginVertical: hp("2%"),
     marginHorizontal: wp("8%"),
   },
+  flatlistContainer: {
+    marginTop: wp("-10%"),
+  },
   lowerSection: {
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "space-between",
 
-    marginHorizontal: wp("30%"),
-    marginTop: hp("2%"),
+    marginHorizontal: wp("10%"),
+    marginVertical: hp("2%"),
   },
   accountButton: {
     flexDirection: "column",
     justifyContent: "center",
-    marginLeft: wp("15%"),
   },
   accountIconContainer: {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
     marginHorizontal: wp("1.7%"),
   },
   accountText: {
@@ -199,7 +221,4 @@ const style = StyleSheet.create({
   homeText: {
     fontSize: 10,
   },
-  // homeTextContainer: {
-  //   alignItems: "center",
-  // },
 });

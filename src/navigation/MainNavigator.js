@@ -26,6 +26,8 @@ const Stack = createStackNavigator();
 function MainNavigator({ auth }) {
   return (
     <NavigationContainer>
+
+      
       
       {auth.Login ? (
         <Stack.Navigator>
@@ -43,6 +45,7 @@ function MainNavigator({ auth }) {
             component={UserSelectionScreen}
           />
               <Stack.Screen
+
           name="Order  Details"
           // options={{ header: () => {} }}
           component={ShopOwnerOrderDetailsScreen}

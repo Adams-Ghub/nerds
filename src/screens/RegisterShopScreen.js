@@ -11,10 +11,10 @@ class RegisterShopScreen extends Component {
   render() {
     return (
       <View style={style.container}>
-        <View style={style.welcomeSectionContainer}>
+        {/* <View style={style.welcomeSectionContainer}>
           <Text style={style.welcomeMessage}>Welcome To Nerds</Text>
           <Text style={style.lastStepMessage}>Create Account</Text>
-        </View>
+        </View> */}
         <View style={style.registrationFormContainer}>
           <View style={style.shopNameInputContainer}>
             <TextInput
@@ -44,11 +44,11 @@ class RegisterShopScreen extends Component {
           </View>
         </View>
 
-        <View style={style.createShopButtonContainer}>
+        {/* <View style={style.createShopButtonContainer}>
           <TouchableOpacity style={style.createShopButton}>
             <Text style={style.createShopButtonText}>Create Shop</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
     );
   }

@@ -4,6 +4,9 @@ import ProfileDetails from "../../components/ProfileDetails";
 import ProfileTitle from "../../components/ProfileTitle";
 import DrawerItem from "../../components/DrawerItem";
 
+// import ProfileTitle from "../../components/ProfileTitle"
+
+
 const ShopOwnerProfileScreen = () => {
   return (
     <View style={styles.container}>

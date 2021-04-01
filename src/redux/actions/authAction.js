@@ -1,6 +1,15 @@
-import firebase, { db } from "../../firebase/firebase";
+import firebase from "../../firebase/firebase";
 
-export function createAccountShopOwner(email, password, username) {
+export function createAccountShopOwner(
+  email,
+  password,
+  username,
+  shopName,
+  contact,
+  ghpostGps,
+  idNumber
+) {
+  const db = firebase.firestore();
   return async (dispatch) => {
     try {
       const user = await firebase
@@ -15,16 +24,31 @@ export function createAccountShopOwner(email, password, username) {
           username,
           role: "Shop Owner",
         })
-        .then((res) => {
-          alert("user created successfully", res);
+        .then(() => {
+          alert("user created successfully");
           console.log(f_user);
         })
         .catch((error) => {
           alert(error.message);
           console.log(error);
         });
+
+      db.collection("shop")
+        .doc(user.user.uid)
+        .set({
+          shopName,
+          GH_Post_GPS: ghpostGps,
+          contact,
+          GhanaCardID: idNumber,
+        })
+        .then(() => {
+          alert("Shop created successfully");
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
       console.log(user);
-      dispatch(Loggedin(user));
+      // dispatch(Loggedin(user));
     } catch (error) {
       alert(error.message);
       dispatch(registerError(error.message));
@@ -32,7 +56,7 @@ export function createAccountShopOwner(email, password, username) {
   };
 }
 
-export function loginEmailAccount(email, password) {
+export function LoginShopOwner(email, password) {
   return async (dispatch) => {
     try {
       const user = await firebase
@@ -42,6 +66,7 @@ export function loginEmailAccount(email, password) {
       dispatch(Loggedin(user));
     } catch (error) {
       dispatch(loginError(error.message));
+      console.log(error.message);
     }
   };
 }

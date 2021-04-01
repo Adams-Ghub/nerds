@@ -16,6 +16,7 @@ import PLReportListElement from "../components/PLReportListElement";
 import PLReport from "../components/PLReport";
 import { connect } from "react-redux";
 import EditProfile from "../components/EditProfile";
+import ProductDetails from "../components/ProductDetails";
 
 const Stack = createStackNavigator();
 
@@ -31,16 +32,16 @@ function MainNavigator({ auth }) {
           />
         </Stack.Navigator>
       ) : (
-        <Stack.Navigator initialRouteName="EditProfile">
+        <Stack.Navigator initialRouteName="ProductDetails">
           <Stack.Screen
             name="Home"
             options={{ header: () => {} }}
             component={UserSelectionScreen}
           />
           <Stack.Screen
-            name="EditProfile"
+            name="ProductDetails"
             options={{ header: () => {} }}
-            component={EditProfile}
+            component={ProductDetails}
           />
           <Stack.Screen
             name="Cart"

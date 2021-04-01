@@ -7,6 +7,7 @@ import {
   TextInput,
   Image,
 } from "react-native";
+import image from "../../assets/profile.jpg";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -73,7 +74,7 @@ class EditProfile extends Component {
           <TextInput></TextInput>
         </View>
         <TouchableOpacity style={styles.saveButton}>
-          <Text style={styles.saveButtonText}>save changes</Text>
+          <Text style={styles.saveButtonText}>Save changes</Text>
         </TouchableOpacity>
       </View>
     );

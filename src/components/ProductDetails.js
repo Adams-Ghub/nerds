@@ -64,7 +64,7 @@ class ProductDetails extends Component {
                 <Text style={style.picklocationText}>Pick my location</Text>
               </TouchableOpacity>
               <View style={style.pickedLocationContainer}>
-                <Text>Accra Newtown,</Text>
+                <Text>Kasoa</Text>
                 {/* <Text>(0.555555, -0.45555)</Text> */}
               </View>
             </View>
@@ -81,11 +81,13 @@ class ProductDetails extends Component {
             </View>
           </View>
           <View style={style.customerFeedbackSection}>
-            <Text>Customer Feedback </Text>
+            <Text style={style.customerFeedbackText}>Customer Feedback </Text>
             <View>
-              <Text>Product Ratings & Review</Text>
+              <Text style={style.productRatingsReviewText}>
+                Product Ratings & Review
+              </Text>
             </View>
-            <View>
+            <View style={style.theReviewContainer}>
               <Review />
               <Review />
               <Review />
@@ -115,8 +117,8 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    marginVertical: hp("4%"),
-    marginHorizontal: wp("4%"),
+    marginVertical: hp("2%"),
+    marginHorizontal: wp("6%"),
   },
   basicDetailSection: {
     marginBottom: hp("3%"),
@@ -175,12 +177,10 @@ const style = StyleSheet.create({
   },
   deliveryInformationSection: {
     borderStyle: "solid",
-
     marginBottom: hp("1%"),
   },
   deliveryInformationText: {
     fontSize: 18,
-    fontWeight: "700",
     color: "#aaaaaa",
     marginBottom: hp("0.5%"),
   },
@@ -197,7 +197,8 @@ const style = StyleSheet.create({
   },
   pickedLocationContainer: {
     borderStyle: "solid",
-    borderWidth: wp("0.2%"),
+    borderColor: "#0080ff",
+    borderWidth: wp("0.3%"),
     marginVertical: hp("1%"),
     paddingVertical: hp("0.9%"),
     paddingHorizontal: wp("2%"),
@@ -211,5 +212,38 @@ const style = StyleSheet.create({
     fontSize: 17,
     fontWeight: "700",
     color: "#000",
+  },
+  productDetailSection: {
+    marginVertical: hp("2%"),
+  },
+  productDetailText: {
+    fontSize: 18,
+
+    color: "#aaaaaa",
+    marginBottom: hp("0.5%"),
+  },
+  descriptionText: {
+    fontSize: 17,
+    fontWeight: "700",
+    color: "#000",
+  },
+  customerFeedbaackSection: {
+    marginVertical: hp("2%"),
+  },
+  customerFeedbackText: {
+    fontSize: 18,
+
+    color: "#aaaaaa",
+    marginBottom: hp("0.5%"),
+  },
+  productRatingsReviewText: {
+    fontSize: 17,
+    fontWeight: "700",
+    color: "#000",
+  },
+  theReviewContainer: {
+    borderStyle: "solid",
+    borderTopWidth: wp("0.1%"),
+    borderColor: "#ccc",
   },
 });

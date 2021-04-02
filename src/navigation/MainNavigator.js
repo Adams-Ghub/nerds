@@ -17,6 +17,12 @@ import PLReportListElement from "../components/PLReportListElement";
 import PLReport from "../components/PLReport";
 import { connect } from "react-redux";
 import ProductDetails from "../components/ProductDetails";
+import { View, TouchableOpacity } from "react-native";
+import {
+  FontAwesome5,
+  MaterialCommunityIcons,
+  AntDesign,
+} from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
 
@@ -32,7 +38,7 @@ function MainNavigator({ auth }) {
           />
         </Stack.Navigator>
       ) : (
-        <Stack.Navigator initialRouteName="Welcome">
+        <Stack.Navigator initialRouteName="ProductDetails">
           <Stack.Screen
             name="Home"
             options={{ header: () => {} }}
@@ -89,7 +95,44 @@ function MainNavigator({ auth }) {
 
           <Stack.Screen
             name="ProductDetails"
-            options={{ header: () => {} }}
+            options={{
+              headerRight: () => {
+                return (
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                    }}
+                  >
+                    <TouchableOpacity style={{ marginRight: 15 }}>
+                      <FontAwesome5 name="search" size={20} color="#ffffff" />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{ marginRight: 15 }}>
+                      <MaterialCommunityIcons
+                        name="cart"
+                        size={24}
+                        color="#ffffff"
+                      />
+                    </TouchableOpacity>
+                  </View>
+                );
+              },
+              headerTitleAlign: "center",
+              headerTitle: "product details",
+              headerLeft: () => {
+                return (
+                  <TouchableOpacity style={{ marginHorizontal: 15 }}>
+                    <AntDesign name="arrowleft" size={24} color="#ffffff" />
+                  </TouchableOpacity>
+                );
+              },
+              headerTitleStyle: {
+                color: "#ffffff",
+              },
+              headerStyle: {
+                backgroundColor: "#000000",
+              },
+            }}
             component={ProductDetails}
           />
           <Stack.Screen

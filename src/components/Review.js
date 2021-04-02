@@ -11,7 +11,7 @@ function Review() {
     <View style={styles.container}>
       <View style={styles.dateReviewContainer}>
         <View style={styles.reviewContainer}>
-          <Rating tintColor="#ddd" imageSize={15} type="star" />
+          <Rating tintColor="#eee" imageSize={15} type="star" />
         </View>
         <View style={styles.dateContainer}>
           <Text style={styles.dateText}>23-03-2021</Text>
@@ -35,7 +35,10 @@ const styles = StyleSheet.create({
     marginVertical: hp("0.5%"),
     paddingHorizontal: wp("3%"),
     paddingVertical: hp("0.5%"),
-    backgroundColor: "#ddd",
+    borderStyle: "solid",
+    borderColor: "#cccccc",
+    borderBottomWidth: wp("0.1%"),
+    // backgroundColor: "#ddd",
   },
   dateReviewContainer: {
     flexDirection: "row",

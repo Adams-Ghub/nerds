@@ -35,7 +35,7 @@ class ProductDetails extends Component {
           </View>
           <View style={style.basicDetailSection}>
             <Text style={style.productNameText}>Black HP Omen Laptop</Text>
-            <Text style={style.priceText}>GH¢ 2500</Text>
+            <Text style={style.priceText}>GH¢ 1800</Text>
             <View style={style.shopNameContainer}>
               <Text style={style.shopText}>Shop:</Text>
               <Text style={style.shopNameText}>Cictech Electronics Ltd.</Text>

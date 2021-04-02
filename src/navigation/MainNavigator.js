@@ -2,6 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import DrawerNavigatorDashboardS from "./DrawerNavigatorDashboardS";
+import DrawerNavigatorDashboardCustomer from "./DrawerNavigatorDashboardCustomer";
 import LoginScreen from "../screens/LoginScreen";
 import UserSelectionScreen from "../screens/UserSelectionScreen";
 import RegisterScreenS from "../screens/RegisterScreenS";
@@ -38,12 +39,19 @@ function MainNavigator({ auth }) {
           />
         </Stack.Navigator>
       ) : (
-        <Stack.Navigator initialRouteName="ProductDetails">
+        <Stack.Navigator initialRouteName="CustomerDashboard">
           <Stack.Screen
             name="Home"
             options={{ header: () => {} }}
             component={UserSelectionScreen}
           />
+
+          <Stack.Screen
+            name="CustomerDashboard"
+            options={{ header: () => {} }}
+            component={DrawerNavigatorDashboardCustomer}
+          />
+
           <Stack.Screen
             name="Order  Details"
             // options={{ header: () => {} }}

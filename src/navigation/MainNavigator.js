@@ -18,6 +18,7 @@ import PLReportListElement from "../components/PLReportListElement";
 import PLReport from "../components/PLReport";
 import { connect } from "react-redux";
 import ProductDetails from "../components/ProductDetails";
+import DrawerNavigatorDashboardAdmin from "../navigation/DrawerNavigatorDashboardAdmin";
 import { View, TouchableOpacity } from "react-native";
 import {
   FontAwesome5,
@@ -39,11 +40,16 @@ function MainNavigator({ auth }) {
           />
         </Stack.Navigator>
       ) : (
-        <Stack.Navigator initialRouteName="CustomerDashboard">
+        <Stack.Navigator initialRouteName="AdminDashboard">
           <Stack.Screen
             name="Home"
             options={{ header: () => {} }}
             component={UserSelectionScreen}
+          />
+          <Stack.Screen
+            name="AdminDashboard"
+            options={{ header: () => {} }}
+            component={DrawerNavigatorDashboardAdmin}
           />
 
           <Stack.Screen

@@ -9,11 +9,8 @@ import ShopOwnerProfileScreen from "../screens/shopOwner/ShopOwnerProfileScreen"
 import OrdersScreen from "../screens/shopOwner/OrdersScreen";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Entypo, Fontisto, FontAwesome5 } from "@expo/vector-icons";
-
-import ShopOwnerOrderDetailsScreen from "../screens/shopOwner/ShopOwnerOrderDetailsScreen";
-
 import Loader from "../components/Loader";
-import Product from "../components/ProductComponent";
+import ShopsScreen from "../screens/Admin/ShopsScreen";
 
 import {
   heightPercentageToDP as hp,
@@ -99,7 +96,7 @@ function DrawerNavigatorDashboardAdmin() {
           },
           ...defaultHeaderStyle,
         }}
-        component={DashboardScreen}
+        component={ShopsScreen}
       />
       <Drawer.Screen
         name="users"

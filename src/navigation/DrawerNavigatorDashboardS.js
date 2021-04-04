@@ -112,21 +112,6 @@ function DrawerNavigatorDashboardS() {
         }}
         component={ShopOwnerProfileScreen}
       />
-      {/* <Drawer.Screen
-        name="Products"
-        options={{
-          drawerLabel: () => {
-            return (
-              <DrawerItem
-                title="Profile"
-                icon={<AntDesign name="gift" size={24} color="#0080FF" />}
-              />
-            );
-          },
-          ...defaultHeaderStyle,
-        }}
-        component={ShopOwnerProfileScreen}
-      /> */}
 
       <Drawer.Screen
         name="Orders"

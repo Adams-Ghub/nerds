@@ -1,5 +1,6 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { DrawerActions } from "@react-navigation/native";
 
 import DrawerItem from "../components/DrawerItem";
 import { Header } from "react-native/Libraries/NewAppScreen";
@@ -24,7 +25,7 @@ const defaultHeaderStyle = {
   },
 };
 const Drawer = createDrawerNavigator();
-function DrawerNavigatorDashboardCustomer() {
+function DrawerNavigatorDashboardCustomer({ navigation }) {
   return (
     <Drawer.Navigator
       drawerContentOptions={{
@@ -35,11 +36,12 @@ function DrawerNavigatorDashboardCustomer() {
         headerLeft: () => {
           return (
             <TouchableOpacity
+              style={{ marginLeft: 27 }}
               onPress={() => {
-                Drawer.navigation.toggle();
+                navigation.dispatch(DrawerActions.toggleDrawer());
               }}
             >
-              <Entypo name="menu" size={24} color="#ffffff" />
+              <Entypo name="menu" size={26} color="#ffffff" />
             </TouchableOpacity>
           );
         },

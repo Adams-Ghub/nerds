@@ -14,7 +14,7 @@ import {
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { TextInput } from "react-native-gesture-handler";
 
-export default class ShopsScreen extends Component {
+export default class userScreen extends Component {
   constructor(props) {
     super(props);
   }
@@ -24,7 +24,7 @@ export default class ShopsScreen extends Component {
         <View style={style.searchBoxCotainer}>
           <TextInput
             style={style.searchBox}
-            placeholder="enter shop name you want to search"
+            placeholder="enter username you want to search"
           ></TextInput>
           <TouchableOpacity style={style.searchBoxButton}>
             <MaterialCommunityIcons
@@ -35,36 +35,8 @@ export default class ShopsScreen extends Component {
             />
           </TouchableOpacity>
         </View>
-        <View style={style.totalShopsContainer}>
-          <Text style={style.totalShopValueText}>50</Text>
-          <Text style={style.totalShopText}>Total Shops</Text>
-        </View>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          style={style.scrollContainer}
-        >
-          <TouchableOpacity>
-            <Shop />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Shop />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Shop />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Shop />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Shop />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Shop />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Shop />
-          </TouchableOpacity>
-        </ScrollView>
+
+        <ScrollView></ScrollView>
       </View>
     );
   }
@@ -81,9 +53,6 @@ const style = StyleSheet.create({
     borderStyle: "solid",
     borderWidth: wp("0.2%"),
     borderRadius: 9,
-  },
-  scrollContainer: {
-    marginVertical: 1,
   },
   searchBox: {
     fontSize: 16,

@@ -1,6 +1,5 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-
 import DrawerItem from "../components/DrawerItem";
 import { AntDesign } from "@expo/vector-icons";
 import { Header } from "react-native/Libraries/NewAppScreen";
@@ -9,12 +8,9 @@ import ShopOwnerProfileScreen from "../screens/shopOwner/ShopOwnerProfileScreen"
 import OrdersScreen from "../screens/shopOwner/OrdersScreen";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-
 import ShopOwnerOrderDetailsScreen from "../screens/shopOwner/ShopOwnerOrderDetailsScreen";
-
 import Loader from "../components/Loader";
-import Product from "../components/ProductComponent";
-
+import { DrawerActions } from "@react-navigation/native";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -29,7 +25,7 @@ const defaultHeaderStyle = {
   },
 };
 const Drawer = createDrawerNavigator();
-function DrawerNavigatorDashboardS() {
+function DrawerNavigatorDashboardS({ navigation }) {
   return (
     <Drawer.Navigator
       drawerContentOptions={{
@@ -40,8 +36,9 @@ function DrawerNavigatorDashboardS() {
         headerLeft: () => {
           return (
             <TouchableOpacity
+              style={{ marginLeft: 27 }}
               onPress={() => {
-                Drawer.navigation.toggle();
+                navigation.dispatch(DrawerActions.toggleDrawer());
               }}
             >
               <Entypo name="menu" size={24} color="#ffffff" />

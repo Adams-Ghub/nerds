@@ -40,7 +40,7 @@ function MainNavigator({ auth }) {
           />
         </Stack.Navigator>
       ) : (
-        <Stack.Navigator initialRouteName="AdminDashboard">
+        <Stack.Navigator initialRouteName="CustomerDashboard">
           <Stack.Screen
             name="Home"
             options={{ header: () => {} }}

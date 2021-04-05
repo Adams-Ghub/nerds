@@ -2,6 +2,7 @@ import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import DrawerItem from "../components/DrawerItem";
+import { DrawerActions } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import { Header } from "react-native/Libraries/NewAppScreen";
 import DashboardScreen from "../screens/shopOwner/DashboardScreen";
@@ -11,6 +12,7 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Entypo, Fontisto, FontAwesome5 } from "@expo/vector-icons";
 import Loader from "../components/Loader";
 import ShopsScreen from "../screens/Admin/ShopsScreen";
+import UsersScreen from "../screens/Admin/UsersScreen";
 
 import {
   heightPercentageToDP as hp,
@@ -26,7 +28,7 @@ const defaultHeaderStyle = {
   },
 };
 const Drawer = createDrawerNavigator();
-function DrawerNavigatorDashboardAdmin() {
+function DrawerNavigatorDashboardAdmin({ navigation }) {
   return (
     <Drawer.Navigator
       drawerContentOptions={{
@@ -37,8 +39,9 @@ function DrawerNavigatorDashboardAdmin() {
         headerLeft: () => {
           return (
             <TouchableOpacity
+              style={{ marginLeft: 27 }}
               onPress={() => {
-                Drawer.navigation.toggle();
+                navigation.dispatch(DrawerActions.toggleDrawer());
               }}
             >
               <Entypo name="menu" size={24} color="#ffffff" />
@@ -118,7 +121,7 @@ function DrawerNavigatorDashboardAdmin() {
           },
           ...defaultHeaderStyle,
         }}
-        component={ShopOwnerProfileScreen}
+        component={UsersScreen}
       />
       <Drawer.Screen
         name="profile"

@@ -13,6 +13,7 @@ import {
 } from "react-native-responsive-screen";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { TextInput } from "react-native-gesture-handler";
+import UserComponent from "../../components/userComponent";
 
 export default class userScreen extends Component {
   constructor(props) {
@@ -36,7 +37,21 @@ export default class userScreen extends Component {
           </TouchableOpacity>
         </View>
 
-        <ScrollView></ScrollView>
+        <ScrollView>
+          <UserComponent role="Customer" />
+          <UserComponent role="Customer" />
+          <UserComponent role="Admin" />
+          <UserComponent role="Customer" />
+          <UserComponent role="Shop Owner" />
+          <UserComponent role="Customer" />
+          <UserComponent role="Customer" />
+          <UserComponent role="Shop Owner" />
+          <UserComponent role="Customer" />
+          <UserComponent role="Customer" />
+          <UserComponent role="Admin" />
+          <UserComponent role="Customer" />
+          <UserComponent role="Shop Owner" />
+        </ScrollView>
       </View>
     );
   }
@@ -53,6 +68,7 @@ const style = StyleSheet.create({
     borderStyle: "solid",
     borderWidth: wp("0.2%"),
     borderRadius: 9,
+    marginBottom: hp("3%"),
   },
   searchBox: {
     fontSize: 16,

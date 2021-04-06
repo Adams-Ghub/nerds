@@ -19,6 +19,7 @@ import {
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
 import { NavigationContainer } from "@react-navigation/native";
+import TransactionScreen from "../screens/Admin/TransactionScreen";
 
 const defaultHeaderStyle = {
   headerTitle: "",
@@ -166,7 +167,7 @@ function DrawerNavigatorDashboardAdmin({ navigation }) {
           },
           ...defaultHeaderStyle,
         }}
-        component={OrdersScreen}
+        component={TransactionScreen}
       />
 
       <Drawer.Screen

@@ -8,7 +8,13 @@ import {
   Text,
   FlatList,
 } from "react-native";
-import { Fontisto, Entypo, FontAwesome5, Ionicons } from "@expo/vector-icons";
+import {
+  Fontisto,
+  Entypo,
+  FontAwesome5,
+  Ionicons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -100,7 +106,12 @@ class WelcomeScreen extends Component {
             renderItem={({ item }) => {
               return (
                 <View style={style.productInFlatlist}>
-                  <TouchableOpacity style={style.product}>
+                  <TouchableOpacity
+                    style={style.product}
+                    onPress={() => {
+                      this.props.navigation.navigate("ProductDetails");
+                    }}
+                  >
                     <ProductComponent name={item} />
                   </TouchableOpacity>
                 </View>
@@ -110,25 +121,6 @@ class WelcomeScreen extends Component {
             keyExtractor={(item, index) => index}
             showsVerticalScrollIndicator={false}
           />
-        </View>
-        <View style={style.lowerSection}>
-          <TouchableOpacity style={style.homeButton}>
-            <View style={style.homeIconContainer}>
-              <Ionicons name="home" size={24} color="black" />
-            </View>
-            <View style={style.homeTextContainer}>
-              <Text style={style.homeText}>Home</Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={style.accountButton}>
-            <View style={style.accountIconContainer}>
-              <FontAwesome5 name="user-alt" size={24} color="black" />
-            </View>
-            <View style={style.accountTextContainer}>
-              <Text style={style.accountText}>Account</Text>
-            </View>
-          </TouchableOpacity>
         </View>
       </View>
     );
@@ -142,7 +134,7 @@ const style = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     backgroundColor: "#F8F8F8",
-    marginVertical: hp("17%"),
+    marginTop: hp("17%"),
     marginHorizontal: wp("2%"),
   },
 
@@ -193,13 +185,12 @@ const style = StyleSheet.create({
   },
   accountText: {
     fontSize: 10,
-    // textAlign: "center",
   },
 
   homeText: {
     fontSize: 10,
   },
-  // homeTextContainer: {
-  //   alignItems: "center",
-  // },
+  flatlistContainer: {
+    paddingBottom: 20,
+  },
 });

@@ -37,7 +37,7 @@ class LoginScreen extends Component {
     return (
       <View style={style.container}>
         <View style={style.welcomeSectionContainer}>
-          <Text style={style.welcomeMessage}>Welcome To Nerds</Text>
+          {/* <Text style={style.welcomeMessage}>Welcome To Nerds</Text> */}
           <Text style={style.loginMessage}>Login to continue</Text>
         </View>
         <View style={style.registrationFormContainer}>
@@ -68,6 +68,11 @@ class LoginScreen extends Component {
           <TouchableOpacity
             onPress={this.handleLogin}
             style={style.loginButton}
+            onPress={() => {
+              this.props.navigation.navigate("ShopOwnerDashboard", {
+                screen: "Dashboard",
+              });
+            }}
           >
             <Text style={style.loginButtonText}>Login</Text>
           </TouchableOpacity>

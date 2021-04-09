@@ -37,7 +37,7 @@ class UserSelectionScreen extends Component {
 
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate("Login");
+              this.props.navigation.navigate("RegisterC");
             }}
             style={style.createShopButton}
           >

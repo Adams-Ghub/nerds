@@ -8,10 +8,8 @@ import RegisterScreenS from "../screens/RegisterScreenS";
 import RegisterScreenC from "../screens/RegisterScreenC";
 import RegisterShopScreen from "../screens/RegisterShopScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
-
 import ShopOwnerOrderDetailsScreen from "../screens/shopOwner/ShopOwnerOrderDetailsScreen";
 import CartScreen from "../screens/customer/CartScreen";
-
 import CheckoutDeliveryScreen from "../screens/customer/CheckoutDeliveryScreen";
 import CheckoutSummaryScreen from "../screens/customer/CheckoutSummaryScreen";
 import CheckoutPaymentScreen from "../screens/customer/CheckoutPaymentScreen";
@@ -20,8 +18,46 @@ import PLReport from "../components/PLReport";
 import { connect } from "react-redux";
 import EditProfile from "../components/EditProfile";
 import ProductDetails from "../components/ProductDetails";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { MaterialIcons } from "@expo/vector-icons";
+import Icon from "react-native-vector-icons/Ionicons";
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen
+        name="Cart"
+        options={{
+          tabBarIcon: ({ tintColor }) => (
+            <Icon name="md-cart" color={tintColor} size={25} />
+          ),
+        }}
+        component={WelcomeScreen}
+      />
+      <Tab.Screen
+        name="Categories"
+        options={{
+          tabBarIcon: ({ tintColor }) => (
+            <Icon name="grid-outline" color={tintColor} size={25} />
+          ),
+        }}
+        component={CartScreen}
+      />
+      <Tab.Screen
+        name="Register"
+        options={{
+          tabBarIcon: ({ tintColor }) => (
+            <Icon name="person-outline" color={tintColor} size={25} />
+          ),
+        }}
+        component={RegisterScreenS}
+      />
+    </Tab.Navigator>
+  );
+}
 
 function MainNavigator({ auth }) {
   return (
@@ -35,17 +71,18 @@ function MainNavigator({ auth }) {
           />
         </Stack.Navigator>
       ) : (
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator initialRouteName="UserSelectionScreen">
           <Stack.Screen
             name="Home"
             options={{ header: () => {} }}
             component={UserSelectionScreen}
           />
           <Stack.Screen
-            name="Order  Details"
-            // options={{ header: () => {} }}
-            component={ShopOwnerOrderDetailsScreen}
+            name="ShopOwnerDashboard"
+            options={{ header: () => {} }}
+            component={DrawerNavigatorDashboardS}
           />
+
           <Stack.Screen
             name="CheckoutDelivery"
             options={{
@@ -92,12 +129,12 @@ function MainNavigator({ auth }) {
 
           <Stack.Screen
             name="ProductDetails"
-            options={{ header: () => {} }}
+            options={{}}
             component={ProductDetails}
           />
           <Stack.Screen
             name="Cart"
-            // options={{ header: () => {} }}
+            options={{ header: () => {} }}
             component={CartScreen}
           />
           <Stack.Screen
@@ -134,7 +171,7 @@ function MainNavigator({ auth }) {
           <Stack.Screen
             options={{ header: () => {} }}
             name="Welcome"
-            component={WelcomeScreen}
+            component={MyTabs}
           />
         </Stack.Navigator>
       )}

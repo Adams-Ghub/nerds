@@ -1,6 +1,5 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-
 import DrawerItem from "../components/DrawerItem";
 import { AntDesign } from "@expo/vector-icons";
 import { Header } from "react-native/Libraries/NewAppScreen";
@@ -9,17 +8,15 @@ import ShopOwnerProfileScreen from "../screens/shopOwner/ShopOwnerProfileScreen"
 import OrdersScreen from "../screens/shopOwner/OrdersScreen";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Entypo } from "@expo/vector-icons";
-
 import ShopOwnerOrderDetailsScreen from "../screens/shopOwner/ShopOwnerOrderDetailsScreen";
-
 import Loader from "../components/Loader";
 import Product from "../components/ProductComponent";
-
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
 import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 const defaultHeaderStyle = {
   headerTitle: "",
@@ -29,6 +26,30 @@ const defaultHeaderStyle = {
   },
 };
 const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
+
+function OrderNavigatior() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        header: () => null,
+      }}
+      initialRouteName="Orders"
+    >
+      <Stack.Screen
+        name="OrderDetails"
+        // options={{ header: () => {} }}
+        component={ShopOwnerOrderDetailsScreen}
+      />
+
+      <Stack.Screen
+        name="Orders"
+        // options={{ header: () => {} }}
+        component={OrdersScreen}
+      />
+    </Stack.Navigator>
+  );
+}
 function DrawerNavigatorDashboardS() {
   return (
     <Drawer.Navigator
@@ -36,41 +57,47 @@ function DrawerNavigatorDashboardS() {
         activeTintColor: "transparent",
         itemStyle: { marginVertical: hp("0.01%") },
       }}
-      screenOptions={{
-        headerLeft: () => {
-          return (
-            <TouchableOpacity
-              onPress={() => {
-                Drawer.navigation.toggle();
-              }}
-            >
-              <Entypo name="menu" size={24} color="#ffffff" />
-            </TouchableOpacity>
-          );
-        },
-        headerRight: () => {
-          return (
-            <View style={{ flexDirection: "row", marginRight: wp("4%") }}>
-              <Image
-                style={{
-                  width: wp("10%"),
-                  height: hp("5%"),
-                  marginRight: wp("2%"),
-                  borderRadius: 25,
+      screenOptions={({ navigation }) => {
+        return {
+          headerLeft: () => {
+            return (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.toggleDrawer();
                 }}
-                source={require("../../assets/contact.jpg")}
-              />
-              <View>
-                <Text style={{ color: "#ffffff" }}>Welcome,</Text>
-                <Text
-                  style={{ color: "#ffffff", fontWeight: "700", fontSize: 17 }}
-                >
-                  Adams
-                </Text>
+              >
+                <Entypo name="menu" size={24} color="#ffffff" />
+              </TouchableOpacity>
+            );
+          },
+          headerRight: () => {
+            return (
+              <View style={{ flexDirection: "row", marginRight: wp("4%") }}>
+                <Image
+                  style={{
+                    width: wp("10%"),
+                    height: hp("5%"),
+                    marginRight: wp("2%"),
+                    borderRadius: 25,
+                  }}
+                  source={require("../../assets/contact.jpg")}
+                />
+                <View>
+                  <Text style={{ color: "#ffffff" }}>Welcome,</Text>
+                  <Text
+                    style={{
+                      color: "#ffffff",
+                      fontWeight: "700",
+                      fontSize: 17,
+                    }}
+                  >
+                    Adams
+                  </Text>
+                </View>
               </View>
-            </View>
-          );
-        },
+            );
+          },
+        };
       }}
       drawerStyle={{
         backgroundColor: "#000A14",
@@ -83,7 +110,7 @@ function DrawerNavigatorDashboardS() {
       }}
     >
       <Drawer.Screen
-        name="Home"
+        name="Dashboard"
         options={{
           drawerLabel: () => {
             return <DrawerItem title="Dashboard" />;
@@ -98,7 +125,6 @@ function DrawerNavigatorDashboardS() {
           drawerLabel: () => {
             return (
               <DrawerItem
-                title="Dashboard"
                 title="Profile"
                 icon={
                   <AntDesign name="user" size={24} color="#0080FF" />
@@ -129,7 +155,7 @@ function DrawerNavigatorDashboardS() {
       /> */}
 
       <Drawer.Screen
-        name="Orders"
+        name="OrderNavigatior"
         options={{
           drawerLabel: () => {
             return (
@@ -143,7 +169,7 @@ function DrawerNavigatorDashboardS() {
           },
           ...defaultHeaderStyle,
         }}
-        component={OrdersScreen}
+        component={OrderNavigatior}
       />
 
       <Drawer.Screen

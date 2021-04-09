@@ -5,70 +5,83 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 
 class RegisterScreenS extends Component {
   render() {
     return (
-      <View style={style.container}>
-        <View style={style.welcomeSectionContainer}>
-          <Text style={style.welcomeMessage}>Welcome To Nerds</Text>
-          <Text style={style.createMessage}>Create Account</Text>
-        </View>
-        <View style={style.registrationFormContainer}>
-          <View style={style.usernameInputContainer}>
-            <TextInput
-              style={style.usernameInput}
-              placeholder="Username"
-            ></TextInput>
+      <ScrollView>
+        <View style={style.container}>
+          <View style={style.welcomeSectionContainer}>
+            {/* <Text style={style.welcomeMessage}>Welcome To Nerds</Text> */}
+            <Text style={style.createMessage}>Create Account</Text>
           </View>
-          <View style={style.usernameInputContainer}>
-            <TextInput
-              style={style.usernameInput}
-              placeholder="Email"
-            ></TextInput>
+          <View style={style.registrationFormContainer}>
+            <View style={style.usernameInputContainer}>
+              <TextInput
+                style={style.usernameInput}
+                placeholder="Username"
+              ></TextInput>
+            </View>
+            <View style={style.usernameInputContainer}>
+              <TextInput
+                style={style.usernameInput}
+                placeholder="Email"
+              ></TextInput>
+            </View>
+            <View style={style.usernameInputContainer}>
+              <TextInput
+                style={style.usernameInput}
+                placeholder="Password"
+                secureTextEntry={true}
+              ></TextInput>
+            </View>
+            <View style={style.usernameInputContainer}>
+              <TextInput
+                style={style.usernameInput}
+                placeholder="Confirm Password"
+                secureTextEntry={true}
+              ></TextInput>
+            </View>
           </View>
-          <View style={style.usernameInputContainer}>
-            <TextInput
-              style={style.usernameInput}
-              placeholder="Password"
-              secureTextEntry={true}
-            ></TextInput>
+          <View style={style.termsAndPolicyContainer}>
+            <Text style={style.signupCautionText}>
+              By signing up you accept the
+              <TouchableOpacity style={style.termsAndPolicyTextContainer}>
+                <Text style={style.termsAndPolicyText}>
+                  Terms of Service{" "}
+                  <Text style={style.signupCautionText}>and</Text>
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={style.termsAndPolicyTextContainer}>
+                <Text style={style.termsAndPolicyText}>Privacy Policy</Text>
+              </TouchableOpacity>
+            </Text>
           </View>
-          <View style={style.usernameInputContainer}>
-            <TextInput
-              style={style.usernameInput}
-              placeholder="Confirm Password"
-              secureTextEntry={true}
-            ></TextInput>
-          </View>
-        </View>
-        <View style={style.termsAndPolicyContainer}>
-          <Text style={style.signupCautionText}>
-            By signing up you accept the
-            <TouchableOpacity style={style.termsAndPolicyTextContainer}>
-              <Text style={style.termsAndPolicyText}>
-                Terms of Service{" "}
-                <Text style={style.signupCautionText}>and</Text>
-              </Text>
+          <View style={style.signupButtonContainer}>
+            <TouchableOpacity
+              style={style.signupButton}
+              onPress={() => {
+                this.props.navigation.navigate("RegisterShop");
+              }}
+            >
+              <Text style={style.signupButtonText}>Sign up</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={style.termsAndPolicyTextContainer}>
-              <Text style={style.termsAndPolicyText}>Privacy Policy</Text>
+          </View>
+          <View style={style.haveAccountContainer}>
+            <Text style={style.haveAccountText}>Already have an account ?</Text>
+            <TouchableOpacity
+              style={style.loginButton}
+              onPress={() => {
+                this.props.navigation.navigate("Login");
+              }}
+            >
+              <Text style={style.loginText}>Login</Text>
             </TouchableOpacity>
-          </Text>
+          </View>
         </View>
-        <View style={style.signupButtonContainer}>
-          <TouchableOpacity style={style.signupButton}>
-            <Text style={style.signupButtonText}>Sign up</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={style.haveAccountContainer}>
-          <Text style={style.haveAccountText}>Already have an account ?</Text>
-          <TouchableOpacity style={style.loginButton}>
-            <Text style={style.loginText}>Login</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      </ScrollView>
     );
   }
 }

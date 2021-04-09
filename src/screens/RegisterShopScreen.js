@@ -5,51 +5,59 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 
 class RegisterShopScreen extends Component {
   render() {
     return (
-      <View style={style.container}>
-        {/* <View style={style.welcomeSectionContainer}>
-          <Text style={style.welcomeMessage}>Welcome To Nerds</Text>
-          <Text style={style.lastStepMessage}>Create Account</Text>
-        </View> */}
-        <View style={style.registrationFormContainer}>
-          <View style={style.shopNameInputContainer}>
-            <TextInput
-              style={style.shopNameInput}
-              placeholder="Name of Shop"
-            ></TextInput>
+      <ScrollView>
+        <View style={style.container}>
+          <View style={style.welcomeSectionContainer}>
+            {/* <Text style={style.welcomeMessage}>Welcome To Nerds</Text> */}
+            <Text style={style.lastStepMessage}>One Last Step</Text>
           </View>
-          <View style={style.shopNameInputContainer}>
-            <TextInput
-              style={style.shopNameInput}
-              placeholder="Contact"
-              keyboardType="phone-pad"
-            ></TextInput>
+          <View style={style.registrationFormContainer}>
+            <View style={style.shopNameInputContainer}>
+              <TextInput
+                style={style.shopNameInput}
+                placeholder="Name of Shop"
+              ></TextInput>
+            </View>
+            <View style={style.shopNameInputContainer}>
+              <TextInput
+                style={style.shopNameInput}
+                placeholder="Contact"
+                keyboardType="phone-pad"
+              ></TextInput>
+            </View>
+
+            <View style={style.shopNameInputContainer}>
+              <TextInput
+                style={style.shopNameInput}
+                placeholder="GH-Post GPS"
+              ></TextInput>
+            </View>
+            <View style={style.shopNameInputContainer}>
+              <TextInput
+                style={style.shopNameInput}
+                placeholder="ID Number (Ghana Card)"
+              ></TextInput>
+            </View>
           </View>
 
-          <View style={style.shopNameInputContainer}>
-            <TextInput
-              style={style.shopNameInput}
-              placeholder="GH-Post GPS"
-            ></TextInput>
-          </View>
-          <View style={style.shopNameInputContainer}>
-            <TextInput
-              style={style.shopNameInput}
-              placeholder="ID Number (Ghana Card)"
-            ></TextInput>
+          <View style={style.createShopButtonContainer}>
+            <TouchableOpacity
+              style={style.createShopButton}
+              onPress={() => {
+                this.props.navigation.navigate("Login");
+              }}
+            >
+              <Text style={style.createShopButtonText}>Create Shop</Text>
+            </TouchableOpacity>
           </View>
         </View>
-
-        {/* <View style={style.createShopButtonContainer}>
-          <TouchableOpacity style={style.createShopButton}>
-            <Text style={style.createShopButtonText}>Create Shop</Text>
-          </TouchableOpacity>
-        </View> */}
-      </View>
+      </ScrollView>
     );
   }
 }

@@ -7,15 +7,18 @@ import DashboardScreen from "../screens/shopOwner/DashboardScreen";
 import ShopOwnerProfileScreen from "../screens/shopOwner/ShopOwnerProfileScreen";
 import OrdersScreen from "../screens/shopOwner/OrdersScreen";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import { Entypo } from "@expo/vector-icons";
+import { Entypo, Feather } from "@expo/vector-icons";
 import ShopOwnerOrderDetailsScreen from "../screens/shopOwner/ShopOwnerOrderDetailsScreen";
 import Loader from "../components/Loader";
 import { DrawerActions } from "@react-navigation/native";
+import ProductScreen from "../screens/shopOwner/ProductScreen";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
 import { NavigationContainer } from "@react-navigation/native";
+import AddProductScreen from "../screens/shopOwner/AddProductScreen";
+import EditProductScreen from "../screens/shopOwner/EditProductScreen";
 
 const defaultHeaderStyle = {
   headerTitle: "",
@@ -95,10 +98,14 @@ function DrawerNavigatorDashboardS({ navigation }) {
           drawerLabel: () => {
             return (
               <DrawerItem
-                title="Dashboard"
                 title="Profile"
                 icon={
-                  <AntDesign name="user" size={24} color="#0080FF" />
+                  <AntDesign
+                    name="user"
+                    style={{ marginTop: 5 }}
+                    size={20}
+                    color="#0080FF"
+                  />
 
                   // icon={<AntDesign name="user" size={24} color="#0080FF" />
                 }
@@ -118,7 +125,12 @@ function DrawerNavigatorDashboardS({ navigation }) {
               <DrawerItem
                 title="Orders"
                 icon={
-                  <AntDesign name="shoppingcart" size={24} color="#0080FF" />
+                  <AntDesign
+                    name="shoppingcart"
+                    style={{ marginTop: 5 }}
+                    size={20}
+                    color="#0080FF"
+                  />
                 }
               />
             );
@@ -129,13 +141,43 @@ function DrawerNavigatorDashboardS({ navigation }) {
       />
 
       <Drawer.Screen
+        name="products"
+        options={{
+          drawerLabel: () => {
+            return (
+              <DrawerItem
+                title="products"
+                icon={
+                  <Feather
+                    name="package"
+                    style={{ marginTop: 5 }}
+                    size={20}
+                    color="#0080FF"
+                  />
+                }
+              />
+            );
+          },
+          ...defaultHeaderStyle,
+        }}
+        component={ProductScreen}
+      />
+
+      <Drawer.Screen
         name="Log out"
         options={{
           drawerLabel: () => {
             return (
               <DrawerItem
                 title="Log out"
-                icon={<AntDesign name="logout" size={24} color="#0080FF" />}
+                icon={
+                  <AntDesign
+                    name="logout"
+                    style={{ marginTop: 5 }}
+                    size={20}
+                    color="#0080FF"
+                  />
+                }
               />
             );
           },
@@ -143,6 +185,8 @@ function DrawerNavigatorDashboardS({ navigation }) {
         }}
         component={Loader}
       />
+      <Drawer.Screen name="EditProduct" component={EditProductScreen} />
+      <Drawer.Screen name="AddProduct" component={AddProductScreen} />
     </Drawer.Navigator>
   );
 }

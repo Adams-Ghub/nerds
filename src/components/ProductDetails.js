@@ -232,7 +232,6 @@ const style = StyleSheet.create({
   },
   customerFeedbackText: {
     fontSize: 18,
-
     color: "#aaaaaa",
     marginBottom: hp("0.5%"),
   },

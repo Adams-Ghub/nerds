@@ -19,6 +19,7 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import AddProductScreen from "../screens/shopOwner/AddProductScreen";
 import EditProductScreen from "../screens/shopOwner/EditProductScreen";
+import PLReport from "../components/PLReport";
 
 const defaultHeaderStyle = {
   headerTitle: "",
@@ -82,7 +83,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
         marginTop: hp("10.95%"),
       }}
     >
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="Home"
         options={{
           drawerLabel: () => {
@@ -138,7 +139,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
           ...defaultHeaderStyle,
         }}
         component={OrdersScreen}
-      />
+      /> */}
 
       <Drawer.Screen
         name="products"
@@ -161,6 +162,28 @@ function DrawerNavigatorDashboardS({ navigation }) {
           ...defaultHeaderStyle,
         }}
         component={ProductScreen}
+      />
+      <Drawer.Screen
+        name="report"
+        options={{
+          drawerLabel: () => {
+            return (
+              <DrawerItem
+                title="report"
+                icon={
+                  <Entypo
+                    name="text-document"
+                    style={{ marginTop: 5 }}
+                    size={20}
+                    color="#0080FF"
+                  />
+                }
+              />
+            );
+          },
+          ...defaultHeaderStyle,
+        }}
+        component={PLReport}
       />
 
       <Drawer.Screen

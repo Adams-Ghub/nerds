@@ -61,8 +61,8 @@ const style = StyleSheet.create({
     marginVertical: hp("5%"),
   },
   productImage: {
-    width: 150,
-    height: 120,
+    width: wp("37%"),
+    height: hp("15%"),
   },
 
   productName: {

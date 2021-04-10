@@ -110,7 +110,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
         //         marginTop: 64,
 
         width: wp("45%"),
-        marginTop: hp("10.95%"),
+        paddingTop: hp("11.95%"),
       }}
     >
       <Drawer.Screen
@@ -171,28 +171,6 @@ function DrawerNavigatorDashboardS({ navigation }) {
         component={OrdersScreen}
       />
 
-      <Drawer.Screen
-        name="OrderNavigatior"
-        options={{
-          drawerLabel: () => {
-            return (
-              <DrawerItem
-                title="Orders"
-                icon={
-                  <Feather
-                    name="package"
-                    style={{ marginTop: 5 }}
-                    size={20}
-                    color="#0080FF"
-                  />
-                }
-              />
-            );
-          },
-          ...defaultHeaderStyle,
-        }}
-        component={OrderNavigatior}
-      />
       <Drawer.Screen
         name="products"
         options={{

@@ -10,8 +10,10 @@ import {
 } from "react-native";
 import {
   Fontisto,
+  AntDesign,
   Entypo,
   FontAwesome5,
+  MaterialCommunityIcons,
   Ionicons,
   MaterialIcons,
 } from "@expo/vector-icons";
@@ -44,6 +46,7 @@ class WelcomeScreen extends Component {
       shopColor: "black",
       productColor: "#0080FF",
     };
+    this.handleUpdateState = this.handleUpdateState.bind(this);
   }
   shopactivation = () => {
     this.setState({ productColor: "black", shopColor: "#0080FF" });
@@ -52,6 +55,11 @@ class WelcomeScreen extends Component {
   productactivation = () => {
     this.setState({ productColor: "#0080FF", shopColor: "black" });
   };
+  handleUpdateState = (name, value) => {
+    this.setState({
+      [name]: value,
+    });
+  };
 
   render() {
     return (
@@ -59,10 +67,10 @@ class WelcomeScreen extends Component {
         <View style={style.topSection}>
           <View style={style.searchSection}>
             <TextInput
+              onChangeText={(text) =>
+                this.handleUpdateState("searchText", text)
+              }
               placeholder="search by product or shop name"
-              onChangeText={(text) => {
-                this.setState({ searchText: text });
-              }}
               value={this.state.searchText}
               style={style.searchBox}
             ></TextInput>
@@ -99,9 +107,8 @@ class WelcomeScreen extends Component {
             </View>
           </View>
         </View>
-        <View>
+        <View style={style.flatlistContainer}>
           <FlatList
-            style={style.flatlistContainer}
             data={this.state.name}
             renderItem={({ item }) => {
               return (
@@ -136,51 +143,57 @@ const style = StyleSheet.create({
     backgroundColor: "#F8F8F8",
     marginTop: hp("17%"),
     marginHorizontal: wp("2%"),
+    marginBottom: hp("12%"),
   },
 
   searchSection: {
     flexDirection: "row",
-    paddingVertical: hp("2%"),
+    paddingVertical: hp("0.2%"),
     justifyContent: "center",
-    backgroundColor: "#ffffff",
-  },
-  searchBox: {
     borderStyle: "solid",
     borderWidth: wp("0.3%"),
-    paddingHorizontal: wp("5%"),
+    paddingHorizontal: wp("1%"),
     borderColor: "#cccccc",
     borderRadius: wp("10%"),
     marginHorizontal: hp("1%"),
-    fontSize: 17,
+  },
+  searchBox: {
+    fontSize: 18,
+    marginRight: wp("4%"),
   },
   topSection: {
-    marginBottom: hp("1%"),
+    // paddingBottom: hp("1%"),
   },
 
   filterContainer: {
     flexDirection: "row",
     justifyContent: "flex-start",
     marginTop: hp("1%"),
-    backgroundColor: "#ffffff",
     paddingLeft: wp("25%"),
+    paddingBottom: hp("5%"),
   },
   filterIcons: {
     marginVertical: hp("2%"),
     marginHorizontal: wp("8%"),
   },
+  flatlistContainer: {
+    marginTop: wp("-10%"),
+  },
   lowerSection: {
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "space-between",
 
-    marginHorizontal: wp("30%"),
-    marginTop: hp("2%"),
+    marginHorizontal: wp("10%"),
+    marginVertical: hp("2%"),
   },
   accountButton: {
     flexDirection: "column",
     justifyContent: "center",
-    marginLeft: wp("15%"),
   },
   accountIconContainer: {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
     marginHorizontal: wp("1.7%"),
   },
   accountText: {

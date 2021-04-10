@@ -69,7 +69,19 @@ function MyTabs() {
 function MainNavigator({ auth }) {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ShopOwnerDashboard">
+      <Stack.Navigator initialRouteName="UserSelection">
+        <Stack.Screen
+          name="UserSelection"
+          options={{ header: () => {} }}
+          component={UserSelectionScreen}
+        />
+
+        <Stack.Screen
+          name="Welcome"
+          options={{ header: () => {} }}
+          component={MyTabs}
+        />
+
         <Stack.Screen
           name="ShopOwnerDashboard"
           options={{ header: () => {} }}
@@ -213,11 +225,6 @@ function MainNavigator({ auth }) {
           options={{ header: () => {} }}
           name="RegisterC"
           component={RegisterScreenC}
-        />
-        <Stack.Screen
-          options={{ header: () => {} }}
-          name="Welcome"
-          component={WelcomeScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

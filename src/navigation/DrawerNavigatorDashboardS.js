@@ -1,13 +1,18 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerItem from "../components/DrawerItem";
-import { AntDesign } from "@expo/vector-icons";
 import { Header } from "react-native/Libraries/NewAppScreen";
 import DashboardScreen from "../screens/shopOwner/DashboardScreen";
 import ShopOwnerProfileScreen from "../screens/shopOwner/ShopOwnerProfileScreen";
 import OrdersScreen from "../screens/shopOwner/OrdersScreen";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import { Entypo, Feather } from "@expo/vector-icons";
+import {
+  Entypo,
+  Feather,
+  Ionicons,
+  AntDesign,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import ShopOwnerOrderDetailsScreen from "../screens/shopOwner/ShopOwnerOrderDetailsScreen";
 import Loader from "../components/Loader";
 import { DrawerActions } from "@react-navigation/native";
@@ -21,6 +26,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import AddProductScreen from "../screens/shopOwner/AddProductScreen";
 import EditProductScreen from "../screens/shopOwner/EditProductScreen";
+import PLReport from "../components/PLReport";
 
 const defaultHeaderStyle = {
   headerTitle: "",
@@ -117,7 +123,19 @@ function DrawerNavigatorDashboardS({ navigation }) {
         name="Dashboard"
         options={{
           drawerLabel: () => {
-            return <DrawerItem title="Dashboard" />;
+            return (
+              <DrawerItem
+                title="Dashboard"
+                icon={
+                  <MaterialIcons
+                    name="dashboard"
+                    style={{ marginTop: 5 }}
+                    size={20}
+                    color="#0080FF"
+                  />
+                }
+              />
+            );
           },
           ...defaultHeaderStyle,
         }}
@@ -137,8 +155,6 @@ function DrawerNavigatorDashboardS({ navigation }) {
                     size={20}
                     color="#0080FF"
                   />
-
-                  // icon={<AntDesign name="user" size={24} color="#0080FF" />
                 }
               />
             );
@@ -148,6 +164,28 @@ function DrawerNavigatorDashboardS({ navigation }) {
         component={ShopOwnerProfileScreen}
       />
 
+      <Drawer.Screen
+        name="products"
+        options={{
+          drawerLabel: () => {
+            return (
+              <DrawerItem
+                title="Products"
+                icon={
+                  <Feather
+                    name="box"
+                    style={{ marginTop: 5 }}
+                    size={20}
+                    color="#0080FF"
+                  />
+                }
+              />
+            );
+          },
+          ...defaultHeaderStyle,
+        }}
+        component={ProductScreen}
+      />
       <Drawer.Screen
         name="Orders"
         options={{
@@ -168,16 +206,39 @@ function DrawerNavigatorDashboardS({ navigation }) {
           },
           ...defaultHeaderStyle,
         }}
-        component={OrdersScreen}
+        component={OrderNavigatior}
       />
 
       <Drawer.Screen
-        name="products"
+        name="customers"
         options={{
           drawerLabel: () => {
             return (
               <DrawerItem
-                title="Products"
+                title="Customers"
+                icon={
+                  <Feather
+                    name="users"
+                    style={{ marginTop: 5 }}
+                    size={20}
+                    color="#0080FF"
+                  />
+                }
+              />
+            );
+          },
+          ...defaultHeaderStyle,
+        }}
+        component={ProductScreen}
+      />
+
+      <Drawer.Screen
+        name="reports"
+        options={{
+          drawerLabel: () => {
+            return (
+              <DrawerItem
+                title="Report"
                 icon={
                   <Feather
                     name="package"
@@ -191,7 +252,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
           },
           ...defaultHeaderStyle,
         }}
-        component={ProductScreen}
+        component={PLReport}
       />
 
       <Drawer.Screen

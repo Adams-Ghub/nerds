@@ -41,22 +41,16 @@ class RegisterScreenS extends Component {
   }
 
   handleSignUp = () => {
-    this.props.createAccountShopOwner(
-      this.state.email,
-      this.state.password,
-      this.state.username,
-      this.state.shopName,
-      this.state.contact,
-      this.state.ghpostGps,
-      this.state.idNumber
-    );
-    passConfirmationCheck = () => {
-      if (this.state.username === "") {
-        this.setState({ errorMsg: "Username is required" });
-      }
-      if (this.state.password !== this.state.confirm) {
-      }
-    };
+    // this.props.createAccountShopOwner(
+    //   this.state.email,
+    //   this.state.password,
+    //   this.state.username
+    // );
+    if (this.props.route.params.userType === "shopOwner") {
+      this.props.navigation.navigate("ShopOwnerDashboard");
+    } else {
+      this.props.navigation.navigate("CustomerDashboard");
+    }
   };
 
   handleUpdateState = (name, value) => {

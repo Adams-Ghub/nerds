@@ -16,6 +16,9 @@ export default (state = initialState, action) => {
     case "REGISTER_ERROR":
       return { ...state, error: { register: action.payload } };
 
+    case "FS_REGISTER_ERROR":
+      return { ...state, error: { register: action.payload } };
+
     case "LOGIN_ERROR":
       return { ...state, error: { login: action.payload } };
 

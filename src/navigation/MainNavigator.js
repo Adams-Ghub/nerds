@@ -28,6 +28,8 @@ import {
   AntDesign,
   MaterialIcons,
 } from "@expo/vector-icons";
+import MobileNumberScreen from "../screens/customerMomoPayment/MobileNumberScreen";
+import SuccessScreen from "../screens/customerMomoPayment/SuccessScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -108,7 +110,7 @@ function MainNavigator({ auth }) {
           name="CheckoutDelivery"
           options={{
             title: "Checkout",
-
+            headerBackTitle: () => null,
             headerTintColor: "#fff",
             headerTitleAlign: "left",
             headerStyle: {
@@ -122,7 +124,7 @@ function MainNavigator({ auth }) {
           name="CheckoutSummary"
           options={{
             title: "Checkout",
-
+            headerBackTitle: () => null,
             headerTintColor: "#fff",
             headerTitleAlign: "left",
             headerStyle: {
@@ -137,7 +139,7 @@ function MainNavigator({ auth }) {
           name="CheckoutPayment"
           options={{
             title: "Checkout",
-
+            headerBackTitle: () => null,
             headerTintColor: "#fff",
             headerTitleAlign: "left",
             headerStyle: {
@@ -146,6 +148,36 @@ function MainNavigator({ auth }) {
             },
           }}
           component={CheckoutPaymentScreen}
+        />
+
+        <Stack.Screen
+          name="MobileNumber"
+          options={{
+            title: "Payment Details",
+            headerBackTitle: () => null,
+            headerTintColor: "#fff",
+            headerTitleAlign: "left",
+            headerStyle: {
+              backgroundColor: "#000000",
+              shadowColor: "transparent",
+            },
+          }}
+          component={MobileNumberScreen}
+        />
+
+        <Stack.Screen
+          name="paymentSuccessful"
+          options={{
+            title: "Payment Details",
+            headerBackTitle: () => null,
+            headerTintColor: "#fff",
+            headerTitleAlign: "left",
+            headerStyle: {
+              backgroundColor: "#000000",
+              shadowColor: "transparent",
+            },
+          }}
+          component={SuccessScreen}
         />
 
         <Stack.Screen
@@ -192,7 +224,9 @@ function MainNavigator({ auth }) {
         />
         <Stack.Screen
           name="Cart"
-          // options={{ header: () => {} }}
+          options={{
+            headerBackTitle: () => null,
+          }}
           component={CartScreen}
         />
         <Stack.Screen

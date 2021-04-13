@@ -3,6 +3,16 @@ const initialState = {
   user: null,
   role: null,
   error: {},
+  products: [
+    {
+      productName: "Hp Omen Laptop",
+      cp: "1800",
+      sp: "2400",
+      details: "HDD 1TB",
+      base64: "",
+      qty: "50",
+    },
+  ],
 };
 
 export default (state = initialState, action) => {

@@ -11,6 +11,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
+
 import ProductComponentS from "../../components/ProductComponentS";
 
 class ProductScreen extends Component {
@@ -33,6 +34,11 @@ class ProductScreen extends Component {
       ],
     };
   }
+
+  componentDidMount() {
+    this.props.getAllProducts();
+  }
+
   render() {
     return (
       <View style={style.container}>
@@ -52,12 +58,17 @@ class ProductScreen extends Component {
             ></TextInput>
           </View>
         </View>
+
         <FlatList
-          data={this.state.name}
+          data={this.props.product}
           renderItem={({ item }) => {
             return (
               <View style={style.productInFlatlist}>
-                <ProductComponentS name={item} />
+                <ProductComponentS
+                  name={item.productName}
+                  sp={item.sp}
+                  image={`data:image/jpg;base64,${item.base64}`}
+                />
               </View>
             );
           }}
@@ -82,6 +93,7 @@ class ProductScreen extends Component {
     );
   }
 }
+
 export default ProductScreen;
 const style = StyleSheet.create({
   container: {

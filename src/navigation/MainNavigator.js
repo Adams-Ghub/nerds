@@ -69,7 +69,7 @@ function MyTabs() {
 function MainNavigator({ auth }) {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="UserSelection">
+      <Stack.Navigator initialRouteName="shopOwnerDashboard">
         <Stack.Screen
           name="UserSelection"
           options={{ header: () => {} }}

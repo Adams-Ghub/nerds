@@ -82,6 +82,32 @@ export function logout() {
   };
 }
 
+export function AddNewProduct(product) {
+  var productId = null;
+  return async (dispatch, state, { getFirestore, getFirebase }) => {
+    await getFirestore()
+      .collection("products")
+      .add({
+        productName: product.productName,
+        cp: product.cp,
+        sp: product.sp,
+        details: product.details,
+        qty: product.qty,
+        base64: product.base64,
+      })
+      .then((docRef) => {
+        alert("product added successfully");
+        console.log(docRef.id);
+        console.log(product.uri);
+        dispatch(productAdded(product));
+      })
+      .catch((error) => {
+        alert(error.message);
+        console.log(error);
+      });
+  };
+}
+
 export function Loggedin(user) {
   return {
     type: "LOGGED_IN",
@@ -100,9 +126,17 @@ export function registerError(error) {
     payload: error,
   };
 }
+
 export function loginError(error) {
   return {
     type: "LOGIN_ERROR",
     payload: error,
+  };
+}
+
+export function productAdded(product) {
+  return {
+    type: "ADDED_NEW_PRODUCT",
+    payload: product,
   };
 }

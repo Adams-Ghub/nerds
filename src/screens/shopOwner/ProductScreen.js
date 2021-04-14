@@ -11,8 +11,9 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-
+import { connect } from "react-redux";
 import ProductComponentS from "../../components/ProductComponentS";
+import { getAllProducts } from "../../redux/actions/authAction";
 
 class ProductScreen extends Component {
   constructor(props) {
@@ -60,7 +61,7 @@ class ProductScreen extends Component {
         </View>
 
         <FlatList
-          data={this.props.product}
+          data={this.props.products}
           renderItem={({ item }) => {
             return (
               <View style={style.productInFlatlist}>
@@ -94,7 +95,18 @@ class ProductScreen extends Component {
   }
 }
 
-export default ProductScreen;
+const mapStateToProps = (state) => {
+  return {
+    products: state.products,
+  };
+};
+
+const mapDispatchToProps = () => {
+  return { getAllProducts };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(ProductScreen);
+
 const style = StyleSheet.create({
   container: {
     flex: 1,

@@ -83,7 +83,6 @@ export function logout() {
 }
 
 export function AddNewProduct(product) {
-  var productId = null;
   return async (dispatch, state, { getFirestore, getFirebase }) => {
     await getFirestore()
       .collection("products")
@@ -98,7 +97,6 @@ export function AddNewProduct(product) {
       .then((docRef) => {
         alert("product added successfully");
         console.log(docRef.id);
-        console.log(product.uri);
         dispatch(productAdded(product));
       })
       .catch((error) => {
@@ -107,6 +105,28 @@ export function AddNewProduct(product) {
       });
   };
 }
+
+export const getAllProducts = () => {
+  return (dispatch, state, { getFirestore }) => {
+    getFirestore()
+      .collection("products")
+      .onSnapshot(
+        (snapshot) => {
+          var products = [];
+          snapshot.forEach((doc) => {
+            products.push(doc.data());
+          });
+          console.log(products);
+          dispatch({
+            type: "SET_ALL_PRODUCTS",
+            payload: products,
+          });
+        },
+
+        (error) => {}
+      );
+  };
+};
 
 export function Loggedin(user) {
   return {

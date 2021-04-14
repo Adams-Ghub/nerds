@@ -29,7 +29,6 @@ class UserSelectionScreen extends Component {
           <TouchableOpacity
             onPress={() => {
               this.props.navigation.navigate("Welcome", {
-                screen: "Register",
                 userType: "customer",
               });
             }}

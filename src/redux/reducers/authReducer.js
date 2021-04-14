@@ -3,16 +3,7 @@ const initialState = {
   user: null,
   role: null,
   error: {},
-  products: [
-    {
-      productName: "Hp Omen Laptop",
-      cp: "1800",
-      sp: "2400",
-      details: "HDD 1TB",
-      base64: "",
-      qty: "50",
-    },
-  ],
+  products: [],
 };
 
 export default (state = initialState, action) => {
@@ -31,6 +22,9 @@ export default (state = initialState, action) => {
 
     case "LOGIN_ERROR":
       return { ...state, error: { login: action.payload } };
+
+    case "SET_ALL_PRODUCTS":
+      return { ...state, products: action.payload };
 
     default:
       return state;

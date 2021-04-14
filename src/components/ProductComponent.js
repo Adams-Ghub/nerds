@@ -16,11 +16,15 @@ class Product extends Component {
           <View style={style.productImageContainer}>
             <Image
               style={style.productImage}
-              source={require("../../assets/productImg.png")}
+              source={{ uri: this.props.image }}
             />
           </View>
-          <Text style={style.productName}>{this.props.name}</Text>
-          <Text style={style.productPrice}>GHS 1800</Text>
+          <View style={style.productNamePricingContainer}>
+            <Text numberOfLines={1} style={style.productName}>
+              {this.props.name}
+            </Text>
+            <Text style={style.productPrice}>GH¢ {this.props.sp}</Text>
+          </View>
         </View>
       </View>
     );
@@ -35,24 +39,33 @@ const style = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     flexDirection: "column",
     justifyContent: "center",
-    maxHeight: hp("24%"),
-    maxWidth: wp("47%"),
   },
   productContainer: {
-    height: hp("20%"),
-    width: wp("40%"),
-    backgroundColor: "#FFFFFF",
+    flex: 1,
+    height: hp("22%"),
+    width: wp("38%"),
+    backgroundColor: "#ffffff",
     marginHorizontal: wp("5%"),
-    marginVertical: hp("5%"),
+    marginVertical: hp("2%"),
+  },
+  productImageContainer: {
+    flex: 7,
+    marginBottom: 20,
+    width: 160,
+    height: 150,
+  },
+  productNamePricingContainer: {
+    flex: 3,
+    marginTop: hp("6%"),
   },
   productImage: {
-    width: 150,
-    height: 120,
+    width: 160,
+    height: 150,
   },
 
   productName: {
-    fontSize: 17,
-    paddingVertical: hp("0.5%"),
+    fontSize: 15,
+    paddingVertical: hp("0%"),
     paddingHorizontal: wp("0.5%"),
   },
   productPrice: {

@@ -22,6 +22,8 @@ import {
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
 import ProductComponent from "../components/ProductComponent";
+import { connect } from "react-redux";
+import { getAllProducts } from "../redux/actions/authAction";
 
 class WelcomeScreen extends Component {
   constructor(props) {
@@ -60,117 +62,136 @@ class WelcomeScreen extends Component {
       [name]: value,
     });
   };
-
+  componentDidMount() {
+    this.props.getAllProducts();
+  }
   render() {
     return (
       <View style={style.container}>
-        <View style={style.topSection}>
-          <View style={style.searchSection}>
-            <TextInput
-              onChangeText={(text) =>
-                this.handleUpdateState("searchText", text)
-              }
-              placeholder="search by product or shop name"
-              value={this.state.searchText}
-              style={style.searchBox}
-            ></TextInput>
-            <TouchableOpacity>
-              <Entypo name="magnifying-glass" size={24} color={"#888888"} />
-            </TouchableOpacity>
-          </View>
-          <View style={style.filterContainer}>
-            <View style={style.filterIcons}>
-              <TouchableOpacity
-                onPress={() => {
-                  this.shopactivation();
-                }}
-              >
-                <Fontisto
-                  name="shopping-store"
-                  size={24}
-                  color={this.state.shopColor}
-                />
+        <ScrollView>
+          <View style={style.topSection}>
+            <View style={style.searchSection}>
+              <TextInput
+                onChangeText={(text) =>
+                  this.handleUpdateState("searchText", text)
+                }
+                placeholder="search by product or shop name"
+                value={this.state.searchText}
+                style={style.searchBox}
+              ></TextInput>
+              <TouchableOpacity>
+                <Entypo name="magnifying-glass" size={24} color={"#888888"} />
               </TouchableOpacity>
             </View>
-            <View style={style.filterIcons}>
-              <TouchableOpacity
-                onPress={() => {
-                  this.productactivation();
-                }}
-              >
-                <FontAwesome5
-                  name="luggage-cart"
-                  size={24}
-                  color={this.state.productColor}
-                />
-              </TouchableOpacity>
+            <View style={style.filterContainer}>
+              <View style={style.filterIcons}>
+                <TouchableOpacity
+                  onPress={() => {
+                    this.shopactivation();
+                  }}
+                >
+                  <Fontisto
+                    name="shopping-store"
+                    size={24}
+                    color={this.state.shopColor}
+                  />
+                </TouchableOpacity>
+              </View>
+              <View style={style.filterIcons}>
+                <TouchableOpacity
+                  onPress={() => {
+                    this.productactivation();
+                  }}
+                >
+                  <FontAwesome5
+                    name="luggage-cart"
+                    size={24}
+                    color={this.state.productColor}
+                  />
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
-        </View>
-        <View style={style.flatlistContainer}>
-          <FlatList
-            data={this.state.name}
-            renderItem={({ item }) => {
-              return (
-                <View style={style.productInFlatlist}>
-                  <TouchableOpacity
-                    style={style.product}
-                    onPress={() => {
-                      this.props.navigation.navigate("ProductDetails");
-                    }}
-                  >
-                    <ProductComponent name={item} />
-                  </TouchableOpacity>
-                </View>
-              );
-            }}
-            numColumns={2}
-            keyExtractor={(item, index) => index}
-            showsVerticalScrollIndicator={false}
-          />
-        </View>
+
+          <View style={style.flatlistContainer}>
+            <FlatList
+              data={this.props.products}
+              renderItem={({ item }) => {
+                return (
+                  <View style={style.productInFlatlist}>
+                    <TouchableOpacity
+                      style={style.product}
+                      onPress={() => {
+                        this.props.navigation.navigate("ProductDetails");
+                      }}
+                    >
+                      <ProductComponent
+                        name={item.productName}
+                        sp={item.sp}
+                        image={`data:image/jpg;base64,${item.base64}`}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                );
+              }}
+              numColumns={2}
+              keyExtractor={(item, index) => index}
+              showsVerticalScrollIndicator={false}
+            />
+          </View>
+        </ScrollView>
       </View>
     );
   }
 }
-export default WelcomeScreen;
+
+const mapStateToProps = (state) => {
+  return {
+    products: state.products,
+  };
+};
+const mapDispatchToProps = () => {
+  return {
+    getAllProducts,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(WelcomeScreen);
 
 const style = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
-    backgroundColor: "#F8F8F8",
-    marginTop: hp("17%"),
+    marginTop: hp("5%"),
     marginHorizontal: wp("2%"),
-    marginBottom: hp("12%"),
+    marginBottom: hp("4%"),
   },
 
   searchSection: {
     flexDirection: "row",
-    paddingVertical: hp("0.2%"),
+    paddingVertical: hp("0.3%"),
     justifyContent: "center",
     borderStyle: "solid",
     borderWidth: wp("0.3%"),
     paddingHorizontal: wp("1%"),
     borderColor: "#cccccc",
     borderRadius: wp("10%"),
+    marginVertical: hp("1%"),
     marginHorizontal: hp("1%"),
   },
   searchBox: {
     fontSize: 18,
     marginRight: wp("4%"),
   },
-  topSection: {
-    // paddingBottom: hp("1%"),
-  },
+  topSection: {},
 
   filterContainer: {
     flexDirection: "row",
     justifyContent: "flex-start",
     marginTop: hp("1%"),
     paddingLeft: wp("25%"),
-    paddingBottom: hp("5%"),
+    paddingBottom: hp("1%"),
   },
   filterIcons: {
     marginVertical: hp("2%"),

@@ -14,6 +14,7 @@ import {
 } from "react-native-responsive-screen";
 import Review from "../components/Review.js";
 import { MaterialIcons } from "@expo/vector-icons";
+import { connect } from "react-redux";
 
 class ProductDetails extends Component {
   constructor(props) {
@@ -23,6 +24,9 @@ class ProductDetails extends Component {
     console.log("Ratings is" + ratings);
   }
 
+  // componentDidMount() {
+  //   console.log(this.props.route.params.product);
+  // }
   render() {
     return (
       <View style={style.container}>
@@ -30,7 +34,9 @@ class ProductDetails extends Component {
           <View style={style.ProductImageSection}>
             <Image
               style={style.productImage}
-              source={require("../../assets/productImg.png")}
+              source={{
+                uri: `data:image/jpg;base64,${this.props.selectedProduct.base64}`,
+              }}
             />
           </View>
           <View style={style.basicDetailSection}>
@@ -116,7 +122,18 @@ class ProductDetails extends Component {
   }
 }
 
-export default ProductDetails;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    selectedProduct: state.products.filter((item) => {
+      return item.id === ownProps.route.params.productId;
+    }),
+  };
+};
+const mapDispatchToProps = () => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(ProductDetails);
 
 const style = StyleSheet.create({
   container: {

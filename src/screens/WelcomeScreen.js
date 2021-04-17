@@ -122,7 +122,10 @@ class WelcomeScreen extends Component {
                     <TouchableOpacity
                       style={style.product}
                       onPress={() => {
-                        this.props.navigation.navigate("ProductDetails");
+                        this.props.navigation.navigate("ProductDetails", {
+                          productId: item.id,
+                        });
+                        console.log(productId);
                       }}
                     >
                       <ProductComponent
@@ -135,7 +138,7 @@ class WelcomeScreen extends Component {
                 );
               }}
               numColumns={2}
-              keyExtractor={(item, index) => index}
+              keyExtractor={(item, index) => item.id}
               showsVerticalScrollIndicator={false}
             />
           </View>

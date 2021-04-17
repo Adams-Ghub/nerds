@@ -75,7 +75,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
         marginTop: hp("10.95%"),
       }}
     >
-      {/* <Drawer.Screen
+      <Drawer.Screen
         name="shopping"
         options={{
           drawerLabel: () => {
@@ -140,7 +140,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
           ...defaultHeaderStyle,
         }}
         component={OrdersScreen}
-      /> */}
+      />
 
       <Drawer.Screen
         name="complaint"

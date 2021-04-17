@@ -83,7 +83,7 @@ export function logout() {
 }
 
 export function AddNewProduct(product) {
-  return async (dispatch, state, { getFirestore, getFirebase }) => {
+  return async (dispatch, state, { getFirestore }) => {
     await getFirestore()
       .collection("products")
       .add({
@@ -93,6 +93,7 @@ export function AddNewProduct(product) {
         details: product.details,
         qty: product.qty,
         base64: product.base64,
+        id: product.id,
       })
       .then((docRef) => {
         alert("product added successfully");

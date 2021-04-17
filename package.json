@@ -26,6 +26,7 @@
     "react-native-chart-kit": "^6.11.0",
     "react-native-elements": "^3.3.2",
     "react-native-gesture-handler": "^1.10.3",
+    "react-native-get-random-values": "^1.7.0",
     "react-native-progress": "^4.1.2",
     "react-native-ratings": "^7.6.0",
     "react-native-reanimated": "~1.13.0",
@@ -39,7 +40,8 @@
     "react-redux-firebase": "2.2.4",
     "redux": "^4.0.5",
     "redux-firestore": "^0.15.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"

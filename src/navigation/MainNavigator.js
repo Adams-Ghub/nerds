@@ -34,7 +34,7 @@ const Tab = createBottomTabNavigator();
 
 function MyTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator initialRouteName="Cart">
       <Tab.Screen
         name="Cart"
         options={{

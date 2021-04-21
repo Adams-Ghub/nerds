@@ -43,17 +43,17 @@ class WelcomeScreen extends Component {
       ],
       searchText: "",
 
-      shopColor: "black",
-      productColor: "#0080FF",
+      shopColor: "#ffffff",
+      productColor: "#ffffff",
     };
     this.handleUpdateState = this.handleUpdateState.bind(this);
   }
   shopactivation = () => {
-    this.setState({ productColor: "black", shopColor: "#0080FF" });
+    this.setState({ productColor: "#ffffff", shopColor: "#ffffff" });
   };
 
   productactivation = () => {
-    this.setState({ productColor: "#0080FF", shopColor: "black" });
+    this.setState({ productColor: "#ffffff", shopColor: "#ffffff" });
   };
   handleUpdateState = (name, value) => {
     this.setState({
@@ -73,9 +73,10 @@ class WelcomeScreen extends Component {
               placeholder="search by product or shop name"
               value={this.state.searchText}
               style={style.searchBox}
+              placeholderTextColor="#cccbc8"
             ></TextInput>
             <TouchableOpacity>
-              <Entypo name="magnifying-glass" size={24} color={"#888888"} />
+              <Entypo name="magnifying-glass" size={24} color={"#ffffff"} />
             </TouchableOpacity>
           </View>
           <View style={style.filterContainer}>
@@ -124,6 +125,8 @@ class WelcomeScreen extends Component {
                 </View>
               );
             }}
+            ListFooterComponent={<View></View>}
+            ListFooterComponentStyle={{ marginBottom: 100 }}
             numColumns={2}
             keyExtractor={(item, index) => index}
             showsVerticalScrollIndicator={false}
@@ -140,10 +143,8 @@ const style = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
-    backgroundColor: "#F8F8F8",
-    marginTop: hp("17%"),
-    marginHorizontal: wp("2%"),
-    marginBottom: hp("12%"),
+    backgroundColor: "#080809",
+    paddingTop: hp("17%"),
   },
 
   searchSection: {
@@ -154,15 +155,17 @@ const style = StyleSheet.create({
     borderWidth: wp("0.3%"),
     paddingHorizontal: wp("1%"),
     borderColor: "#cccccc",
-    borderRadius: wp("10%"),
-    marginHorizontal: hp("1%"),
+    backgroundColor: "rgba(165, 161, 157, 0.5)",
+    borderRadius: 10,
+    marginHorizontal: 7,
   },
   searchBox: {
     fontSize: 18,
     marginRight: wp("4%"),
+    paddingVertical: 8,
   },
   topSection: {
-    // paddingBottom: hp("1%"),
+    backgroundColor: "#080809",
   },
 
   filterContainer: {
@@ -170,21 +173,15 @@ const style = StyleSheet.create({
     justifyContent: "flex-start",
     marginTop: hp("1%"),
     paddingLeft: wp("25%"),
-    paddingBottom: hp("5%"),
+    paddingBottom: 5,
   },
   filterIcons: {
     marginVertical: hp("2%"),
     marginHorizontal: wp("8%"),
   },
   flatlistContainer: {
-    marginTop: wp("-10%"),
-  },
-  lowerSection: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-
-    marginHorizontal: wp("10%"),
-    marginVertical: hp("2%"),
+    backgroundColor: "#080809",
+    paddingBottom: 20,
   },
   accountButton: {
     flexDirection: "column",
@@ -199,11 +196,8 @@ const style = StyleSheet.create({
   accountText: {
     fontSize: 10,
   },
-
   homeText: {
     fontSize: 10,
   },
-  flatlistContainer: {
-    paddingBottom: 20,
-  },
+  text: {},
 });

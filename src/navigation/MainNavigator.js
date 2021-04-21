@@ -44,11 +44,7 @@ function MyTabs() {
       // style={{ backgroundColor: "#080809" }}
 
       tabBarOptions={{
-        style: {
-          backgroundColor: "rgba(165, 161, 157, 0.5)",
-          borderRadius: 10,
-          marginHorizontal: 7,
-        },
+        style: {},
       }}
     >
       <Tab.Screen

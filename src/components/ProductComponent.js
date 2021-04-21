@@ -19,8 +19,10 @@ class Product extends Component {
               source={require("../../assets/productImg.png")}
             />
           </View>
-          <Text style={style.productName}>{this.props.name}</Text>
-          <Text style={style.productPrice}>GHS 1800</Text>
+          <View style={style.details}>
+            <Text style={style.productName}>{this.props.name}</Text>
+            <Text style={style.productPrice}>GHS 1800</Text>
+          </View>
         </View>
       </View>
     );
@@ -30,34 +32,44 @@ class Product extends Component {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: wp("0.5%"),
-    marginVertical: wp("0.5%"),
-    backgroundColor: "#FFFFFF",
+    marginHorizontal: 5,
+    marginVertical: 5,
     flexDirection: "column",
     justifyContent: "center",
-    maxHeight: hp("24%"),
+    justifyContent: "space-around",
     maxWidth: wp("47%"),
+    backgroundColor: "rgba(75, 71, 67, 0.4)",
+    borderRadius: 10,
+    height: 250,
   },
   productContainer: {
-    height: hp("20%"),
-    width: wp("40%"),
-    backgroundColor: "#FFFFFF",
-    marginHorizontal: wp("5%"),
-    marginVertical: hp("5%"),
+    flex: 1,
+    width: wp("45%"),
+    borderRadius: 10,
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
+  details: {
+    backgroundColor: "rgba(165, 161, 157, 0.4)",
+    borderRadius: 10,
+    width: "90%",
+    alignItems: "center",
+    paddingVertical: 10,
   },
   productImage: {
     width: 150,
     height: 120,
   },
-
   productName: {
     fontSize: 17,
     paddingVertical: hp("0.5%"),
     paddingHorizontal: wp("0.5%"),
+    color: "#ffffff",
   },
   productPrice: {
     fontSize: 15,
     fontWeight: "700",
+    color: "#ffffff",
   },
 });
 

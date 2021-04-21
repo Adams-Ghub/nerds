@@ -36,12 +36,26 @@ const Tab = createBottomTabNavigator();
 
 function MyTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      // activeColor="red"
+      // inactiveColor="white"
+      // activeBackgroundColor="green"
+      // inactiveBackgroundColor="green"
+      // style={{ backgroundColor: "#080809" }}
+
+      tabBarOptions={{
+        style: {
+          backgroundColor: "rgba(165, 161, 157, 0.5)",
+          borderRadius: 10,
+          marginHorizontal: 7,
+        },
+      }}
+    >
       <Tab.Screen
         name="Cart"
         options={{
           tabBarIcon: ({ tintColor }) => (
-            <Icon name="md-cart" color={tintColor} size={25} />
+            <Icon name="md-cart" color={"#ffffff"} size={25} />
           ),
         }}
         component={WelcomeScreen}
@@ -50,7 +64,7 @@ function MyTabs() {
         name="Categories"
         options={{
           tabBarIcon: ({ tintColor }) => (
-            <Icon name="grid-outline" color={tintColor} size={25} />
+            <Icon name="grid-outline" color={"#ffffff"} size={25} />
           ),
         }}
         component={CartScreen}
@@ -59,7 +73,7 @@ function MyTabs() {
         name="Register"
         options={{
           tabBarIcon: ({ tintColor }) => (
-            <Icon name="person-outline" color={tintColor} size={25} />
+            <Icon name="person-outline" color={"#ffffff"} size={25} />
           ),
         }}
         component={RegisterScreenS}

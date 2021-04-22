@@ -15,6 +15,7 @@ import {
 import { connect } from "react-redux";
 import { createAccountShopOwner } from "../redux/actions/authAction";
 import RegisterShopScreen from "../screens/RegisterShopScreen";
+import CustomInput from "../components/CustomInput";
 
 class RegisterScreenS extends Component {
   constructor(props) {
@@ -68,6 +69,7 @@ class RegisterScreenS extends Component {
   render() {
     return (
       <View style={style.container}>
+        <CustomInput />
         <View style={style.welcomeSectionContainer}>
           <Text style={style.welcomeMessage}>Welcome To Nerds</Text>
           <Text style={style.createMessage}>{this.state.msg}</Text>

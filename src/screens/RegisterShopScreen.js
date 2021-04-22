@@ -7,12 +7,14 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
+import CustomInput from "../components/CustomInput";
 
 class RegisterShopScreen extends Component {
   render() {
     return (
       <ScrollView>
         <View style={style.container}>
+          <CustomInput />
           <View style={style.welcomeSectionContainer}>
             {/* <Text style={style.welcomeMessage}>Welcome To Nerds</Text> */}
             <Text style={style.lastStepMessage}>One Last Step</Text>

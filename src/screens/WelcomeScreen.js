@@ -68,7 +68,7 @@ class WelcomeScreen extends Component {
   render() {
     return (
       <View style={style.container}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View style={style.topSection}>
             <View style={style.searchSection}>
               <TextInput
@@ -123,9 +123,8 @@ class WelcomeScreen extends Component {
                       style={style.product}
                       onPress={() => {
                         this.props.navigation.navigate("ProductDetails", {
-                          productId: item.id,
+                          product: item,
                         });
-                        console.log(productId);
                       }}
                     >
                       <ProductComponent
@@ -138,7 +137,7 @@ class WelcomeScreen extends Component {
                 );
               }}
               numColumns={2}
-              keyExtractor={(item, index) => item.id}
+              keyExtractor={(item, index) => index}
               showsVerticalScrollIndicator={false}
             />
           </View>

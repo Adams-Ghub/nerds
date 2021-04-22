@@ -41,8 +41,9 @@ class RegisterScreenS extends Component {
   }
 
   handleSignUp = () => {
-    if (this.props.route.params.userType === "shopOwner") {
-      this.props.navigation.navigate("ShopOwnerDashboard");
+    if (this.props.route.params.userType) {
+      if (this.props.route.params.userType === "shopOwner")
+        this.props.navigation.navigate("ShopOwnerDashboard");
     } else {
       this.props.navigation.navigate("CustomerDashboard");
     }

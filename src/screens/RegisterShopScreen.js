@@ -14,13 +14,16 @@ class RegisterShopScreen extends Component {
     return (
       <ScrollView>
         <View style={style.container}>
-          <CustomInput />
           <View style={style.welcomeSectionContainer}>
             {/* <Text style={style.welcomeMessage}>Welcome To Nerds</Text> */}
             <Text style={style.lastStepMessage}>One Last Step</Text>
           </View>
+          <CustomInput label="Name of Shop" />
+          <CustomInput label="Contact" />
+          <CustomInput label="GH-Post GPS" secureTextEntry={true} />
+          <CustomInput label="ID Number (Ghana Card)" secureTextEntry={true} />
           <View style={style.registrationFormContainer}>
-            <View style={style.shopNameInputContainer}>
+            {/* <View style={style.shopNameInputContainer}>
               <TextInput
                 style={style.shopNameInput}
                 placeholder="Name of Shop"
@@ -45,7 +48,7 @@ class RegisterShopScreen extends Component {
                 style={style.shopNameInput}
                 placeholder="ID Number (Ghana Card)"
               ></TextInput>
-            </View>
+            </View> */}
           </View>
 
           <View style={style.createShopButtonContainer}>
@@ -68,7 +71,6 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    marginVertical: 40,
     marginHorizontal: 40,
   },
   welcomeSectionContainer: {
@@ -81,9 +83,10 @@ const style = StyleSheet.create({
     marginBottom: 70,
   },
   lastStepMessage: {
-    fontSize: 22,
-    fontWeight: "normal",
-    marginBottom: 0,
+    fontSize: 50,
+    fontWeight: "bold",
+    marginBottom: 40,
+    alignSelf: "flex-start",
   },
   registrationFormContainer: {
     marginVertical: 40,
@@ -92,7 +95,6 @@ const style = StyleSheet.create({
     borderStyle: "solid",
     borderBottomWidth: 1,
     borderBottomColor: "#0080FF",
-    marginVertical: 15,
     marginHorizontal: 0,
   },
   shopNameInput: {
@@ -102,10 +104,10 @@ const style = StyleSheet.create({
   },
 
   createShopButtonContainer: {
-    marginVertical: 70,
+    marginBottom: 20,
   },
   createShopButton: {
-    backgroundColor: "#0080FF",
+    backgroundColor: "#080809",
     borderRadius: 8,
     alignItems: "center",
   },

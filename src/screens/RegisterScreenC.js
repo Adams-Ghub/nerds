@@ -14,12 +14,15 @@ class RegisterScreenS extends Component {
     return (
       <ScrollView>
         <View style={style.container}>
-          <CustomInput placeholder="user" />
           <View style={style.welcomeSectionContainer}>
-            {/* <Text style={style.welcomeMessage}>Welcome To Nerds</Text> */}
             <Text style={style.createMessage}>Create Account</Text>
           </View>
-          <View style={style.registrationFormContainer}>
+
+          <CustomInput label="Username" />
+          <CustomInput label="Email" />
+          <CustomInput label="Password" secureTextEntry={true} />
+          <CustomInput label="Confirm Password" secureTextEntry={true} />
+          {/* <View style={style.registrationFormContainer}>
             <View style={style.usernameInputContainer}>
               <TextInput
                 style={style.usernameInput}
@@ -46,7 +49,8 @@ class RegisterScreenS extends Component {
                 secureTextEntry={true}
               ></TextInput>
             </View>
-          </View>
+          </View> */}
+
           <View style={style.termsAndPolicyContainer}>
             <Text style={style.signupCautionText}>
               By signing up you accept the
@@ -105,9 +109,10 @@ const style = StyleSheet.create({
     marginBottom: 70,
   },
   createMessage: {
-    fontSize: 22,
-    fontWeight: "normal",
-    marginBottom: 0,
+    fontSize: 50,
+    fontWeight: "bold",
+    marginBottom: 20,
+    alignSelf: "flex-start",
   },
   registrationFormContainer: {
     marginVertical: 40,
@@ -132,13 +137,13 @@ const style = StyleSheet.create({
   termsAndPolicyText: {
     fontSize: 17,
     marginRight: 3,
-    color: "#0080FF",
+    color: "#F88017",
   },
   signupButtonContainer: {
     marginVertical: 30,
   },
   signupButton: {
-    backgroundColor: "#0080FF",
+    backgroundColor: "#080809",
     borderRadius: 8,
     alignItems: "center",
   },
@@ -159,7 +164,7 @@ const style = StyleSheet.create({
   },
   loginText: {
     fontSize: 17,
-    color: "#0080ff",
+    color: "#F88017",
   },
 });
 

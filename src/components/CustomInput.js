@@ -7,22 +7,20 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-const CustomInput = (props) => {
-  // const OrderItem = ({ image, topText, downText, rightText }) => {
+const CustomInput = ({ label, ...rest }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Create Account</Text>
       <View style={styles.labelContainer}>
-        <Text style={styles.label}>Username</Text>
+        <Text style={styles.label}>{label}</Text>
       </View>
       <View style={styles.usernameInputContainer}>
-        <TextInput style={styles.usernameInput} {...props}></TextInput>
+        <TextInput style={styles.usernameInput} {...rest} />
       </View>
-      <View style={styles.signupButtonContainer}>
+      {/* <View style={styles.signupButtonContainer}>
         <TouchableOpacity style={styles.signupButton}>
           <Text style={styles.signupButtonText}>Sign up</Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -32,10 +30,11 @@ export default CustomInput;
 const styles = StyleSheet.create({
   container: {},
   usernameInputContainer: {
-    marginVertical: 15,
     borderWidth: 1,
+    marginBottom: 20,
     height: 45,
     borderRadius: 20,
+    marginTop: 5,
   },
   usernameInput: {
     fontSize: 20,
@@ -58,6 +57,8 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 20,
+    fontWeight: "300",
+    marginBottom: 0,
   },
   header: {
     fontWeight: "bold",

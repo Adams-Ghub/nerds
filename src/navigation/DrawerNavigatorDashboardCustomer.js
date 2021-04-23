@@ -46,33 +46,33 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
               </TouchableOpacity>
             );
           },
-          headerRight: () => {
-            return (
-              <View style={{ flexDirection: "row", marginRight: wp("4%") }}>
-                <Image
-                  style={{
-                    width: wp("10%"),
-                    height: hp("5%"),
-                    marginRight: wp("2%"),
-                    borderRadius: 25,
-                  }}
-                  source={require("../../assets/contact.jpg")}
-                />
-                <View>
-                  <Text style={{ color: "#ffffff" }}>Welcome,</Text>
-                  <Text
-                    style={{
-                      color: "#ffffff",
-                      fontWeight: "700",
-                      fontSize: 17,
-                    }}
-                  >
-                    Adams
-                  </Text>
-                </View>
-              </View>
-            );
-          },
+          // headerRight: () => {
+          //   return (
+          //     <View style={{ flexDirection: "row", marginRight: wp("4%") }}>
+          //       <Image
+          //         style={{
+          //           width: wp("10%"),
+          //           height: hp("5%"),
+          //           marginRight: wp("2%"),
+          //           borderRadius: 25,
+          //         }}
+          //         source={require("../../assets/contact.jpg")}
+          //       />
+          //       <View>
+          //         <Text style={{ color: "#ffffff" }}>Welcome,</Text>
+          //         <Text
+          //           style={{
+          //             color: "#ffffff",
+          //             fontWeight: "700",
+          //             fontSize: 17,
+          //           }}
+          //         >
+          //           Adams
+          //         </Text>
+          //       </View>
+          //     </View>
+          //   );
+          // },
         };
       }}
       drawerStyle={{

@@ -151,27 +151,6 @@ function MainNavigator({ auth }) {
         <Stack.Screen
           name="ProductDetails"
           options={{
-            headerRight: () => {
-              return (
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "flex-start",
-                  }}
-                >
-                  <TouchableOpacity style={{ marginRight: 15 }}>
-                    <FontAwesome5 name="search" size={20} color="#ffffff" />
-                  </TouchableOpacity>
-                  <TouchableOpacity style={{ marginRight: 15 }}>
-                    <MaterialCommunityIcons
-                      name="cart"
-                      size={24}
-                      color="#ffffff"
-                    />
-                  </TouchableOpacity>
-                </View>
-              );
-            },
             headerTitleAlign: "center",
             headerTitle: "product details",
             headerLeft: () => {

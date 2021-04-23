@@ -13,21 +13,68 @@ import {
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
 import Review from "../components/Review.js";
-import { MaterialIcons } from "@expo/vector-icons";
-import { connect } from "react-redux";
+import {
+  FontAwesome5,
+  MaterialCommunityIcons,
+  AntDesign,
+  MaterialIcons,
+} from "@expo/vector-icons";
 
 class ProductDetails extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      cart: [
+        {
+          product: {},
+          qty: 2,
+        },
+      ],
+      quantity: 0,
+    };
   }
   ratingsCompleted(ratings) {
     console.log("Ratings is" + ratings);
   }
 
-  // componentDidMount() {
-  //   console.log(this.props.route.params.product);
-  // }
+  summing = () => {
+    let sum = 0;
+    let cart = this.state.cart;
+    for (i = 0; i >= this.state.cart.length - 1; i++) {
+      sum = Number(sum + cart[i].qty);
+    }
+    return sum;
+  };
+
+  componentDidMount() {
+    this.props.navigation.setOptions({
+      headerRight: () => {
+        return (
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "flex-start",
+              marginRight: 15,
+            }}
+          >
+            {/* <TouchableOpacity style={{ marginRight: 15 }}>
+              <FontAwesome5 name="search" size={20} color="#ffffff" />
+            </TouchableOpacity> */}
+            <TouchableOpacity style={{ marginRight: 3 }}>
+              <MaterialCommunityIcons name="cart" size={24} color="#ffffff" />
+            </TouchableOpacity>
+            <Text style={{ color: "#fff" }}>
+              {this.state.quantity + " item(s)"}
+            </Text>
+          </View>
+        );
+      },
+    });
+  }
+
   render() {
+    let sum = () => {};
+
     return (
       <View style={style.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -35,13 +82,17 @@ class ProductDetails extends Component {
             <Image
               style={style.productImage}
               source={{
-                uri: `data:image/jpg;base64,${this.props.selectedProduct.base64}`,
+                uri: `data:image/jpg;base64,${this.props.route.params.product.base64}`,
               }}
             />
           </View>
           <View style={style.basicDetailSection}>
-            <Text style={style.productNameText}>Black HP Omen Laptop</Text>
-            <Text style={style.priceText}>GH¢ 1800</Text>
+            <Text style={style.productNameText}>
+              {this.props.route.params.product.productName}
+            </Text>
+            <Text style={style.priceText}>
+              {"GH¢ " + this.props.route.params.product.sp}
+            </Text>
             <View style={style.shopNameContainer}>
               <Text style={style.shopText}>Shop:</Text>
               <Text style={style.shopNameText}>Cictech Electronics Ltd.</Text>
@@ -80,9 +131,7 @@ class ProductDetails extends Component {
             <View style={style.descriptionSection}>
               <Text style={style.descriptionText}>Description</Text>
               <Text style={style.theDescriptionText}>
-                Intel® Core™ i7-6700HQ (2.6 GHz, up to 3.5 GHz), 4 GB DDR4-2133
-                SDRAM (1 x 4 GB), 1 TB 5400 rpm SATA, 15.6" diagonal FHD IPS
-                UWVA anti-glare WLED-backlit (1920 x 1080)
+                {this.props.route.params.product.details}
               </Text>
             </View>
           </View>
@@ -104,7 +153,7 @@ class ProductDetails extends Component {
           <TouchableOpacity
             style={style.addToCartButton}
             onPress={() => {
-              this.props.navigation.navigate("Cart");
+              this.summing;
             }}
           >
             <View style={style.addToCartBtnAndTextContainer}>
@@ -122,18 +171,7 @@ class ProductDetails extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    selectedProduct: state.products.filter((item) => {
-      return item.id === ownProps.route.params.productId;
-    }),
-  };
-};
-const mapDispatchToProps = () => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps())(ProductDetails);
+export default ProductDetails;
 
 const style = StyleSheet.create({
   container: {
@@ -149,8 +187,8 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
   productImage: {
-    width: wp("78%"),
-    height: hp("32%"),
+    width: wp("88%"),
+    height: hp("45%"),
   },
   productNameText: {
     fontSize: 23,

@@ -17,16 +17,16 @@ class PLReportListElement extends Component {
           <Text style={style.numberText}>{this.props.number}</Text>
         </View>
         <View style={style.productNameContainer}>
-          <Text style={style.productNameText}>Hp Omen Laptop</Text>
+          <Text style={style.productNameText}>{this.props.name}</Text>
         </View>
         <View style={style.cpContainer}>
-          <Text style={style.CpText}>1850</Text>
+          <Text style={style.CpText}>{this.props.cp}</Text>
         </View>
         <View style={style.SpContainer}>
-          <Text style={style.SpText}>2500</Text>
+          <Text style={style.SpText}> {this.props.sp} </Text>
         </View>
         <View style={style.timeContainer}>
-          <Text style={style.timeText}>21-07-2021 17:34</Text>
+          <Text style={style.timeText}>{this.props.time}</Text>
         </View>
       </View>
     );

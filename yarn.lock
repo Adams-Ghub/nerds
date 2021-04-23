@@ -6301,7 +6301,7 @@ react-native-chart-kit@^6.11.0:
     paths-js "^0.4.10"
     point-in-polygon "^1.0.1"
 
-react-native-elements@^3.3.2:
+react-native-elements@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-3.4.0.tgz#6717a9de89fc037b9cb3b0ff1dc45f1fd0526276"
   integrity sha512-SJKqqb+B028VZbWOw5/VBxc1eKUqbjhR/O//uaglUDrJSqm2c/dSdKR+FcNNlm/Zlc4Mr6pzxQwEY9hAJsDZgQ==
@@ -6346,10 +6346,18 @@ react-native-progress@^4.1.2:
     "@react-native-community/art" "^1.1.2"
     prop-types "^15.7.2"
 
-react-native-ratings@^7.3.0, react-native-ratings@^7.6.0:
+react-native-ratings@^7.3.0:
   version "7.6.1"
   resolved "https://registry.yarnpkg.com/react-native-ratings/-/react-native-ratings-7.6.1.tgz#b3d8a99a0c12fd6874f7e3c0e492089543d837c8"
   integrity sha512-V3y19iIifwemMr87KfovFIIzy/Rotqcds9k+ECaayQvrlucm/mXFC69R8xl/NivEdnxX7K87iurigByhpE37EQ==
+  dependencies:
+    lodash "^4.17.15"
+    prop-types "^15.7.2"
+
+react-native-ratings@^8.0.3:
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-ratings/-/react-native-ratings-8.0.3.tgz#680146f5f1e136cdc9e2b40a484a4635a2e5ddff"
+  integrity sha512-4ZZYmgOCQ0LA9mp8u2rrH5wnh0woEcgsGYic5YPI9xqsmm/tcvY2Q9fvYzXstrCzaCRzvkHE20fJUHtnJfRuVA==
   dependencies:
     lodash "^4.17.15"
     prop-types "^15.7.2"
@@ -6459,7 +6467,7 @@ react-redux-firebase@2.2.4:
     lodash "^4.17.11"
     prop-types "^15.6.2"
 
-react-redux@^7.2.2:
+react-redux@^7.2.3:
   version "7.2.3"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.2.3.tgz#4c084618600bb199012687da9e42123cca3f0be9"
   integrity sha512-ZhAmQ1lrK+Pyi0ZXNMUZuYxYAZd59wFuVDGUt536kSGdD0ya9Q7BfsE95E3TsFLE3kOSFp5m6G5qbatE+Ic1+w==

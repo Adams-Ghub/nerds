@@ -14,6 +14,8 @@ import {
 } from "react-native";
 import PLReportListElement from "./PLReportListElement";
 import { Feather } from "@expo/vector-icons";
+import { connect } from "react-redux";
+import { getAllOrders } from "../redux/actions/authAction.js";
 
 class PLReport extends Component {
   constructor(props) {
@@ -22,7 +24,9 @@ class PLReport extends Component {
       number: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
     };
   }
-
+  componentDidMount() {
+    this.props.getAllOrders();
+  }
   render() {
     return (
       <View style={style.container}>
@@ -79,12 +83,18 @@ class PLReport extends Component {
         {/* <Text>transaction list</Text> */}
         <FlatList
           style={style.flatlistContainer}
-          data={this.state.number}
+          data={this.props.orders}
           renderItem={({ item }) => {
             return (
               <View style={style.productInFlatlist}>
                 <TouchableOpacity style={style.product}>
-                  <PLReportListElement number={item} />
+                  <PLReportListElement
+                    number={item.index}
+                    name={item.orderedProducts.name}
+                    cp={item.orderedProducts.cp}
+                    sp={item.orderedProducts.sp}
+                    time={item.time.t}
+                  />
                 </TouchableOpacity>
               </View>
             );
@@ -132,7 +142,13 @@ class PLReport extends Component {
   }
 }
 
-export default PLReport;
+const mapStateToProps = (state) => {
+  return { orders: state.orders };
+};
+const mapDispatchToProps = () => {
+  return { getAllOrders };
+};
+export default connect(mapStateToProps, mapDispatchToProps())(PLReport);
 
 const style = StyleSheet.create({
   container: {

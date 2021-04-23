@@ -51,16 +51,16 @@ const style = StyleSheet.create({
   productImageContainer: {
     flex: 7,
     marginBottom: 20,
-    width: 160,
-    height: 150,
+    // width: 160,
+    // height: 150,
   },
   productNamePricingContainer: {
     flex: 3,
     marginTop: hp("6%"),
   },
   productImage: {
-    width: 160,
-    height: 150,
+    width: 152,
+    height: 145,
   },
 
   productName: {

@@ -59,11 +59,19 @@ const style = StyleSheet.create({
     marginHorizontal: wp("4%"),
     marginVertical: hp("5%"),
   },
-  productImage: {
-    width: 160,
-    height: 150,
+  productImageContainer: {
+    flex: 9,
+    justifyContent: "center",
+    alignItems: "center",
   },
-
+  productImage: {
+    width: 145,
+    height: 140,
+  },
+  infoAndBtnsContainer: {
+    flex: 1,
+    marginVertical: 10,
+  },
   productName: {
     fontSize: 15,
     maxWidth: wp("35%"),

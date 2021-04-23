@@ -20,10 +20,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   icon: {
-    marginHorizontal: 5,
+    marginHorizontal: 8,
   },
   Profile: {
     fontSize: 20,
-    color: "#0080FF",
+    color: "#FFFFFF",
   },
 });

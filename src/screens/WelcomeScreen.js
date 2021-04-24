@@ -28,32 +28,32 @@ class WelcomeScreen extends Component {
     super(props);
     this.state = {
       name: [
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
       ],
       searchText: "",
 
-      shopColor: "#ffffff",
-      productColor: "#ffffff",
+      shopColor: "#080809",
+      productColor: "#080809",
     };
     this.handleUpdateState = this.handleUpdateState.bind(this);
   }
   shopactivation = () => {
-    this.setState({ productColor: "#ffffff", shopColor: "#ffffff" });
+    this.setState({ productColor: "#080808", shopColor: "#080809" });
   };
 
   productactivation = () => {
-    this.setState({ productColor: "#ffffff", shopColor: "#ffffff" });
+    this.setState({ productColor: "#080809", shopColor: "#080809" });
   };
   handleUpdateState = (name, value) => {
     this.setState({
@@ -73,10 +73,10 @@ class WelcomeScreen extends Component {
               placeholder="search by product or shop name"
               value={this.state.searchText}
               style={style.searchBox}
-              placeholderTextColor="#cccbc8"
+              placeholderTextColor="#808080"
             ></TextInput>
             <TouchableOpacity>
-              <Entypo name="magnifying-glass" size={24} color={"#ffffff"} />
+              <Entypo name="magnifying-glass" size={24} color={"#808080"} />
             </TouchableOpacity>
           </View>
           <View style={style.filterContainer}>
@@ -143,7 +143,7 @@ const style = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
-    backgroundColor: "#080809",
+    backgroundColor: "#FFFFFF",
     paddingTop: hp("17%"),
   },
 
@@ -151,11 +151,9 @@ const style = StyleSheet.create({
     flexDirection: "row",
     paddingVertical: hp("0.2%"),
     justifyContent: "center",
-    borderStyle: "solid",
     borderWidth: wp("0.3%"),
     paddingHorizontal: wp("1%"),
-    borderColor: "#cccccc",
-    backgroundColor: "rgba(165, 161, 157, 0.5)",
+    backgroundColor: "#FFFFFF",
     borderRadius: 10,
     marginHorizontal: 7,
   },
@@ -165,7 +163,7 @@ const style = StyleSheet.create({
     paddingVertical: 8,
   },
   topSection: {
-    backgroundColor: "#080809",
+    backgroundColor: "#FFFFFF",
   },
 
   filterContainer: {
@@ -180,7 +178,7 @@ const style = StyleSheet.create({
     marginHorizontal: wp("8%"),
   },
   flatlistContainer: {
-    backgroundColor: "#080809",
+    backgroundColor: "#FFFFFF",
     paddingBottom: 20,
   },
   accountButton: {

@@ -16,7 +16,7 @@ class Product extends Component {
           <View style={style.productImageContainer}>
             <Image
               style={style.productImage}
-              source={require("../../assets/bag.jpg")}
+              source={require("../../assets/ladies_bag.jpg")}
             />
           </View>
           <View style={style.details}>
@@ -38,9 +38,10 @@ const style = StyleSheet.create({
     justifyContent: "center",
     justifyContent: "space-around",
     maxWidth: wp("47%"),
-    backgroundColor: "rgba(75, 71, 67, 0.4)",
+    backgroundColor: "#FFFFFF",
     borderRadius: 10,
     height: 250,
+    borderColor: "#080809",
   },
   productContainer: {
     flex: 1,
@@ -48,28 +49,33 @@ const style = StyleSheet.create({
     borderRadius: 10,
     justifyContent: "space-around",
     alignItems: "center",
+    borderWidth: 2,
   },
   details: {
-    backgroundColor: "rgba(165, 161, 157, 0.4)",
+    // backgroundColor: "rgba(165, 161, 157, 0.4)",
     borderRadius: 10,
     width: "90%",
     alignItems: "center",
     paddingVertical: 10,
+    borderColor: "#080809",
+    borderWidth: 0.5,
   },
   productImage: {
     width: 150,
     height: 120,
+    borderRadius: 10,
+    borderWidth: 0.5,
   },
   productName: {
     fontSize: 17,
     paddingVertical: hp("0.5%"),
     paddingHorizontal: wp("0.5%"),
-    color: "#ffffff",
+    color: "#080809",
   },
   productPrice: {
     fontSize: 15,
     fontWeight: "700",
-    color: "#ffffff",
+    color: "#080809",
   },
 });
 

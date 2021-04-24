@@ -16,11 +16,13 @@ class Product extends Component {
           <View style={style.productImageContainer}>
             <Image
               style={style.productImage}
-              source={require("../../assets/productImg.png")}
+              source={require("../../assets/ladies_bag.jpg")}
             />
           </View>
-          <Text style={style.productName}>{this.props.name}</Text>
-          <Text style={style.productPrice}>GHS 1800</Text>
+          <View style={style.details}>
+            <Text style={style.productName}>{this.props.name}</Text>
+            <Text style={style.productPrice}>GHS 1800</Text>
+          </View>
         </View>
       </View>
     );
@@ -30,34 +32,50 @@ class Product extends Component {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: wp("0.5%"),
-    marginVertical: wp("0.5%"),
-    backgroundColor: "#FFFFFF",
+    marginHorizontal: 5,
+    marginVertical: 5,
     flexDirection: "column",
     justifyContent: "center",
-    maxHeight: hp("24%"),
+    justifyContent: "space-around",
     maxWidth: wp("47%"),
+    backgroundColor: "#FFFFFF",
+    borderRadius: 10,
+    height: 250,
+    borderColor: "#080809",
   },
   productContainer: {
-    height: hp("20%"),
-    width: wp("40%"),
-    backgroundColor: "#FFFFFF",
-    marginHorizontal: wp("5%"),
-    marginVertical: hp("5%"),
+    flex: 1,
+    width: wp("45%"),
+    borderRadius: 10,
+    justifyContent: "space-around",
+    alignItems: "center",
+    borderWidth: 2,
+  },
+  details: {
+    // backgroundColor: "rgba(165, 161, 157, 0.4)",
+    borderRadius: 10,
+    width: "90%",
+    alignItems: "center",
+    paddingVertical: 10,
+    borderColor: "#080809",
+    borderWidth: 0.5,
   },
   productImage: {
     width: 150,
     height: 120,
+    borderRadius: 10,
+    borderWidth: 0.5,
   },
-
   productName: {
     fontSize: 17,
     paddingVertical: hp("0.5%"),
     paddingHorizontal: wp("0.5%"),
+    color: "#080809",
   },
   productPrice: {
     fontSize: 15,
     fontWeight: "700",
+    color: "#080809",
   },
 });
 

@@ -28,32 +28,32 @@ class WelcomeScreen extends Component {
     super(props);
     this.state = {
       name: [
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
-        "hp omen laptop",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
+        "GUCCI Bag",
       ],
       searchText: "",
 
-      shopColor: "black",
-      productColor: "#0080FF",
+      shopColor: "#080809",
+      productColor: "#080809",
     };
     this.handleUpdateState = this.handleUpdateState.bind(this);
   }
   shopactivation = () => {
-    this.setState({ productColor: "black", shopColor: "#0080FF" });
+    this.setState({ productColor: "#080808", shopColor: "#080809" });
   };
 
   productactivation = () => {
-    this.setState({ productColor: "#0080FF", shopColor: "black" });
+    this.setState({ productColor: "#080809", shopColor: "#080809" });
   };
   handleUpdateState = (name, value) => {
     this.setState({
@@ -73,9 +73,10 @@ class WelcomeScreen extends Component {
               placeholder="search by product or shop name"
               value={this.state.searchText}
               style={style.searchBox}
+              placeholderTextColor="#808080"
             ></TextInput>
             <TouchableOpacity>
-              <Entypo name="magnifying-glass" size={24} color={"#888888"} />
+              <Entypo name="magnifying-glass" size={24} color={"#808080"} />
             </TouchableOpacity>
           </View>
           <View style={style.filterContainer}>
@@ -124,6 +125,8 @@ class WelcomeScreen extends Component {
                 </View>
               );
             }}
+            ListFooterComponent={<View></View>}
+            ListFooterComponentStyle={{ marginBottom: 100 }}
             numColumns={2}
             keyExtractor={(item, index) => index}
             showsVerticalScrollIndicator={false}
@@ -140,29 +143,27 @@ const style = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
-    backgroundColor: "#F8F8F8",
-    marginTop: hp("17%"),
-    marginHorizontal: wp("2%"),
-    marginBottom: hp("12%"),
+    backgroundColor: "#FFFFFF",
+    paddingTop: hp("17%"),
   },
 
   searchSection: {
     flexDirection: "row",
     paddingVertical: hp("0.2%"),
     justifyContent: "center",
-    borderStyle: "solid",
     borderWidth: wp("0.3%"),
     paddingHorizontal: wp("1%"),
-    borderColor: "#cccccc",
-    borderRadius: wp("10%"),
-    marginHorizontal: hp("1%"),
+    backgroundColor: "#FFFFFF",
+    borderRadius: 10,
+    marginHorizontal: 7,
   },
   searchBox: {
     fontSize: 18,
     marginRight: wp("4%"),
+    paddingVertical: 8,
   },
   topSection: {
-    // paddingBottom: hp("1%"),
+    backgroundColor: "#FFFFFF",
   },
 
   filterContainer: {
@@ -170,21 +171,15 @@ const style = StyleSheet.create({
     justifyContent: "flex-start",
     marginTop: hp("1%"),
     paddingLeft: wp("25%"),
-    paddingBottom: hp("5%"),
+    paddingBottom: 5,
   },
   filterIcons: {
     marginVertical: hp("2%"),
     marginHorizontal: wp("8%"),
   },
   flatlistContainer: {
-    marginTop: wp("-10%"),
-  },
-  lowerSection: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-
-    marginHorizontal: wp("10%"),
-    marginVertical: hp("2%"),
+    backgroundColor: "#FFFFFF",
+    paddingBottom: 20,
   },
   accountButton: {
     flexDirection: "column",
@@ -199,11 +194,8 @@ const style = StyleSheet.create({
   accountText: {
     fontSize: 10,
   },
-
   homeText: {
     fontSize: 10,
   },
-  flatlistContainer: {
-    paddingBottom: 20,
-  },
+  text: {},
 });

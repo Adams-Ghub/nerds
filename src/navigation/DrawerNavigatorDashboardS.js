@@ -80,33 +80,33 @@ function DrawerNavigatorDashboardS({ navigation }) {
               </TouchableOpacity>
             );
           },
-          headerRight: () => {
-            return (
-              <View style={{ flexDirection: "row", marginRight: wp("4%") }}>
-                <Image
-                  style={{
-                    width: wp("10%"),
-                    height: hp("5%"),
-                    marginRight: wp("2%"),
-                    borderRadius: 25,
-                  }}
-                  source={require("../../assets/contact.jpg")}
-                />
-                <View>
-                  <Text style={{ color: "#ffffff" }}>Welcome,</Text>
-                  <Text
-                    style={{
-                      color: "#ffffff",
-                      fontWeight: "700",
-                      fontSize: 17,
-                    }}
-                  >
-                    Adams
-                  </Text>
-                </View>
-              </View>
-            );
-          },
+          // headerRight: () => {
+          //   return (
+          //     <View style={{ flexDirection: "row", marginRight: wp("4%") }}>
+          //       <Image
+          //         style={{
+          //           width: wp("10%"),
+          //           height: hp("5%"),
+          //           marginRight: wp("2%"),
+          //           borderRadius: 25,
+          //         }}
+          //         source={require("../../assets/contact.jpg")}
+          //       />
+          //       <View>
+          //         <Text style={{ color: "#F88017" }}>Welcome,</Text>
+          //         <Text
+          //           style={{
+          //             color: "#F88017",
+          //             fontWeight: "700",
+          //             fontSize: 17,
+          //           }}
+          //         >
+          //           Nerds
+          //         </Text>
+          //       </View>
+          //     </View>
+          //   );
+          // },
         };
       }}
       drawerStyle={{
@@ -131,7 +131,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
                     name="dashboard"
                     style={{ marginTop: 5 }}
                     size={20}
-                    color="#0080FF"
+                    color="#FFFFFF"
                   />
                 }
               />
@@ -153,7 +153,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
                     name="user"
                     style={{ marginTop: 5 }}
                     size={20}
-                    color="#0080FF"
+                    color="#FFFFFF"
                   />
                 }
               />
@@ -176,7 +176,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
                     name="box"
                     style={{ marginTop: 5 }}
                     size={20}
-                    color="#0080FF"
+                    color="#FFFFFF"
                   />
                 }
               />
@@ -198,7 +198,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
                     name="shoppingcart"
                     style={{ marginTop: 5 }}
                     size={20}
-                    color="#0080FF"
+                    color="#FFFFFF"
                   />
                 }
               />
@@ -221,7 +221,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
                     name="users"
                     style={{ marginTop: 5 }}
                     size={20}
-                    color="#0080FF"
+                    color="#FFFFFF"
                   />
                 }
               />
@@ -244,7 +244,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
                     name="package"
                     style={{ marginTop: 5 }}
                     size={20}
-                    color="#0080FF"
+                    color="#FFFFFF"
                   />
                 }
               />
@@ -267,7 +267,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
                     name="logout"
                     style={{ marginTop: 5 }}
                     size={20}
-                    color="#0080FF"
+                    color="#FFFFFF"
                   />
                 }
               />

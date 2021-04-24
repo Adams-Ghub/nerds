@@ -153,7 +153,7 @@ class ProductDetails extends Component {
           <TouchableOpacity
             style={style.addToCartButton}
             onPress={() => {
-              this.summing;
+              this.props.navigation.navigate("order");
             }}
           >
             <View style={style.addToCartBtnAndTextContainer}>

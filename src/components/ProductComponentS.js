@@ -26,7 +26,9 @@ function ProductComponentS(props) {
           <View style={style.editAndDeleteBtnContainer}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate("EditProduct");
+                navigation.navigate("EditProduct", {
+                  productId: props.id,
+                });
               }}
             >
               <MaterialIcons name="mode-edit" size={20} color="#0080ff" />

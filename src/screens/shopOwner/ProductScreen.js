@@ -69,6 +69,7 @@ class ProductScreen extends Component {
                   name={item.productName}
                   sp={item.sp}
                   image={`data:image/jpg;base64,${item.base64}`}
+                  id={item.id}
                 />
               </View>
             );

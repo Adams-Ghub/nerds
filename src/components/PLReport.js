@@ -20,14 +20,21 @@ import { getAllOrders } from "../redux/actions/authAction.js";
 class PLReport extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      number: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-    };
+    this.state = {};
   }
+
   componentDidMount() {
     this.props.getAllOrders();
   }
   render() {
+    // let tcp = 0;
+    // for (i = 0; i >= this.props.orders.length - 1; i++) {
+    //   tcp =
+    //     tcp +
+    //     this.props.orders[i].orderedProducts.qty *
+    //       this.props.orders[i].orderedProducts.cp;
+    // }
+    console.log(this.props.orders);
     return (
       <View style={style.container}>
         <View style={style.allFiltersContainer}>
@@ -75,6 +82,9 @@ class PLReport extends Component {
           <View style={style.SpContainer}>
             <Text style={style.SpText}>SP(GH¢)</Text>
           </View>
+          <View style={style.qtyContainer}>
+            <Text style={style.qtyText}>Qty</Text>
+          </View>
           <View style={style.timeContainer}>
             <Text style={style.timeText}>TIME</Text>
           </View>
@@ -93,7 +103,8 @@ class PLReport extends Component {
                     name={item.orderedProducts.name}
                     cp={item.orderedProducts.cp}
                     sp={item.orderedProducts.sp}
-                    time={item.time.t}
+                    qty={item.orderedProducts.qty}
+                    time={item.time.toDate().toLocaleTimeString("e-US")}
                   />
                 </TouchableOpacity>
               </View>
@@ -119,16 +130,16 @@ class PLReport extends Component {
           <View style={style.theTotalValueColumnContainer}>
             <View style={style.cediUnitValueTextContainer}>
               <Text style={style.cediUnitText}>GH¢</Text>
-              <Text style={style.totalSPValueText}>122344</Text>
+              <Text style={style.totalSPValueText}>14,400</Text>
             </View>
             <View style={style.cediUnitValueTextContainer}>
               <Text style={style.cediUnitText}>GH¢</Text>
-              <Text style={style.totalCPValueText}>122344</Text>
+              <Text style={style.totalCPValueText}>12,400</Text>
             </View>
 
             <View style={style.grossCediUnitValueTextContainer}>
               <Text style={style.cediUnitText}>GH¢</Text>
-              <Text style={style.grossProfitValueText}>122344</Text>
+              <Text style={style.grossProfitValueText}>2,000</Text>
             </View>
           </View>
         </View>
@@ -154,7 +165,7 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    marginVertical: hp("6%"),
+    marginVertical: hp("1%"),
     marginHorizontal: wp("2%"),
   },
   allFiltersContainer: {
@@ -166,7 +177,12 @@ const style = StyleSheet.create({
   filterProductNameInput: {
     borderWidth: wp("0.2%"),
     borderRadius: 4,
-    paddingHorizontal: wp("0.2%"),
+    paddingHorizontal: wp("0.9%"),
+  },
+  filterCategoryInput: {
+    borderWidth: wp("0.2%"),
+    borderRadius: 4,
+    paddingHorizontal: wp("0.9%"),
   },
   dateFilterFromContainer: {
     flexDirection: "row",
@@ -221,8 +237,19 @@ const style = StyleSheet.create({
     fontSize: 15,
     fontWeight: "700",
   },
+  qtyContainer: {
+    width: wp("9%"),
+    marginHorizontal: wp("0.3%"),
+    backgroundColor: "#ebebeb",
+    alignItems: "center",
+    paddingVertical: hp("0.5%"),
+  },
+  qtyText: {
+    fontSize: 15,
+    fontWeight: "700",
+  },
   timeContainer: {
-    width: wp("30%"),
+    width: wp("19%"),
     backgroundColor: "#ebebeb",
     marginHorizontal: wp("0.3%"),
     alignItems: "center",
@@ -267,6 +294,7 @@ const style = StyleSheet.create({
     flexDirection: "row",
     borderTopWidth: wp("0.2%"),
   },
+
   toolsContainer: {
     borderStyle: "solid",
     borderTopWidth: hp("0.2%"),

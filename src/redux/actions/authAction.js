@@ -146,7 +146,9 @@ export const getAllOrders = () => {
           });
         },
 
-        (error) => {}
+        (error) => {
+          console.log(error.message);
+        }
       );
   };
 };

@@ -45,7 +45,7 @@ function MyTabs() {
 
       tabBarOptions={{
         style: {
-          backgroundColor: "rgba(165, 161, 157, 0.5)",
+          backgroundColor: "#080809",
           // borderRadius: 10,
           // marginHorizontal: 7,
         },

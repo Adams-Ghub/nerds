@@ -16,26 +16,62 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { ScrollView } from "react-native-gesture-handler";
+import { connect } from "react-redux";
+import { AddNewProduct } from "../../redux/actions/authAction";
 
 class AddProductScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
       image: null,
+      base64: null,
+      productName: "",
+      cp: "",
+      sp: "",
+      qty: "",
+      details: "",
     };
+
+    this.handleUpdateState = this.handleUpdateState.bind(this);
+    this.handleAddProduct = this.handleAddProduct.bind(this);
   }
 
   selectPicture = async () => {
     await Permissions.askAsync(Permissions.MEDIA_LIBRARY);
-    const { cancelled, uri } = await ImagePicker.launchImageLibraryAsync({
+    const {
+      cancelled,
+      uri,
+      base64,
+    } = await ImagePicker.launchImageLibraryAsync({
       aspect: [21, 21],
+      base64: true,
       allowsEditing: true,
       quality: 1,
     });
-    if (!cancelled) this.setState({ image: uri });
-    console.log(uri);
+    if (!cancelled) {
+      this.setState({ image: uri });
+      this.setState({ base64: base64 });
+      console.log(base64);
+    }
+  };
+  //Updates the Input Boxes
+  handleUpdateState = (name, value) => {
+    this.setState({
+      [name]: value,
+    });
   };
 
+  handleAddProduct = () => {
+    const product = {
+      productName: this.state.productName,
+      cp: this.state.cp,
+      sp: this.state.sp,
+      qty: this.state.qty,
+      details: this.state.details,
+      base64: this.state.base64,
+    };
+    this.props.AddNewProduct(product);
+  };
   render() {
     return (
       <View style={style.container}>
@@ -48,6 +84,10 @@ class AddProductScreen extends Component {
               <TextInput
                 style={style.usernameInput}
                 placeholder="Product Name"
+                value={this.state.productName}
+                onChangeText={(text) =>
+                  this.handleUpdateState("productName", text)
+                }
               ></TextInput>
             </View>
             <View style={style.pricingContainer}>
@@ -61,6 +101,8 @@ class AddProductScreen extends Component {
                     style={style.pricingInput}
                     placeholder="eg. 1000"
                     keyboardType="number-pad"
+                    value={this.state.cp}
+                    onChangeText={(text) => this.handleUpdateState("cp", text)}
                   ></TextInput>
                 </View>
               </View>
@@ -74,6 +116,22 @@ class AddProductScreen extends Component {
                     style={style.pricingInput}
                     placeholder="eg. 1200"
                     keyboardType="number-pad"
+                    value={this.state.sp}
+                    onChangeText={(text) => this.handleUpdateState("sp", text)}
+                  ></TextInput>
+                </View>
+              </View>
+              <View style={style.pricingInputAndTextContainer}>
+                <View style={style.pricingTextContainer}>
+                  <Text style={style.pricingText}>Quantity:</Text>
+                </View>
+                <View style={style.pricingInputContainer}>
+                  <TextInput
+                    style={style.pricingInput}
+                    placeholder="eg. 100"
+                    keyboardType="number-pad"
+                    value={this.state.qty}
+                    onChangeText={(text) => this.handleUpdateState("qty", text)}
                   ></TextInput>
                 </View>
               </View>
@@ -83,6 +141,8 @@ class AddProductScreen extends Component {
                 style={style.usernameInput}
                 placeholder="Product Details"
                 multiline={true}
+                value={this.state.details}
+                onChangeText={(text) => this.handleUpdateState("details", text)}
               ></TextInput>
             </View>
             <View style={style.productImageContainer}>
@@ -99,12 +159,15 @@ class AddProductScreen extends Component {
                 />
               </View>
             </View>
-          </View>
 
-          <View style={style.addProductButtonContainer}>
-            <TouchableOpacity style={style.addProductButton}>
-              <Text style={style.addProductButtonText}>Add product</Text>
-            </TouchableOpacity>
+            <View style={style.addProductButtonContainer}>
+              <TouchableOpacity
+                onPress={this.handleAddProduct}
+                style={style.addProductButton}
+              >
+                <Text style={style.addProductButtonText}>Add product</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -233,4 +296,15 @@ const style = StyleSheet.create({
   },
 });
 
-export default AddProductScreen;
+const mapStateToProps = (state) => {
+  return {
+    products: state.products,
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {
+    AddNewProduct,
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps())(AddProductScreen);

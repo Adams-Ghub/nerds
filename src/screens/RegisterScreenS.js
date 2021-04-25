@@ -10,6 +10,45 @@ import {
 import CustomInput from "../components/CustomInput";
 
 class RegisterScreenS extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      password: "",
+      confirm: "",
+      email: "",
+      shopName: "",
+      ghpostGps: "",
+      contact: "",
+      idNumber: "",
+      errorMsg: "",
+      //current form indicator(shop owner form,1= shop form)
+      currentFormIndicator: "0",
+      msg: "Create Account",
+      backColor: "#cccccc",
+      nextColor: "#0080FF",
+    };
+
+    this.handleSignUp = this.handleSignUp.bind(this);
+    this.handleUpdateState = this.handleUpdateState.bind(this);
+  }
+
+  handleSignUp = () => {
+    if (this.props.route.params.userType === "shopOwner") {
+      this.props.navigation.navigate("ShopOwnerDashboard");
+    } else {
+      this.props.navigation.navigate("CustomerDashboard");
+    }
+  };
+
+  handleUpdateState = (name, value) => {
+    this.setState({
+      [name]: value,
+    });
+  };
+
+
   render() {
     return (
       <ScrollView>

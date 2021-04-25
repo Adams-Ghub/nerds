@@ -119,8 +119,9 @@ function DrawerNavigatorDashboardS({ navigation }) {
         paddingTop: hp("11.95%"),
       }}
     >
-      <Drawer.Screen
-        name="Dashboard"
+      {/* <Drawer.Screen
+        name="Hoome"
+
         options={{
           drawerLabel: () => {
             return (
@@ -206,8 +207,12 @@ function DrawerNavigatorDashboardS({ navigation }) {
           },
           ...defaultHeaderStyle,
         }}
-        component={OrderNavigatior}
+
+        
+  
+        component={OrderNavigatior}*/}
       />
+
 
       <Drawer.Screen
         name="customers"
@@ -230,6 +235,28 @@ function DrawerNavigatorDashboardS({ navigation }) {
           ...defaultHeaderStyle,
         }}
         component={ProductScreen}
+      />
+      <Drawer.Screen
+        name="report"
+        options={{
+          drawerLabel: () => {
+            return (
+              <DrawerItem
+                title="report"
+                icon={
+                  <Entypo
+                    name="text-document"
+                    style={{ marginTop: 5 }}
+                    size={20}
+                    color="#0080FF"
+                  />
+                }
+              />
+            );
+          },
+          ...defaultHeaderStyle,
+        }}
+        component={PLReport}
       />
 
       <Drawer.Screen

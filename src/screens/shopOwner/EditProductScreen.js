@@ -77,6 +77,20 @@ class EditProductScreen extends Component {
                   ></TextInput>
                 </View>
               </View>
+              <View style={style.pricingInputAndTextContainer}>
+                <View style={style.pricingTextContainer}>
+                  <Text style={style.pricingText}>Quantity:</Text>
+                </View>
+                <View style={style.pricingInputContainer}>
+                  <TextInput
+                    style={style.pricingInput}
+                    placeholder="eg. 100"
+                    keyboardType="number-pad"
+                    value={this.state.qty}
+                    onChangeText={(text) => this.handleUpdateState("qty", text)}
+                  ></TextInput>
+                </View>
+              </View>
             </View>
             <View style={style.productDetailsInputContainer}>
               <TextInput

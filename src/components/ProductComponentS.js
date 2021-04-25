@@ -14,15 +14,14 @@ function ProductComponentS(props) {
     <View style={style.container}>
       <View style={style.productContainer}>
         <View style={style.productImageContainer}>
-          <Image
-            style={style.productImage}
-            source={require("../../assets/productImg.png")}
-          />
+          <Image style={style.productImage} source={{ uri: props.image }} />
         </View>
         <View style={style.infoAndBtnsContainer}>
           <View style={style.nameAndPriceContainer}>
-            <Text style={style.productName}>{props.name}</Text>
-            <Text style={style.productPrice}>GHS 1800</Text>
+            <Text numberOfLines={1} style={style.productName}>
+              {props.name}
+            </Text>
+            <Text style={style.productPrice}>GH¢{props.sp}</Text>
           </View>
           <View style={style.editAndDeleteBtnContainer}>
             <TouchableOpacity
@@ -50,23 +49,26 @@ const style = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     flexDirection: "column",
     justifyContent: "center",
-    maxHeight: hp("24%"),
-    maxWidth: wp("47%"),
+    maxHeight: hp("27%"),
+    maxWidth: wp("50%"),
   },
   productContainer: {
-    height: hp("20%"),
+    height: hp("23%"),
     width: wp("40%"),
     backgroundColor: "#FFFFFF",
-    marginHorizontal: wp("5%"),
+    marginHorizontal: wp("4%"),
     marginVertical: hp("5%"),
   },
   productImage: {
-    width: 150,
-    height: 120,
+
+    width: 160,
+    height: 150,
+
   },
 
   productName: {
-    fontSize: 17,
+    fontSize: 15,
+    maxWidth: wp("35%"),
     paddingVertical: hp("0.5%"),
     paddingHorizontal: wp("0.5%"),
   },

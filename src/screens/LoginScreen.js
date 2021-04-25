@@ -74,7 +74,7 @@ class LoginScreen extends Component {
               onPress={this.handleLogin}
               style={style.loginButton}
               onPress={() => {
-                this.props.navigation.navigate("ShopOwnerDashboard", {
+                this.props.navigation.navigate("ShopOwnerDashboard ", {
                   screen: "Dashboard",
                 });
               }}

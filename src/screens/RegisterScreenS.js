@@ -10,7 +10,6 @@ import {
 import CustomInput from "../components/CustomInput";
 
 class RegisterScreenS extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +35,7 @@ class RegisterScreenS extends Component {
 
   handleSignUp = () => {
     if (this.props.route.params.userType === "shopOwner") {
-      this.props.navigation.navigate("ShopOwnerDashboard");
+      this.props.navigation.navigate("RegisterShop");
     } else {
       this.props.navigation.navigate("CustomerDashboard");
     }
@@ -47,7 +46,6 @@ class RegisterScreenS extends Component {
       [name]: value,
     });
   };
-
 
   render() {
     return (
@@ -108,7 +106,8 @@ class RegisterScreenS extends Component {
             <TouchableOpacity
               style={style.signupButton}
               onPress={() => {
-                this.props.navigation.navigate("RegisterShop");
+                this.handleSignUp();
+                // this.props.navigation.navigate("RegisterShop");
               }}
             >
               <Text style={style.signupButtonText}>Sign up</Text>

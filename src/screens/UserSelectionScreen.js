@@ -29,7 +29,10 @@ class UserSelectionScreen extends Component {
           <TouchableOpacity
             onPress={() => {
               this.props.navigation.navigate("Welcome", {
-                userType: "customer",
+                screen: "Register",
+                params: {
+                  userType: "customer",
+                },
               });
             }}
             style={style.createShopButton}

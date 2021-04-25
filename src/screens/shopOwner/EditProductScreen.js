@@ -16,8 +16,6 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { ScrollView } from "react-native-gesture-handler";
-import { connect } from "react-redux";
-import { getAllProducts } from "../../redux/actions/authAction.js";
 
 class EditProductScreen extends Component {
   constructor(props) {
@@ -49,7 +47,6 @@ class EditProductScreen extends Component {
             <View style={style.usernameInputContainer}>
               <TextInput
                 style={style.usernameInput}
-                value={this.props.Selectedproducts.productName}
                 placeholder="Product Name"
               ></TextInput>
             </View>
@@ -112,9 +109,7 @@ class EditProductScreen extends Component {
               <View style={style.theProductImageContainer}>
                 <Image
                   style={style.theProductImage}
-                  source={{
-                    uri: `data:image/jpg;base64,${this.props.Selectedproduct.base64}`,
-                  }}
+                  source={{ uri: this.state.image }}
                 />
               </View>
             </View>
@@ -130,23 +125,6 @@ class EditProductScreen extends Component {
     );
   }
 }
-
-const mapStateToProps = (state, ownProps) => {
-  return {
-    Selectedproduct: state.products.filter(
-      (item) => item.id === ownProps.route.params.productId
-    ),
-  };
-};
-
-const mapDispatchToProps = () => {
-  return {};
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps()
-)(EditProductScreen);
 
 const style = StyleSheet.create({
   container: {
@@ -270,3 +248,5 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+export default EditProductScreen;

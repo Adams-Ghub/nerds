@@ -17,21 +17,16 @@ class PLReportListElement extends Component {
           <Text style={style.numberText}>{this.props.number}</Text>
         </View>
         <View style={style.productNameContainer}>
-          <Text style={style.productNameText} numberOfLines={1}>
-            {this.props.name}
-          </Text>
+          <Text style={style.productNameText}>Hp Omen Laptop</Text>
         </View>
         <View style={style.cpContainer}>
-          <Text style={style.CpText}>{this.props.cp}</Text>
+          <Text style={style.CpText}>1850</Text>
         </View>
         <View style={style.SpContainer}>
-          <Text style={style.SpText}> {this.props.sp} </Text>
-        </View>
-        <View style={style.qtyContainer}>
-          <Text style={style.qtyText}> {this.props.qty} </Text>
+          <Text style={style.SpText}>2500</Text>
         </View>
         <View style={style.timeContainer}>
-          <Text style={style.timeText}>{this.props.time}</Text>
+          <Text style={style.timeText}>21-07-2021 17:34</Text>
         </View>
       </View>
     );
@@ -91,19 +86,8 @@ const style = StyleSheet.create({
     fontSize: 14,
     fontWeight: "600",
   },
-  qtyContainer: {
-    width: wp("9%"),
-    marginHorizontal: wp("0.3%"),
-    backgroundColor: "#ebebeb",
-    alignItems: "center",
-    paddingVertical: hp("0.2%"),
-  },
-  qtyText: {
-    fontSize: 14,
-    fontWeight: "600",
-  },
   timeContainer: {
-    width: wp("20%"),
+    width: wp("30%"),
     backgroundColor: "#ebebeb",
     marginHorizontal: wp("0.3%"),
     alignItems: "center",

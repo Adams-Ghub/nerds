@@ -4,7 +4,6 @@ const initialState = {
   role: null,
   error: {},
   products: [],
-  orders: [],
 };
 
 export default (state = initialState, action) => {
@@ -26,8 +25,6 @@ export default (state = initialState, action) => {
 
     case "SET_ALL_PRODUCTS":
       return { ...state, products: action.payload };
-    case "SET_ALL_ORDERS":
-      return { ...state, orders: action.payload };
 
     default:
       return state;

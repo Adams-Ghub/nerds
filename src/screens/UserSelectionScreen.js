@@ -28,7 +28,9 @@ class UserSelectionScreen extends Component {
         <View style={style.createShopButtonContainer}>
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate("Welcome");
+              this.props.navigation.navigate("Welcome", {
+                userType: "customer",
+              });
             }}
             style={style.createShopButton}
           >
@@ -37,7 +39,9 @@ class UserSelectionScreen extends Component {
 
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate("RegisterC");
+              this.props.navigation.navigate("RegisterS", {
+                userType: "shopOwner",
+              });
             }}
             style={style.createShopButton}
           >

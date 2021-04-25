@@ -28,18 +28,38 @@ import {
   AntDesign,
   MaterialIcons,
 } from "@expo/vector-icons";
+import MobileNumberScreen from "../screens/customerMomoPayment/MobileNumberScreen";
+import SuccessScreen from "../screens/customerMomoPayment/SuccessScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
   return (
-    <Tab.Navigator initialRouteName="Cart">
+
+    <Tab.Navigator initialRouteName="Cart"
+    // activeColor="red"
+      // inactiveColor="white"
+      // activeBackgroundColor="green"
+      // inactiveBackgroundColor="green"
+      // style={{ backgroundColor: "#080809" }}
+
+      tabBarOptions={{
+        style: {
+          backgroundColor: "#080809",
+          // borderRadius: 10,
+          // marginHorizontal: 7,
+        },
+      }}
+    >
+
+    
+
       <Tab.Screen
         name="Cart"
         options={{
           tabBarIcon: ({ tintColor }) => (
-            <Icon name="md-cart" color={tintColor} size={25} />
+            <Icon name="md-cart" color={"#ffffff"} size={25} />
           ),
         }}
         component={WelcomeScreen}
@@ -48,7 +68,7 @@ function MyTabs() {
         name="Categories"
         options={{
           tabBarIcon: ({ tintColor }) => (
-            <Icon name="grid-outline" color={tintColor} size={25} />
+            <Icon name="grid-outline" color={"#ffffff"} size={25} />
           ),
         }}
         component={CartScreen}
@@ -57,7 +77,7 @@ function MyTabs() {
         name="Register"
         options={{
           tabBarIcon: ({ tintColor }) => (
-            <Icon name="person-outline" color={tintColor} size={25} />
+            <Icon name="person-outline" color={"#ffffff"} size={25} />
           ),
         }}
         component={RegisterScreenS}
@@ -108,7 +128,7 @@ function MainNavigator({ auth }) {
           name="CheckoutDelivery"
           options={{
             title: "Checkout",
-
+            headerBackTitle: () => null,
             headerTintColor: "#fff",
             headerTitleAlign: "left",
             headerStyle: {
@@ -122,7 +142,7 @@ function MainNavigator({ auth }) {
           name="CheckoutSummary"
           options={{
             title: "Checkout",
-
+            headerBackTitle: () => null,
             headerTintColor: "#fff",
             headerTitleAlign: "left",
             headerStyle: {
@@ -137,7 +157,7 @@ function MainNavigator({ auth }) {
           name="CheckoutPayment"
           options={{
             title: "Checkout",
-
+            headerBackTitle: () => null,
             headerTintColor: "#fff",
             headerTitleAlign: "left",
             headerStyle: {
@@ -146,6 +166,36 @@ function MainNavigator({ auth }) {
             },
           }}
           component={CheckoutPaymentScreen}
+        />
+
+        <Stack.Screen
+          name="MobileNumber"
+          options={{
+            title: "Payment Details",
+            headerBackTitle: () => null,
+            headerTintColor: "#fff",
+            headerTitleAlign: "left",
+            headerStyle: {
+              backgroundColor: "#000000",
+              shadowColor: "transparent",
+            },
+          }}
+          component={MobileNumberScreen}
+        />
+
+        <Stack.Screen
+          name="paymentSuccessful"
+          options={{
+            title: "Payment Details",
+            headerBackTitle: () => null,
+            headerTintColor: "#fff",
+            headerTitleAlign: "left",
+            headerStyle: {
+              backgroundColor: "#000000",
+              shadowColor: "transparent",
+            },
+          }}
+          component={SuccessScreen}
         />
 
         <Stack.Screen
@@ -171,7 +221,9 @@ function MainNavigator({ auth }) {
         />
         <Stack.Screen
           name="Cart"
-          // options={{ header: () => {} }}
+          options={{
+            headerBackTitle: () => null,
+          }}
           component={CartScreen}
         />
         <Stack.Screen

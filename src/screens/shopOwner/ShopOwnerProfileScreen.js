@@ -6,7 +6,6 @@ import DrawerItem from "../../components/DrawerItem";
 
 // import ProfileTitle from "../../components/ProfileTitle"
 
-
 const ShopOwnerProfileScreen = () => {
   return (
     <View style={styles.container}>
@@ -42,13 +41,12 @@ const styles = StyleSheet.create({
     marginTop: -100,
   },
   buttonContainer: {
-    backgroundColor: "#0080FF",
+    backgroundColor: "#080809",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 6,
-
-    height: 40,
-    width: 130,
+    height: 42,
+    width: 320,
   },
   bottomContainer: {
     flex: 0.1,

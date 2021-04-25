@@ -190,7 +190,7 @@ const style = StyleSheet.create({
   },
   filterButton: {
     alignItems: "center",
-    backgroundColor: "#0080ff",
+    backgroundColor: "#080809",
     marginBottom: hp("0.5%"),
   },
   filterText: {

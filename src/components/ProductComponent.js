@@ -19,7 +19,7 @@ class Product extends Component {
               source={{ uri: this.props.image }}
             />
           </View>
-          <View style={style.productNamePricingContainer}>
+          <View style={style.details}>
             <Text numberOfLines={1} style={style.productName}>
               {this.props.name}
             </Text>
@@ -34,19 +34,23 @@ class Product extends Component {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: wp("0.5%"),
-    marginVertical: wp("0.5%"),
-    backgroundColor: "#FFFFFF",
+    marginHorizontal: 5,
+    marginVertical: 5,
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "space-around",
+    maxWidth: wp("47%"),
+    backgroundColor: "#FFFFFF",
+    borderRadius: 10,
+    height: 250,
+    borderColor: "#080809",
   },
   productContainer: {
     flex: 1,
-    height: hp("22%"),
-    width: wp("38%"),
-    backgroundColor: "#ffffff",
-    marginHorizontal: wp("5%"),
-    marginVertical: hp("2%"),
+    width: wp("45%"),
+    borderRadius: 10,
+    justifyContent: "space-around",
+    alignItems: "center",
+    borderWidth: 2,
   },
   productImageContainer: {
     flex: 7,
@@ -54,23 +58,37 @@ const style = StyleSheet.create({
     // width: 160,
     // height: 150,
   },
-  productNamePricingContainer: {
-    flex: 3,
-    marginTop: hp("6%"),
+  details: {
+    // backgroundColor: "rgba(165, 161, 157, 0.4)",
+    borderRadius: 10,
+    width: "90%",
+    alignItems: "center",
+    paddingVertical: 5,
+    borderColor: "#080809",
+    marginBottom: 10,
+    borderWidth: 0.5,
   },
   productImage: {
+
     width: 152,
     height: 145,
-  },
+// =======
+//     width: 150,
+//     height: 150,
+    borderRadius: 10,
+    borderWidth: 0.5,
 
+  },
   productName: {
-    fontSize: 15,
-    paddingVertical: hp("0%"),
+    fontSize: 17,
+    paddingVertical: hp("0.5%"),
     paddingHorizontal: wp("0.5%"),
+    color: "#080809",
   },
   productPrice: {
     fontSize: 15,
     fontWeight: "700",
+    color: "#080809",
   },
 });
 

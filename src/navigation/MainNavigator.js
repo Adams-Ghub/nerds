@@ -52,10 +52,10 @@ function MyTabs() {
       }}
     >
       <Tab.Screen
-        name="Cart"
+        name="Home"
         options={{
           tabBarIcon: ({ tintColor }) => (
-            <Icon name="md-cart" color={"#ffffff"} size={25} />
+            <AntDesign name="home" color={"#ffffff"} size={25} />
           ),
         }}
         component={WelcomeScreen}
@@ -67,7 +67,7 @@ function MyTabs() {
             <Icon name="grid-outline" color={"#ffffff"} size={25} />
           ),
         }}
-        component={CartScreen}
+        component={WelcomeScreen}
       />
       <Tab.Screen
         name="Register"
@@ -167,7 +167,7 @@ function MainNavigator({ auth }) {
         <Stack.Screen
           name="MobileNumber"
           options={{
-            title: "Payment Details",
+            title: "MTN Mobile Money Payment",
             headerBackTitle: () => null,
             headerTintColor: "#fff",
             headerTitleAlign: "left",
@@ -219,7 +219,7 @@ function MainNavigator({ auth }) {
               );
             },
             headerTitleAlign: "center",
-            headerTitle: "product details",
+            headerTitle: "Product details",
             headerLeft: () => {
               return (
                 <TouchableOpacity style={{ marginHorizontal: 15 }}>
@@ -240,9 +240,16 @@ function MainNavigator({ auth }) {
           name="Cart"
           options={{
             headerBackTitle: () => null,
+            headerTitleStyle: {
+              color: "#ffffff",
+            },
+            headerStyle: {
+              backgroundColor: "#000000",
+            },
           }}
           component={CartScreen}
         />
+
         <Stack.Screen
           options={{ header: () => {} }}
           name="PLReport"

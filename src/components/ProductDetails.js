@@ -30,12 +30,14 @@ class ProductDetails extends Component {
           <View style={style.ProductImageSection}>
             <Image
               style={style.productImage}
-              source={require("../../assets/productImg.png")}
+              source={require("../../assets/ladies_bag.jpg")}
             />
           </View>
           <View style={style.basicDetailSection}>
-            <Text style={style.productNameText}>Black HP Omen Laptop</Text>
-            <Text style={style.priceText}>GH¢ 1800</Text>
+            <View style={style.product}>
+              <Text style={style.productNameText}>Gucci Bag</Text>
+              <Text style={style.priceText}>GH¢ 1800</Text>
+            </View>
             <View style={style.shopNameContainer}>
               <Text style={style.shopText}>Shop:</Text>
               <Text style={style.shopNameText}>Cictech Electronics Ltd.</Text>
@@ -59,12 +61,12 @@ class ProductDetails extends Component {
               Delivery Information
             </Text>
             <View style={style.chooseLocationSection}>
-              <Text style={style.chooseLocationText}>choose loacation</Text>
+              <Text style={style.chooseLocationText}>Choose Location</Text>
               <TouchableOpacity style={style.picklocationButton}>
                 <Text style={style.picklocationText}>Pick my location</Text>
               </TouchableOpacity>
               <View style={style.pickedLocationContainer}>
-                <Text>Kasoa</Text>
+                <Text style={style.location}>Kasoa</Text>
                 {/* <Text>(0.555555, -0.45555)</Text> */}
               </View>
             </View>
@@ -132,8 +134,9 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
   productImage: {
-    width: wp("78%"),
-    height: hp("32%"),
+    width: 330,
+    height: 300,
+    borderRadius: 10,
   },
   productNameText: {
     fontSize: 23,
@@ -144,20 +147,21 @@ const style = StyleSheet.create({
   },
   shopNameContainer: {
     flexDirection: "row",
+    marginTop: 10,
   },
   shopText: {
-    color: "#0080ff",
+    color: "#080809",
     fontSize: 16,
     fontWeight: "700",
   },
   shopNameText: {
     fontSize: 16,
-    color: "#0080ff",
+    color: "#080809",
     marginLeft: wp("1.5%"),
   },
   totalRatingValueText: {
     fontSize: 13,
-    color: "#0080ff",
+    color: "#080809",
   },
   ratingContainer: {
     alignItems: "flex-start",
@@ -176,7 +180,7 @@ const style = StyleSheet.create({
     color: "#ffffff",
   },
   addToCartButton: {
-    backgroundColor: "#0080ff",
+    backgroundColor: "#080809",
     borderRadius: 8,
     paddingVertical: hp("1%"),
   },
@@ -190,10 +194,9 @@ const style = StyleSheet.create({
     marginBottom: hp("0.5%"),
   },
   picklocationButton: {
-    backgroundColor: "#0080ff",
-    paddingVertical: hp("0.5%"),
-    paddingHorizontal: wp("20%"),
-    borderRadius: wp("1.5%"),
+    backgroundColor: "#080809",
+    paddingVertical: 10,
+    borderRadius: 10,
   },
   picklocationText: {
     fontSize: 18,
@@ -201,13 +204,11 @@ const style = StyleSheet.create({
     color: "#ffffff",
   },
   pickedLocationContainer: {
-    borderStyle: "solid",
-    borderColor: "#0080ff",
-    borderWidth: wp("0.3%"),
-    marginVertical: hp("1%"),
-    paddingVertical: hp("0.9%"),
-    paddingHorizontal: wp("2%"),
-    borderRadius: wp("1.5%"),
+    marginTop: 5,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    borderRadius: 10,
+    borderWidth: 1,
   },
   chooseLocationSection: {
     backgroundColor: "#ededed",
@@ -249,5 +250,12 @@ const style = StyleSheet.create({
     borderStyle: "solid",
     borderTopWidth: wp("0.1%"),
     borderColor: "#ccc",
+  },
+  product: {
+    marginTop: 10,
+    borderRadius: 10,
+    paddingLeft: 10,
+    borderColor: "#EEEEEE",
+    borderWidth: 2,
   },
 });

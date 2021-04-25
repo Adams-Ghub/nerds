@@ -68,19 +68,6 @@ class WelcomeScreen extends Component {
   render() {
     return (
       <View style={style.container}>
-        {/* <View style={style.topSection}>
-            <View style={style.searchSection}>
-              <TextInput
-                onChangeText={(text) =>
-                  this.handleUpdateState("searchText", text)
-                }
-                placeholder="search by product or shop name"
-                value={this.state.searchText}
-                style={style.searchBox}
-              ></TextInput>
-              <TouchableOpacity>
-                <Entypo name="magnifying-glass" size={24} color={"#888888"} /> */}
-
         <View style={style.topSection}>
           <View style={style.searchSection}>
             <TextInput
@@ -110,20 +97,6 @@ class WelcomeScreen extends Component {
                 />
               </TouchableOpacity>
             </View>
-            {/* <View style={style.filterContainer}>
-              <View style={style.filterIcons}>
-                <TouchableOpacity
-                  onPress={() => {
-                    this.shopactivation();
-                  }}
-                >
-                  <Fontisto
-                    name="shopping-store"
-                    size={24}
-                    color={this.state.shopColor}
-                  />
-                </TouchableOpacity>
-              </View> */}
             <View style={style.filterIcons}>
               <TouchableOpacity
                 onPress={() => {
@@ -149,7 +122,9 @@ class WelcomeScreen extends Component {
                   <TouchableOpacity
                     style={style.product}
                     onPress={() => {
-                      this.props.navigation.navigate("ProductDetails");
+                      this.props.navigation.navigate("ProductDetails", {
+                        product: item,
+                      });
                     }}
                   >
                     <ProductComponent
@@ -168,33 +143,6 @@ class WelcomeScreen extends Component {
             showsVerticalScrollIndicator={false}
           />
         </View>
-        {/* </ScrollView>
-
-        </View>
-        <View style={style.flatlistContainer}>
-          <FlatList
-            data={this.state.name}
-            renderItem={({ item }) => {
-              return (
-                <View style={style.productInFlatlist}>
-                  <TouchableOpacity
-                    style={style.product}
-                    onPress={() => {
-                      this.props.navigation.navigate("ProductDetails");
-                    }}
-                  >
-                    <ProductComponent name={item} />
-                  </TouchableOpacity>
-                </View>
-              );
-            }}
-            ListFooterComponent={<View></View>}
-            ListFooterComponentStyle={{ marginBottom: 100 }}
-            numColumns={2}
-            keyExtractor={(item, index) => index}
-            showsVerticalScrollIndicator={false}
-          />
-        </View> */}
       </View>
     );
   }

@@ -30,12 +30,18 @@ class ProductDetails extends Component {
           <View style={style.ProductImageSection}>
             <Image
               style={style.productImage}
-              source={require("../../assets/productImg.png")}
+              source={{
+                uri: `data:image/jpg;base64,${this.props.route.params.product.base64}`,
+              }}
             />
           </View>
           <View style={style.basicDetailSection}>
-            <Text style={style.productNameText}>Black HP Omen Laptop</Text>
-            <Text style={style.priceText}>GH¢ 1800</Text>
+            <Text style={style.productNameText}>
+              {this.props.route.params.product.productName}
+            </Text>
+            <Text style={style.priceText}>
+              {"GH¢" + this.props.route.params.product.sp}
+            </Text>
             <View style={style.shopNameContainer}>
               <Text style={style.shopText}>Shop:</Text>
               <Text style={style.shopNameText}>Cictech Electronics Ltd.</Text>
@@ -74,9 +80,7 @@ class ProductDetails extends Component {
             <View style={style.descriptionSection}>
               <Text style={style.descriptionText}>Description</Text>
               <Text style={style.theDescriptionText}>
-                Intel® Core™ i7-6700HQ (2.6 GHz, up to 3.5 GHz), 4 GB DDR4-2133
-                SDRAM (1 x 4 GB), 1 TB 5400 rpm SATA, 15.6" diagonal FHD IPS
-                UWVA anti-glare WLED-backlit (1920 x 1080)
+                {this.props.route.params.product.details}
               </Text>
             </View>
           </View>
@@ -132,8 +136,8 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
   productImage: {
-    width: wp("78%"),
-    height: hp("32%"),
+    width: wp("89%"),
+    height: hp("48%"),
   },
   productNameText: {
     fontSize: 23,

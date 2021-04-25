@@ -1,53 +1,71 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
-const CartScreen = () => {
+const CartScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.cartContainer}>
-        <View style={styles.cart}>
-          <Image
-            source={require("../../../assets/productImg.png")}
-            style={styles.image}
-          />
-          <View style={styles.product}>
-            <Text style={styles.productName}>HP Laptop...</Text>
-            <Text style={styles.productPrice}>GH₵3500</Text>
+    <ScrollView>
+      <View style={styles.container}>
+        <View style={styles.cartContainer}>
+          <View style={styles.cart}>
+            <Image
+              source={require("../../../assets/productImg.png")}
+              style={styles.image}
+            />
+            <View style={styles.product}>
+              <Text style={styles.productName}>HP Laptop...</Text>
+              <Text style={styles.productPrice}>GH₵3500</Text>
+            </View>
           </View>
-        </View>
-        <View style={styles.line} />
+          <View style={styles.line} />
 
-        <View style={styles.iconContainer}>
-          <View style={styles.deleteicon}>
-            <View style={styles.icon}>
-              <MaterialIcons name="delete" size={20} color="#0080FF" />
+          <View style={styles.iconContainer}>
+            <View style={styles.deleteicon}>
+              <View style={styles.icon}>
+                <MaterialIcons name="delete" size={20} color="#0080FF" />
+              </View>
+              <Text style={styles.remove}>REMOVE</Text>
             </View>
-            <Text style={styles.remove}>REMOVE</Text>
+            <View style={styles.upanddown}>
+              <View style={styles.icon2}>
+                <MaterialIcons
+                  name="arrow-drop-down"
+                  size={24}
+                  color="#0080FF"
+                />
+              </View>
+              <Text style={styles.number1}>1</Text>
+              <View style={styles.icon3}>
+                <MaterialIcons name="arrow-drop-up" size={24} color="#0080FF" />
+              </View>
+            </View>
           </View>
-          <View style={styles.upanddown}>
-            <View style={styles.icon2}>
-              <MaterialIcons name="arrow-drop-down" size={24} color="#0080FF" />
-            </View>
-            <Text style={styles.number1}>1</Text>
-            <View style={styles.icon3}>
-              <MaterialIcons name="arrow-drop-up" size={24} color="#0080FF" />
-            </View>
+        </View>
+        <View style={styles.checkout}>
+          <View style={styles.checkoutText}>
+            <Text style={styles.total}>Total</Text>
+            <Text style={styles.price}>GH₵3500</Text>
+          </View>
+          <View style={styles.button}>
+            <TouchableOpacity
+              style={styles.buttonContainer}
+              onPress={() => {
+                navigation.navigate("CheckoutDelivery");
+              }}
+            >
+              <Text style={styles.proceed}>Proceed to checkout</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
-      <View style={styles.checkout}>
-        <View style={styles.checkoutText}>
-          <Text style={styles.total}>Total</Text>
-          <Text style={styles.price}>GH₵3500</Text>
-        </View>
-        <View style={styles.button}>
-          <TouchableOpacity style={styles.buttonContainer}>
-            <Text style={styles.proceed}>Proceed to checkout</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -56,6 +74,7 @@ export default CartScreen;
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 10,
+    marginTop: 40,
   },
 
   image: {

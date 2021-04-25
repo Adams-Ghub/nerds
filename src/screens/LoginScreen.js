@@ -5,6 +5,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import {
   heightPercentageToDP as hp,
@@ -12,6 +13,7 @@ import {
 } from "react-native-responsive-screen";
 import { connect } from "react-redux";
 import { LoginShopOwner } from "../redux/actions/authAction.js";
+import CustomInput from "../components/CustomInput";
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -35,21 +37,24 @@ class LoginScreen extends Component {
 
   render() {
     return (
-      <View style={style.container}>
-        <View style={style.welcomeSectionContainer}>
-          <Text style={style.welcomeMessage}>Welcome To Nerds</Text>
-          <Text style={style.loginMessage}>Login to continue</Text>
-        </View>
-        <View style={style.registrationFormContainer}>
-          <View style={style.usernameInputContainer}>
+      <ScrollView>
+        <View style={style.container}>
+          <View style={style.welcomeSectionContainer}>
+            {/* <Text style={style.welcomeMessage}>Welcome To Nerds</Text> */}
+            <Text style={style.loginMessage}>Login to continue</Text>
+          </View>
+          <CustomInput label="Email" />
+          <CustomInput label="Password" secureTextEntry={true} />
+          <View style={style.registrationFormContainer}>
+            {/* <View style={style.usernameInputContainer}>
             <TextInput
               style={style.usernameInput}
               value={this.state.email}
               onChangeText={(text) => this.handleUpdateState("email", text)}
               placeholder="Email"
             ></TextInput>
-          </View>
-          <View style={style.usernameInputContainer}>
+          </View> */}
+            {/* <View style={style.usernameInputContainer}>
             <TextInput
               style={style.usernameInput}
               value={this.state.password}
@@ -57,33 +62,39 @@ class LoginScreen extends Component {
               onChangeText={(text) => this.handleUpdateState("password", text)}
               secureTextEntry={true}
             ></TextInput>
+          </View> */}
+
+            <TouchableOpacity style={style.forgotpassContainer}>
+              <Text style={style.forgotpassText}>Forgot password</Text>
+            </TouchableOpacity>
           </View>
 
-          <TouchableOpacity style={style.forgotpassContainer}>
-            <Text style={style.forgotpassText}>Forgot password</Text>
-          </TouchableOpacity>
+          <View style={style.loginButtonContainer}>
+            <TouchableOpacity
+              onPress={this.handleLogin}
+              style={style.loginButton}
+              onPress={() => {
+                this.props.navigation.navigate("ShopOwnerDashboard", {
+                  screen: "Dashboard",
+                });
+              }}
+            >
+              <Text style={style.loginButtonText}>Login</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={style.haveAccountContainer}>
+            <Text style={style.haveAccountText}>Don't have an account ?</Text>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate("RegisterC");
+              }}
+              style={style.signupButton}
+            >
+              <Text style={style.signupText}>Sign up</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-
-        <View style={style.loginButtonContainer}>
-          <TouchableOpacity
-            onPress={this.handleLogin}
-            style={style.loginButton}
-          >
-            <Text style={style.loginButtonText}>Login</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={style.haveAccountContainer}>
-          <Text style={style.haveAccountText}>Don't have an account ?</Text>
-          <TouchableOpacity
-            onPress={() => {
-              this.props.navigation.navigate("RegisterS");
-            }}
-            style={style.signupButton}
-          >
-            <Text style={style.signupText}>Sign up</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -117,9 +128,10 @@ const style = StyleSheet.create({
     marginBottom: hp("7%"),
   },
   loginMessage: {
-    fontSize: 22,
-    fontWeight: "normal",
-    marginBottom: 0,
+    fontSize: 50,
+    fontWeight: "bold",
+    marginBottom: 20,
+    alignSelf: "flex-start",
   },
   registrationFormContainer: {
     marginVertical: hp("5%"),
@@ -143,20 +155,20 @@ const style = StyleSheet.create({
   forgotpassText: {
     fontSize: 17,
     marginRight: 3,
-    color: "#0080FF",
+    color: "#F88017",
   },
   loginButtonContainer: {
     marginVertical: hp("4%"),
   },
   loginButton: {
-    backgroundColor: "#0080FF",
+    backgroundColor: "#080809",
     borderRadius: 8,
     alignItems: "center",
   },
   loginButtonText: {
     color: "#ffffff",
     fontSize: 20,
-    marginVertical: hp("1%"),
+    marginVertical: 10,
   },
   haveAccountContainer: {
     flexDirection: "row",
@@ -172,6 +184,6 @@ const style = StyleSheet.create({
   },
   signupText: {
     fontSize: 17,
-    color: "#0080ff",
+    color: "#F88017",
   },
 });

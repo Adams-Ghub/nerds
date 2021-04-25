@@ -18,20 +18,86 @@ import PLReportListElement from "../components/PLReportListElement";
 import PLReport from "../components/PLReport";
 import { connect } from "react-redux";
 import ProductDetails from "../components/ProductDetails";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Icon from "react-native-vector-icons/Ionicons";
 import DrawerNavigatorDashboardAdmin from "../navigation/DrawerNavigatorDashboardAdmin";
 import { View, TouchableOpacity } from "react-native";
 import {
   FontAwesome5,
   MaterialCommunityIcons,
   AntDesign,
+  MaterialIcons,
 } from "@expo/vector-icons";
+import MobileNumberScreen from "../screens/customerMomoPayment/MobileNumberScreen";
+import SuccessScreen from "../screens/customerMomoPayment/SuccessScreen";
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator
+      // activeColor="red"
+      // inactiveColor="white"
+      // activeBackgroundColor="green"
+      // inactiveBackgroundColor="green"
+      // style={{ backgroundColor: "#080809" }}
+
+      tabBarOptions={{
+        style: {
+          backgroundColor: "#080809",
+          // borderRadius: 10,
+          // marginHorizontal: 7,
+        },
+      }}
+    >
+      <Tab.Screen
+        name="Cart"
+        options={{
+          tabBarIcon: ({ tintColor }) => (
+            <Icon name="md-cart" color={"#ffffff"} size={25} />
+          ),
+        }}
+        component={WelcomeScreen}
+      />
+      <Tab.Screen
+        name="Categories"
+        options={{
+          tabBarIcon: ({ tintColor }) => (
+            <Icon name="grid-outline" color={"#ffffff"} size={25} />
+          ),
+        }}
+        component={CartScreen}
+      />
+      <Tab.Screen
+        name="Register"
+        options={{
+          tabBarIcon: ({ tintColor }) => (
+            <Icon name="person-outline" color={"#ffffff"} size={25} />
+          ),
+        }}
+        component={RegisterScreenS}
+      />
+    </Tab.Navigator>
+  );
+}
 
 function MainNavigator({ auth }) {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ShopOwnerDashboard">
+      <Stack.Navigator initialRouteName="UserSelection">
+        <Stack.Screen
+          name="UserSelection"
+          options={{ header: () => {} }}
+          component={UserSelectionScreen}
+        />
+
+        <Stack.Screen
+          name="Welcome"
+          options={{ header: () => {} }}
+          component={MyTabs}
+        />
+
         <Stack.Screen
           name="ShopOwnerDashboard"
           options={{ header: () => {} }}
@@ -55,15 +121,10 @@ function MainNavigator({ auth }) {
         />
 
         <Stack.Screen
-          name="Order  Details"
-          // options={{ header: () => {} }}
-          component={ShopOwnerOrderDetailsScreen}
-        />
-        <Stack.Screen
           name="CheckoutDelivery"
           options={{
             title: "Checkout",
-
+            headerBackTitle: () => null,
             headerTintColor: "#fff",
             headerTitleAlign: "left",
             headerStyle: {
@@ -77,7 +138,7 @@ function MainNavigator({ auth }) {
           name="CheckoutSummary"
           options={{
             title: "Checkout",
-
+            headerBackTitle: () => null,
             headerTintColor: "#fff",
             headerTitleAlign: "left",
             headerStyle: {
@@ -92,7 +153,7 @@ function MainNavigator({ auth }) {
           name="CheckoutPayment"
           options={{
             title: "Checkout",
-
+            headerBackTitle: () => null,
             headerTintColor: "#fff",
             headerTitleAlign: "left",
             headerStyle: {
@@ -101,6 +162,36 @@ function MainNavigator({ auth }) {
             },
           }}
           component={CheckoutPaymentScreen}
+        />
+
+        <Stack.Screen
+          name="MobileNumber"
+          options={{
+            title: "Payment Details",
+            headerBackTitle: () => null,
+            headerTintColor: "#fff",
+            headerTitleAlign: "left",
+            headerStyle: {
+              backgroundColor: "#000000",
+              shadowColor: "transparent",
+            },
+          }}
+          component={MobileNumberScreen}
+        />
+
+        <Stack.Screen
+          name="paymentSuccessful"
+          options={{
+            title: "Payment Details",
+            headerBackTitle: () => null,
+            headerTintColor: "#fff",
+            headerTitleAlign: "left",
+            headerStyle: {
+              backgroundColor: "#000000",
+              shadowColor: "transparent",
+            },
+          }}
+          component={SuccessScreen}
         />
 
         <Stack.Screen
@@ -147,7 +238,9 @@ function MainNavigator({ auth }) {
         />
         <Stack.Screen
           name="Cart"
-          // options={{ header: () => {} }}
+          options={{
+            headerBackTitle: () => null,
+          }}
           component={CartScreen}
         />
         <Stack.Screen
@@ -180,11 +273,6 @@ function MainNavigator({ auth }) {
           options={{ header: () => {} }}
           name="RegisterC"
           component={RegisterScreenC}
-        />
-        <Stack.Screen
-          options={{ header: () => {} }}
-          name="Welcome"
-          component={WelcomeScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

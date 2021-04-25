@@ -95,7 +95,12 @@ class ProductDetails extends Component {
           </View>
         </ScrollView>
         <View style={style.addToCartButtonContainer}>
-          <TouchableOpacity style={style.addToCartButton}>
+          <TouchableOpacity
+            style={style.addToCartButton}
+            onPress={() => {
+              this.props.navigation.navigate("Cart");
+            }}
+          >
             <View style={style.addToCartBtnAndTextContainer}>
               <MaterialIcons
                 name="add-shopping-cart"

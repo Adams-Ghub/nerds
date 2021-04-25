@@ -69,10 +69,13 @@ const style = StyleSheet.create({
     borderWidth: 0.5,
   },
   productImage: {
+
+    
     width: 150,
     height: 150,
     borderRadius: 10,
     borderWidth: 0.5,
+
   },
   productName: {
     fontSize: 17,

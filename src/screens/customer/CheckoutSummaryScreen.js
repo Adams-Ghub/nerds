@@ -9,7 +9,7 @@ import {
 import { MaterialIcons } from "@expo/vector-icons";
 import CheckoutStepper from "../../components/CheckoutStepper";
 
-const CheckoutSummaryScreen = () => {
+const CheckoutSummaryScreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1 }}>
       <CheckoutStepper page={3} />
@@ -96,7 +96,12 @@ const CheckoutSummaryScreen = () => {
               <Text style={styles.price}>GH₵3500</Text>
             </View>
             <View style={styles.button}>
-              <TouchableOpacity style={styles.buttonContainer}>
+              <TouchableOpacity
+                style={styles.buttonContainer}
+                onPress={() => {
+                  navigation.navigate("MobileNumber");
+                }}
+              >
                 <Text style={styles.proceed}>Confirm order</Text>
               </TouchableOpacity>
             </View>

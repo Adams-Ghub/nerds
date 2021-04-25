@@ -32,42 +32,48 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
         activeTintColor: "transparent",
         itemStyle: { marginVertical: hp("0.01%") },
       }}
-      screenOptions={{
-        headerLeft: () => {
-          return (
-            <TouchableOpacity
-              style={{ marginLeft: 27 }}
-              onPress={() => {
-                navigation.dispatch(DrawerActions.toggleDrawer());
-              }}
-            >
-              <Entypo name="menu" size={26} color="#ffffff" />
-            </TouchableOpacity>
-          );
-        },
-        headerRight: () => {
-          return (
-            <View style={{ flexDirection: "row", marginRight: wp("4%") }}>
-              <Image
-                style={{
-                  width: wp("10%"),
-                  height: hp("5%"),
-                  marginRight: wp("2%"),
-                  borderRadius: 25,
+      screenOptions={({ navigation }) => {
+        return {
+          headerLeft: () => {
+            return (
+              <TouchableOpacity
+                style={{ marginLeft: 27 }}
+                onPress={() => {
+                  navigation.toggleDrawer();
                 }}
-                source={require("../../assets/contact.jpg")}
-              />
-              <View>
-                <Text style={{ color: "#ffffff" }}>Welcome,</Text>
-                <Text
-                  style={{ color: "#ffffff", fontWeight: "700", fontSize: 17 }}
-                >
-                  Adams
-                </Text>
-              </View>
-            </View>
-          );
-        },
+              >
+                <Entypo name="menu" size={26} color="#ffffff" />
+              </TouchableOpacity>
+            );
+          },
+          // headerRight: () => {
+          //   return (
+          //     <View style={{ flexDirection: "row", marginRight: wp("4%") }}>
+          //       <Image
+          //         style={{
+          //           width: wp("10%"),
+          //           height: hp("5%"),
+          //           marginRight: wp("2%"),
+          //           borderRadius: 25,
+          //         }}
+          //         source={require("../../assets/contact.jpg")}
+          //       />
+          //       <View>
+          //         <Text style={{ color: "#ffffff" }}>Welcome,</Text>
+          //         <Text
+          //           style={{
+          //             color: "#ffffff",
+          //             fontWeight: "700",
+          //             fontSize: 17,
+          //           }}
+          //         >
+          //           Adams
+          //         </Text>
+          //       </View>
+          //     </View>
+          //   );
+          // },
+        };
       }}
       drawerStyle={{
         backgroundColor: "#000A14",
@@ -75,6 +81,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
         marginTop: hp("10.95%"),
       }}
     >
+
       <Drawer.Screen
         name="shopping"
         options={{

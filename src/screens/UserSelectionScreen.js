@@ -28,7 +28,9 @@ class UserSelectionScreen extends Component {
         <View style={style.createShopButtonContainer}>
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate("Welcome");
+              this.props.navigation.navigate("Welcome", {
+                userType: "customer",
+              });
             }}
             style={style.createShopButton}
           >
@@ -37,7 +39,9 @@ class UserSelectionScreen extends Component {
 
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate("RegisterC");
+              this.props.navigation.navigate("RegisterS", {
+                userType: "shopOwner",
+              });
             }}
             style={style.createShopButton}
           >
@@ -61,22 +65,24 @@ const style = StyleSheet.create({
   },
 
   welcomeMessage: {
-    fontSize: 36,
-    fontWeight: "200",
-    marginBottom: hp("14%"),
+    marginBottom: 50,
+    fontSize: 45,
+    fontWeight: "bold",
+    alignSelf: "flex-start",
   },
   IamTextContainer: {},
+
   IamText: {
     fontSize: 22,
-    fontWeight: "normal",
-    marginTop: hp("4%"),
+    fontWeight: "700",
+    marginTop: 30,
   },
 
   createShopButtonContainer: {
-    marginVertical: hp("8%"),
+    marginVertical: 50,
   },
   createShopButton: {
-    backgroundColor: "#0080FF",
+    backgroundColor: "#080909",
     borderRadius: 8,
     alignItems: "center",
     marginVertical: hp("5%"),
@@ -84,7 +90,7 @@ const style = StyleSheet.create({
   createShopButtonText: {
     color: "#ffffff",
     fontSize: 20,
-    marginVertical: hp("1%"),
+    paddingVertical: 10,
   },
 });
 

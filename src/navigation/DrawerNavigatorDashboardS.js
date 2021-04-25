@@ -1,13 +1,18 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerItem from "../components/DrawerItem";
-import { AntDesign } from "@expo/vector-icons";
 import { Header } from "react-native/Libraries/NewAppScreen";
 import DashboardScreen from "../screens/shopOwner/DashboardScreen";
 import ShopOwnerProfileScreen from "../screens/shopOwner/ShopOwnerProfileScreen";
 import OrdersScreen from "../screens/shopOwner/OrdersScreen";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import { Entypo, Feather } from "@expo/vector-icons";
+import {
+  Entypo,
+  Feather,
+  Ionicons,
+  AntDesign,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import ShopOwnerOrderDetailsScreen from "../screens/shopOwner/ShopOwnerOrderDetailsScreen";
 import Loader from "../components/Loader";
 import { DrawerActions } from "@react-navigation/native";
@@ -21,6 +26,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import AddProductScreen from "../screens/shopOwner/AddProductScreen";
 import EditProductScreen from "../screens/shopOwner/EditProductScreen";
+import PLReport from "../components/PLReport";
 
 const defaultHeaderStyle = {
   headerTitle: "",
@@ -74,33 +80,33 @@ function DrawerNavigatorDashboardS({ navigation }) {
               </TouchableOpacity>
             );
           },
-          headerRight: () => {
-            return (
-              <View style={{ flexDirection: "row", marginRight: wp("4%") }}>
-                <Image
-                  style={{
-                    width: wp("10%"),
-                    height: hp("5%"),
-                    marginRight: wp("2%"),
-                    borderRadius: 25,
-                  }}
-                  source={require("../../assets/contact.jpg")}
-                />
-                <View>
-                  <Text style={{ color: "#ffffff" }}>Welcome,</Text>
-                  <Text
-                    style={{
-                      color: "#ffffff",
-                      fontWeight: "700",
-                      fontSize: 17,
-                    }}
-                  >
-                    Adams
-                  </Text>
-                </View>
-              </View>
-            );
-          },
+          // headerRight: () => {
+          //   return (
+          //     <View style={{ flexDirection: "row", marginRight: wp("4%") }}>
+          //       <Image
+          //         style={{
+          //           width: wp("10%"),
+          //           height: hp("5%"),
+          //           marginRight: wp("2%"),
+          //           borderRadius: 25,
+          //         }}
+          //         source={require("../../assets/contact.jpg")}
+          //       />
+          //       <View>
+          //         <Text style={{ color: "#F88017" }}>Welcome,</Text>
+          //         <Text
+          //           style={{
+          //             color: "#F88017",
+          //             fontWeight: "700",
+          //             fontSize: 17,
+          //           }}
+          //         >
+          //           Nerds
+          //         </Text>
+          //       </View>
+          //     </View>
+          //   );
+          // },
         };
       }}
       drawerStyle={{
@@ -113,11 +119,24 @@ function DrawerNavigatorDashboardS({ navigation }) {
         paddingTop: hp("11.95%"),
       }}
     >
-      <Drawer.Screen
-        name="Dashboard"
+      {/* <Drawer.Screen
+        name="Hoome"
+
         options={{
           drawerLabel: () => {
-            return <DrawerItem title="Dashboard" />;
+            return (
+              <DrawerItem
+                title="Dashboard"
+                icon={
+                  <MaterialIcons
+                    name="dashboard"
+                    style={{ marginTop: 5 }}
+                    size={20}
+                    color="#FFFFFF"
+                  />
+                }
+              />
+            );
           },
           ...defaultHeaderStyle,
         }}
@@ -135,10 +154,8 @@ function DrawerNavigatorDashboardS({ navigation }) {
                     name="user"
                     style={{ marginTop: 5 }}
                     size={20}
-                    color="#0080FF"
+                    color="#FFFFFF"
                   />
-
-                  // icon={<AntDesign name="user" size={24} color="#0080FF" />
                 }
               />
             );
@@ -148,6 +165,28 @@ function DrawerNavigatorDashboardS({ navigation }) {
         component={ShopOwnerProfileScreen}
       />
 
+      <Drawer.Screen
+        name="products"
+        options={{
+          drawerLabel: () => {
+            return (
+              <DrawerItem
+                title="Products"
+                icon={
+                  <Feather
+                    name="box"
+                    style={{ marginTop: 5 }}
+                    size={20}
+                    color="#FFFFFF"
+                  />
+                }
+              />
+            );
+          },
+          ...defaultHeaderStyle,
+        }}
+        component={ProductScreen}
+      />
       <Drawer.Screen
         name="Orders"
         options={{
@@ -160,7 +199,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
                     name="shoppingcart"
                     style={{ marginTop: 5 }}
                     size={20}
-                    color="#0080FF"
+                    color="#FFFFFF"
                   />
                 }
               />
@@ -168,19 +207,45 @@ function DrawerNavigatorDashboardS({ navigation }) {
           },
           ...defaultHeaderStyle,
         }}
-        component={OrdersScreen}
+
+        
+  
+        component={OrderNavigatior}*/}
       />
 
+
       <Drawer.Screen
-        name="products"
+        name="customers"
         options={{
           drawerLabel: () => {
             return (
               <DrawerItem
-                title="Products"
+                title="Customers"
                 icon={
                   <Feather
-                    name="package"
+                    name="users"
+                    style={{ marginTop: 5 }}
+                    size={20}
+                    color="#FFFFFF"
+                  />
+                }
+              />
+            );
+          },
+          ...defaultHeaderStyle,
+        }}
+        component={ProductScreen}
+      />
+      <Drawer.Screen
+        name="report"
+        options={{
+          drawerLabel: () => {
+            return (
+              <DrawerItem
+                title="report"
+                icon={
+                  <Entypo
+                    name="text-document"
                     style={{ marginTop: 5 }}
                     size={20}
                     color="#0080FF"
@@ -191,7 +256,30 @@ function DrawerNavigatorDashboardS({ navigation }) {
           },
           ...defaultHeaderStyle,
         }}
-        component={ProductScreen}
+        component={PLReport}
+      />
+
+      <Drawer.Screen
+        name="reports"
+        options={{
+          drawerLabel: () => {
+            return (
+              <DrawerItem
+                title="Report"
+                icon={
+                  <Feather
+                    name="package"
+                    style={{ marginTop: 5 }}
+                    size={20}
+                    color="#FFFFFF"
+                  />
+                }
+              />
+            );
+          },
+          ...defaultHeaderStyle,
+        }}
+        component={PLReport}
       />
 
       <Drawer.Screen
@@ -206,7 +294,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
                     name="logout"
                     style={{ marginTop: 5 }}
                     size={20}
-                    color="#0080FF"
+                    color="#FFFFFF"
                   />
                 }
               />

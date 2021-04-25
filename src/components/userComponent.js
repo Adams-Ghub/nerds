@@ -20,8 +20,8 @@ export default class UserComponent extends Component {
           />
         </View>
         <View style={style.userNameContainer}>
-          <Text style={style.userName}>Adams</Text>
-          <Text>bamfoadamsf@gmail.com</Text>
+          <Text style={style.userName}>Nerds</Text>
+          <Text>nerds@gmail.com</Text>
         </View>
         <View style={style.userRoleContainer}>
           <Text style={style.userRole}>{this.props.role}</Text>

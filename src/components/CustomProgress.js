@@ -12,7 +12,7 @@ const CustomProgress = ({ leftText, color, rightText, progress }) => {
 
       <ProgressBar
         progress={progress}
-        width={330}
+        width={348}
         height={20}
         color={color}
         unfilledColor="#C4C4C4"
@@ -28,8 +28,8 @@ export default CustomProgress;
 const styles = StyleSheet.create({
   container: {},
   firstProgress: {
-    marginHorizontal: 20,
-    marginVertical: 5,
+    marginHorizontal: 10,
+    // marginVertical: 5,
   },
   product: {
     marginBottom: 5,

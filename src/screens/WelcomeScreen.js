@@ -68,9 +68,7 @@ class WelcomeScreen extends Component {
   render() {
     return (
       <View style={style.container}>
-
-        <ScrollView>
-          <View style={style.topSection}>
+        {/* <View style={style.topSection}>
             <View style={style.searchSection}>
               <TextInput
                 onChangeText={(text) =>
@@ -81,7 +79,7 @@ class WelcomeScreen extends Component {
                 style={style.searchBox}
               ></TextInput>
               <TouchableOpacity>
-                <Entypo name="magnifying-glass" size={24} color={"#888888"} />
+                <Entypo name="magnifying-glass" size={24} color={"#888888"} /> */}
 
         <View style={style.topSection}>
           <View style={style.searchSection}>
@@ -110,10 +108,9 @@ class WelcomeScreen extends Component {
                   size={24}
                   color={this.state.shopColor}
                 />
-
               </TouchableOpacity>
             </View>
-            <View style={style.filterContainer}>
+            {/* <View style={style.filterContainer}>
               <View style={style.filterIcons}>
                 <TouchableOpacity
                   onPress={() => {
@@ -126,51 +123,52 @@ class WelcomeScreen extends Component {
                     color={this.state.shopColor}
                   />
                 </TouchableOpacity>
-              </View>
-              <View style={style.filterIcons}>
-                <TouchableOpacity
-                  onPress={() => {
-                    this.productactivation();
-                  }}
-                >
-                  <FontAwesome5
-                    name="luggage-cart"
-                    size={24}
-                    color={this.state.productColor}
-                  />
-                </TouchableOpacity>
-              </View>
+              </View> */}
+            <View style={style.filterIcons}>
+              <TouchableOpacity
+                onPress={() => {
+                  this.productactivation();
+                }}
+              >
+                <FontAwesome5
+                  name="luggage-cart"
+                  size={24}
+                  color={this.state.productColor}
+                />
+              </TouchableOpacity>
             </View>
           </View>
+        </View>
 
-
-          <View style={style.flatlistContainer}>
-            <FlatList
-              data={this.props.products}
-              renderItem={({ item }) => {
-                return (
-                  <View style={style.productInFlatlist}>
-                    <TouchableOpacity
-                      style={style.product}
-                      onPress={() => {
-                        this.props.navigation.navigate("ProductDetails");
-                      }}
-                    >
-                      <ProductComponent
-                        name={item.productName}
-                        sp={item.sp}
-                        image={`data:image/jpg;base64,${item.base64}`}
-                      />
-                    </TouchableOpacity>
-                  </View>
-                );
-              }}
-              numColumns={2}
-              keyExtractor={(item, index) => index}
-              showsVerticalScrollIndicator={false}
-            />
-          </View>
-        </ScrollView>
+        <View style={style.flatlistContainer}>
+          <FlatList
+            data={this.props.products}
+            renderItem={({ item }) => {
+              return (
+                <View style={style.productInFlatlist}>
+                  <TouchableOpacity
+                    style={style.product}
+                    onPress={() => {
+                      this.props.navigation.navigate("ProductDetails");
+                    }}
+                  >
+                    <ProductComponent
+                      name={item.productName}
+                      sp={item.sp}
+                      image={`data:image/jpg;base64,${item.base64}`}
+                    />
+                  </TouchableOpacity>
+                </View>
+              );
+            }}
+            ListFooterComponent={<View></View>}
+            ListFooterComponentStyle={{ marginBottom: 100 }}
+            numColumns={2}
+            keyExtractor={(item, index) => index}
+            showsVerticalScrollIndicator={false}
+          />
+        </View>
+        {/* </ScrollView>
 
         </View>
         <View style={style.flatlistContainer}>
@@ -196,7 +194,7 @@ class WelcomeScreen extends Component {
             keyExtractor={(item, index) => index}
             showsVerticalScrollIndicator={false}
           />
-        </View>
+        </View> */}
       </View>
     );
   }
@@ -221,13 +219,12 @@ const style = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
 
-    marginTop: hp("5%"),
-    marginHorizontal: wp("2%"),
-    marginBottom: hp("4%"),
+    // marginTop: hp("5%"),
+    // marginHorizontal: wp("2%"),
+    // marginBottom: hp("4%"),
 
-//     backgroundColor: "#FFFFFF",
-//     paddingTop: hp("17%"),
-
+    backgroundColor: "#FFFFFF",
+    paddingTop: hp("17%"),
   },
 
   searchSection: {
@@ -237,15 +234,9 @@ const style = StyleSheet.create({
     borderWidth: wp("0.3%"),
     paddingHorizontal: wp("1%"),
 
-    borderColor: "#cccccc",
-    borderRadius: wp("10%"),
-    marginVertical: hp("1%"),
-    marginHorizontal: hp("1%"),
-
-//     backgroundColor: "#FFFFFF",
-//     borderRadius: 10,
-//     marginHorizontal: 7,
-
+    backgroundColor: "#FFFFFF",
+    borderRadius: 10,
+    marginHorizontal: 7,
   },
   searchBox: {
     fontSize: 18,
@@ -253,12 +244,9 @@ const style = StyleSheet.create({
     paddingVertical: 8,
   },
 
-  topSection: {},
-
-//   topSection: {
-//     backgroundColor: "#FFFFFF",
-//   },
-
+  topSection: {
+    backgroundColor: "#FFFFFF",
+  },
 
   filterContainer: {
     flexDirection: "row",
@@ -266,9 +254,7 @@ const style = StyleSheet.create({
     marginTop: hp("1%"),
     paddingLeft: wp("25%"),
 
-    paddingBottom: hp("1%"),
-
-//     paddingBottom: 5,
+    paddingBottom: 5,
   },
   filterIcons: {
     marginVertical: hp("2%"),

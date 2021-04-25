@@ -22,20 +22,65 @@ class EditProductScreen extends Component {
     super(props);
     this.state = {
       image: null,
+      base64: null,
+      productName: "",
+      cp: "",
+      sp: "",
+      qty: "",
+      details: "",
     };
   }
+  handleUpdateState = (name, value) => {
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  handleAddProduct = () => {
+    const product = {
+      productName: this.state.productName,
+      cp: this.state.cp,
+      sp: this.state.sp,
+      qty: this.state.qty,
+      details: this.state.details,
+      base64: this.state.base64,
+      status: 0,
+    };
+    this.props.AddNewProduct(product);
+  };
 
   selectPicture = async () => {
     await Permissions.askAsync(Permissions.MEDIA_LIBRARY);
-    const { cancelled, uri } = await ImagePicker.launchImageLibraryAsync({
+    const {
+      cancelled,
+      uri,
+      base64,
+    } = await ImagePicker.launchImageLibraryAsync({
       aspect: [21, 21],
+      base64: true,
       allowsEditing: true,
       quality: 1,
     });
-    if (!cancelled) this.setState({ image: uri });
+    if (!cancelled) {
+      this.setState({ image: uri }), this.setState({ base64 });
+    }
     console.log(uri);
   };
 
+  componentDidMount() {
+    if (this.state.status !== 1) {
+      this.props.navigation.addListener("focus", () => {
+        this.setState({
+          productName: this.props.route.params.selectedProduct.productName,
+          cp: this.props.route.params.selectedProduct.cp,
+          sp: this.props.route.params.selectedProduct.sp,
+          qty: this.props.route.params.selectedProduct.qty,
+          details: this.props.route.params.selectedProduct.details,
+          base64: this.props.route.params.selectedProduct.base64,
+        });
+      });
+    }
+  }
   render() {
     return (
       <View style={style.container}>
@@ -48,6 +93,10 @@ class EditProductScreen extends Component {
               <TextInput
                 style={style.usernameInput}
                 placeholder="Product Name"
+                onChangeText={(text) =>
+                  this.handleUpdateState("productName", text)
+                }
+                value={this.state.productName}
               ></TextInput>
             </View>
             <View style={style.pricingContainer}>
@@ -61,6 +110,8 @@ class EditProductScreen extends Component {
                     style={style.pricingInput}
                     placeholder="eg. 1000"
                     keyboardType="number-pad"
+                    onChangeText={(text) => this.handleUpdateState("cp", text)}
+                    value={this.state.cp}
                   ></TextInput>
                 </View>
               </View>
@@ -74,6 +125,8 @@ class EditProductScreen extends Component {
                     style={style.pricingInput}
                     placeholder="eg. 1200"
                     keyboardType="number-pad"
+                    onChangeText={(text) => this.handleUpdateState("sp", text)}
+                    value={this.state.sp}
                   ></TextInput>
                 </View>
               </View>
@@ -97,11 +150,15 @@ class EditProductScreen extends Component {
                 style={style.usernameInput}
                 placeholder="Product Details"
                 multiline={true}
+                onChangeText={(text) => this.handleUpdateState("details", text)}
+                value={this.state.details}
               ></TextInput>
             </View>
             <View style={style.productImageContainer}>
               <TouchableOpacity
-                onPress={this.selectPicture}
+                onPress={() => {
+                  this.selectPicture(), this.setState({ status: 1 });
+                }}
                 style={style.editProductButton}
               >
                 <MaterialIcons name="edit" size={26} color="#0080ff" />
@@ -109,7 +166,7 @@ class EditProductScreen extends Component {
               <View style={style.theProductImageContainer}>
                 <Image
                   style={style.theProductImage}
-                  source={{ uri: this.state.image }}
+                  source={{ uri: `data:image/jpg;base64,${this.state.base64}` }}
                 />
               </View>
             </View>

@@ -26,7 +26,9 @@ function ProductComponentS(props) {
           <View style={style.editAndDeleteBtnContainer}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate("EditProduct");
+                navigation.navigate("EditProduct", {
+                  selectedProduct: props.product,
+                });
               }}
             >
               <MaterialIcons name="mode-edit" size={25} color="#0080ff" />
@@ -59,10 +61,15 @@ const style = StyleSheet.create({
     marginHorizontal: wp("4%"),
     marginVertical: hp("5%"),
   },
+
   productImage: {
 
-    width: 160,
-    height: 150,
+    width: 140,
+    height: 137,
+  },
+  productImageContainer: {
+    justifyContent: "center",
+    alignItems: "center",
 
   },
 
@@ -77,6 +84,8 @@ const style = StyleSheet.create({
     fontWeight: "700",
   },
   infoAndBtnsContainer: {
+    flex: 2,
+
     flexDirection: "row",
     justifyContent: "space-between",
   },

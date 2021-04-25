@@ -119,8 +119,11 @@ function DrawerNavigatorDashboardS({ navigation }) {
         paddingTop: hp("11.95%"),
       }}
     >
-      {/* <Drawer.Screen
-        name="Hoome"
+
+      <Drawer.Screen
+        name="Home"
+
+
 
         options={{
           drawerLabel: () => {

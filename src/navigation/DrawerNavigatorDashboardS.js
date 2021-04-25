@@ -120,7 +120,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
       }}
     >
       <Drawer.Screen
-        name="Dashboard"
+        name="Home"
         options={{
           drawerLabel: () => {
             return (

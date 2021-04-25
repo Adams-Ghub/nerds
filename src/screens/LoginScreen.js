@@ -71,12 +71,9 @@ class LoginScreen extends Component {
 
           <View style={style.loginButtonContainer}>
             <TouchableOpacity
-              onPress={this.handleLogin}
               style={style.loginButton}
               onPress={() => {
-                this.props.navigation.navigate("ShopOwnerDashboard ", {
-                  screen: "Dashboard",
-                });
+                this.props.navigation.navigate("ShopOwnerDashboard");
               }}
             >
               <Text style={style.loginButtonText}>Login</Text>

@@ -18,6 +18,8 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 import { connect } from "react-redux";
 import { AddNewProduct } from "../../redux/actions/authAction";
+import "react-native-get-random-values";
+import { v4 as uuid } from "uuid";
 
 class AddProductScreen extends Component {
   constructor(props) {
@@ -69,7 +71,9 @@ class AddProductScreen extends Component {
       qty: this.state.qty,
       details: this.state.details,
       base64: this.state.base64,
+      id: uuid(),
     };
+    console.log(product.id);
     this.props.AddNewProduct(product);
   };
   render() {
@@ -174,6 +178,19 @@ class AddProductScreen extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    products: state.products,
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {
+    AddNewProduct,
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps())(AddProductScreen);
 
 const style = StyleSheet.create({
   container: {
@@ -295,16 +312,3 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
 });
-
-const mapStateToProps = (state) => {
-  return {
-    products: state.products,
-  };
-};
-
-const mapDispatchToProps = () => {
-  return {
-    AddNewProduct,
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps())(AddProductScreen);

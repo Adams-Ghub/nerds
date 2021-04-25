@@ -1,89 +1,89 @@
-import firebase from "../../firebase/firebase";
+// import firebase from "../../firebase/firebase";
 
-export function createAccountShopOwner(
-  email,
-  password,
-  username,
-  shopName,
-  contact,
-  ghpostGps,
-  idNumber
-) {
-  const db = firebase.firestore();
-  return async (dispatch) => {
-    try {
-      const user = await firebase
-        .auth()
-        .createUserWithEmailAndPassword(email, password);
-      console.log(user);
+// export function createAccountShopOwner(
+//   email,
+//   password,
+//   username,
+//   shopName,
+//   contact,
+//   ghpostGps,
+//   idNumber
+// ) {
+//   const db = firebase.firestore();
+//   return async (dispatch) => {
+//     try {
+//       const user = await firebase
+//         .auth()
+//         .createUserWithEmailAndPassword(email, password);
+//       console.log(user);
 
-      let f_user = db
-        .collection("users")
-        .doc(user.user.uid)
-        .set({
-          username,
-          role: "Shop Owner",
-        })
-        .then(() => {
-          alert("user created successfully");
-          console.log(f_user);
-        })
-        .catch((error) => {
-          alert(error.message);
-          console.log(error);
-        });
+//       let f_user = db
+//         .collection("users")
+//         .doc(user.user.uid)
+//         .set({
+//           username,
+//           role: "Shop Owner",
+//         })
+//         .then(() => {
+//           alert("user created successfully");
+//           console.log(f_user);
+//         })
+//         .catch((error) => {
+//           alert(error.message);
+//           console.log(error);
+//         });
 
-      db.collection("shop")
-        .doc(user.user.uid)
-        .set({
-          shopName,
-          GH_Post_GPS: ghpostGps,
-          contact,
-          GhanaCardID: idNumber,
-        })
-        .then(() => {
-          alert("Shop created successfully");
-        })
-        .catch((error) => {
-          alert(error.message);
-        });
-      console.log(user);
-      // dispatch(Loggedin(user));
-    } catch (error) {
-      alert(error.message);
-      dispatch(registerError(error.message));
-    }
-  };
-}
+//       db.collection("shop")
+//         .doc(user.user.uid)
+//         .set({
+//           shopName,
+//           GH_Post_GPS: ghpostGps,
+//           contact,
+//           GhanaCardID: idNumber,
+//         })
+//         .then(() => {
+//           alert("Shop created successfully");
+//         })
+//         .catch((error) => {
+//           alert(error.message);
+//         });
+//       console.log(user);
+//       // dispatch(Loggedin(user));
+//     } catch (error) {
+//       alert(error.message);
+//       dispatch(registerError(error.message));
+//     }
+//   };
+// }
 
-export function LoginShopOwner(email, password) {
-  return async (dispatch) => {
-    try {
-      const user = await firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password);
-      console.log(user);
-      dispatch(Loggedin(user));
-    } catch (error) {
-      dispatch(loginError(error.message));
-      console.log(error.message);
-    }
-  };
-}
+// export function LoginShopOwner(email, password) {
+//   return async (dispatch) => {
+//     try {
+//       const user = await firebase
+//         .auth()
+//         .signInWithEmailAndPassword(email, password);
+//       console.log(user);
+//       dispatch(Loggedin(user));
+//     } catch (error) {
+//       dispatch(loginError(error.message));
+//       console.log(error.message);
+//     }
+//   };
+// }
 
-export function logout() {
-  return async (dispatch) => {
-    try {
-      await firebase.auth().signOut();
-      dispatch(Loggedout());
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
+// export function logout() {
+//   return async (dispatch) => {
+//     try {
+//       await firebase.auth().signOut();
+//       dispatch(Loggedout());
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// }
 
 export function AddNewProduct(product) {
-  return async (dispatch, state, { getFirestore, getFirebase }) => {
+  return async (dispatch, state, { getFirestore }) => {
     await getFirestore()
       .collection("products")
       .add({
@@ -93,6 +93,7 @@ export function AddNewProduct(product) {
         details: product.details,
         qty: product.qty,
         base64: product.base64,
+        id: product.id,
       })
       .then((docRef) => {
         alert("product added successfully");
@@ -124,6 +125,30 @@ export const getAllProducts = () => {
         },
 
         (error) => {}
+      );
+  };
+};
+
+export const getAllOrders = () => {
+  return async (dispatch, state, { getFirestore }) => {
+    await getFirestore()
+      .collection("orders")
+      .onSnapshot(
+        (snapshot) => {
+          var orders = [];
+          snapshot.forEach((doc) => {
+            orders.push(doc.data());
+          });
+          console.log(orders);
+          dispatch({
+            type: "SET_ALL_ORDERS",
+            payload: orders,
+          });
+        },
+
+        (error) => {
+          console.log(error.message);
+        }
       );
   };
 };

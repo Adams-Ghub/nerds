@@ -55,8 +55,8 @@ const style = StyleSheet.create({
   productImageContainer: {
     flex: 7,
     marginBottom: 20,
-    width: 160,
-    height: 150,
+    // width: 160,
+    // height: 150,
   },
   details: {
     // backgroundColor: "rgba(165, 161, 157, 0.4)",
@@ -69,10 +69,15 @@ const style = StyleSheet.create({
     borderWidth: 0.5,
   },
   productImage: {
-    width: 150,
-    height: 150,
+
+    width: 152,
+    height: 145,
+// =======
+//     width: 150,
+//     height: 150,
     borderRadius: 10,
     borderWidth: 0.5,
+
   },
   productName: {
     fontSize: 17,

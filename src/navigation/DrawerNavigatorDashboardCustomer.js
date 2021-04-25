@@ -81,6 +81,75 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
         marginTop: hp("10.95%"),
       }}
     >
+
+      <Drawer.Screen
+        name="shopping"
+        options={{
+          drawerLabel: () => {
+            return (
+              <DrawerItem
+                title="shopping"
+                icon={
+                  <AntDesign
+                    style={{ marginTop: 5 }}
+                    name="shoppingcart"
+                    size={20}
+                    color="#0080FF"
+                  />
+                }
+              />
+            );
+          },
+          ...defaultHeaderStyle,
+        }}
+        component={WelcomeScreen}
+      />
+      <Drawer.Screen
+        name="profile"
+        options={{
+          drawerLabel: () => {
+            return (
+              <DrawerItem
+                title="profile"
+                icon={
+                  <AntDesign
+                    name="user"
+                    style={{ marginTop: 5 }}
+                    size={20}
+                    color="#0080FF"
+                  />
+                }
+              />
+            );
+          },
+          ...defaultHeaderStyle,
+        }}
+        component={ProfileCustomerDashboard}
+      />
+      <Drawer.Screen
+        name="payment"
+        options={{
+          drawerLabel: () => {
+            return (
+              <DrawerItem
+                title="payment"
+                icon={
+                  <MaterialIcons
+                    name="payment"
+                    size={20}
+                    style={{ marginTop: 5 }}
+                    color="#0080ff"
+                  />
+                }
+              />
+            );
+          },
+          ...defaultHeaderStyle,
+        }}
+        component={OrdersScreen}
+      />
+
+
       <Drawer.Screen
         name="complaint"
         options={{

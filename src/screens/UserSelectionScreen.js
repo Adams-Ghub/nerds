@@ -28,9 +28,7 @@ class UserSelectionScreen extends Component {
         <View style={style.createShopButtonContainer}>
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate("Welcome", {
-                userType: "customer",
-              });
+              this.props.navigation.navigate("Welcome");
             }}
             style={style.createShopButton}
           >

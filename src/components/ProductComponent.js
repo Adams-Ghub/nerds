@@ -24,6 +24,7 @@ class Product extends Component {
               {this.props.name}
             </Text>
             <Text style={style.productPrice}>GH¢ {this.props.sp}</Text>
+
           </View>
         </View>
       </View>
@@ -34,11 +35,11 @@ class Product extends Component {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: wp("0.5%"),
-    marginVertical: wp("0.5%"),
-    backgroundColor: "#FFFFFF",
+    marginHorizontal: 5,
+    marginVertical: 5,
     flexDirection: "column",
     justifyContent: "center",
+
   },
   productContainer: {
     flex: 1,
@@ -61,16 +62,18 @@ const style = StyleSheet.create({
   productImage: {
     width: 160,
     height: 150,
-  },
 
+  },
   productName: {
     fontSize: 15,
     paddingVertical: hp("0%"),
     paddingHorizontal: wp("0.5%"),
+    color: "#080809",
   },
   productPrice: {
     fontSize: 15,
     fontWeight: "700",
+    color: "#080809",
   },
 });
 

@@ -29,10 +29,10 @@ function ProductComponentS(props) {
                 navigation.navigate("EditProduct");
               }}
             >
-              <MaterialIcons name="mode-edit" size={20} color="#0080ff" />
+              <MaterialIcons name="mode-edit" size={25} color="#0080ff" />
             </TouchableOpacity>
             <TouchableOpacity>
-              <MaterialIcons name="delete" size={20} color="#ba1e20" />
+              <MaterialIcons name="delete" size={25} color="#ba1e20" />
             </TouchableOpacity>
           </View>
         </View>

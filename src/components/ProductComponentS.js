@@ -63,12 +63,14 @@ const style = StyleSheet.create({
   },
 
   productImage: {
+
     width: 140,
     height: 137,
   },
   productImageContainer: {
     justifyContent: "center",
     alignItems: "center",
+
   },
 
   productName: {

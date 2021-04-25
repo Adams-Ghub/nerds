@@ -64,7 +64,7 @@ class MobileNumberScreen extends Component {
             <TextInput
               style={styles.input}
               underlineColorAndroid="transparent"
-              placeholder="Enter mtm mobile number"
+              placeholder="Enter mtn mobile number"
               placeholderTextColor="#000"
               autoCapitalize="none"
               keyboardType={"numeric"}
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   submitButton: {
-    backgroundColor: "#0080FF",
+    backgroundColor: "#080809",
     padding: 10,
     margin: 15,
     height: 40,

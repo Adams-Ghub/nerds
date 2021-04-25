@@ -16,11 +16,11 @@ const CartScreen = ({ navigation }) => {
         <View style={styles.cartContainer}>
           <View style={styles.cart}>
             <Image
-              source={require("../../../assets/productImg.png")}
+              source={require("../../../assets/ladies_bag.jpg")}
               style={styles.image}
             />
             <View style={styles.product}>
-              <Text style={styles.productName}>HP Laptop...</Text>
+              <Text style={styles.productName}>GUCCI Bag...</Text>
               <Text style={styles.productPrice}>GH₵3500</Text>
             </View>
           </View>
@@ -29,7 +29,7 @@ const CartScreen = ({ navigation }) => {
           <View style={styles.iconContainer}>
             <View style={styles.deleteicon}>
               <View style={styles.icon}>
-                <MaterialIcons name="delete" size={20} color="#0080FF" />
+                <MaterialIcons name="delete" size={20} color="#080809" />
               </View>
               <Text style={styles.remove}>REMOVE</Text>
             </View>
@@ -38,12 +38,12 @@ const CartScreen = ({ navigation }) => {
                 <MaterialIcons
                   name="arrow-drop-down"
                   size={24}
-                  color="#0080FF"
+                  color="#080809"
                 />
               </View>
               <Text style={styles.number1}>1</Text>
               <View style={styles.icon3}>
-                <MaterialIcons name="arrow-drop-up" size={24} color="#0080FF" />
+                <MaterialIcons name="arrow-drop-up" size={24} color="#080809" />
               </View>
             </View>
           </View>
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   productPrice: {
     fontSize: 20,
-    color: "#0080FF",
+    color: "#080809",
   },
   line: {
     width: "100%",
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   buttonContainer: {
-    backgroundColor: "#0080FF",
+    backgroundColor: "#080809",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 6,
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   price: {
-    color: "#0080FF",
+    color: "#080809",
   },
   checkoutText: {
     flexDirection: "row",

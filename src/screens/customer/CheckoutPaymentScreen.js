@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer: {
-    backgroundColor: "#0080FF",
+    backgroundColor: "#080809",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 6,

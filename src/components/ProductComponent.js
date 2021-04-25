@@ -34,15 +34,18 @@ class Product extends Component {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 5,
     marginVertical: 5,
     flexDirection: "column",
+
+    // justifyContent: "center",
+
+
     justifyContent: "space-around",
-    maxWidth: wp("47%"),
     backgroundColor: "#FFFFFF",
     borderRadius: 10,
     height: 250,
     borderColor: "#080809",
+    paddingLeft: 12,
   },
   productContainer: {
     flex: 1,
@@ -50,7 +53,8 @@ const style = StyleSheet.create({
     borderRadius: 10,
     justifyContent: "space-around",
     alignItems: "center",
-    borderWidth: 2,
+    borderWidth: 1,
+    borderColor: "#EEEEEE",
   },
   productImageContainer: {
     flex: 7,
@@ -63,16 +67,29 @@ const style = StyleSheet.create({
     borderRadius: 10,
     width: "90%",
     alignItems: "center",
-    paddingVertical: 5,
-    borderColor: "#080809",
+
+    paddingVertical: 10,
+    borderColor: "#EEEEEE",
+    borderWidth: 1,
+
+    
+   
     marginBottom: 10,
-    borderWidth: 0.5,
+    
+
   },
   productImage: {
+
+    
     width: 150,
     height: 150,
     borderRadius: 10,
-    borderWidth: 0.5,
+
+    borderWidth: 1,
+    borderColor: "#EEEEEE",
+
+    
+
   },
   productName: {
     fontSize: 17,
@@ -82,7 +99,7 @@ const style = StyleSheet.create({
   },
   productPrice: {
     fontSize: 15,
-    fontWeight: "700",
+    // fontWeight: "700",
     color: "#080809",
   },
 });

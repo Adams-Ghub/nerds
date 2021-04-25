@@ -43,8 +43,8 @@ class WelcomeScreen extends Component {
       ],
       searchText: "",
 
-      shopColor: "#080809",
-      productColor: "#080809",
+      shopColor: "#5E5A80",
+      productColor: "#5E5A80",
     };
     this.handleUpdateState = this.handleUpdateState.bind(this);
   }
@@ -75,9 +75,16 @@ class WelcomeScreen extends Component {
               style={style.searchBox}
               placeholderTextColor="#808080"
             ></TextInput>
-            <TouchableOpacity>
-              <Entypo name="magnifying-glass" size={24} color={"#808080"} />
-            </TouchableOpacity>
+            <View style={style.searchIcon}>
+              <TouchableOpacity>
+                <Entypo
+                  name="magnifying-glass"
+                  size={20}
+                  color={"#808080"}
+                  paddingTop={10}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
           <View style={style.filterContainer}>
             <View style={style.filterIcons}>
@@ -144,22 +151,22 @@ const style = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     backgroundColor: "#FFFFFF",
-    paddingTop: hp("17%"),
+    paddingTop: 100,
   },
 
   searchSection: {
     flexDirection: "row",
-    paddingVertical: hp("0.2%"),
+    paddingVertical: 3,
     justifyContent: "center",
-    borderWidth: wp("0.3%"),
-    paddingHorizontal: wp("1%"),
+    borderWidth: 1,
+    borderColor: "#EEEEEE",
     backgroundColor: "#FFFFFF",
     borderRadius: 10,
-    marginHorizontal: 7,
+    marginHorizontal: 10,
   },
   searchBox: {
     fontSize: 18,
-    marginRight: wp("4%"),
+    marginRight: 10,
     paddingVertical: 8,
   },
   topSection: {
@@ -174,8 +181,8 @@ const style = StyleSheet.create({
     paddingBottom: 5,
   },
   filterIcons: {
-    marginVertical: hp("2%"),
-    marginHorizontal: wp("8%"),
+    marginVertical: 10,
+    marginHorizontal: 30,
   },
   flatlistContainer: {
     backgroundColor: "#FFFFFF",
@@ -189,7 +196,6 @@ const style = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    marginHorizontal: wp("1.7%"),
   },
   accountText: {
     fontSize: 10,
@@ -197,5 +203,8 @@ const style = StyleSheet.create({
   homeText: {
     fontSize: 10,
   },
-  text: {},
+  searchIcon: {
+    marginTop: 10,
+    marginHorizontal: 7,
+  },
 });

@@ -119,12 +119,8 @@ function DrawerNavigatorDashboardS({ navigation }) {
         paddingTop: hp("11.95%"),
       }}
     >
-
       <Drawer.Screen
         name="Home"
-
-
-
         options={{
           drawerLabel: () => {
             return (
@@ -210,12 +206,8 @@ function DrawerNavigatorDashboardS({ navigation }) {
           },
           ...defaultHeaderStyle,
         }}
-
-        
-  
-        component={OrderNavigatior}*/}
+        component={OrderNavigatior}
       />
-
 
       <Drawer.Screen
         name="customers"

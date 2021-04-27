@@ -16,7 +16,6 @@ import {
 import PLReportListElement from "./PLReportListElement";
 import { Feather } from "@expo/vector-icons";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import moment from "moment";
 
 class PLReport extends Component {
   constructor(props) {
@@ -29,36 +28,7 @@ class PLReport extends Component {
       toMode: "date",
       toShow: false,
     };
-    // this.onChange = this.onChange.bind(this);
-    // this.setFromMode = this.setFromMode.bind(this);
-    // this.showDatepicker = this.showDatepicker.bind(this);1598051730000
   }
-
-  // showTimepicker = () => {
-  //   this.setState({ mode: 'time'});
-  //   };
-
-  //   return (
-  //     <View>
-  //       <View>
-  //         <Button onPress={showDatepicker} title="Show date picker!" />
-  //       </View>
-  //       <View>
-  //         <Button onPress={showTimepicker} title="Show time picker!" />
-  //       </View>
-  //       {show && (
-  //         <DateTimePicker
-  //           testID="dateTimePicker"
-  //           value={date}
-  //           mode={mode}
-  //           is24Hour={true}
-  //           display="default"
-  //           onChange={onChange}
-  //         />
-  //       )}
-  //     </View>
-  //   );
-  // };
 
   render() {
     const setFromDate = (event, selectedDate) => {

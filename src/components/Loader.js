@@ -1,16 +1,29 @@
-import React from "react";
+import React, { Component } from "react";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import DrawerItem from "./DrawerItem";
 
-export default function Loader() {
-  return (
-    <View style={[styles.container]}>
-      <View>
-        <ActivityIndicator size="large" />
-        <Text>Logging Out...</Text>
+export default class Loader extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    {
+      setTimeout(() => {
+        this.props.navigation.navigate("UserSelection");
+      }, 2000);
+    }
+  }
+  render() {
+    return (
+      <View style={[styles.container]}>
+        <View>
+          <ActivityIndicator size="large" />
+          <Text>Logging Out...</Text>
+        </View>
       </View>
-    </View>
-  );
+    );
+  }
 }
 
 const styles = StyleSheet.create({

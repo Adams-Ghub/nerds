@@ -71,6 +71,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Register"
+        initialParams={{ userType: "customer" }}
         options={{
           tabBarIcon: ({ tintColor }) => (
             <Icon name="person-outline" color={"#ffffff"} size={25} />

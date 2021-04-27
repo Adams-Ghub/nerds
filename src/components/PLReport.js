@@ -91,7 +91,6 @@ class PLReport extends Component {
       setToMode("date");
     };
 
-    console.log(this.state.date);
     return (
       <View style={style.container}>
         <View style={style.Heading}>
@@ -150,77 +149,48 @@ class PLReport extends Component {
 
           <View style={style.subHeaders}>
             <Text style={style.subHeadersText}>Online product sale</Text>
-            <Text>20000</Text>
+            <Text style={style.subHeadersFigure}>20000</Text>
           </View>
           <View style={style.subHeaders}>
             <Text style={style.subHeadersText}>Offline product sale</Text>
-            <Text>20000</Text>
+            <Text style={style.subHeadersFigure}>20000</Text>
           </View>
           <View style={style.subHeaders}>
             <Text style={style.subHeadersText}>Other Income</Text>
-            <Text>2000</Text>
+            <Text style={style.subHeadersFigure}>2000</Text>
           </View>
           <View style={style.mainHeaders}>
             <Text style={style.mainHeadersText}>Total Income</Text>
-            <Text>40000</Text>
+            <Text style={style.mainHeadersFigure}>40000</Text>
           </View>
           <View style={style.mainHeaders}>
             <Text style={style.mainHeadersText}>Cost of Goods Sold(COGS)</Text>
           </View>
           <View style={style.subHeaders}>
             <Text style={style.subHeadersText}>Cost of Goods Sold</Text>
-            <Text>29000</Text>
+            <Text style={style.subHeadersFigure}>29000</Text>
           </View>
           <View style={style.mainHeaders}>
             <Text style={style.mainHeadersText}>Total COGS</Text>
-            <Text>29000</Text>
+            <Text style={style.mainHeadersFigure}>29000</Text>
           </View>
           <View style={style.biggerMainHeaders}>
             <Text style={style.biggerMainHeadersText}>Gross Profit</Text>
-            <Text>11000</Text>
+            <Text style={style.biggerMainHeadersFigure}>11000</Text>
           </View>
           <View style={style.mainHeaders}>
             <Text style={style.mainHeadersText}>Expenses</Text>
           </View>
           <View style={style.mainHeaders}>
             <Text style={style.mainHeadersText}>Total Expenses</Text>
-            <Text>11000</Text>
+            <Text style={style.mainHeadersFigure}>11000</Text>
           </View>
           <View style={style.biggerMainHeaders}>
             <Text style={style.biggerMainHeadersText}>Net Income</Text>
-            <Text>11000</Text>
+            <Text style={style.netIncomeFigure}>11000</Text>
           </View>
         </View>
 
-        <View style={style.horizontalLineSeparator}></View>
-        <View style={style.infoSectionContainer}>
-          <View style={style.theTotalFieldColumnContainer}>
-            <View>
-              <Text style={style.theTotalFieldText}>total selling price</Text>
-            </View>
-            <View style={style.totalCPTextContainer}>
-              <Text style={style.theTotalFieldText}>total cost price</Text>
-            </View>
-            <View style={style.grossProfitTextContainer}>
-              <Text style={style.grossProfitText}>gross profit</Text>
-            </View>
-          </View>
-          <View style={style.theTotalValueColumnContainer}>
-            <View style={style.cediUnitValueTextContainer}>
-              <Text style={style.cediUnitText}>GH¢</Text>
-              <Text style={style.totalSPValueText}>122344</Text>
-            </View>
-            <View style={style.cediUnitValueTextContainer}>
-              <Text style={style.cediUnitText}>GH¢</Text>
-              <Text style={style.totalCPValueText}>122344</Text>
-            </View>
-
-            <View style={style.grossCediUnitValueTextContainer}>
-              <Text style={style.cediUnitText}>GH¢</Text>
-              <Text style={style.grossProfitValueText}>122344</Text>
-            </View>
-          </View>
-        </View>
         <View style={style.toolsContainer}>
           <TouchableOpacity style={style.saveButton}>
             <Feather name="printer" size={24} color="#0080ff" />
@@ -247,18 +217,39 @@ const style = StyleSheet.create({
   biggerMainHeadersText: {
     fontSize: 18,
   },
+  biggerMainHeadersFigure: {
+    fontSize: 18,
+    borderStyle: "solid",
+    borderTopWidth: 1,
+    borderTopColor: "#808080",
+    paddingLeft: 20,
+  },
+  netIncomeFigure: {
+    fontSize: 18,
+    borderStyle: "solid",
+    borderTopWidth: 1,
+    borderBottomWidth: 2,
+    borderBottomColor: "#808080",
+    borderTopColor: "#808080",
+    paddingLeft: 20,
+  },
   mainHeaders: {
     flexDirection: "row",
     justifyContent: "space-between",
     paddingLeft: 15,
+    marginVertical: 5,
   },
 
   subHeaders: {
     flexDirection: "row",
     justifyContent: "space-between",
     paddingLeft: 30,
+    marginVertical: 2,
   },
   subHeadersText: {
+    fontSize: 18,
+  },
+  subHeadersFigure: {
     fontSize: 18,
   },
   allDateContainer: {
@@ -293,69 +284,18 @@ const style = StyleSheet.create({
     fontSize: 18,
     fontWeight: "600",
   },
-
+  mainHeadersFigure: {
+    fontSize: 18,
+    borderStyle: "solid",
+    borderTopColor: "#808080",
+    borderTopWidth: 1,
+    paddingLeft: 20,
+  },
   PLReportBody: {
     marginHorizontal: 10,
+    marginBottom: 30,
   },
 
-  productNameText: {
-    fontSize: 15,
-    fontWeight: "700",
-    paddingHorizontal: wp("2%"),
-  },
-  productNameContainer: {
-    width: wp("33%"),
-    marginHorizontal: wp("0.3%"),
-    backgroundColor: "#ebebeb",
-    paddingVertical: hp("0.5%"),
-  },
-
-  timeContainer: {
-    width: wp("30%"),
-    backgroundColor: "#ebebeb",
-    marginHorizontal: wp("0.3%"),
-    alignItems: "center",
-    paddingVertical: hp("0.5%"),
-  },
-  timeText: {
-    fontSize: 15,
-    fontWeight: "700",
-  },
-  infoSectionContainer: {
-    flexDirection: "row",
-    marginLeft: wp("25%"),
-  },
-  horizontalLineSeparator: {
-    borderStyle: "solid",
-    borderTopWidth: hp("0.2%"),
-    borderTopColor: "#dddddd",
-    marginVertical: hp("0.5%"),
-  },
-  theTotalValueColumnContainer: {
-    flexDirection: "column",
-    alignItems: "flex-start",
-  },
-
-  theTotalFieldColumnContainer: {
-    flexDirection: "column",
-    alignItems: "flex-end",
-    marginRight: wp("2%"),
-  },
-  cediUnitText: {
-    fontSize: 16,
-    fontWeight: "700",
-  },
-  cediUnitValueTextContainer: {
-    flexDirection: "row",
-  },
-  grossProfitText: {
-    fontSize: 16,
-    paddingTop: hp("0.4%"),
-  },
-  grossCediUnitValueTextContainer: {
-    flexDirection: "row",
-    borderTopWidth: wp("0.2%"),
-  },
   toolsContainer: {
     borderStyle: "solid",
     borderTopWidth: hp("0.2%"),

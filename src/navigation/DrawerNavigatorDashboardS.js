@@ -234,15 +234,15 @@ function DrawerNavigatorDashboardS({ navigation }) {
       />
 
       <Drawer.Screen
-        name="reports"
+        name="report"
         options={{
           drawerLabel: () => {
             return (
               <DrawerItem
                 title="Report"
                 icon={
-                  <Feather
-                    name="package"
+                  <Entypo
+                    name="text-document"
                     style={{ marginTop: 5 }}
                     size={20}
                     color="#FFFFFF"

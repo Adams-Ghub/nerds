@@ -16,6 +16,8 @@ import {
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
 import ProfileCustomerDashboard from "../components/ProfileCustomerDashboard";
+import MobileNumberScreen from "../screens/customerMomoPayment/MobileNumberScreen";
+import { logout } from "../redux/actions/authAction";
 
 const defaultHeaderStyle = {
   headerTitle: "",
@@ -93,7 +95,9 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
                     style={{ marginTop: 5 }}
                     name="shoppingcart"
                     size={20}
+
                     color="#ffffff"
+
                   />
                 }
               />
@@ -115,7 +119,9 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
                     name="user"
                     style={{ marginTop: 5 }}
                     size={20}
+
                     color="#ffffff"
+
                   />
                 }
               />
@@ -137,7 +143,11 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
                     name="payment"
                     size={20}
                     style={{ marginTop: 5 }}
+
                     color="#ffffff"
+
+                    color="#FFFFFF"
+
                   />
                 }
               />
@@ -145,7 +155,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
           },
           ...defaultHeaderStyle,
         }}
-        component={OrdersScreen}
+        component={MobileNumberScreen}
       />
 
       <Drawer.Screen
@@ -160,7 +170,10 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
                     name="documents"
                     style={{ marginTop: 5 }}
                     size={20}
+
                     color="#ffffff"
+
+
                   />
                 }
               />
@@ -168,7 +181,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
           },
           ...defaultHeaderStyle,
         }}
-        component={OrdersScreen}
+        component={logout}
       />
 
       <Drawer.Screen
@@ -183,7 +196,9 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
                     name="logout"
                     style={{ marginTop: 5 }}
                     size={20}
+
                     color="#ffffff"
+
                   />
                 }
               />

@@ -237,13 +237,13 @@ function DrawerNavigatorDashboardS({ navigation }) {
           drawerLabel: () => {
             return (
               <DrawerItem
-                title="report"
+                title="Report"
                 icon={
                   <Entypo
                     name="text-document"
                     style={{ marginTop: 5 }}
                     size={20}
-                    color="#0080FF"
+                    color="#FFFFFF"
                   />
                 }
               />
@@ -254,7 +254,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
         component={PLReport}
       />
 
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="reports"
         options={{
           drawerLabel: () => {
@@ -275,7 +275,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
           ...defaultHeaderStyle,
         }}
         component={PLReport}
-      />
+      /> */}
 
       <Drawer.Screen
         name="Log out"

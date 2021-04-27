@@ -17,6 +17,7 @@ const DashboardScreen = () => {
   return (
     <ScrollView>
       <View>
+        <Text style={styles.days}>Daily Revenue Accumulated</Text>
         <View>
           <LineChart
             data={{
@@ -59,7 +60,6 @@ const DashboardScreen = () => {
             }}
           />
         </View>
-
         <Text style={styles.topic}>Top Selling Products</Text>
 
         <View style={styles.progressContainer}>
@@ -105,6 +105,15 @@ const styles = StyleSheet.create({
   },
   topic: {
     fontWeight: "bold",
-    marginLeft: 18,
+    alignSelf: "center",
+    marginTop: 15,
+  },
+  progressContainer: {
+    marginTop: 12,
+  },
+  days: {
+    fontWeight: "bold",
+    marginTop: 10,
+    alignSelf: "center",
   },
 });

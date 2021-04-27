@@ -65,13 +65,14 @@ function DrawerNavigatorDashboardS({ navigation }) {
     <Drawer.Navigator
       drawerContentOptions={{
         activeTintColor: "transparent",
-        itemStyle: { marginVertical: hp("0.01%") },
+        itemStyle: { marginVertical: 1 },
       }}
       screenOptions={({ navigation }) => {
         return {
           headerLeft: () => {
             return (
               <TouchableOpacity
+                style={{ marginLeft: 18 }}
                 onPress={() => {
                   navigation.toggleDrawer();
                 }}
@@ -116,7 +117,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
         //         marginTop: 64,
 
         width: wp("45%"),
-        paddingTop: hp("11.95%"),
+        marginTop: 89,
       }}
     >
       <Drawer.Screen
@@ -230,28 +231,6 @@ function DrawerNavigatorDashboardS({ navigation }) {
           ...defaultHeaderStyle,
         }}
         component={ProductScreen}
-      />
-      <Drawer.Screen
-        name="report"
-        options={{
-          drawerLabel: () => {
-            return (
-              <DrawerItem
-                title="report"
-                icon={
-                  <Entypo
-                    name="text-document"
-                    style={{ marginTop: 5 }}
-                    size={20}
-                    color="#0080FF"
-                  />
-                }
-              />
-            );
-          },
-          ...defaultHeaderStyle,
-        }}
-        component={PLReport}
       />
 
       <Drawer.Screen

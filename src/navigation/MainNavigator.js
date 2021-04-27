@@ -42,7 +42,7 @@ function MyTabs() {
       // activeBackgroundColor="green"
       // inactiveBackgroundColor="green"
       // style={{ backgroundColor: "#080809" }}
-      initialRouteName="Cart"
+      initialRouteName="Home"
       tabBarOptions={{
         style: {
           backgroundColor: "#080809",

@@ -11,87 +11,186 @@ import {
   TouchableOpacity,
   ScrollView,
   FlatList,
+  Platform,
 } from "react-native";
 import PLReportListElement from "./PLReportListElement";
 import { Feather } from "@expo/vector-icons";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import moment from "moment";
 
 class PLReport extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      number: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      fromDate: new Date(),
+      fromMode: "date",
+      fromShow: false,
+      toDate: new Date(),
+      toMode: "date",
+      toShow: false,
     };
+    // this.onChange = this.onChange.bind(this);
+    // this.setFromMode = this.setFromMode.bind(this);
+    // this.showDatepicker = this.showDatepicker.bind(this);1598051730000
   }
 
+  // showTimepicker = () => {
+  //   this.setState({ mode: 'time'});
+  //   };
+
+  //   return (
+  //     <View>
+  //       <View>
+  //         <Button onPress={showDatepicker} title="Show date picker!" />
+  //       </View>
+  //       <View>
+  //         <Button onPress={showTimepicker} title="Show time picker!" />
+  //       </View>
+  //       {show && (
+  //         <DateTimePicker
+  //           testID="dateTimePicker"
+  //           value={date}
+  //           mode={mode}
+  //           is24Hour={true}
+  //           display="default"
+  //           onChange={onChange}
+  //         />
+  //       )}
+  //     </View>
+  //   );
+  // };
+
   render() {
+    const setFromDate = (event, selectedDate) => {
+      const currentDate = selectedDate;
+      this.setState({ fromShow: Platform.OS === "ios" });
+      this.setState({ fromDate: currentDate });
+    };
+
+    const setFromMode = (currentMode) => {
+      this.setState({ fromShow: true });
+      this.setState({ fromMode: currentMode });
+    };
+
+    const showFromDatepicker = () => {
+      setFromMode("date");
+    };
+
+    const setToDate = (event, selectedDate) => {
+      const currentDate = selectedDate;
+      this.setState({ toShow: Platform.OS === "ios" });
+      this.setState({ toDate: currentDate });
+    };
+
+    const setToMode = (currentMode) => {
+      this.setState({ toShow: true });
+      this.setState({ toMode: currentMode });
+    };
+
+    const showToDatepicker = () => {
+      setToMode("date");
+    };
+
+    console.log(this.state.date);
     return (
       <View style={style.container}>
-        <View style={style.allFiltersContainer}>
-          <View style={style.filterByProductContainer}>
-            <Text>filter by product</Text>
-            <TextInput
-              style={style.filterProductNameInput}
-              placeholder="product name"
-            ></TextInput>
-          </View>
-          <View style={style.filterByCategoryContainer}>
-            <Text>filter by category</Text>
-            <TextInput
-              style={style.filterCategoryInput}
-              placeholder="category"
-            ></TextInput>
-          </View>
-          <View style={style.dateFilterContainer}>
-            <View style={style.dateFilterFromContainer}>
-              <Text>from</Text>
-              <TextInput
-                style={style.filterDateInput}
-                placeholder="25-0-2021"
-              ></TextInput>
+        <View style={style.Heading}>
+          <Text style={style.companyNameText}>Cictech Electronics </Text>
+          <Text style={style.profitLossText}>Profit & Loss </Text>
+          <View style={style.allDateContainer}>
+            <View style={style.dateFromContainer}>
+              <Text>From:</Text>
+              <TouchableOpacity
+                style={style.dateFromTextContainer}
+                onPress={showFromDatepicker}
+              >
+                <Text style={style.dateFromText}>
+                  {this.state.fromDate.toDateString()}
+                </Text>
+              </TouchableOpacity>
+              {this.state.fromShow && (
+                <DateTimePicker
+                  testID="dateTimePicker"
+                  value={this.state.fromDate}
+                  mode={this.state.fromMode}
+                  is24Hour={true}
+                  display="default"
+                  onChange={setFromDate}
+                />
+              )}
             </View>
-            <View style={style.dateFilterFromContainer}>
-              <Text>to</Text>
-              <TextInput
-                style={style.filterDateInput}
-                placeholder="27-03-2021"
-              ></TextInput>
+            <View style={style.dateFromContainer}>
+              <Text>To:</Text>
+              <TouchableOpacity
+                style={style.dateFromTextContainer}
+                onPress={showToDatepicker}
+              >
+                <Text style={style.dateFromText}>
+                  {this.state.toDate.toDateString()}
+                </Text>
+              </TouchableOpacity>
+              {this.state.toShow && (
+                <DateTimePicker
+                  testID="dateTimePicker"
+                  value={this.state.toDate}
+                  mode={this.state.toMode}
+                  is24Hour={true}
+                  display="default"
+                  onChange={setToDate}
+                />
+              )}
             </View>
-          </View>
-        </View>
-        <TouchableOpacity style={style.filterButton}>
-          <Text style={style.filterText}>filter</Text>
-        </TouchableOpacity>
-        <View style={style.transactionListHeaderContainer}>
-          <View style={style.productNameContainer}>
-            <Text style={style.productNameText}>PRODUCTS</Text>
-          </View>
-          <View style={style.cpContainer}>
-            <Text style={style.CpText}>CP(GH¢)</Text>
-          </View>
-          <View style={style.SpContainer}>
-            <Text style={style.SpText}>SP(GH¢)</Text>
-          </View>
-          <View style={style.timeContainer}>
-            <Text style={style.timeText}>TIME</Text>
           </View>
         </View>
 
-        {/* <Text>transaction list</Text> */}
-        <FlatList
-          style={style.flatlistContainer}
-          data={this.state.number}
-          renderItem={({ item }) => {
-            return (
-              <View style={style.productInFlatlist}>
-                <TouchableOpacity style={style.product}>
-                  <PLReportListElement number={item} />
-                </TouchableOpacity>
-              </View>
-            );
-          }}
-          keyExtractor={(item, index) => index}
-          showsVerticalScrollIndicator={false}
-        />
+        <View style={style.PLReportBody}>
+          <View style={style.mainHeaders}>
+            <Text style={style.mainHeadersText}>Income</Text>
+          </View>
+
+          <View style={style.subHeaders}>
+            <Text style={style.subHeadersText}>Online product sale</Text>
+            <Text>20000</Text>
+          </View>
+          <View style={style.subHeaders}>
+            <Text style={style.subHeadersText}>Offline product sale</Text>
+            <Text>20000</Text>
+          </View>
+          <View style={style.subHeaders}>
+            <Text style={style.subHeadersText}>Other Income</Text>
+            <Text>2000</Text>
+          </View>
+          <View style={style.mainHeaders}>
+            <Text style={style.mainHeadersText}>Total Income</Text>
+            <Text>40000</Text>
+          </View>
+          <View style={style.mainHeaders}>
+            <Text style={style.mainHeadersText}>Cost of Goods Sold(COGS)</Text>
+          </View>
+          <View style={style.subHeaders}>
+            <Text style={style.subHeadersText}>Cost of Goods Sold</Text>
+            <Text>29000</Text>
+          </View>
+          <View style={style.mainHeaders}>
+            <Text style={style.mainHeadersText}>Total COGS</Text>
+            <Text>29000</Text>
+          </View>
+          <View style={style.biggerMainHeaders}>
+            <Text style={style.biggerMainHeadersText}>Gross Profit</Text>
+            <Text>11000</Text>
+          </View>
+          <View style={style.mainHeaders}>
+            <Text style={style.mainHeadersText}>Expenses</Text>
+          </View>
+          <View style={style.mainHeaders}>
+            <Text style={style.mainHeadersText}>Total Expenses</Text>
+            <Text>11000</Text>
+          </View>
+          <View style={style.biggerMainHeaders}>
+            <Text style={style.biggerMainHeadersText}>Net Income</Text>
+            <Text>11000</Text>
+          </View>
+        </View>
 
         <View style={style.horizontalLineSeparator}></View>
         <View style={style.infoSectionContainer}>
@@ -141,35 +240,62 @@ const style = StyleSheet.create({
     marginVertical: hp("6%"),
     marginHorizontal: wp("2%"),
   },
-  allFiltersContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: "#C4C4C4",
-    padding: wp("1.5%"),
-  },
-  filterProductNameInput: {
-    borderWidth: wp("0.2%"),
-    borderRadius: 4,
-    paddingHorizontal: wp("0.2%"),
-  },
-  dateFilterFromContainer: {
+  biggerMainHeaders: {
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  filterButton: {
+  biggerMainHeadersText: {
+    fontSize: 18,
+  },
+  mainHeaders: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingLeft: 15,
+  },
+
+  subHeaders: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingLeft: 30,
+  },
+  subHeadersText: {
+    fontSize: 18,
+  },
+  allDateContainer: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
     alignItems: "center",
-    backgroundColor: "#080809",
-    marginBottom: hp("0.5%"),
   },
-  filterText: {
-    fontSize: 17,
-    color: "#ffffff",
+  dateFromTextContainer: {
+    marginLeft: 5,
   },
-  transactionListHeaderContainer: {
+  companyNameText: {
+    fontSize: 27,
+    textAlign: "center",
+  },
+  profitLossText: {
+    fontSize: 23,
+    textAlign: "center",
+  },
+
+  dateFromContainer: {
     flexDirection: "row",
-    justifyContent: "flex-start",
-    marginBottom: hp("0.6%"),
-    marginTop: hp("2%"),
+    justifyContent: "space-between",
+  },
+
+  Heading: {
+    marginBottom: 10,
+    borderStyle: "solid",
+    borderBottomColor: "#808080",
+    borderBottomWidth: 2,
+  },
+  mainHeadersText: {
+    fontSize: 18,
+    fontWeight: "600",
+  },
+
+  PLReportBody: {
+    marginHorizontal: 10,
   },
 
   productNameText: {
@@ -183,28 +309,7 @@ const style = StyleSheet.create({
     backgroundColor: "#ebebeb",
     paddingVertical: hp("0.5%"),
   },
-  cpContainer: {
-    width: wp("16%"),
-    marginHorizontal: wp("0.3%"),
-    backgroundColor: "#ebebeb",
-    alignItems: "center",
-    paddingVertical: hp("0.5%"),
-  },
-  CpText: {
-    fontSize: 15,
-    fontWeight: "700",
-  },
-  SpContainer: {
-    width: wp("16%"),
-    marginHorizontal: wp("0.3%"),
-    backgroundColor: "#ebebeb",
-    alignItems: "center",
-    paddingVertical: hp("0.5%"),
-  },
-  SpText: {
-    fontSize: 15,
-    fontWeight: "700",
-  },
+
   timeContainer: {
     width: wp("30%"),
     backgroundColor: "#ebebeb",

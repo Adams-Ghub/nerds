@@ -81,7 +81,6 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
         marginTop: hp("10.95%"),
       }}
     >
-
       <Drawer.Screen
         name="shopping"
         options={{
@@ -94,7 +93,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
                     style={{ marginTop: 5 }}
                     name="shoppingcart"
                     size={20}
-                    color="#0080FF"
+                    color="#ffffff"
                   />
                 }
               />
@@ -116,7 +115,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
                     name="user"
                     style={{ marginTop: 5 }}
                     size={20}
-                    color="#0080FF"
+                    color="#ffffff"
                   />
                 }
               />
@@ -138,7 +137,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
                     name="payment"
                     size={20}
                     style={{ marginTop: 5 }}
-                    color="#0080ff"
+                    color="#ffffff"
                   />
                 }
               />
@@ -161,7 +160,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
                     name="documents"
                     style={{ marginTop: 5 }}
                     size={20}
-                    color="#0080ff"
+                    color="#ffffff"
                   />
                 }
               />
@@ -184,7 +183,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
                     name="logout"
                     style={{ marginTop: 5 }}
                     size={20}
-                    color="#0080FF"
+                    color="#ffffff"
                   />
                 }
               />

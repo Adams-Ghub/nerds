@@ -15,8 +15,8 @@ function ProfileDetails() {
           <View style={styles.editIcon}>
             <MaterialIcons name="edit" size={24} color="black" />
           </View>
-          <Text style={styles.profileName}>Abraham Lincoln</Text>
-          <Text style={styles.profileEmail}>abrahamlincoln@gmail.com</Text>
+          <Text style={styles.profileName}>Lovelace Filson</Text>
+          <Text style={styles.profileEmail}>lovelacefilson@gmail.com</Text>
           <View style={styles.line} />
         </View>
 

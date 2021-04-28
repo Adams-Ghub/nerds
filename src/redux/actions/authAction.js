@@ -55,6 +55,7 @@ export function createAccountShopOwner(
     }
   };
 }
+
 export function createAccountCustomer(email, password, username, role) {
   return async (dispatch, state, { getFirebase, getFirestore }) => {
     try {
@@ -86,14 +87,22 @@ export function createAccountCustomer(email, password, username, role) {
   };
 }
 
-export function LoginShopOwner(email, password) {
-  return async (dispatch) => {
+export function LoginUser(email, password) {
+  return async (dispatch, state, { getFirebase, getFirestore }) => {
     try {
-      const user = await firebase
+      const user = await getFirebase()
         .auth()
         .signInWithEmailAndPassword(email, password);
       console.log(user);
+
+      const data = await getFirestore()
+        .collection("users")
+        .doc(user.user.uid)
+        .get();
+      var userInfo = data.data();
+      console.log(userInfo);
       dispatch(Loggedin(user));
+      dispatch(LoggedinUserInfo(userInfo));
     } catch (error) {
       dispatch(loginError(error.message));
       console.log(error.message);
@@ -158,11 +167,16 @@ export const getAllProducts = () => {
   };
 };
 
-export function Loggedin(user, userInfo) {
+export function Loggedin(user) {
   return {
     type: "LOGGED_IN",
     payload: user,
-    userInfo: userInfo,
+  };
+}
+export function LoggedinUserInfo(userInfo) {
+  return {
+    type: "LOGGED_IN_USER_INFO",
+    payload: userInfo,
   };
 }
 export function Loggedout() {

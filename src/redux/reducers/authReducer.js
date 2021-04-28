@@ -14,9 +14,12 @@ export default (state = initialState, action) => {
         ...state,
         Login: true,
         user: action.payload,
-        userInfo: action.userInfo,
       };
-
+    case "LOGGED_IN_USER_INFO":
+      return {
+        ...state,
+        userInfo: action.payload,
+      };
     case "LOGGED_OUT":
       return { ...state, Login: false, user: null };
 

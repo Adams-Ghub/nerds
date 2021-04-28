@@ -12,7 +12,7 @@ import {
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
 import { connect } from "react-redux";
-import { LoginShopOwner } from "../redux/actions/authAction.js";
+import { LoginUser } from "../redux/actions/authAction.js";
 import CustomInput from "../components/CustomInput";
 
 class LoginScreen extends Component {
@@ -27,7 +27,7 @@ class LoginScreen extends Component {
   }
 
   handleLogin = () => {
-    this.props.LoginShopOwner(this.state.email, this.state.password);
+    this.props.LoginUser(this.state.email, this.state.password);
   };
   handleUpdateState = (name, value) => {
     this.setState({
@@ -43,8 +43,15 @@ class LoginScreen extends Component {
             {/* <Text style={style.welcomeMessage}>Welcome To Nerds</Text> */}
             <Text style={style.loginMessage}>Login to continue</Text>
           </View>
-          <CustomInput label="Email" />
-          <CustomInput label="Password" secureTextEntry={true} />
+          <CustomInput
+            label="Email"
+            onChangeText={(text) => this.handleUpdateState("email", text)}
+          />
+          <CustomInput
+            label="Password"
+            secureTextEntry={true}
+            onChangeText={(text) => this.handleUpdateState("password", text)}
+          />
           <View style={style.registrationFormContainer}>
             {/* <View style={style.usernameInputContainer}>
             <TextInput
@@ -73,7 +80,8 @@ class LoginScreen extends Component {
             <TouchableOpacity
               style={style.loginButton}
               onPress={() => {
-                this.props.navigation.navigate("ShopOwnerDashboard");
+                this.handleLogin();
+                // this.props.navigation.navigate("ShopOwnerDashboard");
               }}
             >
               <Text style={style.loginButtonText}>Login</Text>
@@ -102,7 +110,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = () => {
   return {
-    LoginShopOwner,
+    LoginUser,
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps())(LoginScreen);

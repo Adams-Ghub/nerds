@@ -4,36 +4,36 @@ export function createAccountShopOwner(
   email,
   password,
   username,
+  role,
   shopName,
   contact,
   ghpostGps,
   idNumber
 ) {
-  const db = firebase.firestore();
-  return async (dispatch) => {
+  return async (dispatch, state, { getFirebase, getFirestore }) => {
     try {
-      const user = await firebase
+      const user = await getFirebase()
         .auth()
         .createUserWithEmailAndPassword(email, password);
       console.log(user);
 
-      let f_user = db
+      let userInfo = getFirestore()
         .collection("users")
         .doc(user.user.uid)
         .set({
           username,
-          role: "Shop Owner",
+          role,
         })
         .then(() => {
-          alert("user created successfully");
-          console.log(f_user);
+          console.log(userInfo);
         })
         .catch((error) => {
           alert(error.message);
           console.log(error);
         });
 
-      db.collection("shop")
+      getFirestore()
+        .collection("shop")
         .doc(user.user.uid)
         .set({
           shopName,
@@ -42,13 +42,43 @@ export function createAccountShopOwner(
           GhanaCardID: idNumber,
         })
         .then(() => {
-          alert("Shop created successfully");
+          alert("Account created successfully");
         })
         .catch((error) => {
           alert(error.message);
         });
       console.log(user);
-      // dispatch(Loggedin(user));
+      dispatch(Loggedin(user, userInfo));
+    } catch (error) {
+      alert(error.message);
+      dispatch(registerError(error.message));
+    }
+  };
+}
+export function createAccountCustomer(email, password, username, role) {
+  return async (dispatch, state, { getFirebase, getFirestore }) => {
+    try {
+      const user = await getFirebase()
+        .auth()
+        .createUserWithEmailAndPassword(email, password);
+      console.log(user);
+
+      let userInfo = getFirestore()
+        .collection("users")
+        .doc(user.user.uid)
+        .set({
+          username,
+          role,
+        })
+        .then(() => {
+          alert("user created successfully");
+          console.log(userInfo);
+        })
+        .catch((error) => {
+          alert(error.message);
+          console.log(error);
+        });
+      dispatch(Loggedin(user, userInfo));
     } catch (error) {
       alert(error.message);
       dispatch(registerError(error.message));
@@ -128,10 +158,11 @@ export const getAllProducts = () => {
   };
 };
 
-export function Loggedin(user) {
+export function Loggedin(user, userInfo) {
   return {
     type: "LOGGED_IN",
     payload: user,
+    userInfo: userInfo,
   };
 }
 export function Loggedout() {

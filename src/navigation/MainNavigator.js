@@ -21,7 +21,7 @@ import ProductDetails from "../components/ProductDetails";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/Ionicons";
 import DrawerNavigatorDashboardAdmin from "../navigation/DrawerNavigatorDashboardAdmin";
-import { View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import {
   FontAwesome5,
   MaterialCommunityIcons,
@@ -201,27 +201,6 @@ function MainNavigator({ auth }) {
           <Stack.Screen
             name="ProductDetails"
             options={{
-              headerRight: () => {
-                return (
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      justifyContent: "flex-start",
-                    }}
-                  >
-                    <TouchableOpacity style={{ marginRight: 15 }}>
-                      <FontAwesome5 name="search" size={20} color="#ffffff" />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={{ marginRight: 15 }}>
-                      <MaterialCommunityIcons
-                        name="cart"
-                        size={24}
-                        color="#ffffff"
-                      />
-                    </TouchableOpacity>
-                  </View>
-                );
-              },
               headerTitleAlign: "center",
               headerTitle: "Product details",
               headerLeft: () => {
@@ -231,6 +210,34 @@ function MainNavigator({ auth }) {
                   </TouchableOpacity>
                 );
               },
+
+              headerRight: () => {
+                return (
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                    }}
+                  >
+                    {/* <TouchableOpacity style={{ marginRight: 15 }}>
+                      <FontAwesome5 name="search" size={20} color="#ffffff" />
+                    </TouchableOpacity> */}
+                    <TouchableOpacity style={{ marginRight: 5 }}>
+                      <MaterialCommunityIcons
+                        name="cart"
+                        size={24}
+                        color="#ffffff"
+                      />
+                    </TouchableOpacity>
+                    <View>
+                      <Text style={{ color: "#fff", marginRight: 15 }}>
+                        {"0 item(s)"}
+                      </Text>
+                    </View>
+                  </View>
+                );
+              },
+
               headerTitleStyle: {
                 color: "#ffffff",
               },
@@ -293,6 +300,7 @@ function MainNavigator({ auth }) {
 const mapStateToProps = (state) => {
   return {
     auth: state,
+    cart: state.cart,
   };
 };
 

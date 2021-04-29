@@ -205,3 +205,30 @@ export function productAdded(product) {
     payload: product,
   };
 }
+
+//ALL CARTS RELATED ACTIONS==================================================
+export function addProductToCart(item) {
+  return {
+    type: "ADD_PRODUCT_TO_CART",
+    payload: item,
+  };
+}
+export function increaseProduct(item) {
+  return {
+    type: "INCREASE_PRODUCT",
+    payload: item,
+  };
+}
+
+export function decreaseProduct(item) {
+  return {
+    type: "DECREASE_PRODUCT",
+    payload: item,
+  };
+}
+export function removeProduct(item) {
+  return {
+    type: "REMOVE_FROM_CART",
+    payload: item,
+  };
+}

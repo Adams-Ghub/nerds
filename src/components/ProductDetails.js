@@ -13,24 +13,179 @@ import {
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
 import Review from "../components/Review.js";
-import { MaterialIcons } from "@expo/vector-icons";
+import {
+  FontAwesome5,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
+import { connect } from "react-redux";
+import {
+  increaseProduct,
+  addProductToCart,
+  decreaseProduct,
+  removeProduct,
+} from "../redux/actions/authAction.js";
+// import { MaterialIcons } from "@expo/vector-icons";
 
 class ProductDetails extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      cart: [],
+      quantitycheck: 0,
+    };
   }
   ratingsCompleted(ratings) {
     console.log("Ratings is" + ratings);
   }
 
+  handleButtonDisplay = () => {
+    if (this.state.quantitycheck === 0) {
+      return (
+        <TouchableOpacity
+          style={style.addToCartButton}
+          onPress={() => {
+            let item = {
+              product: this.props.route.params.product,
+              qty: this.state.quantitycheck + 1,
+            };
+            this.AddingToCart();
+            this.props.addProductToCart(item);
+            // this.props.navigation.navigate("Cart");
+          }}
+        >
+          <View style={style.addToCartBtnAndTextContainer}>
+            <MaterialIcons name="add-shopping-cart" size={24} color="#ffffff" />
+            <Text style={style.addToCartText}>Add to Cart</Text>
+          </View>
+        </TouchableOpacity>
+      );
+    } else {
+      return (
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            borderWidth: 1,
+            borderRadius: 5,
+            borderColor: "#080809",
+            borderStyle: "solid",
+          }}
+        >
+          <TouchableOpacity
+            onPress={() => {
+              let item = {
+                product: this.props.route.params.product,
+                qty: this.state.quantitycheck - 1,
+              };
+              this.setState({ quantitycheck: --this.state.quantitycheck });
+              this.props.decreaseProduct(item);
+            }}
+            style={{ backgroundColor: "#080809" }}
+          >
+            <MaterialIcons name="arrow-drop-down" size={30} color="#fff" />
+          </TouchableOpacity>
+          <Text
+            style={{ paddingVertical: 4, fontsize: 19, fontWeight: "bold" }}
+          >
+            {this.state.quantitycheck}
+          </Text>
+          <TouchableOpacity
+            onPress={() => {
+              let item2 = {
+                product: this.props.route.params.product,
+                qty: this.state.quantitycheck + 1,
+              };
+              this.props.increaseProduct(item2);
+              this.setState({ quantitycheck: ++this.state.quantitycheck });
+            }}
+            style={{ backgroundColor: "#080809" }}
+          >
+            <MaterialIcons name="arrow-drop-up" size={30} color="#fff" />
+          </TouchableOpacity>
+        </View>
+      );
+    }
+  };
+
+  AddingToCart = () => {
+    this.setState({
+      quantitycheck: ++this.state.quantitycheck,
+    });
+  };
+
+  componentDidMount() {
+    this.props.navigation.setOptions({
+      headerRight: () => {
+        return (
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "flex-start",
+            }}
+          >
+            {/* <TouchableOpacity style={{ marginRight: 15 }}>
+              <FontAwesome5 name="search" size={20} color="#ffffff" />
+            </TouchableOpacity> */}
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate("Cart");
+              }}
+              style={{ marginRight: 5 }}
+            >
+              <MaterialCommunityIcons name="cart" size={24} color="#ffffff" />
+            </TouchableOpacity>
+            <View>
+              <Text style={{ color: "#fff", marginRight: 15 }}>
+                {this.props.thecart.length + " item(s)"}
+              </Text>
+            </View>
+          </View>
+        );
+      },
+    });
+  }
+
+  componentDidUpdate() {
+    this.props.navigation.setOptions({
+      headerRight: () => {
+        return (
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "flex-start",
+            }}
+          >
+            {/* <TouchableOpacity style={{ marginRight: 15 }}>
+              <FontAwesome5 name="search" size={20} color="#ffffff" />
+            </TouchableOpacity> */}
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate("Cart");
+              }}
+              style={{ marginRight: 5 }}
+            >
+              <MaterialCommunityIcons name="cart" size={24} color="#ffffff" />
+            </TouchableOpacity>
+            <View>
+              <Text style={{ color: "#fff", marginRight: 15 }}>
+                {this.props.thecart.length + " item(s)"}
+              </Text>
+            </View>
+          </View>
+        );
+      },
+    });
+  }
+
   render() {
+    console.log(this.props.thecart.length);
     return (
       <View style={style.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={style.ProductImageSection}>
             <Image
               style={style.productImage}
-
               source={{
                 uri: `data:image/jpg;base64,${this.props.route.params.product.base64}`,
               }}
@@ -44,8 +199,8 @@ class ProductDetails extends Component {
               <Text style={style.priceText}>
                 {"GH¢" + this.props.route.params.product.sp}
               </Text>
-              </View>
-             <View style={style.shopNameContainer}>
+            </View>
+            <View style={style.shopNameContainer}>
               <Text style={style.shopText}>Shop:</Text>
               <Text style={style.shopNameText}>Cictech Electronics Ltd.</Text>
             </View>
@@ -102,28 +257,27 @@ class ProductDetails extends Component {
           </View>
         </ScrollView>
         <View style={style.addToCartButtonContainer}>
-          <TouchableOpacity
-            style={style.addToCartButton}
-            onPress={() => {
-              this.props.navigation.navigate("Cart");
-            }}
-          >
-            <View style={style.addToCartBtnAndTextContainer}>
-              <MaterialIcons
-                name="add-shopping-cart"
-                size={24}
-                color="#ffffff"
-              />
-              <Text style={style.addToCartText}>Add to Cart</Text>
-            </View>
-          </TouchableOpacity>
+          {this.handleButtonDisplay()}
         </View>
       </View>
     );
   }
 }
 
-export default ProductDetails;
+const mapStateToProps = (state) => {
+  return {
+    thecart: state.cart,
+  };
+};
+const mapDispatchToProps = () => {
+  return {
+    addProductToCart,
+    increaseProduct,
+    decreaseProduct,
+    removeProduct,
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps())(ProductDetails);
 
 const style = StyleSheet.create({
   container: {
@@ -139,8 +293,6 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
   productImage: {
-
-
     width: 330,
     height: 300,
     borderRadius: 10,

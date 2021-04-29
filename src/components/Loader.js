@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import DrawerItem from "./DrawerItem";
+import { connect } from "react-redux";
+import { logout } from "../redux/actions/authAction";
+import { TouchableHighlightBase } from "react-native";
 
-export default class Loader extends Component {
+class Loader extends Component {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    {
-      setTimeout(() => {
-        this.props.navigation.navigate("UserSelection");
-      }, 2000);
-    }
+    this.props.logout();
   }
   render() {
     return (
@@ -26,6 +25,15 @@ export default class Loader extends Component {
   }
 }
 
+const mapStateToProps = () => {
+  return {};
+};
+const mapDispatchToProps = () => {
+  return {
+    logout,
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps())(Loader);
 const styles = StyleSheet.create({
   container: {
     flex: 1,

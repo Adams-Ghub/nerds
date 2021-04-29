@@ -15,14 +15,15 @@ export default (state = initialState, action) => {
         ...state,
         Login: true,
         user: action.payload,
+        userInfo: action.userInfo,
       };
-    case "LOGGED_IN_USER_INFO":
-      return {
-        ...state,
-        userInfo: action.payload,
-      };
+    // case "LOGGED_IN_USER_INFO":
+    //   return {
+    //     ...state,
+    //     userInfo: action.payload,
+    //   };
     case "LOGGED_OUT":
-      return { ...state, Login: false, user: null };
+      return { ...state, Login: false, user: null, userInfo: null };
 
     case "REGISTER_ERROR":
       return { ...state, error: { register: action.payload } };
@@ -57,7 +58,7 @@ export default (state = initialState, action) => {
 
     case "REMOVE_FROM_CART":
       let currentProducts = state.cart.filter((item) => {
-        item.product.id !== action.payload.product.id;
+        return item.product.id !== action.payload;
       });
       return { ...state, cart: currentProducts };
 

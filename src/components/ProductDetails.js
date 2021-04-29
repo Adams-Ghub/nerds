@@ -17,6 +17,7 @@ import {
   FontAwesome5,
   MaterialCommunityIcons,
   MaterialIcons,
+  AntDesign,
 } from "@expo/vector-icons";
 import { connect } from "react-redux";
 import {
@@ -40,16 +41,16 @@ class ProductDetails extends Component {
   }
 
   handleButtonDisplay = () => {
-    if (this.state.quantitycheck === 0) {
+    if (this.state.quantitycheck < 1) {
       return (
         <TouchableOpacity
           style={style.addToCartButton}
           onPress={() => {
+            this.setState({ quantitycheck: 1 });
             let item = {
               product: this.props.route.params.product,
               qty: this.state.quantitycheck + 1,
             };
-            this.AddingToCart();
             this.props.addProductToCart(item);
             // this.props.navigation.navigate("Cart");
           }}
@@ -74,12 +75,12 @@ class ProductDetails extends Component {
         >
           <TouchableOpacity
             onPress={() => {
-              let item = {
+              let item1 = {
                 product: this.props.route.params.product,
                 qty: this.state.quantitycheck - 1,
               };
-              this.setState({ quantitycheck: --this.state.quantitycheck });
-              this.props.decreaseProduct(item);
+              this.setState({ quantitycheck: this.state.quantitycheck - 1 });
+              this.props.decreaseProduct(item1);
             }}
             style={{ backgroundColor: "#080809" }}
           >
@@ -92,12 +93,12 @@ class ProductDetails extends Component {
           </Text>
           <TouchableOpacity
             onPress={() => {
+              this.setState({ quantitycheck: this.state.quantitycheck + 1 });
               let item2 = {
                 product: this.props.route.params.product,
                 qty: this.state.quantitycheck + 1,
               };
               this.props.increaseProduct(item2);
-              this.setState({ quantitycheck: ++this.state.quantitycheck });
             }}
             style={{ backgroundColor: "#080809" }}
           >
@@ -108,14 +109,24 @@ class ProductDetails extends Component {
     }
   };
 
-  AddingToCart = () => {
-    this.setState({
-      quantitycheck: ++this.state.quantitycheck,
-    });
-  };
-
   componentDidMount() {
     this.props.navigation.setOptions({
+      headerLeft: () => {
+        return (
+          <TouchableOpacity
+            onPress={() => {
+              if (this.props.auth) {
+                this.props.navigation.navigate("CustomerDashboard");
+              } else {
+                this.props.navigation.navigate("Welcome");
+              }
+            }}
+            style={{ marginHorizontal: 15 }}
+          >
+            <AntDesign name="arrowleft" size={24} color="#ffffff" />
+          </TouchableOpacity>
+        );
+      },
       headerRight: () => {
         return (
           <View
@@ -148,6 +159,23 @@ class ProductDetails extends Component {
 
   componentDidUpdate() {
     this.props.navigation.setOptions({
+      headerLeft: () => {
+        return (
+          <TouchableOpacity
+            onPress={() => {
+              if (this.props.auth) {
+                this.props.navigation.navigate("CustomerDashboard");
+              } else {
+                this.props.navigation.navigate("Welcome");
+              }
+            }}
+            style={{ marginHorizontal: 15 }}
+          >
+            <AntDesign name="arrowleft" size={24} color="#ffffff" />
+          </TouchableOpacity>
+        );
+      },
+
       headerRight: () => {
         return (
           <View
@@ -267,6 +295,7 @@ class ProductDetails extends Component {
 const mapStateToProps = (state) => {
   return {
     thecart: state.cart,
+    auth: state.user,
   };
 };
 const mapDispatchToProps = () => {

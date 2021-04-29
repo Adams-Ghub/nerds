@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import { connect } from "react-redux";
+import { removeProduct } from "../redux/actions/authAction";
 
 class CartProduct extends Component {
   constructor(props) {
@@ -22,12 +24,17 @@ class CartProduct extends Component {
         <View style={styles.line} />
 
         <View style={styles.iconContainer}>
-          <View style={styles.deleteicon}>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.removeProduct(this.props.item);
+            }}
+            style={styles.deleteicon}
+          >
             <View style={styles.icon}>
               <MaterialIcons name="delete" size={20} color="#080809" />
             </View>
             <Text style={styles.remove}>REMOVE</Text>
-          </View>
+          </TouchableOpacity>
           <View style={styles.upanddown}>
             <View style={styles.icon2}>
               <MaterialIcons name="arrow-drop-down" size={35} color="#080809" />
@@ -43,7 +50,13 @@ class CartProduct extends Component {
   }
 }
 
-export default CartProduct;
+const mapDispatchToProps = () => {
+  return {
+    removeProduct,
+  };
+};
+
+export default connect(null, mapDispatchToProps())(CartProduct);
 
 const styles = StyleSheet.create({
   cartContainer: {

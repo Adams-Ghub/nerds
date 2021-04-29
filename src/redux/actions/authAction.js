@@ -1,3 +1,4 @@
+import { getFirestore } from "redux-firestore";
 import firebase from "../../firebase/firebase";
 
 export function createAccountShopOwner(
@@ -101,8 +102,8 @@ export function LoginUser(email, password) {
         .get();
       var userInfo = data.data();
       console.log(userInfo);
-      dispatch(Loggedin(user));
-      dispatch(LoggedinUserInfo(userInfo));
+
+      dispatch(Loggedin(user, userInfo));
     } catch (error) {
       dispatch(loginError(error.message));
       console.log(error.message);
@@ -111,9 +112,9 @@ export function LoginUser(email, password) {
 }
 
 export function logout() {
-  return async (dispatch) => {
+  return async (dispatch, { getFirebase }) => {
     try {
-      await firebase.auth().signOut();
+      await getFirebase().auth().signOut();
       dispatch(Loggedout());
     } catch (error) {
       console.log(error);
@@ -167,18 +168,19 @@ export const getAllProducts = () => {
   };
 };
 
-export function Loggedin(user) {
+export function Loggedin(user, userInfo) {
   return {
     type: "LOGGED_IN",
     payload: user,
+    userInfo: userInfo,
   };
 }
-export function LoggedinUserInfo(userInfo) {
-  return {
-    type: "LOGGED_IN_USER_INFO",
-    payload: userInfo,
-  };
-}
+// export function LoggedinUserInfo(userInfo) {
+//   return {
+//     type: "LOGGED_IN_USER_INFO",
+//     payload: userInfo,
+//   };
+// }
 export function Loggedout() {
   return {
     type: "LOGGED_OUT",
@@ -226,9 +228,9 @@ export function decreaseProduct(item) {
     payload: item,
   };
 }
-export function removeProduct(item) {
+export function removeProduct(productId) {
   return {
     type: "REMOVE_FROM_CART",
-    payload: item,
+    payload: productId,
   };
 }

@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import CartProduct from "../../components/CartProduct";
 import { connect } from "react-redux";
+import { removeProduct } from "../../redux/actions/authAction";
 
 class CartScreen extends Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class CartScreen extends Component {
                     name={item.product.productName}
                     price={item.product.sp}
                     imageuri={`data:image/jpg;base64,${item.product.base64}`}
+                    item={item.product.id}
                     qty={item.qty}
                   />
                 </View>
@@ -48,9 +50,11 @@ class CartScreen extends Component {
             <TouchableOpacity
               style={styles.buttonContainer}
               onPress={() => {
-                this.props.auth
-                  ? this.props.navigation.navigate("CheckoutDelivery")
-                  : this.props.navigation.navigate("Login");
+                if (this.props.auth) {
+                  this.props.navigation.navigate("CheckoutDelivery");
+                } else {
+                  this.props.navigation.navigate("Login");
+                }
               }}
             >
               <Text style={styles.proceed}>Proceed to checkout</Text>
@@ -64,12 +68,14 @@ class CartScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.login,
+    auth: state.user,
     cart: state.cart,
   };
 };
 const mapDispatchToProps = () => {
-  return {};
+  return {
+    removeProduct,
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps())(CartScreen);

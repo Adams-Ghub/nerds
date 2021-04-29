@@ -17,10 +17,7 @@ import {
   Ionicons,
   MaterialIcons,
 } from "@expo/vector-icons";
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from "react-native-responsive-screen";
+
 import ProductComponent from "../components/ProductComponent";
 import { connect } from "react-redux";
 import { getAllProducts } from "../redux/actions/authAction";
@@ -174,10 +171,6 @@ const style = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
 
-    // marginTop: hp("5%"),
-    // marginHorizontal: wp("2%"),
-    // marginBottom: hp("4%"),
-
     backgroundColor: "#FFFFFF",
     paddingTop: 100,
   },
@@ -189,7 +182,7 @@ const style = StyleSheet.create({
     justifyContent: "center",
     borderWidth: 1,
     borderColor: "#EEEEEE",
-    paddingHorizontal: wp("1%"),
+    paddingHorizontal: 10,
 
     backgroundColor: "#FFFFFF",
     borderRadius: 10,
@@ -207,10 +200,8 @@ const style = StyleSheet.create({
 
   filterContainer: {
     flexDirection: "row",
-    justifyContent: "flex-start",
-    marginTop: hp("1%"),
-    paddingLeft: wp("25%"),
-
+    justifyContent: "center",
+    marginTop: 15,
     paddingBottom: 5,
   },
   filterIcons: {

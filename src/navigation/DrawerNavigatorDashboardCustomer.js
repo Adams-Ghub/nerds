@@ -90,9 +90,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
                     style={{ marginTop: 5 }}
                     name="shoppingcart"
                     size={20}
-
                     color="#ffffff"
-
                   />
                 }
               />
@@ -114,9 +112,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
                     name="user"
                     style={{ marginTop: 5 }}
                     size={20}
-
                     color="#ffffff"
-
                   />
                 }
               />
@@ -138,11 +134,8 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
                     name="payment"
                     size={20}
                     style={{ marginTop: 5 }}
-
                     color="#ffffff"
-
                     color="#FFFFFF"
-
                   />
                 }
               />
@@ -165,10 +158,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
                     name="documents"
                     style={{ marginTop: 5 }}
                     size={20}
-
                     color="#ffffff"
-
-
                   />
                 }
               />
@@ -191,9 +181,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
                     name="logout"
                     style={{ marginTop: 5 }}
                     size={20}
-
                     color="#ffffff"
-
                   />
                 }
               />

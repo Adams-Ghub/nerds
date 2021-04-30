@@ -7,10 +7,6 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from "react-native-responsive-screen";
 import { connect } from "react-redux";
 import { LoginShopOwner } from "../redux/actions/authAction.js";
 import CustomInput from "../components/CustomInput";
@@ -111,18 +107,18 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    marginVertical: hp("7%"),
-    marginHorizontal: wp("10"),
+    marginVertical: 30,
+    paddingHorizontal: 20,
   },
   welcomeSectionContainer: {
     alignItems: "center",
-    marginBottom: hp("5%"),
+    marginBottom: 30,
   },
 
   welcomeMessage: {
     fontSize: 36,
     fontWeight: "200",
-    marginBottom: hp("7%"),
+    marginBottom: 10,
   },
   loginMessage: {
     fontSize: 50,
@@ -131,31 +127,31 @@ const style = StyleSheet.create({
     alignSelf: "flex-start",
   },
   registrationFormContainer: {
-    marginVertical: hp("5%"),
+    marginVertical: 20,
   },
   usernameInputContainer: {
     borderStyle: "solid",
     borderBottomWidth: 1,
     borderBottomColor: "#0080FF",
-    marginVertical: hp("2%"),
+    marginVertical: 10,
   },
   usernameInput: {
     fontSize: 20,
-    marginVertical: hp("0.5%"),
-    marginLeft: wp("1%"),
+    marginVertical: 10,
+    marginLeft: 10,
   },
   forgotpassContainer: {
     alignItems: "flex-end",
-    marginVertical: hp("1%"),
+    marginVertical: 10,
   },
 
   forgotpassText: {
     fontSize: 17,
     marginRight: 3,
-    color: "#F88017",
+    color: "#0080FF",
   },
   loginButtonContainer: {
-    marginVertical: hp("4%"),
+    marginVertical: 10,
   },
   loginButton: {
     backgroundColor: "#080809",
@@ -170,17 +166,17 @@ const style = StyleSheet.create({
   haveAccountContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    marginVertical: hp("5%"),
+    marginVertical: 10,
   },
   haveAccountText: {
     fontSize: 17,
-    marginRight: wp("2%"),
+    marginRight: 10,
   },
   signupButton: {
-    marginHorizontal: wp("5%"),
+    marginHorizontal: 10,
   },
   signupText: {
     fontSize: 17,
-    color: "#F88017",
+    color: "#0080FF",
   },
 });

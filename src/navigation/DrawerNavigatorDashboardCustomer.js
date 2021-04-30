@@ -10,10 +10,6 @@ import OrdersScreen from "../screens/shopOwner/OrdersScreen";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Entypo, MaterialIcons, AntDesign } from "@expo/vector-icons";
 import Loader from "../components/Loader";
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from "react-native-responsive-screen";
 import ProfileCustomerDashboard from "../components/ProfileCustomerDashboard";
 import MobileNumberScreen from "../screens/customerMomoPayment/MobileNumberScreen";
 import { logout } from "../redux/actions/authAction";
@@ -77,7 +73,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
         };
       }}
       drawerStyle={{
-        backgroundColor: "##000A14",
+        backgroundColor: "#000A14",
         width: 180,
         marginTop: 64.2,
       }}

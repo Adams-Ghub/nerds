@@ -1,7 +1,6 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { DrawerActions } from "@react-navigation/native";
-
 import DrawerItem from "../components/DrawerItem";
 import { Header } from "react-native/Libraries/NewAppScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
@@ -32,7 +31,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
     <Drawer.Navigator
       drawerContentOptions={{
         activeTintColor: "transparent",
-        itemStyle: { marginVertical: hp("0.01%") },
+        itemStyle: { marginVertical: 10 },
       }}
       screenOptions={({ navigation }) => {
         return {
@@ -78,9 +77,9 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
         };
       }}
       drawerStyle={{
-        backgroundColor: "#000A14",
-        width: wp("45%"),
-        marginTop: hp("10.95%"),
+        backgroundColor: "##000A14",
+        width: 180,
+        marginTop: 64.2,
       }}
     >
       <Drawer.Screen

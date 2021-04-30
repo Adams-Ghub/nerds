@@ -11,117 +11,156 @@ import {
   TouchableOpacity,
   ScrollView,
   FlatList,
+  Platform,
 } from "react-native";
 import PLReportListElement from "./PLReportListElement";
 import { Feather } from "@expo/vector-icons";
+import DateTimePicker from "@react-native-community/datetimepicker";
 
 class PLReport extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      number: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      fromDate: new Date(),
+      fromMode: "date",
+      fromShow: false,
+      toDate: new Date(),
+      toMode: "date",
+      toShow: false,
     };
   }
 
   render() {
+    const setFromDate = (event, selectedDate) => {
+      const currentDate = selectedDate;
+      this.setState({ fromShow: Platform.OS === "ios" });
+      this.setState({ fromDate: currentDate });
+    };
+
+    const setFromMode = (currentMode) => {
+      this.setState({ fromShow: true });
+      this.setState({ fromMode: currentMode });
+    };
+
+    const showFromDatepicker = () => {
+      setFromMode("date");
+    };
+
+    const setToDate = (event, selectedDate) => {
+      const currentDate = selectedDate;
+      this.setState({ toShow: Platform.OS === "ios" });
+      this.setState({ toDate: currentDate });
+    };
+
+    const setToMode = (currentMode) => {
+      this.setState({ toShow: true });
+      this.setState({ toMode: currentMode });
+    };
+
+    const showToDatepicker = () => {
+      setToMode("date");
+    };
+
     return (
       <View style={style.container}>
-        <View style={style.allFiltersContainer}>
-          <View style={style.filterByProductContainer}>
-            <Text>filter by product</Text>
-            <TextInput
-              style={style.filterProductNameInput}
-              placeholder="product name"
-            ></TextInput>
-          </View>
-          <View style={style.filterByCategoryContainer}>
-            <Text>filter by category</Text>
-            <TextInput
-              style={style.filterCategoryInput}
-              placeholder="category"
-            ></TextInput>
-          </View>
-          <View style={style.dateFilterContainer}>
-            <View style={style.dateFilterFromContainer}>
-              <Text>from</Text>
-              <TextInput
-                style={style.filterDateInput}
-                placeholder="25-0-2021"
-              ></TextInput>
+        <View style={style.Heading}>
+          <Text style={style.companyNameText}>Cictech Electronics </Text>
+          <Text style={style.profitLossText}>Profit & Loss </Text>
+          <View style={style.allDateContainer}>
+            <View style={style.dateFromContainer}>
+              <Text>From:</Text>
+              <TouchableOpacity
+                style={style.dateFromTextContainer}
+                onPress={showFromDatepicker}
+              >
+                <Text style={style.dateFromText}>
+                  {this.state.fromDate.toDateString()}
+                </Text>
+              </TouchableOpacity>
+              {this.state.fromShow && (
+                <DateTimePicker
+                  testID="dateTimePicker"
+                  value={this.state.fromDate}
+                  mode={this.state.fromMode}
+                  is24Hour={true}
+                  display="default"
+                  onChange={setFromDate}
+                />
+              )}
             </View>
-            <View style={style.dateFilterFromContainer}>
-              <Text>to</Text>
-              <TextInput
-                style={style.filterDateInput}
-                placeholder="27-03-2021"
-              ></TextInput>
-            </View>
-          </View>
-        </View>
-        <TouchableOpacity style={style.filterButton}>
-          <Text style={style.filterText}>filter</Text>
-        </TouchableOpacity>
-        <View style={style.transactionListHeaderContainer}>
-          <View style={style.productNameContainer}>
-            <Text style={style.productNameText}>PRODUCTS</Text>
-          </View>
-          <View style={style.cpContainer}>
-            <Text style={style.CpText}>CP(GH¢)</Text>
-          </View>
-          <View style={style.SpContainer}>
-            <Text style={style.SpText}>SP(GH¢)</Text>
-          </View>
-          <View style={style.timeContainer}>
-            <Text style={style.timeText}>TIME</Text>
-          </View>
-        </View>
-
-        {/* <Text>transaction list</Text> */}
-        <FlatList
-          style={style.flatlistContainer}
-          data={this.state.number}
-          renderItem={({ item }) => {
-            return (
-              <View style={style.productInFlatlist}>
-                <TouchableOpacity style={style.product}>
-                  <PLReportListElement number={item} />
-                </TouchableOpacity>
-              </View>
-            );
-          }}
-          keyExtractor={(item, index) => index}
-          showsVerticalScrollIndicator={false}
-        />
-
-        <View style={style.horizontalLineSeparator}></View>
-        <View style={style.infoSectionContainer}>
-          <View style={style.theTotalFieldColumnContainer}>
-            <View>
-              <Text style={style.theTotalFieldText}>total selling price</Text>
-            </View>
-            <View style={style.totalCPTextContainer}>
-              <Text style={style.theTotalFieldText}>total cost price</Text>
-            </View>
-            <View style={style.grossProfitTextContainer}>
-              <Text style={style.grossProfitText}>gross profit</Text>
-            </View>
-          </View>
-          <View style={style.theTotalValueColumnContainer}>
-            <View style={style.cediUnitValueTextContainer}>
-              <Text style={style.cediUnitText}>GH¢</Text>
-              <Text style={style.totalSPValueText}>122344</Text>
-            </View>
-            <View style={style.cediUnitValueTextContainer}>
-              <Text style={style.cediUnitText}>GH¢</Text>
-              <Text style={style.totalCPValueText}>122344</Text>
-            </View>
-
-            <View style={style.grossCediUnitValueTextContainer}>
-              <Text style={style.cediUnitText}>GH¢</Text>
-              <Text style={style.grossProfitValueText}>122344</Text>
+            <View style={style.dateFromContainer}>
+              <Text>To:</Text>
+              <TouchableOpacity
+                style={style.dateFromTextContainer}
+                onPress={showToDatepicker}
+              >
+                <Text style={style.dateFromText}>
+                  {this.state.toDate.toDateString()}
+                </Text>
+              </TouchableOpacity>
+              {this.state.toShow && (
+                <DateTimePicker
+                  testID="dateTimePicker"
+                  value={this.state.toDate}
+                  mode={this.state.toMode}
+                  is24Hour={true}
+                  display="default"
+                  onChange={setToDate}
+                />
+              )}
             </View>
           </View>
         </View>
+
+        <View style={style.PLReportBody}>
+          <View style={style.mainHeaders}>
+            <Text style={style.mainHeadersText}>Income</Text>
+          </View>
+
+          <View style={style.subHeaders}>
+            <Text style={style.subHeadersText}>Online product sale</Text>
+            <Text style={style.subHeadersFigure}>20000</Text>
+          </View>
+          <View style={style.subHeaders}>
+            <Text style={style.subHeadersText}>Offline product sale</Text>
+            <Text style={style.subHeadersFigure}>20000</Text>
+          </View>
+          <View style={style.subHeaders}>
+            <Text style={style.subHeadersText}>Other Income</Text>
+            <Text style={style.subHeadersFigure}>2000</Text>
+          </View>
+          <View style={style.mainHeaders}>
+            <Text style={style.mainHeadersText}>Total Income</Text>
+            <Text style={style.mainHeadersFigure}>40000</Text>
+          </View>
+          <View style={style.mainHeaders}>
+            <Text style={style.mainHeadersText}>Cost of Goods Sold(COGS)</Text>
+          </View>
+          <View style={style.subHeaders}>
+            <Text style={style.subHeadersText}>Cost of Goods Sold</Text>
+            <Text style={style.subHeadersFigure}>29000</Text>
+          </View>
+          <View style={style.mainHeaders}>
+            <Text style={style.mainHeadersText}>Total COGS</Text>
+            <Text style={style.mainHeadersFigure}>29000</Text>
+          </View>
+          <View style={style.biggerMainHeaders}>
+            <Text style={style.biggerMainHeadersText}>Gross Profit</Text>
+            <Text style={style.biggerMainHeadersFigure}>11000</Text>
+          </View>
+          <View style={style.mainHeaders}>
+            <Text style={style.mainHeadersText}>Expenses</Text>
+          </View>
+          <View style={style.mainHeaders}>
+            <Text style={style.mainHeadersText}>Total Expenses</Text>
+            <Text style={style.mainHeadersFigure}>11000</Text>
+          </View>
+          <View style={style.biggerMainHeaders}>
+            <Text style={style.biggerMainHeadersText}>Net Income</Text>
+            <Text style={style.netIncomeFigure}>11000</Text>
+          </View>
+        </View>
+
         <View style={style.toolsContainer}>
           <TouchableOpacity style={style.saveButton}>
             <Feather name="printer" size={24} color="#0080ff" />
@@ -141,116 +180,92 @@ const style = StyleSheet.create({
     marginVertical: hp("6%"),
     marginHorizontal: wp("2%"),
   },
-  allFiltersContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: "#C4C4C4",
-    padding: wp("1.5%"),
-  },
-  filterProductNameInput: {
-    borderWidth: wp("0.2%"),
-    borderRadius: 4,
-    paddingHorizontal: wp("0.2%"),
-  },
-  dateFilterFromContainer: {
+  biggerMainHeaders: {
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  filterButton: {
-    alignItems: "center",
-    backgroundColor: "#080809",
-    marginBottom: hp("0.5%"),
+  biggerMainHeadersText: {
+    fontSize: 18,
   },
-  filterText: {
-    fontSize: 17,
-    color: "#ffffff",
-  },
-  transactionListHeaderContainer: {
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    marginBottom: hp("0.6%"),
-    marginTop: hp("2%"),
-  },
-
-  productNameText: {
-    fontSize: 15,
-    fontWeight: "700",
-    paddingHorizontal: wp("2%"),
-  },
-  productNameContainer: {
-    width: wp("33%"),
-    marginHorizontal: wp("0.3%"),
-    backgroundColor: "#ebebeb",
-    paddingVertical: hp("0.5%"),
-  },
-  cpContainer: {
-    width: wp("16%"),
-    marginHorizontal: wp("0.3%"),
-    backgroundColor: "#ebebeb",
-    alignItems: "center",
-    paddingVertical: hp("0.5%"),
-  },
-  CpText: {
-    fontSize: 15,
-    fontWeight: "700",
-  },
-  SpContainer: {
-    width: wp("16%"),
-    marginHorizontal: wp("0.3%"),
-    backgroundColor: "#ebebeb",
-    alignItems: "center",
-    paddingVertical: hp("0.5%"),
-  },
-  SpText: {
-    fontSize: 15,
-    fontWeight: "700",
-  },
-  timeContainer: {
-    width: wp("30%"),
-    backgroundColor: "#ebebeb",
-    marginHorizontal: wp("0.3%"),
-    alignItems: "center",
-    paddingVertical: hp("0.5%"),
-  },
-  timeText: {
-    fontSize: 15,
-    fontWeight: "700",
-  },
-  infoSectionContainer: {
-    flexDirection: "row",
-    marginLeft: wp("25%"),
-  },
-  horizontalLineSeparator: {
+  biggerMainHeadersFigure: {
+    fontSize: 18,
     borderStyle: "solid",
-    borderTopWidth: hp("0.2%"),
-    borderTopColor: "#dddddd",
-    marginVertical: hp("0.5%"),
+    borderTopWidth: 1,
+    borderTopColor: "#808080",
+    paddingLeft: 20,
   },
-  theTotalValueColumnContainer: {
-    flexDirection: "column",
-    alignItems: "flex-start",
+  netIncomeFigure: {
+    fontSize: 18,
+    borderStyle: "solid",
+    borderTopWidth: 1,
+    borderBottomWidth: 2,
+    borderBottomColor: "#808080",
+    borderTopColor: "#808080",
+    paddingLeft: 20,
+  },
+  mainHeaders: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingLeft: 15,
+    marginVertical: 5,
   },
 
-  theTotalFieldColumnContainer: {
-    flexDirection: "column",
-    alignItems: "flex-end",
-    marginRight: wp("2%"),
-  },
-  cediUnitText: {
-    fontSize: 16,
-    fontWeight: "700",
-  },
-  cediUnitValueTextContainer: {
+  subHeaders: {
     flexDirection: "row",
+    justifyContent: "space-between",
+    paddingLeft: 30,
+    marginVertical: 2,
   },
-  grossProfitText: {
-    fontSize: 16,
-    paddingTop: hp("0.4%"),
+  subHeadersText: {
+    fontSize: 18,
   },
-  grossCediUnitValueTextContainer: {
+  subHeadersFigure: {
+    fontSize: 18,
+  },
+  allDateContainer: {
     flexDirection: "row",
-    borderTopWidth: wp("0.2%"),
+    justifyContent: "space-evenly",
+    alignItems: "center",
   },
+  dateFromTextContainer: {
+    marginLeft: 5,
+  },
+  companyNameText: {
+    fontSize: 27,
+    textAlign: "center",
+  },
+  profitLossText: {
+    fontSize: 23,
+    textAlign: "center",
+  },
+
+  dateFromContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+
+  Heading: {
+    marginBottom: 10,
+    borderStyle: "solid",
+    borderBottomColor: "#808080",
+    borderBottomWidth: 2,
+  },
+  mainHeadersText: {
+    fontSize: 18,
+    fontWeight: "600",
+  },
+  mainHeadersFigure: {
+    fontSize: 18,
+    borderStyle: "solid",
+    borderTopColor: "#808080",
+    borderTopWidth: 1,
+    paddingLeft: 20,
+  },
+  PLReportBody: {
+    marginHorizontal: 10,
+    marginBottom: 30,
+  },
+
   toolsContainer: {
     borderStyle: "solid",
     borderTopWidth: hp("0.2%"),

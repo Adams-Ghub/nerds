@@ -68,6 +68,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
           headerLeft: () => {
             return (
               <TouchableOpacity
+                style={{ marginLeft: 18 }}
                 onPress={() => {
                   navigation.toggleDrawer();
                 }}
@@ -223,6 +224,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
         }}
         component={ProductScreen}
       />
+
       <Drawer.Screen
         name="report"
         options={{
@@ -245,29 +247,6 @@ function DrawerNavigatorDashboardS({ navigation }) {
         }}
         component={PLReport}
       />
-
-      {/* <Drawer.Screen
-        name="reports"
-        options={{
-          drawerLabel: () => {
-            return (
-              <DrawerItem
-                title="Report"
-                icon={
-                  <Feather
-                    name="package"
-                    style={{ marginTop: 5 }}
-                    size={20}
-                    color="#FFFFFF"
-                  />
-                }
-              />
-            );
-          },
-          ...defaultHeaderStyle,
-        }}
-        component={PLReport}
-      /> */}
 
       <Drawer.Screen
         name="Log out"

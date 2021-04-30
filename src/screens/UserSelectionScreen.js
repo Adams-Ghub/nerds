@@ -22,6 +22,7 @@ class UserSelectionScreen extends Component {
             <Text style={style.IamText}>I am a</Text>
           </View>
 
+
           <View style={style.createShopButtonContainer}>
             <TouchableOpacity
               onPress={() => {
@@ -36,6 +37,7 @@ class UserSelectionScreen extends Component {
             >
               <Text style={style.createShopButtonText}>Customer</Text>
             </TouchableOpacity>
+
 
             <TouchableOpacity
               onPress={() => {

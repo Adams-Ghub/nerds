@@ -42,7 +42,7 @@ function MyTabs() {
       // activeBackgroundColor="green"
       // inactiveBackgroundColor="green"
       // style={{ backgroundColor: "#080809" }}
-      initialRouteName="Cart"
+      initialRouteName="Home"
       tabBarOptions={{
         style: {
           backgroundColor: "#080809",
@@ -71,6 +71,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Register"
+        initialParams={{ userType: "customer" }}
         options={{
           tabBarIcon: ({ tintColor }) => (
             <Icon name="person-outline" color={"#ffffff"} size={25} />

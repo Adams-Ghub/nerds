@@ -1,52 +1,45 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
   View,
   Image,
   TouchableOpacity,
-  ScrollView,
+  FlatList,
 } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import CartProduct from "../../components/CartProduct";
+import { connect } from "react-redux";
+import { removeProduct } from "../../redux/actions/authAction";
 
-const CartScreen = ({ navigation }) => {
-  return (
-    <ScrollView>
+class CartScreen extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
       <View style={styles.container}>
-        <View style={styles.cartContainer}>
-          <View style={styles.cart}>
-            <Image
-              source={require("../../../assets/ladies_bag.jpg")}
-              style={styles.image}
-            />
-            <View style={styles.product}>
-              <Text style={styles.productName}>GUCCI Bag...</Text>
-              <Text style={styles.productPrice}>GH₵3500</Text>
-            </View>
-          </View>
-          <View style={styles.line} />
-
-          <View style={styles.iconContainer}>
-            <View style={styles.deleteicon}>
-              <View style={styles.icon}>
-                <MaterialIcons name="delete" size={20} color="#080809" />
-              </View>
-              <Text style={styles.remove}>REMOVE</Text>
-            </View>
-            <View style={styles.upanddown}>
-              <View style={styles.icon2}>
-                <MaterialIcons
-                  name="arrow-drop-down"
-                  size={24}
-                  color="#080809"
-                />
-              </View>
-              <Text style={styles.number1}>1</Text>
-              <View style={styles.icon3}>
-                <MaterialIcons name="arrow-drop-up" size={24} color="#080809" />
-              </View>
-            </View>
-          </View>
+        <View
+          showsVerticalScrollIndicator={false}
+          style={styles.cartproductsDisplayContainer}
+        >
+          <FlatList
+            data={this.props.cart}
+            renderItem={({ item }) => {
+              return (
+                <View>
+                  <CartProduct
+                    name={item.product.productName}
+                    price={item.product.sp}
+                    imageuri={`data:image/jpg;base64,${item.product.base64}`}
+                    item={item.product.id}
+                    qty={item.qty}
+                  />
+                </View>
+              );
+            }}
+            keyExtractor={(item, index) => index}
+            showsVerticalScrollIndicator={false}
+          />
         </View>
         <View style={styles.checkout}>
           <View style={styles.checkoutText}>
@@ -57,7 +50,11 @@ const CartScreen = ({ navigation }) => {
             <TouchableOpacity
               style={styles.buttonContainer}
               onPress={() => {
-                navigation.navigate("CheckoutDelivery");
+                if (this.props.auth) {
+                  this.props.navigation.navigate("CheckoutDelivery");
+                } else {
+                  this.props.navigation.navigate("Login");
+                }
               }}
             >
               <Text style={styles.proceed}>Proceed to checkout</Text>
@@ -65,21 +62,32 @@ const CartScreen = ({ navigation }) => {
           </View>
         </View>
       </View>
-    </ScrollView>
-  );
+    );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.user,
+    cart: state.cart,
+  };
+};
+const mapDispatchToProps = () => {
+  return {
+    removeProduct,
+  };
 };
 
-export default CartScreen;
+export default connect(mapStateToProps, mapDispatchToProps())(CartScreen);
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     marginHorizontal: 10,
-    marginTop: 40,
+    marginTop: 15,
   },
-
-  image: {
-    height: 90,
-    width: 90,
+  cartproductsDisplayContainer: {
+    flex: 0.8,
   },
   cart: {
     flexDirection: "row",
@@ -157,6 +165,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   checkout: {
+    flex: 0.2,
     paddingTop: 20,
     backgroundColor: "#fff",
     marginTop: 20,

@@ -8,6 +8,11 @@ import {
   ScrollView,
 } from "react-native";
 import CustomInput from "../components/CustomInput";
+import { connect } from "react-redux";
+import {
+  registerError,
+  createAccountCustomer,
+} from "../redux/actions/authAction";
 
 class RegisterScreenS extends Component {
   constructor(props) {
@@ -17,16 +22,6 @@ class RegisterScreenS extends Component {
       password: "",
       confirm: "",
       email: "",
-      shopName: "",
-      ghpostGps: "",
-      contact: "",
-      idNumber: "",
-      errorMsg: "",
-      //current form indicator(shop owner form,1= shop form)
-      currentFormIndicator: "0",
-      msg: "Create Account",
-      backColor: "#cccccc",
-      nextColor: "#0080FF",
     };
 
     this.handleSignUp = this.handleSignUp.bind(this);
@@ -34,10 +29,28 @@ class RegisterScreenS extends Component {
   }
 
   handleSignUp = () => {
-    if (this.props.route.params.userType === "shopOwner") {
-      this.props.navigation.navigate("RegisterShop");
+    if (this.state.password !== this.state.confirm) {
+      this.props.registerError("Passwords do not match");
     } else {
-      this.props.navigation.navigate("CustomerDashboard");
+      if (this.props.route.params.userType === "shopOwner") {
+        let credentials = {
+          username: this.state.username,
+          password: this.state.password,
+          email: this.state.email,
+          role: "shop Owner",
+        };
+        this.props.navigation.navigate("RegisterShop", {
+          userInfo: credentials,
+        });
+      } else {
+        this.props.createAccountCustomer(
+          this.state.email,
+          this.state.password,
+          this.state.username,
+          "customer"
+        );
+        // this.props.navigation.navigate("CustomerDashboard");
+      }
     }
   };
 
@@ -49,16 +62,36 @@ class RegisterScreenS extends Component {
 
   render() {
     return (
-      <ScrollView>
-        <View style={style.container}>
-          <View style={style.welcomeSectionContainer}>
-            <Text style={style.createMessage}>Create Account</Text>
+      <View style={style.container}>
+        <View style={style.welcomeSectionContainer}>
+          <Text style={style.createMessage}>Create Account</Text>
+        </View>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View>
+            {this.props.error && (
+              <Text style={{ color: "red", fontSize: 16, fontWeight: "bold" }}>
+                {this.props.error.register}
+              </Text>
+            )}
           </View>
-
-          <CustomInput label="Username" />
-          <CustomInput label="Email" />
-          <CustomInput label="Password" secureTextEntry={true} />
-          <CustomInput label="Confirm Password" secureTextEntry={true} />
+          <CustomInput
+            label="Username"
+            onChangeText={(text) => this.handleUpdateState("username", text)}
+          />
+          <CustomInput
+            label="Email"
+            onChangeText={(text) => this.handleUpdateState("email", text)}
+          />
+          <CustomInput
+            label="Password"
+            secureTextEntry={true}
+            onChangeText={(text) => this.handleUpdateState("password", text)}
+          />
+          <CustomInput
+            label="Confirm Password"
+            secureTextEntry={true}
+            onChangeText={(text) => this.handleUpdateState("confirm", text)}
+          />
           {/* <View style={style.registrationFormContainer}>
             <View style={style.usernameInputContainer}>
               <TextInput
@@ -124,11 +157,26 @@ class RegisterScreenS extends Component {
               <Text style={style.loginText}>Login</Text>
             </TouchableOpacity>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    error: state.error,
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {
+    registerError,
+    createAccountCustomer,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(RegisterScreenS);
 
 const style = StyleSheet.create({
   container: {
@@ -205,5 +253,3 @@ const style = StyleSheet.create({
     color: "#F88017",
   },
 });
-
-export default RegisterScreenS;

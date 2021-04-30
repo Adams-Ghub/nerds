@@ -1,39 +1,40 @@
+import { getFirestore } from "redux-firestore";
 import firebase from "../../firebase/firebase";
 
 export function createAccountShopOwner(
   email,
   password,
   username,
+  role,
   shopName,
   contact,
   ghpostGps,
   idNumber
 ) {
-  const db = firebase.firestore();
-  return async (dispatch) => {
+  return async (dispatch, state, { getFirebase, getFirestore }) => {
     try {
-      const user = await firebase
+      const user = await getFirebase()
         .auth()
         .createUserWithEmailAndPassword(email, password);
       console.log(user);
 
-      let f_user = db
+      let userInfo = getFirestore()
         .collection("users")
         .doc(user.user.uid)
         .set({
           username,
-          role: "Shop Owner",
+          role,
         })
         .then(() => {
-          alert("user created successfully");
-          console.log(f_user);
+          console.log(userInfo);
         })
         .catch((error) => {
           alert(error.message);
           console.log(error);
         });
 
-      db.collection("shop")
+      getFirestore()
+        .collection("shop")
         .doc(user.user.uid)
         .set({
           shopName,
@@ -42,13 +43,13 @@ export function createAccountShopOwner(
           GhanaCardID: idNumber,
         })
         .then(() => {
-          alert("Shop created successfully");
+          alert("Account created successfully");
         })
         .catch((error) => {
           alert(error.message);
         });
       console.log(user);
-      // dispatch(Loggedin(user));
+      dispatch(Loggedin(user, userInfo));
     } catch (error) {
       alert(error.message);
       dispatch(registerError(error.message));
@@ -56,14 +57,53 @@ export function createAccountShopOwner(
   };
 }
 
-export function LoginShopOwner(email, password) {
-  return async (dispatch) => {
+export function createAccountCustomer(email, password, username, role) {
+  return async (dispatch, state, { getFirebase, getFirestore }) => {
     try {
-      const user = await firebase
+      const user = await getFirebase()
+        .auth()
+        .createUserWithEmailAndPassword(email, password);
+      console.log(user);
+
+      let userInfo = getFirestore()
+        .collection("users")
+        .doc(user.user.uid)
+        .set({
+          username,
+          role,
+        })
+        .then(() => {
+          alert("user created successfully");
+          console.log(userInfo);
+        })
+        .catch((error) => {
+          alert(error.message);
+          console.log(error);
+        });
+      dispatch(Loggedin(user, userInfo));
+    } catch (error) {
+      alert(error.message);
+      dispatch(registerError(error.message));
+    }
+  };
+}
+
+export function LoginUser(email, password) {
+  return async (dispatch, state, { getFirebase, getFirestore }) => {
+    try {
+      const user = await getFirebase()
         .auth()
         .signInWithEmailAndPassword(email, password);
       console.log(user);
-      dispatch(Loggedin(user));
+
+      const data = await getFirestore()
+        .collection("users")
+        .doc(user.user.uid)
+        .get();
+      var userInfo = data.data();
+      console.log(userInfo);
+
+      dispatch(Loggedin(user, userInfo));
     } catch (error) {
       dispatch(loginError(error.message));
       console.log(error.message);
@@ -72,9 +112,9 @@ export function LoginShopOwner(email, password) {
 }
 
 export function logout() {
-  return async (dispatch) => {
+  return async (dispatch, { getFirebase }) => {
     try {
-      await firebase.auth().signOut();
+      await getFirebase().auth().signOut();
       dispatch(Loggedout());
     } catch (error) {
       console.log(error);
@@ -128,12 +168,19 @@ export const getAllProducts = () => {
   };
 };
 
-export function Loggedin(user) {
+export function Loggedin(user, userInfo) {
   return {
     type: "LOGGED_IN",
     payload: user,
+    userInfo: userInfo,
   };
 }
+// export function LoggedinUserInfo(userInfo) {
+//   return {
+//     type: "LOGGED_IN_USER_INFO",
+//     payload: userInfo,
+//   };
+// }
 export function Loggedout() {
   return {
     type: "LOGGED_OUT",
@@ -158,5 +205,32 @@ export function productAdded(product) {
   return {
     type: "ADDED_NEW_PRODUCT",
     payload: product,
+  };
+}
+
+//ALL CARTS RELATED ACTIONS==================================================
+export function addProductToCart(item) {
+  return {
+    type: "ADD_PRODUCT_TO_CART",
+    payload: item,
+  };
+}
+export function increaseProduct(item) {
+  return {
+    type: "INCREASE_PRODUCT",
+    payload: item,
+  };
+}
+
+export function decreaseProduct(item) {
+  return {
+    type: "DECREASE_PRODUCT",
+    payload: item,
+  };
+}
+export function removeProduct(productId) {
+  return {
+    type: "REMOVE_FROM_CART",
+    payload: productId,
   };
 }

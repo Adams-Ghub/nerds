@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import DrawerNavigatorDashboardS from "./DrawerNavigatorDashboardS";
@@ -21,7 +21,7 @@ import ProductDetails from "../components/ProductDetails";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/Ionicons";
 import DrawerNavigatorDashboardAdmin from "../navigation/DrawerNavigatorDashboardAdmin";
-import { View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import {
   FontAwesome5,
   MaterialCommunityIcons,
@@ -83,212 +83,296 @@ function MyTabs() {
   );
 }
 
-function MainNavigator({ auth }) {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="UserSelection">
-        <Stack.Screen
-          name="UserSelection"
-          options={{ header: () => {} }}
-          component={UserSelectionScreen}
-        />
+class MainNavigator extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <NavigationContainer>
+        {this.props.auth.Login &&
+        this.props.auth.userInfo.role === "customer" ? (
+          <Stack.Navigator>
+            <Stack.Screen
+              name="CustomerDashboard"
+              options={{ header: () => {} }}
+              component={DrawerNavigatorDashboardCustomer}
+            />
+            <Stack.Screen
+              name="ProductDetails"
+              options={{
+                headerTitleAlign: "center",
+                headerTitle: "Product details",
+                headerLeft: () => {
+                  return (
+                    <TouchableOpacity style={{ marginHorizontal: 15 }}>
+                      <AntDesign name="arrowleft" size={24} color="#ffffff" />
+                    </TouchableOpacity>
+                  );
+                },
 
-        <Stack.Screen
-          name="Welcome"
-          options={{ header: () => {} }}
-          component={MyTabs}
-        />
+                headerRight: () => {
+                  return (
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        justifyContent: "flex-start",
+                      }}
+                    >
+                      {/* <TouchableOpacity style={{ marginRight: 15 }}>
+                      <FontAwesome5 name="search" size={20} color="#ffffff" />
+                    </TouchableOpacity> */}
+                      <TouchableOpacity style={{ marginRight: 5 }}>
+                        <MaterialCommunityIcons
+                          name="cart"
+                          size={24}
+                          color="#ffffff"
+                        />
+                      </TouchableOpacity>
+                      <View>
+                        <Text style={{ color: "#fff", marginRight: 15 }}>
+                          {"0 item(s)"}
+                        </Text>
+                      </View>
+                    </View>
+                  );
+                },
 
-        <Stack.Screen
-          name="ShopOwnerDashboard"
-          options={{ header: () => {} }}
-          component={DrawerNavigatorDashboardS}
-        />
-        <Stack.Screen
-          name="Home"
-          options={{ header: () => {} }}
-          component={UserSelectionScreen}
-        />
-        <Stack.Screen
-          name="AdminDashboard"
-          options={{ header: () => {} }}
-          component={DrawerNavigatorDashboardAdmin}
-        />
+                headerTitleStyle: {
+                  color: "#ffffff",
+                },
+                headerStyle: {
+                  backgroundColor: "#000000",
+                },
+              }}
+              component={ProductDetails}
+            />
+            <Stack.Screen
+              name="Cart"
+              options={{
+                headerBackTitle: () => null,
+                headerTitleStyle: {
+                  color: "#ffffff",
+                },
+                headerStyle: {
+                  backgroundColor: "#000000",
+                },
+              }}
+              component={CartScreen}
+            />
+            <Stack.Screen
+              name="CheckoutDelivery"
+              options={{
+                title: "Checkout",
+                headerBackTitle: () => null,
+                headerTintColor: "#fff",
+                headerTitleAlign: "left",
+                headerStyle: {
+                  backgroundColor: "#000000",
+                  shadowColor: "transparent",
+                },
+              }}
+              component={CheckoutDeliveryScreen}
+            />
+            <Stack.Screen
+              name="CheckoutSummary"
+              options={{
+                title: "Checkout",
+                headerBackTitle: () => null,
+                headerTintColor: "#fff",
+                headerTitleAlign: "left",
+                headerStyle: {
+                  backgroundColor: "#000000",
+                  shadowColor: "transparent",
+                },
+              }}
+              component={CheckoutSummaryScreen}
+            />
 
-        <Stack.Screen
-          name="CustomerDashboard"
-          options={{ header: () => {} }}
-          component={DrawerNavigatorDashboardCustomer}
-        />
+            <Stack.Screen
+              name="CheckoutPayment"
+              options={{
+                title: "Checkout",
+                headerBackTitle: () => null,
+                headerTintColor: "#fff",
+                headerTitleAlign: "left",
+                headerStyle: {
+                  backgroundColor: "#000000",
+                  shadowColor: "transparent",
+                },
+              }}
+              component={CheckoutPaymentScreen}
+            />
 
-        <Stack.Screen
-          name="CheckoutDelivery"
-          options={{
-            title: "Checkout",
-            headerBackTitle: () => null,
-            headerTintColor: "#fff",
-            headerTitleAlign: "left",
-            headerStyle: {
-              backgroundColor: "#000000",
-              shadowColor: "transparent",
-            },
-          }}
-          component={CheckoutDeliveryScreen}
-        />
-        <Stack.Screen
-          name="CheckoutSummary"
-          options={{
-            title: "Checkout",
-            headerBackTitle: () => null,
-            headerTintColor: "#fff",
-            headerTitleAlign: "left",
-            headerStyle: {
-              backgroundColor: "#000000",
-              shadowColor: "transparent",
-            },
-          }}
-          component={CheckoutSummaryScreen}
-        />
+            <Stack.Screen
+              name="MobileNumber"
+              options={{
+                title: "MTN Mobile Money Payment",
+                headerBackTitle: () => null,
+                headerTintColor: "#fff",
+                headerTitleAlign: "left",
+                headerStyle: {
+                  backgroundColor: "#000000",
+                  shadowColor: "transparent",
+                },
+              }}
+              component={MobileNumberScreen}
+            />
 
-        <Stack.Screen
-          name="CheckoutPayment"
-          options={{
-            title: "Checkout",
-            headerBackTitle: () => null,
-            headerTintColor: "#fff",
-            headerTitleAlign: "left",
-            headerStyle: {
-              backgroundColor: "#000000",
-              shadowColor: "transparent",
-            },
-          }}
-          component={CheckoutPaymentScreen}
-        />
+            <Stack.Screen
+              name="paymentSuccessful"
+              options={{
+                title: "Payment Details",
+                headerBackTitle: () => null,
+                headerTintColor: "#fff",
+                headerTitleAlign: "left",
+                headerStyle: {
+                  backgroundColor: "#000000",
+                  shadowColor: "transparent",
+                },
+              }}
+              component={SuccessScreen}
+            />
+          </Stack.Navigator>
+        ) : this.props.auth.Login &&
+          this.props.auth.userInfo.role === "shop Owner" ? (
+          <Stack.Navigator>
+            <Stack.Screen
+              name="ShopOwnerDashboard"
+              options={{ header: () => {} }}
+              component={DrawerNavigatorDashboardS}
+            />
+          </Stack.Navigator>
+        ) : (
+          <Stack.Navigator initialRouteName="UserSelection">
+            <Stack.Screen
+              name="UserSelection"
+              options={{ header: () => {} }}
+              component={UserSelectionScreen}
+            />
 
-        <Stack.Screen
-          name="MobileNumber"
-          options={{
-            title: "MTN Mobile Money Payment",
-            headerBackTitle: () => null,
-            headerTintColor: "#fff",
-            headerTitleAlign: "left",
-            headerStyle: {
-              backgroundColor: "#000000",
-              shadowColor: "transparent",
-            },
-          }}
-          component={MobileNumberScreen}
-        />
+            <Stack.Screen
+              name="Welcome"
+              options={{ header: () => {} }}
+              component={MyTabs}
+            />
 
-        <Stack.Screen
-          name="paymentSuccessful"
-          options={{
-            title: "Payment Details",
-            headerBackTitle: () => null,
-            headerTintColor: "#fff",
-            headerTitleAlign: "left",
-            headerStyle: {
-              backgroundColor: "#000000",
-              shadowColor: "transparent",
-            },
-          }}
-          component={SuccessScreen}
-        />
+            <Stack.Screen
+              name="Home"
+              options={{ header: () => {} }}
+              component={UserSelectionScreen}
+            />
 
-        <Stack.Screen
-          name="ProductDetails"
-          options={{
-            headerRight: () => {
-              return (
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "flex-start",
-                  }}
-                >
-                  <TouchableOpacity style={{ marginRight: 15 }}>
-                    <FontAwesome5 name="search" size={20} color="#ffffff" />
-                  </TouchableOpacity>
-                  <TouchableOpacity style={{ marginRight: 15 }}>
-                    <MaterialCommunityIcons
-                      name="cart"
-                      size={24}
-                      color="#ffffff"
-                    />
-                  </TouchableOpacity>
-                </View>
-              );
-            },
-            headerTitleAlign: "center",
-            headerTitle: "Product details",
-            headerLeft: () => {
-              return (
-                <TouchableOpacity style={{ marginHorizontal: 15 }}>
-                  <AntDesign name="arrowleft" size={24} color="#ffffff" />
-                </TouchableOpacity>
-              );
-            },
-            headerTitleStyle: {
-              color: "#ffffff",
-            },
-            headerStyle: {
-              backgroundColor: "#000000",
-            },
-          }}
-          component={ProductDetails}
-        />
-        <Stack.Screen
-          name="Cart"
-          options={{
-            headerBackTitle: () => null,
-            headerTitleStyle: {
-              color: "#ffffff",
-            },
-            headerStyle: {
-              backgroundColor: "#000000",
-            },
-          }}
-          component={CartScreen}
-        />
+            <Stack.Screen
+              name="AdminDashboard"
+              options={{ header: () => {} }}
+              component={DrawerNavigatorDashboardAdmin}
+            />
 
-        <Stack.Screen
-          options={{ header: () => {} }}
-          name="PLReport"
-          component={PLReport}
-        />
-        <Stack.Screen
-          options={{ header: () => {} }}
-          name="PLReportListElement"
-          component={PLReportListElement}
-        />
+            <Stack.Screen
+              name="ProductDetails"
+              options={{
+                headerTitleAlign: "center",
+                headerTitle: "Product details",
+                headerLeft: () => {
+                  return (
+                    <TouchableOpacity style={{ marginHorizontal: 15 }}>
+                      <AntDesign name="arrowleft" size={24} color="#ffffff" />
+                    </TouchableOpacity>
+                  );
+                },
 
-        <Stack.Screen
-          options={{ header: () => {} }}
-          name="Login"
-          component={LoginScreen}
-        />
-        <Stack.Screen
-          options={{ header: () => {} }}
-          name="RegisterS"
-          component={RegisterScreenS}
-        />
-        <Stack.Screen
-          options={{ header: () => {} }}
-          name="RegisterShop"
-          component={RegisterShopScreen}
-        />
-        <Stack.Screen
-          options={{ header: () => {} }}
-          name="RegisterC"
-          component={RegisterScreenC}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+                headerRight: () => {
+                  return (
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        justifyContent: "flex-start",
+                      }}
+                    >
+                      {/* <TouchableOpacity style={{ marginRight: 15 }}>
+                      <FontAwesome5 name="search" size={20} color="#ffffff" />
+                    </TouchableOpacity> */}
+                      <TouchableOpacity style={{ marginRight: 5 }}>
+                        <MaterialCommunityIcons
+                          name="cart"
+                          size={24}
+                          color="#ffffff"
+                        />
+                      </TouchableOpacity>
+                      <View>
+                        <Text style={{ color: "#fff", marginRight: 15 }}>
+                          {"0 item(s)"}
+                        </Text>
+                      </View>
+                    </View>
+                  );
+                },
+
+                headerTitleStyle: {
+                  color: "#ffffff",
+                },
+                headerStyle: {
+                  backgroundColor: "#000000",
+                },
+              }}
+              component={ProductDetails}
+            />
+            <Stack.Screen
+              name="Cart"
+              options={{
+                headerBackTitle: () => null,
+                headerTitleStyle: {
+                  color: "#ffffff",
+                },
+                headerStyle: {
+                  backgroundColor: "#000000",
+                },
+              }}
+              component={CartScreen}
+            />
+
+            <Stack.Screen
+              options={{ header: () => {} }}
+              name="PLReport"
+              component={PLReport}
+            />
+            <Stack.Screen
+              options={{ header: () => {} }}
+              name="PLReportListElement"
+              component={PLReportListElement}
+            />
+
+            <Stack.Screen
+              options={{ header: () => {} }}
+              name="Login"
+              component={LoginScreen}
+            />
+            <Stack.Screen
+              options={{ header: () => {} }}
+              name="RegisterS"
+              component={RegisterScreenS}
+            />
+            <Stack.Screen
+              options={{ header: () => {} }}
+              name="RegisterShop"
+              component={RegisterShopScreen}
+            />
+            <Stack.Screen
+              options={{ header: () => {} }}
+              name="RegisterC"
+              component={RegisterScreenC}
+            />
+          </Stack.Navigator>
+        )}
+      </NavigationContainer>
+    );
+  }
 }
 const mapStateToProps = (state) => {
   return {
     auth: state,
+    cart: state.cart,
   };
 };
 

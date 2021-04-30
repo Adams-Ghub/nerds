@@ -7,9 +7,39 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
+import { connect } from "react-redux";
+import { createAccountShopOwner } from "../redux/actions/authAction";
 import CustomInput from "../components/CustomInput";
 
 class RegisterShopScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      shopName: "",
+      ghpostGps: "",
+      contact: "",
+      idNumber: "",
+    };
+  }
+  handleUpdateState = (name, value) => {
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  handleSignUp = () => {
+    this.props.createAccountShopOwner(
+      this.props.route.params.userInfo.email,
+      this.props.route.params.userInfo.password,
+      this.props.route.params.userInfo.username,
+      this.props.route.params.userInfo.role,
+      this.state.shopName,
+      this.state.contact,
+      this.state.ghpostGps,
+      this.state.idNumber
+    );
+  };
+
   render() {
     return (
       <ScrollView>
@@ -18,10 +48,22 @@ class RegisterShopScreen extends Component {
             {/* <Text style={style.welcomeMessage}>Welcome To Nerds</Text> */}
             <Text style={style.lastStepMessage}>One Last Step</Text>
           </View>
-          <CustomInput label="Name of Shop" />
-          <CustomInput label="Contact" />
-          <CustomInput label="GH-Post GPS" secureTextEntry={true} />
-          <CustomInput label="ID Number (Ghana Card)" secureTextEntry={true} />
+          <CustomInput
+            label="Name of Shop"
+            onChangeText={(text) => this.handleUpdateState("shopName", text)}
+          />
+          <CustomInput
+            label="Contact"
+            onChangeText={(text) => this.handleUpdateState("contact", text)}
+          />
+          <CustomInput
+            label="GH-Post GPS"
+            onChangeText={(text) => this.handleUpdateState("ghpostGps", text)}
+          />
+          <CustomInput
+            label="ID Number (Ghana Card)"
+            onChangeText={(text) => this.handleUpdateState("idNumber", text)}
+          />
           <View style={style.registrationFormContainer}>
             {/* <View style={style.shopNameInputContainer}>
               <TextInput
@@ -55,7 +97,8 @@ class RegisterShopScreen extends Component {
             <TouchableOpacity
               style={style.createShopButton}
               onPress={() => {
-                this.props.navigation.navigate("Login");
+                this.handleSignUp();
+                // this.props.navigation.navigate("Login");
               }}
             >
               <Text style={style.createShopButtonText}>Create Shop</Text>
@@ -66,7 +109,19 @@ class RegisterShopScreen extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {};
+};
 
+const mapDispatchToProps = () => {
+  return {
+    createAccountShopOwner,
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps()
+)(RegisterShopScreen);
 const style = StyleSheet.create({
   container: {
     flex: 1,
@@ -117,5 +172,3 @@ const style = StyleSheet.create({
     marginVertical: 10,
   },
 });
-
-export default RegisterShopScreen;

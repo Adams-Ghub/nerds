@@ -112,7 +112,7 @@ export function LoginUser(email, password) {
 }
 
 export function logout() {
-  return async (dispatch, { getFirebase }) => {
+  return async (dispatch, state, { getFirebase }) => {
     try {
       await getFirebase().auth().signOut();
       dispatch(Loggedout());

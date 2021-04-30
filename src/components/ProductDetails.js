@@ -8,10 +8,6 @@ import {
   Image,
   ScrollView,
 } from "react-native";
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from "react-native-responsive-screen";
 import Review from "../components/Review.js";
 import {
   FontAwesome5,
@@ -312,18 +308,20 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    marginVertical: hp("2%"),
-    marginHorizontal: wp("6%"),
+    marginVertical: 15,
+    marginHorizontal: 15,
   },
   basicDetailSection: {
-    marginBottom: hp("3%"),
+    marginBottom: 10,
   },
   ProductImageSection: {
     alignItems: "center",
   },
   productImage: {
-    width: 330,
-    height: 300,
+
+       width: 340,
+    height: 320,
+
     borderRadius: 10,
   },
   productNameText: {
@@ -345,7 +343,6 @@ const style = StyleSheet.create({
   shopNameText: {
     fontSize: 16,
     color: "#080809",
-    marginLeft: wp("1.5%"),
   },
   totalRatingValueText: {
     fontSize: 13,
@@ -355,14 +352,15 @@ const style = StyleSheet.create({
     alignItems: "flex-start",
   },
   addToCartButtonContainer: {
-    marginTop: hp("2%"),
+    marginTop: 5,
   },
   addToCartBtnAndTextContainer: {
     flexDirection: "row",
     justifyContent: "center",
   },
+
   addToCartText: {
-    marginLeft: wp("3%"),
+    marginLeft: 5,
     fontSize: 19,
     fontWeight: "700",
     color: "#ffffff",
@@ -370,16 +368,16 @@ const style = StyleSheet.create({
   addToCartButton: {
     backgroundColor: "#080809",
     borderRadius: 8,
-    paddingVertical: hp("1%"),
+    paddingVertical: 8,
   },
   deliveryInformationSection: {
     borderStyle: "solid",
-    marginBottom: hp("1%"),
+    marginBottom: 10,
   },
   deliveryInformationText: {
     fontSize: 18,
     color: "#aaaaaa",
-    marginBottom: hp("0.5%"),
+    marginBottom: 5,
   },
   picklocationButton: {
     backgroundColor: "#080809",
@@ -400,7 +398,7 @@ const style = StyleSheet.create({
   },
   chooseLocationSection: {
     backgroundColor: "#ededed",
-    padding: hp("0.5%"),
+    padding: 5,
   },
   chooseLocationText: {
     fontSize: 17,
@@ -408,13 +406,12 @@ const style = StyleSheet.create({
     color: "#000",
   },
   productDetailSection: {
-    marginVertical: hp("2%"),
+    marginVertical: 5,
   },
   productDetailText: {
     fontSize: 18,
-
     color: "#aaaaaa",
-    marginBottom: hp("0.5%"),
+    marginBottom: 5,
   },
   descriptionText: {
     fontSize: 17,
@@ -422,12 +419,12 @@ const style = StyleSheet.create({
     color: "#000",
   },
   customerFeedbaackSection: {
-    marginVertical: hp("2%"),
+    marginVertical: 5,
   },
   customerFeedbackText: {
     fontSize: 18,
     color: "#aaaaaa",
-    marginBottom: hp("0.5%"),
+    marginBottom: 5,
   },
   productRatingsReviewText: {
     fontSize: 17,
@@ -436,7 +433,7 @@ const style = StyleSheet.create({
   },
   theReviewContainer: {
     borderStyle: "solid",
-    borderTopWidth: wp("0.1%"),
+    borderTopWidth: 2,
     borderColor: "#ccc",
   },
   product: {

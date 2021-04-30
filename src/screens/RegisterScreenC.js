@@ -137,7 +137,7 @@ const style = StyleSheet.create({
   termsAndPolicyText: {
     fontSize: 17,
     marginRight: 3,
-    color: "#F88017",
+    color: "#0080FF",
   },
   signupButtonContainer: {
     marginVertical: 30,
@@ -164,7 +164,7 @@ const style = StyleSheet.create({
   },
   loginText: {
     fontSize: 17,
-    color: "#F88017",
+    color: "#0080FF",
   },
 });
 

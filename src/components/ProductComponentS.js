@@ -46,31 +46,27 @@ function ProductComponentS(props) {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: wp("0.5%"),
-    marginVertical: wp("0.5%"),
+    marginHorizontal: 3,
+    marginVertical: 3,
     backgroundColor: "#FFFFFF",
     flexDirection: "column",
     justifyContent: "center",
-    maxHeight: hp("27%"),
-    maxWidth: wp("50%"),
   },
   productContainer: {
-    height: hp("23%"),
-    width: wp("40%"),
+    height: 150,
+    width: 150,
     backgroundColor: "#FFFFFF",
-    marginHorizontal: wp("4%"),
-    marginVertical: hp("5%"),
+    marginHorizontal: 10,
+    marginVertical: 45,
   },
 
   productImage: {
-
     width: 140,
     height: 137,
   },
   productImageContainer: {
     justifyContent: "center",
     alignItems: "center",
-
   },
 
   productName: {

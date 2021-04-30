@@ -7,10 +7,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
 import { connect } from "react-redux";
 import ProductComponentS from "../../components/ProductComponentS";
 import { getAllProducts } from "../../redux/actions/authAction";
@@ -47,7 +43,7 @@ class ProductScreen extends Component {
           <View style={style.searchBoxCotainer}>
             <TouchableOpacity style={style.searchBoxButton}>
               <MaterialCommunityIcons
-                style={{ marginHorizontal: wp("3%"), marginTop: hp("0.5%") }}
+                style={{ marginHorizontal: 10, marginTop: 5 }}
                 name="magnify"
                 size={20}
                 color="#cccccc"
@@ -112,28 +108,28 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    marginHorizontal: wp("2%"),
+    marginHorizontal: 10,
   },
 
   addProductButton: {
     backgroundColor: "#0080ff",
-    width: wp("10%"),
-    height: hp("5%"),
+    width: 40,
+    height: 40,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: wp("5%"),
-    position: "absolute",
-    top: hp("81%"),
-    left: wp("84%"),
+    borderRadius: 30,
+    position: "relative",
+    alignContent: "flex-end",
+    marginLeft: 300,
   },
   filterContainer: {
-    marginVertical: hp("3%"),
+    marginVertical: 20,
   },
   searchBoxCotainer: {
     flexDirection: "row",
     borderStyle: "solid",
-    borderWidth: wp("0.1%"),
-    borderRadius: wp("2%"),
-    paddingHorizontal: wp("2%"),
+    borderWidth: 0.5,
+    borderRadius: 10,
+    paddingHorizontal: 10,
   },
 });

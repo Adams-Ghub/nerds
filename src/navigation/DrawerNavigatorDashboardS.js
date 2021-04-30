@@ -18,10 +18,6 @@ import Loader from "../components/Loader";
 import { DrawerActions } from "@react-navigation/native";
 import ProductScreen from "../screens/shopOwner/ProductScreen";
 import Product from "../components/ProductComponent";
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from "react-native-responsive-screen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import AddProductScreen from "../screens/shopOwner/AddProductScreen";
@@ -65,7 +61,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
     <Drawer.Navigator
       drawerContentOptions={{
         activeTintColor: "transparent",
-        itemStyle: { marginVertical: 1 },
+        itemStyle: { marginVertical: 3 },
       }}
       screenOptions={({ navigation }) => {
         return {
@@ -112,12 +108,8 @@ function DrawerNavigatorDashboardS({ navigation }) {
       }}
       drawerStyle={{
         backgroundColor: "#000A14",
-
-        //         width: 170,
-        //         marginTop: 64,
-
-        width: wp("45%"),
-        marginTop: 89,
+        width: 180,
+        marginTop: 52,
       }}
     >
       <Drawer.Screen

@@ -318,8 +318,7 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
   productImage: {
-
-       width: 340,
+    width: 340,
     height: 320,
 
     borderRadius: 10,

@@ -37,7 +37,7 @@ const style = StyleSheet.create({
     borderRadius: 10,
     height: 250,
     borderColor: "#080809",
-    paddingLeft: 12,
+    left: 25,
   },
   productContainer: {
     flex: 1,
@@ -46,6 +46,7 @@ const style = StyleSheet.create({
     alignItems: "center",
     borderWidth: 1,
     borderColor: "#EEEEEE",
+    marginHorizontal: 5,
   },
   productImageContainer: {
     flex: 7,

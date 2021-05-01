@@ -130,6 +130,6 @@ const style = StyleSheet.create({
     borderStyle: "solid",
     borderWidth: 0.5,
     borderRadius: 10,
-    paddingHorizontal: 10,
+    paddingVertical: 8,
   },
 });

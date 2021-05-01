@@ -7,11 +7,11 @@ const ShopOwnerOrderDetailsScreen = () => {
       <View style={styles.container}>
         <View style={styles.productDetails}>
           <Image
-            source={require("../../../assets/productImg.png")}
+            source={require("../../../assets/ladies_bag.jpg")}
             style={styles.image}
           />
           <View style={styles.product}>
-            <Text style={styles.productName}>HP Laptop...</Text>
+            <Text style={styles.productName}>GUCCI Bag...</Text>
             <Text style={styles.productPrice}>3500</Text>
             <Text style={styles.productDate}>23/5/21</Text>
           </View>
@@ -66,7 +66,6 @@ const styles = StyleSheet.create({
   image: {
     height: 90,
     width: 90,
-    // marginLeft: 40,
   },
   product: {
     flexDirection: "column",

@@ -11,10 +11,6 @@ import { EvilIcons } from "@expo/vector-icons";
 
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
 import { ScrollView } from "react-native-gesture-handler";
 import { connect } from "react-redux";
 import { AddNewProduct } from "../../redux/actions/authAction";
@@ -74,11 +70,12 @@ class AddProductScreen extends Component {
   };
   render() {
     return (
-      <View style={style.container}>
-        {/* <View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={style.container}>
+          {/* <View>
           <Text>Add product</Text>
         </View> */}
-        <ScrollView>
+
           <View style={style.registrationFormContainer}>
             <View style={style.usernameInputContainer}>
               <TextInput
@@ -169,8 +166,8 @@ class AddProductScreen extends Component {
               </TouchableOpacity>
             </View>
           </View>
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -179,8 +176,8 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    marginVertical: hp("5%"),
-    marginHorizontal: wp("5%"),
+    marginVertical: 10,
+    marginHorizontal: 10,
   },
   welcomeSectionContainer: {
     alignItems: "center",
@@ -197,7 +194,7 @@ const style = StyleSheet.create({
     marginBottom: 0,
   },
   registrationFormContainer: {
-    marginTop: hp("1%"),
+    marginTop: 10,
   },
   usernameInputContainer: {
     borderStyle: "solid",
@@ -207,15 +204,15 @@ const style = StyleSheet.create({
   },
   usernameInput: {
     fontSize: 17,
-    marginVertical: hp("1%"),
-    marginLeft: wp("3%"),
+    marginVertical: 10,
+    marginLeft: 10,
   },
   pricingText: {
     fontSize: 17,
-    marginRight: wp("1.5%"),
+    marginRight: 10,
   },
   pricingUnitText: {
-    marginTop: hp("0.2%"),
+    marginTop: 10,
   },
   pricingInput: {
     fontSize: 16,
@@ -226,14 +223,14 @@ const style = StyleSheet.create({
   pricingContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginVertical: hp("1%"),
+    marginVertical: 10,
   },
   pricingInputContainer: {
     flexDirection: "row",
     borderStyle: "solid",
     borderBottomWidth: 1,
     borderBottomColor: "#0080FF",
-    marginLeft: wp("1%"),
+    marginLeft: 4,
     marginBottom: 5,
   },
   signupButton: {
@@ -242,18 +239,18 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
   productDetailsInputContainer: {
-    borderWidth: wp("0.1%"),
+    borderWidth: 1,
     borderColor: "#0080ff",
-    borderRadius: wp("2%"),
-    minHeight: wp("35%"),
-    marginVertical: hp("2.5%"),
+    borderRadius: 10,
+    paddingVertical: 40,
+    marginVertical: 15,
   },
   pricingTextContainer: {
-    marginTop: hp("1%"),
+    marginTop: 10,
   },
   pricingUnitText: {
-    marginTop: hp("1%"),
-    marginRight: wp("1%"),
+    marginTop: 10,
+    marginRight: 5,
   },
   pricingInputAndTextContainer: {
     flexDirection: "column",
@@ -261,18 +258,17 @@ const style = StyleSheet.create({
 
   addProductButton: {
     marginHorizontal: 10,
-    backgroundColor: "#0080ff",
+    backgroundColor: "#080809",
     alignItems: "center",
-    borderRadius: wp("2%"),
-  },
-  addProductButtonContainer: {
-    marginVertical: hp("2%"),
+    borderRadius: 6,
+    marginTop: 20,
+    paddingVertical: 8,
   },
   addProductButtonText: {
     fontSize: 17,
     color: "#ffffff",
-    paddingHorizontal: wp("5%"),
-    paddingVertical: hp("1%"),
+    paddingHorizontal: 10,
+    paddingVertical: 5,
   },
   selectProductImageButton: {
     alignItems: "center",
@@ -280,14 +276,14 @@ const style = StyleSheet.create({
   imageSelectButtonText: {
     fontSize: 17,
     fontWeight: "bold",
-    color: "#0080ff",
-    marginBottom: hp("0.5%"),
+    color: "#080809",
+    marginBottom: 10,
   },
   theProductImage: {
-    width: wp("70%"),
-    height: wp("70%"),
-    borderRadius: wp("4% "),
-    borderWidth: wp("0.5"),
+    paddingVertical: 150,
+    paddingHorizontal: 130,
+    borderRadius: 20,
+    borderWidth: 1,
     borderColor: "#dddddd",
   },
   theProductImageContainer: {

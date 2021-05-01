@@ -22,11 +22,7 @@ export default class OrderSearch extends React.Component {
         round={true}
         containerStyle={{
           backgroundColor: "transparent",
-          //   backgroundColor: "#ffffff",
-          //   width: 50,
-          shadowColor: "red",
         }}
-        inputContainerStyle={{}}
       />
     );
   }

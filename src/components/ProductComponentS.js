@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Text, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from "react-native-responsive-screen";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
@@ -71,22 +67,15 @@ const style = StyleSheet.create({
 
   productName: {
     fontSize: 15,
-    maxWidth: wp("35%"),
-    paddingVertical: hp("0.5%"),
-    paddingHorizontal: wp("0.5%"),
+    width: 100,
   },
   productPrice: {
     fontSize: 15,
     fontWeight: "700",
   },
   infoAndBtnsContainer: {
-    flex: 2,
-
     flexDirection: "row",
     justifyContent: "space-between",
-  },
-  editAndDeleteBtnContainer: {
-    marginTop: hp("1%"),
   },
 });
 

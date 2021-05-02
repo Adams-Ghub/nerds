@@ -98,7 +98,7 @@ class MainNavigator extends Component {
               options={{ header: () => {} }}
               component={DrawerNavigatorDashboardCustomer}
             />
-            <Stack.Screen
+            {/* <Stack.Screen
               name="ProductDetails"
               options={{
                 headerTitleAlign: "center",
@@ -119,9 +119,7 @@ class MainNavigator extends Component {
                         justifyContent: "flex-start",
                       }}
                     >
-                      {/* <TouchableOpacity style={{ marginRight: 15 }}>
-                      <FontAwesome5 name="search" size={20} color="#ffffff" />
-                    </TouchableOpacity> */}
+                     
                       <TouchableOpacity style={{ marginRight: 5 }}>
                         <MaterialCommunityIcons
                           name="cart"
@@ -146,11 +144,11 @@ class MainNavigator extends Component {
                 },
               }}
               component={ProductDetails}
-            />
+            /> */}
             <Stack.Screen
               name="Cart"
               options={{
-                headerBackTitle: () => null,
+                headerBackTitle: "",
                 headerTitleStyle: {
                   color: "#ffffff",
                 },
@@ -164,7 +162,7 @@ class MainNavigator extends Component {
               name="CheckoutDelivery"
               options={{
                 title: "Checkout",
-                headerBackTitle: () => null,
+                headerBackTitle: "",
                 headerTintColor: "#fff",
                 headerTitleAlign: "left",
                 headerStyle: {
@@ -178,7 +176,7 @@ class MainNavigator extends Component {
               name="CheckoutSummary"
               options={{
                 title: "Checkout",
-                headerBackTitle: () => null,
+                headerBackTitle: "",
                 headerTintColor: "#fff",
                 headerTitleAlign: "left",
                 headerStyle: {
@@ -193,7 +191,7 @@ class MainNavigator extends Component {
               name="CheckoutPayment"
               options={{
                 title: "Checkout",
-                headerBackTitle: () => null,
+                headerBackTitle: "",
                 headerTintColor: "#fff",
                 headerTitleAlign: "left",
                 headerStyle: {
@@ -208,7 +206,7 @@ class MainNavigator extends Component {
               name="MobileNumber"
               options={{
                 title: "MTN Mobile Money Payment",
-                headerBackTitle: () => null,
+                headerBackTitle: "",
                 headerTintColor: "#fff",
                 headerTitleAlign: "left",
                 headerStyle: {
@@ -223,7 +221,7 @@ class MainNavigator extends Component {
               name="paymentSuccessful"
               options={{
                 title: "Payment Details",
-                headerBackTitle: () => null,
+                headerBackTitle: "",
                 headerTintColor: "#fff",
                 headerTitleAlign: "left",
                 headerStyle: {
@@ -321,7 +319,7 @@ class MainNavigator extends Component {
             <Stack.Screen
               name="Cart"
               options={{
-                headerBackTitle: () => null,
+                headerBackTitle: "",
                 headerTitleStyle: {
                   color: "#ffffff",
                 },

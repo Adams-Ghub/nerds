@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
     flexDirection: "row-reverse",
     marginLeft: 20,
   },
+  
   profileCredential: {
     paddingTop: 40,
     backgroundColor: "#ffffff",

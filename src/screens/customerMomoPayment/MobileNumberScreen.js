@@ -24,11 +24,11 @@ class MobileNumberScreen extends Component {
   continue = () => {
     if (this.state.number.length === 10) {
       let data = {
-        tx_ref: "nerds" + (1000 + Math.floor(Math.random * 100000)),
+        tx_ref: "ingrid" + (1000 + Math.floor(Math.random * 100000)),
         amount: "150",
         currency: "GHS",
         network: "MTN",
-        email: "nerds@gmail.com",
+        email: "ingrid@gmail.com",
         phone_number: this.state.number,
         redirect_url: "https://codetraingh.com",
       };

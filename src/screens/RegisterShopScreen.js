@@ -38,6 +38,7 @@ class RegisterShopScreen extends Component {
       this.state.ghpostGps,
       this.state.idNumber
     );
+    this.props.navigation.navigate("Login");
   };
 
   render() {

@@ -10,10 +10,18 @@ class Loader extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.logout();
+  // componentDidMount() {
+  //   this.props.logout();
+  // }
+  // componentDidUpdate() {
+
+  // }
+  componentWillUnmount() {
+    this.props.navigation.navigate("UserSelection");
   }
   render() {
+    this.props.logout();
+
     return (
       <View style={[styles.container]}>
         <View>

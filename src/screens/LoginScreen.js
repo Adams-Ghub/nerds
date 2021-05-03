@@ -8,8 +8,9 @@ import {
   ScrollView,
 } from "react-native";
 import { connect } from "react-redux";
-import { LoginUser } from "../redux/actions/authAction.js";
+import { LoginUser, loginError } from "../redux/actions/authAction.js";
 import CustomInput from "../components/CustomInput";
+import { auth } from "firebase";
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -38,6 +39,13 @@ class LoginScreen extends Component {
           <View style={style.welcomeSectionContainer}>
             {/* <Text style={style.welcomeMessage}>Welcome To Nerds</Text> */}
             <Text style={style.loginMessage}>Login to continue</Text>
+          </View>
+          <View>
+            {this.props.auth.error.login && (
+              <Text style={{ color: "red", fontSize: 15, fontWeight: "bold" }}>
+                {this.props.auth.error.login}
+              </Text>
+            )}
           </View>
           <CustomInput
             label="Email"
@@ -87,7 +95,9 @@ class LoginScreen extends Component {
             <Text style={style.haveAccountText}>Don't have an account ?</Text>
             <TouchableOpacity
               onPress={() => {
-                this.props.navigation.navigate("RegisterC");
+                this.props.navigation.navigate("RegisterS", {
+                  userType: "customer",
+                });
               }}
               style={style.signupButton}
             >
@@ -107,6 +117,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = () => {
   return {
     LoginUser,
+    loginError,
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps())(LoginScreen);

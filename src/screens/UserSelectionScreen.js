@@ -15,7 +15,7 @@ class UserSelectionScreen extends Component {
     return (
       <View style={style.container}>
         <View style={style.welcomeSectionContainer}>
-          <Text style={style.welcomeMessage}>Welcome To Nerds</Text>
+          <Text style={style.welcomeMessage}>Welcome To Ingrid</Text>
         </View>
         <View style={style.selection}>
           <View style={style.IamTextContainer}>

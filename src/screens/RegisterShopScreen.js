@@ -46,7 +46,7 @@ class RegisterShopScreen extends Component {
       <ScrollView>
         <View style={style.container}>
           <View style={style.welcomeSectionContainer}>
-            {/* <Text style={style.welcomeMessage}>Welcome To Nerds</Text> */}
+            {/* <Text style={style.welcomeMessage}>Welcome To Ingrid</Text> */}
             <Text style={style.lastStepMessage}>One Last Step</Text>
           </View>
           <CustomInput

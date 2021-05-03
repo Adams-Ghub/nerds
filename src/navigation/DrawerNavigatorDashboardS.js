@@ -98,7 +98,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
           //             fontSize: 17,
           //           }}
           //         >
-          //           Nerds
+          //         Ingrid
           //         </Text>
           //       </View>
           //     </View>

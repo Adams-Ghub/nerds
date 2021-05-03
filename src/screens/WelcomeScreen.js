@@ -170,7 +170,6 @@ const style = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
-
     backgroundColor: "#FFFFFF",
     paddingTop: 100,
   },

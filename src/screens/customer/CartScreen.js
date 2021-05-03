@@ -59,7 +59,9 @@ class CartScreen extends Component {
               style={styles.buttonContainer}
               onPress={() => {
                 if (this.props.auth === true) {
-                  this.props.navigation.navigate("CheckoutDelivery");
+                  this.props.navigation.navigate("CheckoutDelivery", {
+                    total: total,
+                  });
                 } else {
                   this.props.navigation.navigate("Login");
                 }

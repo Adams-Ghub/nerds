@@ -49,7 +49,7 @@ class RegisterScreenS extends Component {
           this.state.username,
           "customer"
         );
-        // this.props.navigation.navigate("CustomerDashboard");
+        this.props.navigation.navigate("Login");
       }
     }
   };

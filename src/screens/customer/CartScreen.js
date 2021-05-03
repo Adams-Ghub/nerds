@@ -58,7 +58,7 @@ class CartScreen extends Component {
             <TouchableOpacity
               style={styles.buttonContainer}
               onPress={() => {
-                if (this.props.auth) {
+                if (this.props.auth === true) {
                   this.props.navigation.navigate("CheckoutDelivery");
                 } else {
                   this.props.navigation.navigate("Login");
@@ -76,7 +76,7 @@ class CartScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.user,
+    auth: state.Login,
     cart: state.cart,
   };
 };
@@ -105,10 +105,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginHorizontal: 20,
   },
-  productName: {
-    marginBottom: 20,
-    fontSize: 20,
-  },
+  // productName: {
+  //   marginBottom: 20,
+  //   fontSize: 20,
+  // },
   productPrice: {
     fontSize: 20,
     color: "#080809",

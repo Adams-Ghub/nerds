@@ -16,6 +16,14 @@ class CartScreen extends Component {
     super(props);
   }
   render() {
+    let total = 0;
+    if (this.props.cart && this.props.cart.length > 0) {
+      for (let i = 0; i < this.props.cart.length; i++) {
+        let item = this.props.cart[i];
+        total += parseInt(item.product.sp) * parseInt(item.qty);
+      }
+    }
+
     return (
       <View style={styles.container}>
         <View
@@ -37,14 +45,14 @@ class CartScreen extends Component {
                 </View>
               );
             }}
-            keyExtractor={(item, index) => index}
+            keyExtractor={(item, index) => index.toString()}
             showsVerticalScrollIndicator={false}
           />
         </View>
         <View style={styles.checkout}>
           <View style={styles.checkoutText}>
             <Text style={styles.total}>Total</Text>
-            <Text style={styles.price}>GH₵3500</Text>
+            <Text style={styles.price}>GH₵{total}</Text>
           </View>
           <View style={styles.button}>
             <TouchableOpacity

@@ -82,8 +82,9 @@ class ProductDetails extends Component {
           >
             <MaterialIcons name="arrow-drop-down" size={30} color="#fff" />
           </TouchableOpacity>
+
           <Text
-            style={{ paddingVertical: 4, fontsize: 19, fontWeight: "bold" }}
+            style={{ paddingVertical: 4, fontSize: 19, fontWeight: "bold" }}
           >
             {this.state.quantitycheck}
           </Text>
@@ -180,9 +181,6 @@ class ProductDetails extends Component {
               justifyContent: "flex-start",
             }}
           >
-            {/* <TouchableOpacity style={{ marginRight: 15 }}>
-              <FontAwesome5 name="search" size={20} color="#ffffff" />
-            </TouchableOpacity> */}
             <TouchableOpacity
               onPress={() => {
                 this.props.navigation.navigate("Cart");
@@ -318,8 +316,7 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
   productImage: {
-
-       width: 340,
+    width: 340,
     height: 320,
 
     borderRadius: 10,

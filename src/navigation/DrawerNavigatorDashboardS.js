@@ -109,7 +109,7 @@ function DrawerNavigatorDashboardS({ navigation }) {
       drawerStyle={{
         backgroundColor: "#000A14",
         width: 180,
-        marginTop: 52,
+        paddingTop: 50,
       }}
     >
       <Drawer.Screen

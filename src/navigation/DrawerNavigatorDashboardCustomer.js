@@ -75,7 +75,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
       drawerStyle={{
         backgroundColor: "#000A14",
         width: 180,
-        marginTop: 64.2,
+        paddingTop: 50,
       }}
     >
       <Drawer.Screen
@@ -166,7 +166,7 @@ function DrawerNavigatorDashboardCustomer({ navigation }) {
           },
           ...defaultHeaderStyle,
         }}
-        component={logout}
+        component={WelcomeScreen}
       />
 
       <Drawer.Screen

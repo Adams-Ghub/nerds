@@ -9,7 +9,8 @@ import {
 import { MaterialIcons } from "@expo/vector-icons";
 import CheckoutStepper from "../../components/CheckoutStepper";
 
-const CheckoutDeliveryScreen = ({ navigation }) => {
+const CheckoutDeliveryScreen = ({ navigation, route }) => {
+  let Subtotal=route.props.params.total+
   return (
     <View style={{ flex: 1 }}>
       <CheckoutStepper page={1} />
@@ -79,7 +80,7 @@ const CheckoutDeliveryScreen = ({ navigation }) => {
           <View style={styles.checkout}>
             <View style={styles.checkoutText1}>
               <Text style={styles.total}> Subtotal</Text>
-              <Text style={styles.price}>GH₵3500</Text>
+              <Text style={styles.price}>{"GH₵ " + route.params.total}</Text>
             </View>
             <View style={styles.checkoutText2}>
               <Text style={styles.total}>Delivery</Text>
@@ -88,7 +89,7 @@ const CheckoutDeliveryScreen = ({ navigation }) => {
             <View style={styles.line} />
             <View style={styles.checkoutText}>
               <Text style={styles.total}>Total</Text>
-              <Text style={styles.price}>GH₵3500</Text>
+              <Text style={styles.price}>{"GH₵ " + route.params.total}</Text>
             </View>
             <View style={styles.button}>
               <TouchableOpacity

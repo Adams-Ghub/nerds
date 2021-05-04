@@ -131,7 +131,7 @@ class PLReport extends Component {
           </View>
           <View style={style.mainHeaders}>
             <Text style={style.mainHeadersText}>Total Income</Text>
-            <Text style={style.mainHeadersFigure}>40000</Text>
+            <Text style={style.mainHeadersFigure}>42000</Text>
           </View>
           <View style={style.mainHeaders}>
             <Text style={style.mainHeadersText}>Cost of Goods Sold(COGS)</Text>
@@ -146,18 +146,18 @@ class PLReport extends Component {
           </View>
           <View style={style.biggerMainHeaders}>
             <Text style={style.biggerMainHeadersText}>Gross Profit</Text>
-            <Text style={style.biggerMainHeadersFigure}>11000</Text>
+            <Text style={style.biggerMainHeadersFigure}>13000</Text>
           </View>
           <View style={style.mainHeaders}>
             <Text style={style.mainHeadersText}>Expenses</Text>
           </View>
           <View style={style.mainHeaders}>
             <Text style={style.mainHeadersText}>Total Expenses</Text>
-            <Text style={style.mainHeadersFigure}>11000</Text>
+            <Text style={style.mainHeadersFigure}>7800</Text>
           </View>
           <View style={style.biggerMainHeaders}>
             <Text style={style.biggerMainHeadersText}>Net Income</Text>
-            <Text style={style.netIncomeFigure}>11000</Text>
+            <Text style={style.netIncomeFigure}>5200</Text>
           </View>
         </View>
 
